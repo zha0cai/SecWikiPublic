@@ -1,0 +1,1553 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Graph · Gitbook 指南</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="gitbook 绘制数学函数图 插件, gitbook-plugin-graph 使用教程">
+        <meta name="generator" content="HonKit 4.0.0">
+        <meta name="author" content="zha0cai">
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="hideelement.html" />
+    
+    
+    <link rel="prev" href="emphasize.html" />
+    
+
+    <script src="../../../gitbook/gitbook-plugin-graph/d3.min.js"></script>
+    <script src="../../../gitbook/gitbook-plugin-graph/function-plot.js"></script>    
+
+    
+    <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-chart/c3/c3.min.css">
+    <script src="../../../gitbook/gitbook-plugin-chart/c3/d3.min.js"></script>
+    <script src="../../../gitbook/gitbook-plugin-chart/c3/c3.min.js"></script>
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/zha0cai" target="_blank" class="custom-link">My github</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">I 基础</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../basic/command.html">
+            
+                <a href="../../../basic/command.html">
+            
+                    
+                    基础命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../../basic/vs.html">
+            
+                <a href="../../../basic/vs.html">
+            
+                    
+                    GitBook对比
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../../basic/install.html">
+            
+                <a href="../../../basic/install.html">
+            
+                    
+                    安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../../basic/error.html">
+            
+                <a href="../../../basic/error.html">
+            
+                    
+                    错误解决
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../../basic/markdown.html">
+            
+                <a href="../../../basic/markdown.html">
+            
+                    
+                    Markdown
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../../basic/directory/">
+            
+                <a href="../../../basic/directory/">
+            
+                    
+                    目录结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../../basic/directory/readmex.html">
+            
+                <a href="../../../basic/directory/readmex.html">
+            
+                    
+                    README.md 文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../../basic/directory/summaryx.html">
+            
+                <a href="../../../basic/directory/summaryx.html">
+            
+                    
+                    SUMMARY.md 文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../../basic/directory/book.html">
+            
+                <a href="../../../basic/directory/book.html">
+            
+                    
+                    配置文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../../basic/directory/assist/">
+            
+                <a href="../../../basic/directory/assist/">
+            
+                    
+                    辅助文件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="../../../basic/directory/assist/cover.html">
+            
+                <a href="../../../basic/directory/assist/cover.html">
+            
+                    
+                    封面
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="../../../basic/directory/assist/glossaryx.html">
+            
+                <a href="../../../basic/directory/assist/glossaryx.html">
+            
+                    
+                    词汇表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.3" data-path="../../../basic/directory/assist/ignore.html">
+            
+                <a href="../../../basic/directory/assist/ignore.html">
+            
+                    
+                    忽略文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.4" data-path="../../../basic/directory/assist/language.html">
+            
+                <a href="../../../basic/directory/assist/language.html">
+            
+                    
+                    多语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.5" data-path="../../../basic/directory/assist/static.html">
+            
+                <a href="../../../basic/directory/assist/static.html">
+            
+                    
+                    静态资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../../basic/hello.html">
+            
+                <a href="../../../basic/hello.html">
+            
+                    
+                    第一本电子书
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">II 配置</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../../config/basic.html">
+            
+                <a href="../../../config/basic.html">
+            
+                    
+                    基础配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../../config/template.html">
+            
+                <a href="../../../config/template.html">
+            
+                    
+                    模板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../../config/variable.html">
+            
+                <a href="../../../config/variable.html">
+            
+                    
+                    变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../../../config/conref.html">
+            
+                <a href="../../../config/conref.html">
+            
+                    
+                    内容引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../../../config/extends.html">
+            
+                <a href="../../../config/extends.html">
+            
+                    
+                    继承
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">III 定制化</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../common/">
+            
+                <a href="../common/">
+            
+                    
+                    通用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="../common/alerts.html">
+            
+                <a href="../common/alerts.html">
+            
+                    
+                    Alerts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="../common/anchor.html">
+            
+                <a href="../common/anchor.html">
+            
+                    
+                    锚点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3" data-path="../common/chapter.html">
+            
+                <a href="../common/chapter.html">
+            
+                    
+                    toggle-chapters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.4" data-path="../common/code.html">
+            
+                <a href="../common/code.html">
+            
+                    
+                    code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.5" data-path="../common/expand.html">
+            
+                <a href="../common/expand.html">
+            
+                    
+                    折叠菜单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.6" data-path="../common/favicon.html">
+            
+                <a href="../common/favicon.html">
+            
+                    
+                    favicon
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.7" data-path="../common/github.html">
+            
+                <a href="../common/github.html">
+            
+                    
+                    Github
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.8" data-path="../common/pagefooter.html">
+            
+                <a href="../common/pagefooter.html">
+            
+                    
+                    Tbfed-pagefooter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.9" data-path="../common/prism.html">
+            
+                <a href="../common/prism.html">
+            
+                    
+                    Prism
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.10" data-path="../common/search.html">
+            
+                <a href="../common/search.html">
+            
+                    
+                    Search Plus
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.11" data-path="../common/section.html">
+            
+                <a href="../common/section.html">
+            
+                    
+                    页面分块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.12" data-path="../common/sharing.html">
+            
+                <a href="../common/sharing.html">
+            
+                    
+                    Sharing-plus
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.13" data-path="../common/splitter.html">
+            
+                <a href="../common/splitter.html">
+            
+                    
+                    Splitter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.14" data-path="../common/statistics.html">
+            
+                <a href="../common/statistics.html">
+            
+                    
+                    统计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.15" data-path="../common/toc.html">
+            
+                <a href="../common/toc.html">
+            
+                    
+                    toc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.16" data-path="../common/versions.html">
+            
+                <a href="../common/versions.html">
+            
+                    
+                    versions-select
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.2.1" data-path="Klipse.html">
+            
+                <a href="Klipse.html">
+            
+                    
+                    Klipse
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.2" data-path="Terminal.html">
+            
+                <a href="Terminal.html">
+            
+                    
+                    Terminal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.3" data-path="ace.html">
+            
+                <a href="ace.html">
+            
+                    
+                    Ace Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.4" data-path="chart.html">
+            
+                <a href="chart.html">
+            
+                    
+                    Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.5" data-path="codeblock.html">
+            
+                <a href="codeblock.html">
+            
+                    
+                    codeblock-filename
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.6" data-path="csv.html">
+            
+                <a href="csv.html">
+            
+                    
+                    Include-csv
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.7" data-path="disqus.html">
+            
+                <a href="disqus.html">
+            
+                    
+                    Disqus
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.8" data-path="donate.html">
+            
+                <a href="donate.html">
+            
+                    
+                    Donate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.9" data-path="download.html">
+            
+                <a href="download.html">
+            
+                    
+                    下载文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.10" data-path="edit.html">
+            
+                <a href="edit.html">
+            
+                    
+                    Edit Link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.11" data-path="emoji.html">
+            
+                <a href="emoji.html">
+            
+                    
+                    Advanced Emoji
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.12" data-path="emphasize.html">
+            
+                <a href="emphasize.html">
+            
+                    
+                    Emphasize
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.1.2.13" data-path="graph.html">
+            
+                <a href="graph.html">
+            
+                    
+                    Graph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.14" data-path="hideelement.html">
+            
+                <a href="hideelement.html">
+            
+                    
+                    隐藏元素
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.15" data-path="math.html">
+            
+                <a href="math.html">
+            
+                    
+                    数学公式 & Tex
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.16" data-path="mermaid.html">
+            
+                <a href="mermaid.html">
+            
+                    
+                    Mermaid-gb3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.17" data-path="puml.html">
+            
+                <a href="puml.html">
+            
+                    
+                    Puml
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.18" data-path="rss.html">
+            
+                <a href="rss.html">
+            
+                    
+                    RSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.19" data-path="sitemap.html">
+            
+                <a href="sitemap.html">
+            
+                    
+                    Sitemap-general
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.20" data-path="summary.html">
+            
+                <a href="summary.html">
+            
+                    
+                    summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.21" data-path="todo.html">
+            
+                <a href="todo.html">
+            
+                    
+                    todo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.22" data-path="image.html">
+            
+                <a href="image.html">
+            
+                    
+                    图片
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.23" data-path="question.html">
+            
+                <a href="question.html">
+            
+                    
+                    题目
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.24" data-path="video.html">
+            
+                <a href="video.html">
+            
+                    
+                    Local Video
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../custom/">
+            
+                <a href="../custom/">
+            
+                    
+                    开发插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.3.1" data-path="../custom/block.html">
+            
+                <a href="../custom/block.html">
+            
+                    
+                    块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.2" data-path="../custom/context.html">
+            
+                <a href="../custom/context.html">
+            
+                    
+                    Context和APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.3" data-path="../custom/create.html">
+            
+                <a href="../custom/create.html">
+            
+                    
+                    创建和发布插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.4" data-path="../custom/filter.html">
+            
+                <a href="../custom/filter.html">
+            
+                    
+                    过滤器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.5" data-path="../custom/func.html">
+            
+                <a href="../custom/func.html">
+            
+                    
+                    回调函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.6" data-path="../custom/test.html">
+            
+                <a href="../custom/test.html">
+            
+                    
+                    测试插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.7" data-path="../custom/hello.html">
+            
+                <a href="../custom/hello.html">
+            
+                    
+                    制作第一个插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../theme/">
+            
+                <a href="../../theme/">
+            
+                    
+                    主题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../theme/default.html">
+            
+                <a href="../../theme/default.html">
+            
+                    
+                    theme-default
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../theme/api.html">
+            
+                <a href="../../theme/api.html">
+            
+                    
+                    theme-api 插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../../theme/comscore.html">
+            
+                <a href="../../theme/comscore.html">
+            
+                    
+                    ComScore 主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="../../theme/faq.html">
+            
+                <a href="../../theme/faq.html">
+            
+                    
+                    FAQ 主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../../theme/custom.html">
+            
+                <a href="../../theme/custom.html">
+            
+                    
+                    开发主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">IV 扩展</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../../extend/export.html">
+            
+                <a href="../../../extend/export.html">
+            
+                    
+                    输入/输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../../extend/pdf.html">
+            
+                <a href="../../../extend/pdf.html">
+            
+                    
+                    PDF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">V 其他</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../../others/book.html">
+            
+                <a href="../../../others/book.html">
+            
+                    
+                    book.json
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../../../others/example.html">
+            
+                <a href="../../../others/example.html">
+            
+                    
+                    示例网站
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../../../others/post.html">
+            
+                <a href="../../../others/post.html">
+            
+                    
+                    后记
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >Graph</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#graph"><b></b>Graph</a></li><ul><ul><li><span class="title-icon "></span><a href="#使用语法"><b></b>使用语法</a></li></ul></ul></ul></div><a href="#graph" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="graph"><a name="graph" class="anchor-navigation-ex-anchor" href="#graph"><i class="fa fa-link" aria-hidden="true"></i></a>Graph</h1>
+<p>Gitbook 插件：使用 <code>function-plot</code> 绘制数学函数图。</p>
+<blockquote>
+<p>[!TIP|style:flat|iconVisibility:hidden|labelVisibility:hidden]
+npm install gitbook-plugin-graph</p>
+</blockquote>
+<p><a href="https://github.com/cjam/gitbook-plugin-graph" target="_blank">https://github.com/cjam/gitbook-plugin-graph</a></p>
+<p>function-plot：<code>https://mauriciopoppe.github.io/function-plot/</code></p>
+<pre><code class="lang-json:book.json">{
+    &quot;plugins&quot;: [ &quot;graph&quot; ]
+}
+</code></pre>
+<h3 id="使用语法"><a name="使用语法" class="anchor-navigation-ex-anchor" href="#使用语法"><i class="fa fa-link" aria-hidden="true"></i></a>使用语法</h3>
+<p>下面是一个示例，需要注意的是 <code>graph</code> 块中的内容必须是合法的 JSON 格式。</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;1/x * cos(1/x)&quot;</span>,
+    <span class="hljs-string">&quot;grid&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">&quot;xAxis&quot;</span>: {
+        <span class="hljs-string">&quot;domain&quot;</span>: [<span class="hljs-number">0.01</span>, <span class="hljs-number">1</span>]
+    },
+    <span class="hljs-string">&quot;yAxis&quot;</span>: {
+        <span class="hljs-string">&quot;domain&quot;</span>: [-<span class="hljs-number">100</span>, <span class="hljs-number">100</span>]
+    },
+    <span class="hljs-string">&quot;data&quot;</span>: [{
+        <span class="hljs-string">&quot;fn&quot;</span>: <span class="hljs-string">&quot;1/x * cos(1/x)&quot;</span>,
+        <span class="hljs-string">&quot;closed&quot;</span>: <span class="hljs-literal">true</span>
+    }]
+}
+</code></pre>
+<p>效果如下所示：</p>
+<div class="graph-draw">
+<div>
+                        <span id="plugin-graph-0"></span>
+                        <script>functionPlot({"title":"1/x * cos(1/x)","grid":true,"xAxis":{"domain":[0.01,1]},"yAxis":{"domain":[-100,100]},"data":[{"fn":"1/x * cos(1/x)","closed":true}],"target":"#plugin-graph-0"});</script>
+                    </div>
+</div>
+
+<pre><code class="lang-json">    {
+        <span class="hljs-string">&quot;title&quot;</span>:<span class="hljs-string">&quot;cos(2*PI*x/2)*(1+0.5cos(2*PI*x/100))&quot;</span>,
+        <span class="hljs-string">&quot;grid&quot;</span>:<span class="hljs-literal">true</span>,
+        <span class="hljs-string">&quot;xAxis&quot;</span>: {
+            <span class="hljs-string">&quot;label&quot;</span>:<span class="hljs-string">&quot;Sample&quot;</span>,
+            <span class="hljs-string">&quot;domain&quot;</span>: [<span class="hljs-number">0</span>,<span class="hljs-number">300</span>]
+        },
+        <span class="hljs-string">&quot;yAxis&quot;</span>: {
+            <span class="hljs-string">&quot;label&quot;</span>:<span class="hljs-string">&quot;Amplitude&quot;</span>,
+            <span class="hljs-string">&quot;domain&quot;</span>: [-<span class="hljs-number">1.5</span>,<span class="hljs-number">1.5</span>]
+        },
+        <span class="hljs-string">&quot;data&quot;</span>: [
+            { <span class="hljs-string">&quot;fn&quot;</span>: <span class="hljs-string">&quot;cos(2*PI*x/2)*(1+0.5cos(2*PI*x/100))&quot;</span>},
+            { <span class="hljs-string">&quot;fn&quot;</span>: <span class="hljs-string">&quot;(1+0.5cos(2*PI*x/100))&quot;</span>}
+        ]
+    }
+</code></pre>
+<div class="graph-draw">
+<div>
+                        <span id="plugin-graph-1"></span>
+                        <script>functionPlot({"title":"cos(2*PI*x/2)*(1+0.5cos(2*PI*x/100))","grid":true,"xAxis":{"label":"Mapull","domain":[0,300]},"yAxis":{"label":"Amplitude","domain":[-1.5,1.5]},"data":[{"fn":"cos(2*PI*x/2)*(1+0.5cos(2*PI*x/100))"},{"fn":"(1+0.5cos(2*PI*x/100))"}],"target":"#plugin-graph-1"});</script>
+                    </div>
+</div>
+
+
+<blockquote>
+<p>[!WARNING|style:callout|iconVisibility:hidden|label:注意]
+如果页面内容显示不完整，请F5刷新当前页面</p>
+</blockquote>
+</body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="emphasize.html" class="navigation navigation-prev " aria-label="Previous page: Emphasize">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="hideelement.html" class="navigation navigation-next " aria-label="Next page: 隐藏元素">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"description":"gitbook 绘制数学函数图 插件, gitbook-plugin-graph 使用教程","title":"Graph","level":"3.1.2.13","depth":3,"next":{"title":"隐藏元素","level":"3.1.2.14","depth":3,"path":"custom/plugin/other/hideelement.md","ref":"custom/plugin/other/hideelement.md","articles":[]},"previous":{"title":"Emphasize","level":"3.1.2.12","depth":3,"path":"custom/plugin/other/emphasize.md","ref":"custom/plugin/other/emphasize.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","search-pro","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"my-toolbar":{"buttons":[{"label":"仓库","icon":"fa fa-github","url":"https://github.com/zha0cai/gitbookPublic","position":"right","text":"仓库","target":"_blank"}]},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"custom/plugin/other/graph.md","mtime":"2021-06-10T00:21:21.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-09T00:59:29.207Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
