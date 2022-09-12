@@ -16,11 +16,11 @@
     
             
                 
-                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -37,6 +37,18 @@
             
                 
                 <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
                 
             
                 
@@ -1181,12 +1193,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.3" data-path="../../theme/comscore.html">
+        <li class="chapter " data-level="3.2.3" data-path="../../theme/fexa.html">
             
-                <a href="../../theme/comscore.html">
+                <a href="../../theme/fexa.html">
             
                     
-                    ComScore 主题
+                    theme-fexa 网站主题
             
                 </a>
             
@@ -1194,7 +1206,20 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.4" data-path="../../theme/faq.html">
+        <li class="chapter " data-level="3.2.4" data-path="../../theme/comscore.html">
+            
+                <a href="../../theme/comscore.html">
+            
+                    
+                    theme-comscore 彩色主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../../theme/faq.html">
             
                 <a href="../../theme/faq.html">
             
@@ -1207,7 +1232,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.5" data-path="../../theme/custom.html">
+        <li class="chapter " data-level="3.2.6" data-path="../../theme/custom.html">
             
                 <a href="../../theme/custom.html">
             
@@ -1351,12 +1376,12 @@
                                 
                                 <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#隐藏元素"><b></b>隐藏元素</a></li></ul></div><a href="#隐藏元素" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="隐藏元素"><a name="隐藏元素" class="anchor-navigation-ex-anchor" href="#隐藏元素"><i class="fa fa-link" aria-hidden="true"></i></a>隐藏元素</h1>
 <p>Gitbook 插件：可以隐藏不想看到的元素，比如导航栏中<code>Published by GitBook</code>。</p>
-<p><code>hide-element</code>是通过HTML元素的class名字来查找要隐藏的元素，想要隐藏元素找到元素的样式类名加到插件配置里面就可以隐藏元素了。</p>
+<p><code>hide-element</code>是通过 HTML 元素的 class 名字来查找要隐藏的元素，想要隐藏元素找到元素的样式类名加到插件配置里面就可以隐藏元素了。</p>
 <blockquote>
 <p>[!TIP|style:flat|iconVisibility:hidden|labelVisibility:hidden]
 npm install gitbook-plugin-hide-element</p>
 </blockquote>
-<p>在<code>book.json</code>的plugins参数中添加插件名和配置信息：</p>
+<p>在<code>book.json</code>的 plugins 参数中添加插件名和配置信息：</p>
 <pre><code class="lang-json">{
     <span class="hljs-string">&quot;plugins&quot;</span>: [
         <span class="hljs-string">&quot;hide-element&quot;</span>
@@ -1371,10 +1396,12 @@ npm install gitbook-plugin-hide-element</p>
 <p>上面的配置信息中设置了隐藏的类名，所以<code>Published by GitBook</code> 、<code>本书使用 GitBook 发布</code> 就看不见了。</p>
 <p><img src="hidden.png" alt="hidden"></p>
 <p>为了尊重原版版权，该插件未开启。</p>
-<h6 id="gitbook版权声明"><a name="gitbook版权声明" class="anchor-navigation-ex-anchor" href="#gitbook版权声明"><i class="fa fa-link" aria-hidden="true"></i></a>Gitbook版权声明</h6>
+<h6 id="gitbook-版权声明"><a name="gitbook-版权声明" class="anchor-navigation-ex-anchor" href="#gitbook-版权声明"><i class="fa fa-link" aria-hidden="true"></i></a>Gitbook 版权声明</h6>
 <p>Gitbook 默认在左侧菜单的最下方生成了一句话，<code>Published by GitBook</code>，[不同的语言，菜单左下角的版权信息不一样。]</p>
-<p>Gitbook 没有提供去掉该信息的配置。</p>
-</body></html>
+<p>Gitbook 没有提供去掉该信息的配置。 </p>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-09-12 19:48:06
+</span></footer></body></html>
                                 
                                 </section>
                             
@@ -1417,7 +1444,7 @@ npm install gitbook-plugin-hide-element</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"gitbook 隐藏不想看到的元素 插件, gitbook-plugin-hide-element 使用教程","title":"隐藏元素","level":"3.1.2.14","depth":3,"next":{"title":"数学公式 & Tex","level":"3.1.2.15","depth":3,"path":"custom/plugin/other/math.md","ref":"custom/plugin/other/math.md","articles":[]},"previous":{"title":"Graph","level":"3.1.2.13","depth":3,"path":"custom/plugin/other/graph.md","ref":"custom/plugin/other/graph.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","search-pro","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"my-toolbar":{"buttons":[{"label":"仓库","icon":"fa fa-github","url":"https://github.com/zha0cai/gitbookPublic","position":"right","text":"仓库","target":"_blank"}]},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"custom/plugin/other/hideelement.md","mtime":"2021-06-10T00:21:21.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-09T01:05:36.599Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"gitbook 隐藏不想看到的元素 插件, gitbook-plugin-hide-element 使用教程","title":"隐藏元素","level":"3.1.2.14","depth":3,"next":{"title":"数学公式 & Tex","level":"3.1.2.15","depth":3,"path":"custom/plugin/other/math.md","ref":"custom/plugin/other/math.md","articles":[]},"previous":{"title":"Graph","level":"3.1.2.13","depth":3,"path":"custom/plugin/other/graph.md","ref":"custom/plugin/other/graph.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"custom/plugin/other/hideelement.md","mtime":"2022-09-12T11:48:06.970Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-12T15:28:52.320Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1488,6 +1515,10 @@ npm install gitbook-plugin-hide-element</p>
     
         
         <script src="../../../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
         
     
         

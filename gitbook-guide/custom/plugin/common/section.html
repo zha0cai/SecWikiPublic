@@ -16,11 +16,11 @@
     
             
                 
-                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -37,6 +37,18 @@
             
                 
                 <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
                 
             
                 
@@ -1181,12 +1193,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.3" data-path="../../theme/comscore.html">
+        <li class="chapter " data-level="3.2.3" data-path="../../theme/fexa.html">
             
-                <a href="../../theme/comscore.html">
+                <a href="../../theme/fexa.html">
             
                     
-                    ComScore 主题
+                    theme-fexa 网站主题
             
                 </a>
             
@@ -1194,7 +1206,20 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.4" data-path="../../theme/faq.html">
+        <li class="chapter " data-level="3.2.4" data-path="../../theme/comscore.html">
+            
+                <a href="../../theme/comscore.html">
+            
+                    
+                    theme-comscore 彩色主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../../theme/faq.html">
             
                 <a href="../../theme/faq.html">
             
@@ -1207,7 +1232,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.5" data-path="../../theme/custom.html">
+        <li class="chapter " data-level="3.2.6" data-path="../../theme/custom.html">
             
                 <a href="../../theme/custom.html">
             
@@ -1373,41 +1398,43 @@ npm install gitbook-plugin-sectionx</p>
 <h3 id="使用方法"><a name="使用方法" class="anchor-navigation-ex-anchor" href="#使用方法"><i class="fa fa-link" aria-hidden="true"></i></a>使用方法</h3>
 <p>在 md 文档中，使用语法：</p>
 <pre><code class="lang-markdown">&lt;!--sec data-title=&quot;这里写标题&quot; data-id=&quot;section0&quot; data-show=true ces--&gt;
-这里是markdown内容1
-这里是markdown内容2
-这里是内容3
+这里是 markdown 内容 1
+这里是 markdown 内容 2
+这里是内容 3
 &lt;!--endsec--&gt;
 </code></pre>
 <h4 id="参数的作用"><a name="参数的作用" class="anchor-navigation-ex-anchor" href="#参数的作用"><i class="fa fa-link" aria-hidden="true"></i></a>参数的作用</h4>
 <ul>
-<li>data-title：收缩模块的标题，大小在插件参数配置里面配置，注意：HTML中实体字符要转义</li>
-<li>data-id：收缩模块的id，用于插件的控制按钮，下面讲解</li>
+<li>data-title：收缩模块的标题，大小在插件参数配置里面配置，注意：HTML 中实体字符要转义</li>
+<li>data-id：收缩模块的 id，用于插件的控制按钮，下面讲解</li>
 <li>data-show：模式默认是收缩还是展开的，true：展开，false：隐藏</li>
-<li>data-nopdf：在pdf中显示的情况，设为true不显示</li>
+<li>data-nopdf：在 pdf 中显示的情况，设为 true 不显示</li>
 <li>data-collapse：其中的数据是否默认显示</li>
 </ul>
 <h5 id="使用示例"><a name="使用示例" class="anchor-navigation-ex-anchor" href="#使用示例"><i class="fa fa-link" aria-hidden="true"></i></a>使用示例</h5>
 <pre><code class="lang-markdown">&lt;!--sec data-title=&quot;标题&quot; data-id=&quot;section0&quot; data-show=true ces--&gt;
-<span class="hljs-section">### 内部的标题最大从 h3开始</span>
+<span class="hljs-section">### 内部的标题最大从 h3 开始</span>
 
 里面可以写<span class="hljs-strong">**任何**</span> 的 <span class="hljs-code">`markdown`</span>代码。
 
-很开心能找到想要的插件 :smile:
+很开心能找到想要的插件 <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">align</span>=<span class="hljs-string">&apos;absmiddle&apos;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&apos;:smile:&apos;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&apos;emoji&apos;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&apos;/gitbook/gitbook-plugin-advanced-emoji/emojis/smile.png&apos;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&apos;:smile:&apos;</span> /&gt;</span></span>
 &lt;!--endsec--&gt;
 </code></pre>
 <p><img src="section1.gif" alt="Section"></p>
 <p>也可以通过一个 button 来触发折叠：</p>
 <p><code>&lt;button class=&quot;section&quot; target=&quot;section1&quot; show=&quot;Show next section&quot; hide=&quot;Hide next section&quot;&gt;&lt;/button&gt;</code></p>
 <pre><code class="lang-markdown">&lt;!--sec data-title=&quot;按钮触发&quot; data-id=&quot;section1&quot; data-show=true ces--&gt;
-<span class="hljs-section">#### 内部的标题h4</span>
+<span class="hljs-section">#### 内部的标题 h4</span>
 
 里面可以写<span class="hljs-strong">**任何**</span> 的 <span class="hljs-code">`markdown`</span>代码。
 
-很开心能找到想要的插件 :laughing:
+很开心能找到想要的插件 <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">align</span>=<span class="hljs-string">&apos;absmiddle&apos;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&apos;:laughing:&apos;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&apos;emoji&apos;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&apos;/gitbook/gitbook-plugin-advanced-emoji/emojis/laughing.png&apos;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&apos;:laughing:&apos;</span> /&gt;</span></span>
 &lt;!--endsec--&gt;
 </code></pre>
 <p><img src="section2.gif" alt="Section"></p>
-</body></html>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-09-12 18:18:20
+</span></footer></body></html>
                                 
                                 </section>
                             
@@ -1450,7 +1477,7 @@ npm install gitbook-plugin-sectionx</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"gitbook 将页面内容分块显示折叠 插件, gitbook-plugin-sectionx 使用教程","title":"页面分块","level":"3.1.1.11","depth":3,"next":{"title":"Sharing-plus","level":"3.1.1.12","depth":3,"path":"custom/plugin/common/sharing.md","ref":"custom/plugin/common/sharing.md","articles":[]},"previous":{"title":"Search Plus","level":"3.1.1.10","depth":3,"path":"custom/plugin/common/search.md","ref":"custom/plugin/common/search.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","search-pro","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"my-toolbar":{"buttons":[{"label":"仓库","icon":"fa fa-github","url":"https://github.com/zha0cai/gitbookPublic","position":"right","text":"仓库","target":"_blank"}]},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"custom/plugin/common/section.md","mtime":"2021-06-10T00:21:21.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-09T01:05:36.599Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"gitbook 将页面内容分块显示折叠 插件, gitbook-plugin-sectionx 使用教程","title":"页面分块","level":"3.1.1.11","depth":3,"next":{"title":"Sharing-plus","level":"3.1.1.12","depth":3,"path":"custom/plugin/common/sharing.md","ref":"custom/plugin/common/sharing.md","articles":[]},"previous":{"title":"Search Plus","level":"3.1.1.10","depth":3,"path":"custom/plugin/common/search.md","ref":"custom/plugin/common/search.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"custom/plugin/common/section.md","mtime":"2022-09-12T10:18:20.105Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-12T15:28:52.320Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1521,6 +1548,10 @@ npm install gitbook-plugin-sectionx</p>
     
         
         <script src="../../../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
         
     
         

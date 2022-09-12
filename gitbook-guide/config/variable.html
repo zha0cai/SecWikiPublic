@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <title>变量 · Gitbook 指南</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="gitbook中如何使用变量，全局变量与局部变量使用教程">
+        <meta name="description" content="gitbook 中如何使用变量，全局变量与局部变量使用教程">
         <meta name="generator" content="HonKit 4.0.0">
         <meta name="author" content="zha0cai">
         
@@ -16,11 +16,11 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -37,6 +37,18 @@
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
                 
             
                 
@@ -1181,12 +1193,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.3" data-path="../custom/theme/comscore.html">
+        <li class="chapter " data-level="3.2.3" data-path="../custom/theme/fexa.html">
             
-                <a href="../custom/theme/comscore.html">
+                <a href="../custom/theme/fexa.html">
             
                     
-                    ComScore 主题
+                    theme-fexa 网站主题
             
                 </a>
             
@@ -1194,7 +1206,20 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.4" data-path="../custom/theme/faq.html">
+        <li class="chapter " data-level="3.2.4" data-path="../custom/theme/comscore.html">
+            
+                <a href="../custom/theme/comscore.html">
+            
+                    
+                    theme-comscore 彩色主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../custom/theme/faq.html">
             
                 <a href="../custom/theme/faq.html">
             
@@ -1207,7 +1232,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.5" data-path="../custom/theme/custom.html">
+        <li class="chapter " data-level="3.2.6" data-path="../custom/theme/custom.html">
             
                 <a href="../custom/theme/custom.html">
             
@@ -1363,11 +1388,11 @@
 <tbody>
 <tr>
 <td>book</td>
-<td>book.json的全书信息+配置设置。详情请参阅下文。</td>
+<td>book.json 的全书信息+配置设置。详情请参阅下文。</td>
 </tr>
 <tr>
 <td>gitbook</td>
-<td>GitBook特定信息</td>
+<td>GitBook 特定信息</td>
 </tr>
 <tr>
 <td>page</td>
@@ -1399,7 +1424,7 @@
 </tr>
 <tr>
 <td>config</td>
-<td>book.json相关内容</td>
+<td>book.json 相关内容</td>
 </tr>
 </tbody>
 </table>
@@ -1419,7 +1444,7 @@
 </tr>
 <tr>
 <td>book.[value]</td>
-<td>在book.json中的variables下的所有其他值都可以在这里访问</td>
+<td>在 book.json 中的 variables 下的所有其他值都可以在这里访问</td>
 </tr>
 </tbody>
 </table>
@@ -1427,12 +1452,12 @@
 <p>变量被定义在 <code>book.json</code> 文件中：</p>
 <pre><code class="lang-json">{
     <span class="hljs-string">&quot;variables&quot;</span>: {
-        <span class="hljs-string">&quot;mapull&quot;</span>: <span class="hljs-string">&quot;码谱，让编程更容易。&quot;</span>
+        <span class="hljs-string">&quot;gitbook-guide&quot;</span>: <span class="hljs-string">&quot;Gitbook 简明教程。&quot;</span>
     }
 }
 </code></pre>
-<p>这样定义了一个变量 <code>mapull</code>，取值为 &quot;码谱，让编程更容易。&quot;</p>
-<p>在页面上<code>{{ book.mapull }}</code>的语法会被显示为 -&gt; </p>
+<p>这样定义了一个变量 <code>gitbook-guide</code>，取值为 &quot;Gitbook 简明教程。&quot;</p>
+<p>在页面上<code>{{ book.gitbook-guide }}</code>的语法会被显示为 -&gt; NaN</p>
 <h2 id="gitbook-变量"><a name="gitbook-变量" class="anchor-navigation-ex-anchor" href="#gitbook-变量"><i class="fa fa-link" aria-hidden="true"></i></a>gitbook 变量</h2>
 <p>该变量用来获取生成 book 的 gitbook 的基本信息，实际价值不大。</p>
 <table>
@@ -1445,11 +1470,11 @@
 <tbody>
 <tr>
 <td>gitbook.time</td>
-<td>当前时间(当你运行gitbook命令时)。</td>
+<td>当前时间(当你运行 gitbook 命令时)。</td>
 </tr>
 <tr>
 <td>gitbook.version</td>
-<td>GitBook用于生成图书的版本</td>
+<td>GitBook 用于生成图书的版本</td>
 </tr>
 </tbody>
 </table>
@@ -1475,7 +1500,7 @@
 </tr>
 <tr>
 <td>file.type</td>
-<td>用于编译此文件的语法解析器的名称(例如：markdown，asciidoc等)</td>
+<td>用于编译此文件的语法解析器的名称(例如：markdown，asciidoc 等)</td>
 </tr>
 </tbody>
 </table>
@@ -1497,15 +1522,15 @@
 </tr>
 <tr>
 <td>page.previous</td>
-<td>内容表中的前一页(可以是“null”)</td>
+<td>内容表中的前一页(可以是 “null”)</td>
 </tr>
 <tr>
 <td>page.next</td>
-<td>内容表中的下一页(可以是“null”)</td>
+<td>内容表中的下一页(可以是 “null”)</td>
 </tr>
 <tr>
 <td>page.dir</td>
-<td>文本方向，基于配置(rtl或ltr)</td>
+<td>文本方向，基于配置(rtl 或 ltr)</td>
 </tr>
 </tbody>
 </table>
@@ -1531,11 +1556,11 @@
 </tr>
 <tr>
 <td>output.name</td>
-<td>输出生成器的名称，可能的值是website，json，ebook</td>
+<td>输出生成器的名称，可能的值是 website，json，ebook</td>
 </tr>
 <tr>
 <td>output.format</td>
-<td>当output.name ==“ebook”，format定义将生成的电子书格式，可能的值是pdf，epub或mobi</td>
+<td>当 output.name ==“ebook”，format 定义将生成的电子书格式，可能的值是 pdf，epub 或 mobi</td>
 </tr>
 <tr>
 <td>readme.path</td>
@@ -1550,8 +1575,10 @@
 <h3 id="举几个例子"><a name="举几个例子" class="anchor-navigation-ex-anchor" href="#举几个例子"><i class="fa fa-link" aria-hidden="true"></i></a>举几个例子</h3>
 <p><code>summary.parts[0].articles[0].title</code> 将返回第一篇文章的标题 -&gt; 简介</p>
 <p>本书的提供的词汇表的路径 <code>{{glossary.path}}</code> 显示为  -&gt; </p>
-<p>本书使用的生成器名称 <code>{{output.name}}</code> 显示为  -&gt; website</p>
-</body></html>
+<p>本书使用的生成器名称 <code>{{output.name}}</code> 显示为  -&gt; website </p>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-09-10 00:34:25
+</span></footer></body></html>
                                 
                                 </section>
                             
@@ -1594,7 +1621,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"gitbook中如何使用变量，全局变量与局部变量使用教程","title":"变量","level":"2.3","depth":1,"next":{"title":"内容引用","level":"2.4","depth":1,"path":"config/conref.md","ref":"config/conref.md","articles":[]},"previous":{"title":"模板","level":"2.2","depth":1,"path":"config/template.md","ref":"config/template.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","search-pro","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"my-toolbar":{"buttons":[{"label":"仓库","icon":"fa fa-github","url":"https://github.com/zha0cai/gitbookPublic","position":"right","text":"仓库","target":"_blank"}]},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"config/variable.md","mtime":"2021-06-10T00:21:21.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-09T01:05:36.599Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"gitbook 中如何使用变量，全局变量与局部变量使用教程","title":"变量","level":"2.3","depth":1,"next":{"title":"内容引用","level":"2.4","depth":1,"path":"config/conref.md","ref":"config/conref.md","articles":[]},"previous":{"title":"模板","level":"2.2","depth":1,"path":"config/template.md","ref":"config/template.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"config/variable.md","mtime":"2022-09-09T16:34:25.429Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-12T15:28:52.320Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1665,6 +1692,10 @@
     
         
         <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
         
     
         

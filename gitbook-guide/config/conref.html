@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <title>内容引用 · Gitbook 指南</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="使用 gitbook 来引用其他文件的内容，扩展 gitbook中的内容，gitbook导入本地或互联网上的资源，">
+        <meta name="description" content="使用 gitbook 来引用其他文件的内容，扩展 gitbook 中的内容，gitbook 导入本地或互联网上的资源，">
         <meta name="generator" content="HonKit 4.0.0">
         <meta name="author" content="zha0cai">
         
@@ -16,11 +16,11 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -37,6 +37,18 @@
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
                 
             
                 
@@ -1181,12 +1193,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.3" data-path="../custom/theme/comscore.html">
+        <li class="chapter " data-level="3.2.3" data-path="../custom/theme/fexa.html">
             
-                <a href="../custom/theme/comscore.html">
+                <a href="../custom/theme/fexa.html">
             
                     
-                    ComScore 主题
+                    theme-fexa 网站主题
             
                 </a>
             
@@ -1194,7 +1206,20 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.4" data-path="../custom/theme/faq.html">
+        <li class="chapter " data-level="3.2.4" data-path="../custom/theme/comscore.html">
+            
+                <a href="../custom/theme/comscore.html">
+            
+                    
+                    theme-comscore 彩色主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../custom/theme/faq.html">
             
                 <a href="../custom/theme/faq.html">
             
@@ -1207,7 +1232,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.5" data-path="../custom/theme/custom.html">
+        <li class="chapter " data-level="3.2.6" data-path="../custom/theme/custom.html">
             
                 <a href="../custom/theme/custom.html">
             
@@ -1374,23 +1399,25 @@
 <p>使用 include 标签导入其他文件的内容真的很简单：</p>
 <p>{% include &quot;./footer.md&quot; %}</p>
 <h3 id="从其他书本导入文件"><a name="从其他书本导入文件" class="anchor-navigation-ex-anchor" href="#从其他书本导入文件"><i class="fa fa-link" aria-hidden="true"></i></a>从其他书本导入文件</h3>
-<p>GitBook 同样能处理使用了git协议的include路径：</p>
+<p>GitBook 同样能处理使用了 git 协议的 include 路径：</p>
 <p>{% include &quot;git+<a href="https://github.com/GitbookIO/documentation.git/README.md#0.0.1" target="_blank">https://github.com/GitbookIO/documentation.git/README.md#0.0.1</a>&quot; %}</p>
-<p>git的url格式是：</p>
+<p>git 的 url 格式是：</p>
 <p><code>git+https://user@hostname/project/blah.git/file#commit-ish</code></p>
-<p>真实的git url应该以 .git 结尾，导入的文件名从 .git 之后的url片段提取。</p>
+<p>真实的 git url 应该以 .git 结尾，导入的文件名从 .git 之后的 url 片段提取。</p>
 <p><code>commit-ish</code> 可以是任何可以作为 <code>git checkout</code> 参数的标签，sha，或分支。默认是 <code>master</code>。</p>
 <h3 id="举个例子"><a name="举个例子" class="anchor-navigation-ex-anchor" href="#举个例子"><i class="fa fa-link" aria-hidden="true"></i></a>举个例子</h3>
 <p>我在 <code>footer.md</code> 文档中的内容：</p>
 <pre><code>---
 
-Copyright © 2019-2020 码谱
+Copyright © 2021-2022 zha0cai
 </code></pre><p>在本页面使用下面的代码引入后：</p>
 <p>{% include &quot;./footer.md&quot; %}</p>
 <p>显示如下内容：</p>
 <hr>
-<p>Copyright © 2019-2020 码谱</p>
-</body></html>
+<p>Copyright © 2019-2020 码谱 </p>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-09-10 00:34:18
+</span></footer></body></html>
                                 
                                 </section>
                             
@@ -1433,7 +1460,7 @@ Copyright © 2019-2020 码谱
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"使用 gitbook 来引用其他文件的内容，扩展 gitbook中的内容，gitbook导入本地或互联网上的资源，","title":"内容引用","level":"2.4","depth":1,"next":{"title":"继承","level":"2.5","depth":1,"path":"config/extends.md","ref":"config/extends.md","articles":[]},"previous":{"title":"变量","level":"2.3","depth":1,"path":"config/variable.md","ref":"config/variable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","search-pro","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"my-toolbar":{"buttons":[{"label":"仓库","icon":"fa fa-github","url":"https://github.com/zha0cai/gitbookPublic","position":"right","text":"仓库","target":"_blank"}]},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"config/conref.md","mtime":"2021-06-10T00:21:21.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-09T01:05:36.599Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"使用 gitbook 来引用其他文件的内容，扩展 gitbook 中的内容，gitbook 导入本地或互联网上的资源，","title":"内容引用","level":"2.4","depth":1,"next":{"title":"继承","level":"2.5","depth":1,"path":"config/extends.md","ref":"config/extends.md","articles":[]},"previous":{"title":"变量","level":"2.3","depth":1,"path":"config/variable.md","ref":"config/variable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"config/conref.md","mtime":"2022-09-09T16:34:18.113Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-12T15:28:52.320Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1504,6 +1531,10 @@ Copyright © 2019-2020 码谱
     
         
         <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
         
     
         

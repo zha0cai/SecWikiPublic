@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <title>回调函数 · Gitbook 指南</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="GitBook 回调函数"init","page:before"">
+        <meta name="description" content="GitBook 回调函数 "init","page:before"">
         <meta name="generator" content="HonKit 4.0.0">
         <meta name="author" content="zha0cai">
         
@@ -16,11 +16,11 @@
     
             
                 
-                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -37,6 +37,18 @@
             
                 
                 <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
                 
             
                 
@@ -1181,12 +1193,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.3" data-path="../../theme/comscore.html">
+        <li class="chapter " data-level="3.2.3" data-path="../../theme/fexa.html">
             
-                <a href="../../theme/comscore.html">
+                <a href="../../theme/fexa.html">
             
                     
-                    ComScore 主题
+                    theme-fexa 网站主题
             
                 </a>
             
@@ -1194,7 +1206,20 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.4" data-path="../../theme/faq.html">
+        <li class="chapter " data-level="3.2.4" data-path="../../theme/comscore.html">
+            
+                <a href="../../theme/comscore.html">
+            
+                    
+                    theme-comscore 彩色主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../../theme/faq.html">
             
                 <a href="../../theme/faq.html">
             
@@ -1207,7 +1232,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.5" data-path="../../theme/custom.html">
+        <li class="chapter " data-level="3.2.6" data-path="../../theme/custom.html">
             
                 <a href="../../theme/custom.html">
             
@@ -1424,7 +1449,7 @@
 }
 </code></pre>
 <h4 id="添加标题的示例"><a name="添加标题的示例" class="anchor-navigation-ex-anchor" href="#添加标题的示例"><i class="fa fa-link" aria-hidden="true"></i></a>添加标题的示例</h4>
-<p>在<code>page：before</code>钩子中，<code>page.content</code>是<code>markdown/asciidoc</code>内容。</p>
+<p>在 <code>page：before</code> 钩子中，<code>page.content</code> 是 <code>markdown/asciidoc</code> 内容。</p>
 <pre><code class="lang-javascript:index.js">{
     &quot;page:before&quot;: function(page) {
         page.content = &quot;# Title\n&quot; +page.content;
@@ -1432,8 +1457,8 @@
     }
 }
 </code></pre>
-<h4 id="替换一些html的示例"><a name="替换一些html的示例" class="anchor-navigation-ex-anchor" href="#替换一些html的示例"><i class="fa fa-link" aria-hidden="true"></i></a>替换一些html的示例</h4>
-<p>在page回调函数中，将page.content中<b>标签替换为<strong>。</strong></b></p><b><strong>
+<h4 id="替换一些-html-的示例"><a name="替换一些-html-的示例" class="anchor-navigation-ex-anchor" href="#替换一些-html-的示例"><i class="fa fa-link" aria-hidden="true"></i></a>替换一些 html 的示例</h4>
+<p>在 page 回调函数中，将 page.content 中 <b> 标签替换为 <strong>。</strong></b></p><b><strong>
 <pre><code class="lang-javascript:index.js">{
     &quot;page&quot;: function(page) {
         page.content = page.content.replace(&quot;&lt;b&gt;&quot;, &quot;&lt;strong&gt;&quot;)
@@ -1454,7 +1479,9 @@
     }
 }
 </code></pre>
-</strong></b></body></html>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-09-12 21:24:03
+</span></footer></strong></b></body></html>
                                 
                                 </section>
                             
@@ -1497,7 +1524,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"GitBook 回调函数\"init\",\"page:before\"","title":"回调函数","level":"3.1.3.5","depth":3,"next":{"title":"测试插件","level":"3.1.3.6","depth":3,"path":"custom/plugin/custom/test.md","ref":"custom/plugin/custom/test.md","articles":[]},"previous":{"title":"过滤器","level":"3.1.3.4","depth":3,"path":"custom/plugin/custom/filter.md","ref":"custom/plugin/custom/filter.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","search-pro","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"my-toolbar":{"buttons":[{"label":"仓库","icon":"fa fa-github","url":"https://github.com/zha0cai/gitbookPublic","position":"right","text":"仓库","target":"_blank"}]},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"custom/plugin/custom/func.md","mtime":"2021-06-10T00:21:21.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-09T01:05:36.599Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"GitBook 回调函数 \"init\",\"page:before\"","title":"回调函数","level":"3.1.3.5","depth":3,"next":{"title":"测试插件","level":"3.1.3.6","depth":3,"path":"custom/plugin/custom/test.md","ref":"custom/plugin/custom/test.md","articles":[]},"previous":{"title":"过滤器","level":"3.1.3.4","depth":3,"path":"custom/plugin/custom/filter.md","ref":"custom/plugin/custom/filter.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"custom/plugin/custom/func.md","mtime":"2022-09-12T13:24:03.482Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-12T15:28:52.320Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1568,6 +1595,10 @@
     
         
         <script src="../../../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
         
     
         

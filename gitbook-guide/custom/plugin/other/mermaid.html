@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <title>Mermaid-gb3 · Gitbook 指南</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="gitbook 支持渲染Mermaid图表 插件, gitbook-plugin-mermaid，gitbook-plugin-mermaid-gb3 使用教程，插件在线演示">
+        <meta name="description" content="gitbook 支持渲染 Mermaid 图表 插件, gitbook-plugin-mermaid，gitbook-plugin-mermaid-gb3 使用教程，插件在线演示">
         <meta name="generator" content="HonKit 4.0.0">
         <meta name="author" content="zha0cai">
         
@@ -16,11 +16,11 @@
     
             
                 
-                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -37,6 +37,18 @@
             
                 
                 <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
                 
             
                 
@@ -1181,12 +1193,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.3" data-path="../../theme/comscore.html">
+        <li class="chapter " data-level="3.2.3" data-path="../../theme/fexa.html">
             
-                <a href="../../theme/comscore.html">
+                <a href="../../theme/fexa.html">
             
                     
-                    ComScore 主题
+                    theme-fexa 网站主题
             
                 </a>
             
@@ -1194,7 +1206,20 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.4" data-path="../../theme/faq.html">
+        <li class="chapter " data-level="3.2.4" data-path="../../theme/comscore.html">
+            
+                <a href="../../theme/comscore.html">
+            
+                    
+                    theme-comscore 彩色主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../../theme/faq.html">
             
                 <a href="../../theme/faq.html">
             
@@ -1207,7 +1232,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2.5" data-path="../../theme/custom.html">
+        <li class="chapter " data-level="3.2.6" data-path="../../theme/custom.html">
             
                 <a href="../../theme/custom.html">
             
@@ -1350,7 +1375,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#mermaid"><b></b>Mermaid</a></li><ul><li><span class="title-icon "></span><a href="#mermaid_1"><b></b>Mermaid</a></li><ul><li><span class="title-icon "></span><a href="#使用语法"><b></b>使用语法</a></li><li><span class="title-icon "></span><a href="#效果展示"><b></b>效果展示</a></li></ul><li><span class="title-icon "></span><a href="#mermaid-gb3"><b></b>Mermaid-gb3</a></li><ul><li><span class="title-icon "></span><a href="#flow-流程图"><b></b>Flow 流程图</a></li><li><span class="title-icon "></span><a href="#sequence-时序图"><b></b>Sequence 时序图</a></li><li><span class="title-icon "></span><a href="#gantt-甘特图"><b></b>Gantt 甘特图</a></li><li><span class="title-icon "></span><a href="#state-状态转移图"><b></b>state 状态转移图</a></li></ul></ul></ul></div><a href="#mermaid" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="mermaid"><a name="mermaid" class="anchor-navigation-ex-anchor" href="#mermaid"><i class="fa fa-link" aria-hidden="true"></i></a>Mermaid</h1>
-<p>Gitbook 插件：支持渲染Mermaid图表</p>
+<p>Gitbook 插件：支持渲染 Mermaid 图表</p>
 <h2 id="mermaid_1"><a name="mermaid_1" class="anchor-navigation-ex-anchor" href="#mermaid_1"><i class="fa fa-link" aria-hidden="true"></i></a>Mermaid</h2>
 <blockquote>
 <p>[!TIP|style:flat|iconVisibility:hidden|labelVisibility:hidden]
@@ -1358,7 +1383,7 @@ npm install gitbook-plugin-mermaid</p>
 </blockquote>
 <p><a href="https://github.com/JozoVilcek/gitbook-plugin-mermaid" target="_blank">https://github.com/JozoVilcek/gitbook-plugin-mermaid</a></p>
 <p>这个插件的依赖比较多，下载时间有点长。</p>
-<p>我最终没有下载成功，于是使用了下面的<code>mermaid-gb3</code>这个插件。</p>
+<p>我最终没有下载成功，于是使用了下面的 <code>mermaid-gb3</code> 这个插件。</p>
 <pre><code class="lang-json:book.json">{&quot;plugins&quot;: [
     &quot;mermaid-gb3&quot;
 ]}
@@ -1472,9 +1497,11 @@ Parallel 4   :         des6, after des4, 1d
 </code></pre>
 <blockquote>
 <p>[!WARNING|style:callout|iconVisibility:hidden|label:注意]
-如果页面内容显示不完整，请F5刷新当前页面</p>
+如果页面内容显示不完整，请 F5 刷新当前页面 </p>
 </blockquote>
-</body></html>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-09-12 19:51:02
+</span></footer></body></html>
                                 
                                 </section>
                             
@@ -1517,7 +1544,7 @@ Parallel 4   :         des6, after des4, 1d
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"description":"gitbook 支持渲染Mermaid图表 插件, gitbook-plugin-mermaid，gitbook-plugin-mermaid-gb3 使用教程，插件在线演示","title":"Mermaid-gb3","level":"3.1.2.16","depth":3,"next":{"title":"Puml","level":"3.1.2.17","depth":3,"path":"custom/plugin/other/puml.md","ref":"custom/plugin/other/puml.md","articles":[]},"previous":{"title":"数学公式 & Tex","level":"3.1.2.15","depth":3,"path":"custom/plugin/other/math.md","ref":"custom/plugin/other/math.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","search-pro","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"my-toolbar":{"buttons":[{"label":"仓库","icon":"fa fa-github","url":"https://github.com/zha0cai/gitbookPublic","position":"right","text":"仓库","target":"_blank"}]},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"custom/plugin/other/mermaid.md","mtime":"2021-06-10T00:21:21.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-09T01:05:36.599Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"description":"gitbook 支持渲染 Mermaid 图表 插件, gitbook-plugin-mermaid，gitbook-plugin-mermaid-gb3 使用教程，插件在线演示","title":"Mermaid-gb3","level":"3.1.2.16","depth":3,"next":{"title":"Puml","level":"3.1.2.17","depth":3,"path":"custom/plugin/other/puml.md","ref":"custom/plugin/other/puml.md","articles":[]},"previous":{"title":"数学公式 & Tex","level":"3.1.2.15","depth":3,"path":"custom/plugin/other/math.md","ref":"custom/plugin/other/math.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"custom/plugin/other/mermaid.md","mtime":"2022-09-12T11:51:02.253Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-12T15:28:52.320Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1588,6 +1615,10 @@ Parallel 4   :         des6, after des4, 1d
     
         
         <script src="../../../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
         
     
         
