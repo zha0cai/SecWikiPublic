@@ -1374,10 +1374,10 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#npm-运行错误-1"><b></b>NPM 运行错误 1</a></li><li><span class="title-icon "></span><a href="#npm-运行错误-2"><b></b>NPM 运行错误 2</a></li><li><span class="title-icon "></span><a href="#npm-提示信息"><b></b>NPM 提示信息</a></li><li><span class="title-icon "></span><a href="#gitbook-init-错误"><b></b>gitbook init 错误</a></li><li><span class="title-icon "></span><a href="#gitbook-新版本-gitbook-build-命令导出的-html-不能跳转的解决办法"><b></b>gitbook 新版本 &quot;gitbook build&quot; 命令导出的 html 不能跳转的解决办法</a></li><li><span class="title-icon "></span><a href="#nodejs---gitbook-cli-安装错误-typeerror：-cbapply-不是-graceful-fs-中的函数---堆栈溢出"><b></b>node.js - Gitbook-cli 安装错误 TypeError： cb.apply 不是 graceful-fs 中的函数 - 堆栈溢出</a></li><li><span class="title-icon "></span><a href="#windows-下-gitbook-build-出来的-book-章节里面会包含-md-文件"><b></b>Windows 下 gitbook build 出来的 _book 章节里面会包含 md 文件</a></li><li><span class="title-icon "></span><a href="#highlight-导致的错误"><b></b>Highlight 导致的错误</a></li></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><blockquote>
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#npm-运行错误-1"><b></b>NPM 运行错误 1</a></li><li><span class="title-icon "></span><a href="#npm-运行错误-2"><b></b>NPM 运行错误 2</a></li><li><span class="title-icon "></span><a href="#npm-提示信息"><b></b>NPM 提示信息</a></li><li><span class="title-icon "></span><a href="#gitbook-init-错误"><b></b>gitbook init 错误</a></li><li><span class="title-icon "></span><a href="#gitbook-新版本-gitbook-build-命令导出的-html-不能跳转的解决办法"><b></b>gitbook 新版本 &quot;gitbook build&quot; 命令导出的 html 不能跳转的解决办法</a></li><li><span class="title-icon "></span><a href="#nodejs---gitbook-cli-安装错误-typeerror：-cbapply-不是-graceful-fs-中的函数---堆栈溢出"><b></b>node.js - Gitbook-cli 安装错误 TypeError： cb.apply 不是 graceful-fs 中的函数 - 堆栈溢出</a></li><li><span class="title-icon "></span><a href="#windows-下-gitbook-build-出来的-book-章节里面会包含-md-文件"><b></b>Windows 下 gitbook build 出来的 _book 章节里面会包含 md 文件</a></li><li><span class="title-icon "></span><a href="#highlight-导致的错误"><b></b>Highlight 导致的错误</a></li><li><span class="title-icon "></span><a href="#gitbook-编译出错两个连续大括号"><b></b>gitbook 编译出错两个连续大括号</a></li></ul></div><a href="#npm-运行错误-1" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><blockquote>
 <p> 记录安装和使用 gitbook 可能会遇到的一些错误。</p>
 </blockquote>
-<h2 id="npm-运行错误-1"><a name="npm-运行错误-1" class="anchor-navigation-ex-anchor" href="#npm-运行错误-1"><i class="fa fa-link" aria-hidden="true"></i></a>NPM 运行错误 1</h2>
+<h1 id="npm-运行错误-1"><a name="npm-运行错误-1" class="anchor-navigation-ex-anchor" href="#npm-运行错误-1"><i class="fa fa-link" aria-hidden="true"></i></a>NPM 运行错误 1</h1>
 <p><strong>错误描述</strong></p>
 <p>npm : 无法加载文件 D:...\nodejs\npm.ps1，因为在此系统上禁止运行脚本。</p>
 <p><strong>解决办法</strong></p>
@@ -1386,7 +1386,7 @@
 <li>终端输入 <code>Set-ExecutionPolicy -Scope CurrentUser</code> 命令给用户赋予权限；<br> 输入 RemoteSigned；</li>
 <li>终端输入 <code>get-ExecutionPolicy</code> 查看一下权限，显示 RemoteSigned 就可以了。<br></li>
 </ol>
-<h2 id="npm-运行错误-2"><a name="npm-运行错误-2" class="anchor-navigation-ex-anchor" href="#npm-运行错误-2"><i class="fa fa-link" aria-hidden="true"></i></a>NPM 运行错误 2</h2>
+<h1 id="npm-运行错误-2"><a name="npm-运行错误-2" class="anchor-navigation-ex-anchor" href="#npm-运行错误-2"><i class="fa fa-link" aria-hidden="true"></i></a>NPM 运行错误 2</h1>
 <p><strong>错误描述</strong></p>
 <p><a href="https://www.coder.work/article/7544033" target="_blank">javascript - 如何使用 loadVirtual 和 ENOLOCK 修复 npm 审计错误？</a></p>
 <pre><code class="lang-bash">➜   npm audit
@@ -1399,14 +1399,14 @@ npm ERR! audit Original error: loadVirtual requires existing shrinkwrap file
 <p>➜ npm config get shrinkwrap<br>true<br>有人可以帮忙吗？至于如何解决？并且 <code>npm audit fix --force</code> 也无法正常工作...</p>
 <p><strong>解决办法</strong></p>
 <p><code>npm i --package-lock-only</code></p>
-<h2 id="npm-提示信息"><a name="npm-提示信息" class="anchor-navigation-ex-anchor" href="#npm-提示信息"><i class="fa fa-link" aria-hidden="true"></i></a>NPM 提示信息</h2>
+<h1 id="npm-提示信息"><a name="npm-提示信息" class="anchor-navigation-ex-anchor" href="#npm-提示信息"><i class="fa fa-link" aria-hidden="true"></i></a>NPM 提示信息</h1>
 <p><strong>错误描述</strong></p>
 <p>1 package is looking for funding run <code>npm fund</code> for details.</p>
 <p>1 package is looking for funding<br>  run <code>npm fund</code> for details</p>
 <p><strong>解决办法</strong></p>
 <p>一般不是报错，运行一下 <code>npm fund</code> 就会发现有可能是开源项目寻求 donate。</p>
 <p><img src="assets/image-20220908125903-29d6txj.png" alt="image">​</p>
-<h2 id="gitbook-init-错误"><a name="gitbook-init-错误" class="anchor-navigation-ex-anchor" href="#gitbook-init-错误"><i class="fa fa-link" aria-hidden="true"></i></a>gitbook init 错误</h2>
+<h1 id="gitbook-init-错误"><a name="gitbook-init-错误" class="anchor-navigation-ex-anchor" href="#gitbook-init-错误"><i class="fa fa-link" aria-hidden="true"></i></a>gitbook init 错误</h1>
 <p><strong>错误描述</strong></p>
 <p>运行 <code>gitbook init</code> 命令报错：TypeError [ERR_INVALID_ARG_TYPE]: The “data” argument must be of type string or an instance of Buffer,TypedArray, or DataView. Received an instance of Promise.<br></p>
 <p><strong>解决办法</strong></p>
@@ -1421,7 +1421,7 @@ info: create README.md
 info: create SUMMARY.md
 info: initialization is finished....
 </code></pre>
-<h2 id="gitbook-新版本-gitbook-build-命令导出的-html-不能跳转的解决办法"><a name="gitbook-新版本-gitbook-build-命令导出的-html-不能跳转的解决办法" class="anchor-navigation-ex-anchor" href="#gitbook-新版本-gitbook-build-命令导出的-html-不能跳转的解决办法"><i class="fa fa-link" aria-hidden="true"></i></a>gitbook 新版本 &quot;gitbook build&quot; 命令导出的 html 不能跳转的解决办法</h2>
+<h1 id="gitbook-新版本-gitbook-build-命令导出的-html-不能跳转的解决办法"><a name="gitbook-新版本-gitbook-build-命令导出的-html-不能跳转的解决办法" class="anchor-navigation-ex-anchor" href="#gitbook-新版本-gitbook-build-命令导出的-html-不能跳转的解决办法"><i class="fa fa-link" aria-hidden="true"></i></a>gitbook 新版本 &quot;gitbook build&quot; 命令导出的 html 不能跳转的解决办法</h1>
 <p><strong>错误描述</strong></p>
 <p>html 无法跳转。由于点击事件被 js 代码禁用，所以点击没有反应，但是如果右键，在新窗口/新标签页打开的话是可以跳转的。</p>
 <p><strong>解决办法</strong></p>
@@ -1437,7 +1437,7 @@ info: initialization is finished....
 <li><p>由于代码是压缩后的，会没有空格，搜索的时候可以直接搜索： <code>if(m)for(n.handler&amp;&amp;</code> 修改保存即可。</p>
 </li>
 </ol>
-<h2 id="nodejs---gitbook-cli-安装错误-typeerror：-cbapply-不是-graceful-fs-中的函数---堆栈溢出"><a name="nodejs---gitbook-cli-安装错误-typeerror：-cbapply-不是-graceful-fs-中的函数---堆栈溢出" class="anchor-navigation-ex-anchor" href="#nodejs---gitbook-cli-安装错误-typeerror：-cbapply-不是-graceful-fs-中的函数---堆栈溢出"><i class="fa fa-link" aria-hidden="true"></i></a>node.js - Gitbook-cli 安装错误 TypeError： cb.apply 不是 graceful-fs 中的函数 - 堆栈溢出</h2>
+<h1 id="nodejs---gitbook-cli-安装错误-typeerror：-cbapply-不是-graceful-fs-中的函数---堆栈溢出"><a name="nodejs---gitbook-cli-安装错误-typeerror：-cbapply-不是-graceful-fs-中的函数---堆栈溢出" class="anchor-navigation-ex-anchor" href="#nodejs---gitbook-cli-安装错误-typeerror：-cbapply-不是-graceful-fs-中的函数---堆栈溢出"><i class="fa fa-link" aria-hidden="true"></i></a>node.js - Gitbook-cli 安装错误 TypeError： cb.apply 不是 graceful-fs 中的函数 - 堆栈溢出</h1>
 <p><strong>错误描述</strong></p>
 <pre><code class="lang-bash">PS D:\xxx\zha0cai&gt; npm install gitbook-cli -g
 D:\Java\nodejs\gitbook -&gt; D:\Java\nodejs\node_modules\gitbook-cli\bin\gitbook.js
@@ -1509,7 +1509,7 @@ Installing GitBook 3.2.3
 </ul>
 </li>
 </ul>
-<h2 id="windows-下-gitbook-build-出来的-book-章节里面会包含-md-文件"><a name="windows-下-gitbook-build-出来的-book-章节里面会包含-md-文件" class="anchor-navigation-ex-anchor" href="#windows-下-gitbook-build-出来的-book-章节里面会包含-md-文件"><i class="fa fa-link" aria-hidden="true"></i></a>Windows 下 gitbook build 出来的 _book 章节里面会包含 md 文件</h2>
+<h1 id="windows-下-gitbook-build-出来的-book-章节里面会包含-md-文件"><a name="windows-下-gitbook-build-出来的-book-章节里面会包含-md-文件" class="anchor-navigation-ex-anchor" href="#windows-下-gitbook-build-出来的-book-章节里面会包含-md-文件"><i class="fa fa-link" aria-hidden="true"></i></a>Windows 下 gitbook build 出来的 _book 章节里面会包含 md 文件</h1>
 <p><strong>错误描述</strong></p>
 <p>一个巨坑：==子目录（章节）==Linux build 出来的 _book 只会有 html 静态文件，但是 Windows 编译出来的会 md 和 html 共存。</p>
 <p><strong>解决办法</strong></p>
@@ -1524,13 +1524,13 @@ Installing GitBook 3.2.3
 <p><img src="assets/image-20220908191754-onq22ef.png" alt="image">​</p>
 <blockquote>
 <p>罪魁祸首：目录符号的差异</p>
-<pre><code class="lang-bash">fs.listallFiles returns paths that use <span class="hljs-string">&apos;\\&apos;</span> as a path separator
+<pre><code class="lang-bash">&gt; fs.listallFiles returns paths that use <span class="hljs-string">&apos;\\&apos;</span> as a path separator
 on Windows.
 `pages` object includes paths that uses <span class="hljs-string">&apos;/&apos;</span> as a path separator.
 So replace all <span class="hljs-string">&apos;\\&apos;</span> of path <span class="hljs-keyword">in</span> <span class="hljs-keyword">function</span> filterFile()
 </code></pre>
 </blockquote>
-<h2 id="highlight-导致的错误"><a name="highlight-导致的错误" class="anchor-navigation-ex-anchor" href="#highlight-导致的错误"><i class="fa fa-link" aria-hidden="true"></i></a>Highlight 导致的错误</h2>
+<h1 id="highlight-导致的错误"><a name="highlight-导致的错误" class="anchor-navigation-ex-anchor" href="#highlight-导致的错误"><i class="fa fa-link" aria-hidden="true"></i></a>Highlight 导致的错误</h1>
 <p><strong>错误描述</strong></p>
 <pre><code class="lang-bash">warn: <span class="hljs-string">&quot;this.generator&quot;</span> property is deprecated, use <span class="hljs-string">&quot;this.output.name&quot;</span> instead
 warn: <span class="hljs-string">&quot;navigation&quot;</span> property is deprecated
@@ -1569,8 +1569,43 @@ info: found 85 pages
 info: found 32 asset files
 init!
 </code></pre>
+<h1 id="gitbook-编译出错两个连续大括号"><a name="gitbook-编译出错两个连续大括号" class="anchor-navigation-ex-anchor" href="#gitbook-编译出错两个连续大括号"><i class="fa fa-link" aria-hidden="true"></i></a>gitbook 编译出错两个连续大括号</h1>
+<p>两个连续的大括号会出错，是 Nunjucks 语法应避免在文档中使用它们。Nunjucks Error expected variable end 解决办法。</p>
+<p><strong>错误描述</strong></p>
+<pre><code class="lang-shell">Template render error: (D:\Mob\zha0cai\gitbook-Windows 高级攻防-book\C 语言程序设计\05 - 函数、数组与指针.md) [Line 375, Column 25]
+  expected variable end
+    at Object._prettifyError (D:\Java\nvm\v16.17.0\node_modules\honkit\node_modules\nunjucks\src\lib.js:36:11)
+    at Template.render (D:\Java\nvm\v16.17.0\node_modules\honkit\node_modules\nunjucks\src\environment.js:538:21)
+    at Environment.renderString (D:\Java\nvm\v16.17.0\node_modules\honkit\node_modules\nunjucks\src\environment.js:380:17)
+    at Promise.apply (D:\Java\nvm\v16.17.0\node_modules\honkit\node_modules\q\q.js:1185:26)
+    at Promise.promise.promiseDispatch (D:\Java\nvm\v16.17.0\node_modules\honkit\node_modules\q\q.js:808:41)
+    at D:\Java\nvm\v16.17.0\node_modules\honkit\node_modules\q\q.js:1411:14
+    at runSingle (D:\Java\nvm\v16.17.0\node_modules\honkit\node_modules\q\q.js:137:13)
+    at flush (D:\Java\nvm\v16.17.0\node_modules\honkit\node_modules\q\q.js:125:13)
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+</code></pre>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> 这样连续的会报错，在代码块里面也不允许连续。</span>
+int nArr[3][3] = {{12,15,12},
+                      {15,33,99},
+                      {88,77,44}
+};
+</code></pre>
+<p><strong>解决办法</strong></p>
+<pre><code class="lang-shell">int nArr2[4][3] = {
+            {12,15,12},
+            {15,33,99},
+            {88,77,44},
+            {99, 55, 75}
+    };
+</code></pre>
+<p><strong>参考</strong></p>
+<ul>
+<li><a href="https://github.com/mozilla/nunjucks/issues/650" target="_blank">https://github.com/mozilla/nunjucks/issues/650</a></li>
+<li><a href="https://github.com/hexojs/hexo/issues/2384" target="_blank">https://github.com/hexojs/hexo/issues/2384</a></li>
+<li><a href="https://blog.csdn.net/zhangguoliu/article/details/107074037" target="_blank">https://blog.csdn.net/zhangguoliu/article/details/107074037</a></li>
+</ul>
 <footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
-2022-09-10 00:10:59
+2022-09-25 22:20:33
 </span></footer></body></html>
                                 
                                 </section>
@@ -1614,7 +1649,7 @@ init!
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"错误解决","level":"1.5","depth":1,"next":{"title":"Markdown","level":"1.6","depth":1,"path":"basic/markdown.md","ref":"basic/markdown.md","articles":[]},"previous":{"title":"安装","level":"1.4","depth":1,"path":"basic/install.md","ref":"basic/install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"basic/error.md","mtime":"2022-09-09T16:10:59.844Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-14T06:19:55.466Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"错误解决","level":"1.5","depth":1,"next":{"title":"Markdown","level":"1.6","depth":1,"path":"basic/markdown.md","ref":"basic/markdown.md","articles":[]},"previous":{"title":"安装","level":"1.4","depth":1,"path":"basic/install.md","ref":"basic/install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"sitemap-general":{"prefix":"https://zha0cai.github.io/gitbookPublic/home/"},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-guide/","text":"Gitbook & Honkit 指南","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"home.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Gitbook 指南","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"basic/error.md","mtime":"2022-09-25T14:20:33.891Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-25T14:22:01.543Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
