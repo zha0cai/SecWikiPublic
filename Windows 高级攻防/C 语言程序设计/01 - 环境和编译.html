@@ -1,0 +1,623 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>01 环境和编译 · Windows 高级攻防</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.0">
+        <meta name="author" content="zha0cai">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="02 - 基础数据类型与输入输出.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/zha0cai" target="_blank" class="custom-link">My github</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Windows 高级攻防
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">0x01 基础阶段</li>
+        
+        
+    
+
+    
+        
+        <li class="header">C 语言程序设计基础</li>
+        
+        
+    
+        <li class="chapter active" data-level="3.1" data-path="01 - 环境和编译.html">
+            
+                <a href="01 - 环境和编译.html">
+            
+                    
+                    01 环境和编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="02 - 基础数据类型与输入输出.html">
+            
+                <a href="02 - 基础数据类型与输入输出.html">
+            
+                    
+                    02 基础数据类型与输入输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="03 - 运算符.html">
+            
+                <a href="03 - 运算符.html">
+            
+                    
+                    03 运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="04 - 选择结构与顺序结构.html">
+            
+                <a href="04 - 选择结构与顺序结构.html">
+            
+                    
+                    04 选择结构与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="05 - 函数、数组与指针.html">
+            
+                <a href="05 - 函数、数组与指针.html">
+            
+                    
+                    05 函数、数组与指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">MASM 汇编语言（待更新）</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x02 高级安全</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x03 内网攻防</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x04 CTF（浅）</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >01 环境和编译</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#环境"><b></b>环境</a></li><ul><li><span class="title-icon "></span><a href="#win-10-专业版虚拟机"><b></b>Win 10 专业版虚拟机</a></li><li><span class="title-icon "></span><a href="#7zip010editorollyicex96dbg"><b></b>7zip\010Editor\OllyICE\x96dbg</a></li><li><span class="title-icon "></span><a href="#ida"><b></b>IDA</a></li><li><span class="title-icon "></span><a href="#visual-studio-2017"><b></b>Visual Studio 2017</a></li><li><span class="title-icon "></span><a href="#运行库安装"><b></b>运行库安装</a></li><li><span class="title-icon "></span><a href="#汇编金手指"><b></b>汇编金手指</a></li><li><span class="title-icon "></span><a href="#kali-安装"><b></b>Kali 安装</a></li></ul><li><span class="title-icon "></span><a href="#前言"><b></b>前言</a></li><li><span class="title-icon "></span><a href="#编译过程"><b></b>编译过程</a></li><ul><li><span class="title-icon "></span><a href="#c-语言编译"><b></b>C 语言编译</a></li><li><span class="title-icon "></span><a href="#完整的编译步骤"><b></b>完整的编译步骤</a></li></ul><li><span class="title-icon "></span><a href="#进制和位"><b></b>进制和位</a></li><li><span class="title-icon "></span><a href="#visual-studio--clion-基本使用"><b></b>Visual Studio &amp; CLion 基本使用</a></li><ul><li><span class="title-icon "></span><a href="#四种运行库编译选项的区别"><b></b>四种运行库编译选项的区别</a></li><li><span class="title-icon "></span><a href="#碎碎念"><b></b>碎碎念</a></li><li><span class="title-icon "></span><a href="#clion"><b></b>CLion</a></li></ul><li><span class="title-icon "></span><a href="#前人栽树"><b></b>前人栽树</a></li></ul></div><a href="#环境" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="环境"><a name="环境" class="anchor-navigation-ex-anchor" href="#环境"><i class="fa fa-link" aria-hidden="true"></i></a>环境</h1>
+<h2 id="win-10-专业版虚拟机"><a name="win-10-专业版虚拟机" class="anchor-navigation-ex-anchor" href="#win-10-专业版虚拟机"><i class="fa fa-link" aria-hidden="true"></i></a>Win 10 专业版虚拟机</h2>
+<ul>
+<li><p>激活地址：<a href="https://www.bbsmax.com/A/QW5Y0pneJm/" target="_blank">https://www.bbsmax.com/A/QW5Y0pneJm/</a></p>
+<p>系统安装完毕后，首先以管理员身份打开 CMD 命令行窗口，按下 <strong>Win</strong> +X，选择命令提示符(管理员)。</p>
+<p>说明：kms.xspace.in 是 kms 服务器地址，可能会失效，如果<strong>激活</strong>失败，可以自行搜索 kms 服务器地址，将 kms.xspace.in 替换成新的地址即可，比如换 kms.03k.org，参考可用的 kms <strong>激活</strong>服务器有哪些。</p>
+<pre><code class="lang-c"># 公开地址有：
+kms.loli.best
+kms.cangshui.net
+kms.iaini.net
+kms.huengyamm.xyz
+kms.kuretru.com
+kms<span class="hljs-number">.03</span>k.org
+
+还有其他服务器，可以自行查找。
+</code></pre>
+<p><strong>Win10</strong> 专业版用户请依次输入：</p>
+<p>slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</p>
+<p>slmgr /skms kms.03k.org</p>
+<p>slmgr /ato</p>
+<p>觉得不安全激活后可以随便修改 kms 激活服务器地址：如 <code>slmgr /skms zhaocai</code></p>
+<p>按 Win + R 键，输入框输入 <code>slmgr.vbs -xpr</code> 打开，查看激活到期时间的相关信息</p>
+<p>slmgr /upk，是卸载key<br>slmgr /ckms，是密钥管理服务计算机名称清除<br>slmgr /rearm，是重置计算机的授权状态</p>
+</li>
+<li><a href="https://baike.baidu.com/item/KMS/66195" target="_blank">https://baike.baidu.com/item/KMS/66195</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/152269085" target="_blank">https://zhuanlan.zhihu.com/p/152269085</a></li>
+</ul>
+<h2 id="7zip010editorollyicex96dbg"><a name="7zip010editorollyicex96dbg" class="anchor-navigation-ex-anchor" href="#7zip010editorollyicex96dbg"><i class="fa fa-link" aria-hidden="true"></i></a>7zip\010Editor\OllyICE\x96dbg</h2>
+<ul>
+<li>7zip 直接解压安装</li>
+<li>010Editor 直接运行</li>
+<li><p>OllyICE 直接解压运行</p>
+<p>‪C:\Tools\OllyICE\OllyDBG.EXE</p>
+</li>
+<li><p>x96dbg 直接解压运行</p>
+<p>‪C:\Tools\x96dbg\release\x32\x32dbg.exe</p>
+<p>C:\Tools\x96dbg\release\x64\x64dbg.exe</p>
+</li>
+</ul>
+<h2 id="ida"><a name="ida" class="anchor-navigation-ex-anchor" href="#ida"><i class="fa fa-link" aria-hidden="true"></i></a>IDA</h2>
+<p>解压 -- 安装 -- 输入 SN 一直下一步就 ok。</p>
+<p>SN：qY2jts9hEJGy</p>
+<p><img src="assets/Snipaste_2022-09-22_08-56-41-20220922085732-fg3jr7w.png" alt="Snipaste_2022-09-22_08-56-41">​</p>
+<p><img src="assets/Snipaste_2022-09-22_08-58-16-20220922085827-wdspesd.png" alt="Snipaste_2022-09-22_08-58-16">​</p>
+<h2 id="visual-studio-2017"><a name="visual-studio-2017" class="anchor-navigation-ex-anchor" href="#visual-studio-2017"><i class="fa fa-link" aria-hidden="true"></i></a>Visual Studio 2017</h2>
+<pre><code class="lang-c">Enterprise:
+
+NJVYC-BMHX2-G77MM<span class="hljs-number">-4</span>XJMR<span class="hljs-number">-6</span>Q8QF
+
+Professional:
+
+KBJFW-NXHK6-W4WJM-CRMQB-G3CDH
+</code></pre>
+<p><strong>工作负荷</strong></p>
+<p><img src="assets/Snipaste_2022-09-22_09-12-13-20220922091259-5ycywc1.png" alt="Snipaste_2022-09-22_09-12-13">​</p>
+<p><strong>选择安装</strong></p>
+<ul>
+<li><p>使用 C++ 的桌面开发 √</p>
+<p><img src="assets/Snipaste_2022-09-22_09-18-14-20220922091823-p8zdci6.png" alt="Snipaste_2022-09-22_09-18-14">​</p>
+</li>
+<li>通用 Windows 平台开发 （后期再使用）</li>
+<li><p>Visual Studio 扩展开发 √</p>
+<p>默认勾选即可</p>
+</li>
+</ul>
+<p><strong>单个组件</strong>（默认即可）</p>
+<p><img src="assets/Snipaste_2022-09-22_09-25-19-20220922092552-fk38qyn.png" alt="Snipaste_2022-09-22_09-25-19">​</p>
+<p><img src="assets/Snipaste_2022-09-22_09-25-41-20220922092559-n7s9tmp.png" alt="Snipaste_2022-09-22_09-25-41">​</p>
+<p>等待安装完成，输入帮助 -- 注册产品。</p>
+<p><strong>MFC 应用创建</strong></p>
+<ul>
+<li><p>基于对话框 - 静态库中使用 MFC</p>
+<p><img src="assets/Snipaste_2022-09-22_12-57-25-20220922125758-7zx1886.png" alt="Snipaste_2022-09-22_12-57-25"></p>
+<p><img src="assets/Snipaste_2022-09-22_13-00-24-20220922130038-cnbd5pu.png" alt="Snipaste_2022-09-22_13-00-24">​</p>
+</li>
+</ul>
+<h2 id="运行库安装"><a name="运行库安装" class="anchor-navigation-ex-anchor" href="#运行库安装"><i class="fa fa-link" aria-hidden="true"></i></a>运行库安装</h2>
+<p>解压安装，默认推荐即可。</p>
+<h2 id="汇编金手指"><a name="汇编金手指" class="anchor-navigation-ex-anchor" href="#汇编金手指"><i class="fa fa-link" aria-hidden="true"></i></a>汇编金手指</h2>
+<p>直接使用</p>
+<h2 id="kali-安装"><a name="kali-安装" class="anchor-navigation-ex-anchor" href="#kali-安装"><i class="fa fa-link" aria-hidden="true"></i></a>Kali 安装</h2>
+<p>略</p>
+<h1 id="前言"><a name="前言" class="anchor-navigation-ex-anchor" href="#前言"><i class="fa fa-link" aria-hidden="true"></i></a>前言</h1>
+<p><strong>使用 C 语言的理由和应用领域</strong></p>
+<ul>
+<li>一些 C 的历史、标准、特性介绍。</li>
+<li>可移植、更强的操作性、广泛</li>
+<li>操作系统、编译器、游戏、嵌入式、桌面程序</li>
+</ul>
+<p><strong>C 语言的标准</strong></p>
+<ul>
+<li>K&amp;RC 标准</li>
+<li>C89/C90</li>
+<li>C99</li>
+<li>C11</li>
+</ul>
+<h1 id="编译过程"><a name="编译过程" class="anchor-navigation-ex-anchor" href="#编译过程"><i class="fa fa-link" aria-hidden="true"></i></a>编译过程</h1>
+<h2 id="c-语言编译"><a name="c-语言编译" class="anchor-navigation-ex-anchor" href="#c-语言编译"><i class="fa fa-link" aria-hidden="true"></i></a><strong>C 语言编译</strong></h2>
+<ul>
+<li>源码（<code>.c/.cpp</code>）：编写 c or cpp 源码</li>
+<li>编译（<code>.obj/.o</code>）源程序通过翻译程序加工以后生成的<strong>机器语言</strong>程序。【<strong>编译器（Compiler）</strong>】</li>
+<li>连接（<code>.exe</code>）：其实就是一个“打包”的过程，它将所有二进制形式的目标文件和系统组件组合成一个可执行文件【系统提供的组件（比如标准库）结合起来，这些组件都是程序运行所必须的。】。完成链接的过程也需要一个特殊的软件，叫做 <strong>链接器（Linker）</strong> 。例如我们要在屏幕中输出字符，这必须调用系统提供的库才能够实现。<strong>可执行程序</strong>。</li>
+</ul>
+<h2 id="完整的编译步骤"><a name="完整的编译步骤" class="anchor-navigation-ex-anchor" href="#完整的编译步骤"><i class="fa fa-link" aria-hidden="true"></i></a><strong>完整的编译步骤</strong><img src="assets/image-20220920083608-suuzycq.png" alt="image"></h2>
+<p><img src="assets/image-20220920124740-4n8jhln.png" alt="image">​</p>
+<p><a href="https://www.runoob.com/w3cnote/gcc-parameter-detail.html" target="_blank">GCC 参数详解 | 菜鸟教程 (runoob.com)</a></p>
+<p><strong>预处理（预处理头文件、宏）</strong></p>
+<p><code>sudo gcc -E hello.c -o hello.i</code></p>
+<p><strong>编译（c --&gt; 汇编）</strong></p>
+<p><code>sudo gcc -S hello.i -o hello.s</code></p>
+<p><strong>汇编（汇编语言 --&gt; 二进制）</strong></p>
+<p><code>sudo gcc -c hello.s -o hello.o</code></p>
+<p>【注】<code>-C</code> 和 <code>-c</code> 的区别，前者会直接完成链接变成可执行文件。</p>
+<p><strong>链接（二进制文件 --&gt; 可执行文件）</strong></p>
+<p><code>sudo gcc hello.o -o hello</code></p>
+<blockquote>
+<p>在 Linux 中是没有文件后缀这样的概念的（一切皆文件），只是起标识作用。</p>
+</blockquote>
+<h1 id="进制和位"><a name="进制和位" class="anchor-navigation-ex-anchor" href="#进制和位"><i class="fa fa-link" aria-hidden="true"></i></a>进制和位</h1>
+<p><strong>进制</strong></p>
+<ul>
+<li>十六进制：0 ~ 9 A B C D E F</li>
+<li>十进制：0~ 9</li>
+<li>八进制：0 ~ 7</li>
+<li>二进制：0 ~ 1</li>
+</ul>
+<p>直接上计算器就完事了 ~</p>
+<p><strong>位</strong></p>
+<blockquote>
+<p>操作系统位数：x86、x64 分别对应 32 位和 64 位。</p>
+</blockquote>
+<ul>
+<li>QWORD    64 位</li>
+<li>FWORD     48 位</li>
+<li>DWORD     32 位</li>
+<li>WORD       16 位</li>
+<li>BYTE           8  位</li>
+<li>BIT              1 位</li>
+</ul>
+<h1 id="visual-studio--clion-基本使用"><a name="visual-studio--clion-基本使用" class="anchor-navigation-ex-anchor" href="#visual-studio--clion-基本使用"><i class="fa fa-link" aria-hidden="true"></i></a>Visual Studio &amp; CLion 基本使用</h1>
+<h2 id="四种运行库编译选项的区别"><a name="四种运行库编译选项的区别" class="anchor-navigation-ex-anchor" href="#四种运行库编译选项的区别"><i class="fa fa-link" aria-hidden="true"></i></a>四种运行库编译选项的区别</h2>
+<ul>
+<li><strong>静态编译、动态编译（编译出来可能会缺少 xx 库）</strong></li>
+<li><a href="https://zhuanlan.zhihu.com/p/375482880" target="_blank">Visual Studio 中 MD 与 MT 的区别及运行库类型选择 - 知乎 (zhihu.com)</a></li>
+<li><p><code>MT</code> 与 <code>MD</code> 的区别</p>
+<ul>
+<li><strong><code>/MT</code>：</strong> 是 <code>multithread-static version</code>，<strong>是多线程静态版本的意思</strong>，项目会使用运行时库的多线程<strong>静态版</strong>本，编译器会将 <code>LIBCMT.lib</code> 放入 <code>.obj</code> 文件中，以便链接器使用 <code>LIBCMT.lib</code> 解析外部符号；</li>
+<li><strong><code>/MTd</code>：</strong> 是定义了 <code>_DEBUG</code> 和 <code>/MT</code>，是 <code>/MT</code> 类型的 <code>debug</code> 版本；</li>
+<li><strong><code>/MD</code>：</strong> 是 <code>multithread-dll version</code>，是多线程 <code>dll</code> 版本的意思，项目会使用运行时库的多线程动态 <code>dll</code> 版本，编译器会将 <code>MSVCRT.lib</code> 放入 <code>.obj</code> 文件中，在编译项目时，它会静态链接 <code>MSVCRT.lib</code>，但在实际运行过程中，它会链接使用 <code>MSVCR90.dll</code>；</li>
+<li><strong><code>MDd</code>：</strong> 是定义了 <code>_DEBUG</code> 和 <code>/MD</code>，是 <code>/MD</code> 类型的 <code>debug</code> 版本；</li>
+</ul>
+<p>总起来说，<code>/MD</code> 类型表示运行时库<strong>不集成</strong>，生成的文件小，程序运行时<strong>动态加载</strong>对应的 <code>dll</code>；<code>/MT</code> 类型表示运行时<strong>库**</strong>集成**，生成的文件较大，在链接时将 <code>C/C++</code> 运行时库集成到程序中。【写 <code>那东西</code> 的时候静态编译就好了】</p>
+</li>
+</ul>
+<p><img src="assets/image-20220118221015-p1zboo2.png" alt="image.png">​</p>
+<p><img src="assets/image-20220118221925-xnysgn4.png" alt="image.png">​</p>
+<p>运行、Debug 就是常规调试了。就是可以看内存、变量值、运行步骤、调用关系之类的。</p>
+<h2 id="碎碎念"><a name="碎碎念" class="anchor-navigation-ex-anchor" href="#碎碎念"><i class="fa fa-link" aria-hidden="true"></i></a>碎碎念</h2>
+<ul>
+<li><p>&lt;&gt; 在系统标准库里面寻找</p>
+</li>
+<li><p>&quot; &quot; 优先在本目录寻找，就比如自己写的宏</p>
+</li>
+<li><p><code># pragma once</code> 库预处理，多次包含也只会编译保留一份。</p>
+</li>
+<li><p>调试</p>
+<p>F5 运行</p>
+<p>F9 下断点</p>
+<p>F10 单步执行</p>
+<p>F11 单步步入</p>
+</li>
+<li><p><strong>编译器</strong></p>
+<p>编译器就是将“一种语言（通常为高级语言）”翻译为“另一种语言（通常为低级<a href="https://baike.baidu.com/item/%E8%AF%AD%E8%A8%80/72744" target="_blank">语言</a>）”的程序。一个现代编译器的主要工作流程：源代码 (source code) → <a href="https://baike.baidu.com/item/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/9067800" target="_blank">预处理器</a> (preprocessor) → 编译器 (compiler) → <a href="https://baike.baidu.com/item/%E7%9B%AE%E6%A0%87%E4%BB%A3%E7%A0%81/9407934" target="_blank">目标代码</a> (object code) → <a href="https://baike.baidu.com/item/%E9%93%BE%E6%8E%A5%E5%99%A8/10853221" target="_blank">链接器</a> (Linker) → 可执行<a href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F/71525" target="_blank">程序</a> (executables)</p>
+</li>
+<li><p><strong>连接器</strong></p>
+<p>在 C 语言中，一个重要的思想就是<strong>分别编译</strong>，即若干个源程序可以在不同的时候单独进行编译，然后在恰当的时候整合到一起。但是连接器一般是与 C 编译器分离的，连接器如何做到把若干个 C 源程序合并成一个整体呢？<strong>链接过程就是空间分配过程</strong>。</p>
+<p>连接器的<strong>输入</strong>是一组目标模块和库文件。连接器的<strong>输出</strong>是一个载入模块。连接器读入目标模块和库文件，同时生成载入模块。对每个目标模块中的每个外部对象，连接器都要检查载入模块，看是否已有同名的外部对象。如果没有，连接器就将该外部对象添加到载入模块中；如果有，连接器就要开始处理命名冲突。除了外部对象之外，目标模块还可能包括了对其他模块中的外部对象的引用。<br></p>
+</li>
+</ul>
+<h2 id="clion"><a name="clion" class="anchor-navigation-ex-anchor" href="#clion"><i class="fa fa-link" aria-hidden="true"></i></a>CLion</h2>
+<blockquote>
+<p>参考 IDEA 使用。</p>
+</blockquote>
+<h1 id="前人栽树"><a name="前人栽树" class="anchor-navigation-ex-anchor" href="#前人栽树"><i class="fa fa-link" aria-hidden="true"></i></a>前人栽树</h1>
+<ul>
+<li><a href="https://blog.csdn.net/qq_37753409/article/details/82026613" target="_blank">编译链接过程<em>YancyKahn 的博客-CSDN 博客</em>编译链接过程</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/92110589#:~:text=1%20%E7%BC%96%E8%AF%91%E5%B0%B1%E6%98%AF%E5%B0%86%E6%88%91%E4%BB%AC%E7%BC%96%E5%86%99%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81%E2%80%9C%E7%BF%BB%E8%AF%91%E2%80%9D%E6%88%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%AF%E4%BB%A5%E8%AF%86%E5%88%AB%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%A0%BC%E5%BC%8F%EF%BC%8C%E5%AE%83%E4%BB%AC%E4%BB%A5%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%AD%98%E5%9C%A8%EF%BC%9B,2%20%E9%93%BE%E6%8E%A5%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E2%80%9C%E6%89%93%E5%8C%85%E2%80%9D%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%8C%E5%AE%83%E5%B0%86%E6%89%80%E6%9C%89%E7%9A%84%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6%E4%BB%A5%E5%8F%8A%E7%B3%BB%E7%BB%9F%E7%BB%84%E4%BB%B6%E7%BB%84%E5%90%88%E6%88%90%E4%B8%80%E4%B8%AA%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E3%80%82" target="_blank">什么是编译、链接、编译程序 - 知乎 (zhihu.com)</a></li>
+</ul>
+<p>‍</p>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-09-25 14:47:23
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Windows 高级攻防">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="02 - 基础数据类型与输入输出.html" class="navigation navigation-next " aria-label="Next page: 02 基础数据类型与输入输出">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"01 环境和编译","level":"3.1","depth":1,"next":{"title":"02 基础数据类型与输入输出","level":"3.2","depth":1,"path":"C 语言程序设计/02 - 基础数据类型与输入输出.md","ref":"C 语言程序设计/02 - 基础数据类型与输入输出.md","articles":[]},"previous":{"title":"Windows 高级攻防","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-Windows 高级攻防/","text":"Windows 高级攻防","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Windows 高级攻防","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"C 语言程序设计/01 - 环境和编译.md","mtime":"2022-09-25T06:47:23.096Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-09-25T13:07:50.004Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
