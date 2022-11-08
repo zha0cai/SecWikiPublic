@@ -1,0 +1,1018 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>CPP - 03 继承 · Windows 高级攻防</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.0">
+        <meta name="author" content="zha0cai">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="CPP - 04 多态.html" />
+    
+    
+    <link rel="prev" href="CPP - 02 重载.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/zha0cai" target="_blank" class="custom-link">My github</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Windows 高级攻防
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">0x01 基础阶段</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    C 语言程序设计基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                <a href="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                    
+                    01 环境和编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                <a href="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                    
+                    02 基础数据类型与输入输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../C 语言程序设计基础/03 - 运算符.html">
+            
+                <a href="../C 语言程序设计基础/03 - 运算符.html">
+            
+                    
+                    03 运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                <a href="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                    
+                    04 选择结构与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                <a href="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                    
+                    05 函数、数组与指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                <a href="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                    
+                    06 复杂数据类型与文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    C ++ 基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="CPP - 01 面向对象基础.html">
+            
+                <a href="CPP - 01 面向对象基础.html">
+            
+                    
+                    CPP - 01 面向对象基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="CPP - 02 重载.html">
+            
+                <a href="CPP - 02 重载.html">
+            
+                    
+                    CPP - 02 重载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2.3" data-path="CPP - 03 继承.html">
+            
+                <a href="CPP - 03 继承.html">
+            
+                    
+                    CPP - 03 继承
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="CPP - 04 多态.html">
+            
+                <a href="CPP - 04 多态.html">
+            
+                    
+                    CPP - 04 多态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="CPP - 05 探索类对象模型（一）.html">
+            
+                <a href="CPP - 05 探索类对象模型（一）.html">
+            
+                    
+                    CPP - 05 探索类对象模型（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="CPP - 06 探索类对象模型（二）.html">
+            
+                <a href="CPP - 06 探索类对象模型（二）.html">
+            
+                    
+                    CPP - 06 探索类对象模型（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="CPP - 07 探索类对象模型（三）.html">
+            
+                <a href="CPP - 07 探索类对象模型（三）.html">
+            
+                    
+                    CPP - 07 探索类对象模型（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.8" data-path="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                <a href="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                    
+                    CPP - 08 寄存器基础与函数调用约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="CPP - 09 探索对象模型（四）.html">
+            
+                <a href="CPP - 09 探索对象模型（四）.html">
+            
+                    
+                    CPP - 09 探索对象模型（四）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="CPP - 10 探索对象模型（五）.html">
+            
+                <a href="CPP - 10 探索对象模型（五）.html">
+            
+                    
+                    CPP - 10 探索对象模型（五）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.11" data-path="CPP - 11 函数模板和类模板.html">
+            
+                <a href="CPP - 11 函数模板和类模板.html">
+            
+                    
+                    CPP - 11 函数模板和类模板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.12" data-path="CPP - 12 函数模板和类模板（总结）.html">
+            
+                <a href="CPP - 12 函数模板和类模板（总结）.html">
+            
+                    
+                    CPP - 12 函数模板和类模板（总结）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.13" data-path="CPP - 现代 C++ 基础（一）.html">
+            
+                <a href="CPP - 现代 C++ 基础（一）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.14" data-path="CPP - 现代 C++ 基础（二）.html">
+            
+                <a href="CPP - 现代 C++ 基础（二）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.15" data-path="CPP - 现代 C++ 基础（三）.html">
+            
+                <a href="CPP - 现代 C++ 基础（三）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">MASM 汇编语言（待更新）</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x02 高级安全</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x03 内网攻防</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x04 CTF（浅）</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >CPP - 03 继承</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#继承"><b></b>继承</a></li><li><span class="title-icon "></span><a href="#继承中的特点"><b></b>继承中的特点</a></li><li><span class="title-icon "></span><a href="#构造函数--析构函数在继承中的表现"><b></b>构造函数 &amp; 析构函数在继承中的表现</a></li><li><span class="title-icon "></span><a href="#重载和重写"><b></b>重载和重写</a></li><li><span class="title-icon "></span><a href="#多继承"><b></b>多继承</a></li></ul></div><a href="#继承" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="继承"><a name="继承" class="anchor-navigation-ex-anchor" href="#继承"><i class="fa fa-link" aria-hidden="true"></i></a>继承</h1>
+<p>面向对象程序设计中最重要的一个概念是继承。继承允许我们依据另一个类来定义一个类。</p>
+<p>当创建一个类时，可以不重新编写新的数据成员和成员函数，只需指定新建的类继承了一个已有的类的成员即可。这个已有的类称为<strong>基类</strong>，新建的类称为<strong>派生类</strong>。</p>
+<p><img src="assets/image-20221020230505-ru6awrf.png" alt="image">​</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 基类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> {</span>
+    <span class="hljs-comment">// eat() 函数</span>
+    <span class="hljs-comment">// sleep() 函数</span>
+};
+
+
+<span class="hljs-comment">//派生类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span> :</span> <span class="hljs-keyword">public</span> Animal {
+    <span class="hljs-comment">// bark() 函数</span>
+};
+</code></pre>
+<ul>
+<li><p>可以存在多继承</p>
+<pre><code class="lang-cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> &lt;</span>派生类名&gt;:&lt;继承方式<span class="hljs-number">1</span>&gt;&lt;基类名<span class="hljs-number">1</span>&gt;,&lt;继承方式<span class="hljs-number">2</span>&gt;&lt;基类名<span class="hljs-number">2</span>&gt;,… {
+    &lt;派生类类体&gt;
+};
+</code></pre>
+</li>
+</ul>
+<h1 id="继承中的特点"><a name="继承中的特点" class="anchor-navigation-ex-anchor" href="#继承中的特点"><i class="fa fa-link" aria-hidden="true"></i></a>继承中的特点</h1>
+<p>有 <code>public, protected, private</code> 三种继承方式，它们相应地改变了基类成员的访问属性。【继承方式为最高权限】</p>
+<ul>
+<li><strong>public 继承：</strong> 基类 public 成员，protected 成员，private 成员的访问属性在派生类中分别变成：public, protected, private</li>
+<li><strong>protected 继承：</strong> 基类 public 成员，protected 成员，private 成员的访问属性在派生类中分别变成：protected, protected, private</li>
+<li><strong>private 继承：</strong> 基类 public 成员，protected 成员，private 成员的访问属性在派生类中分别变成：private, private, private</li>
+<li>如果继承时不显示声明是  <strong>private，protected，public 继承，则默认是 private 继承，在 struct 中默认 public 继承</strong></li>
+</ul>
+<p>但无论哪种继承方式，上面两点都没有改变：</p>
+<ul>
+<li><strong>private 成员只能被本类成员（类内）和友元访问，不能被派生类访问；【</strong>​==其实也就是不能被继承==​<strong>】</strong></li>
+<li>protected 成员可以被派生类访问。【==可以被继承==】</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">访问</th>
+<th style="text-align:left">public</th>
+<th>protected</th>
+<th style="text-align:left">private</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">同一个类</td>
+<td style="text-align:left">yes</td>
+<td>yes</td>
+<td style="text-align:left">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">派生类</td>
+<td style="text-align:left">yes</td>
+<td>yes</td>
+<td style="text-align:left">no</td>
+</tr>
+<tr>
+<td style="text-align:left">外部的类</td>
+<td style="text-align:left">yes</td>
+<td>no</td>
+<td style="text-align:left">no</td>
+</tr>
+</tbody>
+</table>
+<p>一个派生类继承了所有的基类方法，但下列情况除外：</p>
+<ul>
+<li>基类的构造函数、析构函数和拷贝构造函数。</li>
+<li>基类的重载运算符。</li>
+<li>基类的友元函数。</li>
+</ul>
+<h1 id="构造函数--析构函数在继承中的表现"><a name="构造函数--析构函数在继承中的表现" class="anchor-navigation-ex-anchor" href="#构造函数--析构函数在继承中的表现"><i class="fa fa-link" aria-hidden="true"></i></a>构造函数 &amp; 析构函数在继承中的表现</h1>
+<p><strong>调用顺序</strong></p>
+<ul>
+<li>构造函数：先调用基类（父类）的构造函数，后调用派生类（子类）的构造函数。</li>
+<li>析构函数：先调用派生类（子类）的析造函数，后调用基类（父类）的析造函数。</li>
+</ul>
+<p><strong>内部类</strong></p>
+<p>先基类 -- 内部类 -- 本类</p>
+<pre><code class="lang-cpp">调用了 CA 的构造函数 <span class="hljs-built_in">CA</span>()
+调用了 CN 的构造函数 <span class="hljs-built_in">CN</span>()
+调用了 CB 的构造函数 <span class="hljs-built_in">CB</span>()
+调用了 CB 的构造函数 ~<span class="hljs-built_in">CB</span>()
+调用了 CN 的析造函数 ~<span class="hljs-built_in">CN</span>()
+调用了 CA 的析造函数 ~<span class="hljs-built_in">CA</span>()
+
+----------
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CN</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CN</span>(); <span class="hljs-comment">// 普通构造函数</span>
+    ~<span class="hljs-built_in">CN</span>(); <span class="hljs-comment">// 析构函数</span>
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CA</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CA</span>(); <span class="hljs-comment">// 普通构造函数</span>
+    ~<span class="hljs-built_in">CA</span>(); <span class="hljs-comment">// 析构函数</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">go</span><span class="hljs-params">()</span></span>;
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CB</span> :</span><span class="hljs-keyword">public</span> CA{
+<span class="hljs-keyword">public</span>:
+    CN objCN;
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CB</span>(); <span class="hljs-comment">// 普通构造函数</span>
+    ~<span class="hljs-built_in">CB</span>(); <span class="hljs-comment">// 析构函数</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">go</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// 重写继承自 CA 的 go() 函数</span>
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// 调用顺序测试</span>
+    <span class="hljs-comment">//CB objCB1;</span>
+
+    CB * objCB2 = <span class="hljs-keyword">new</span> CB;
+    <span class="hljs-comment">//delete objCB2;</span>
+
+    objCB2-&gt;<span class="hljs-built_in">go</span>(); <span class="hljs-comment">// 没有重写的时候调用的师傅类的，重写后就是调用自己重写的</span>
+    objCB2-&gt;CA::<span class="hljs-built_in">go</span>(); <span class="hljs-comment">// 重写后还想调用父类的 go() 函数就需要使用作用域</span>
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+}
+
+
+CA::<span class="hljs-built_in">CA</span>(){
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CA 的构造函数 CA()&quot;</span> &lt;&lt; endl;
+}
+
+CA::~<span class="hljs-built_in">CA</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CA 的析造函数 ~CA()&quot;</span> &lt;&lt; endl;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CA::go</span><span class="hljs-params">()</span> </span>{
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CA 的成员函数 go()&quot;</span> &lt;&lt; endl;
+}
+
+CB::<span class="hljs-built_in">CB</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CB 的构造函数 CB()&quot;</span> &lt;&lt; endl;
+}
+
+CB::~<span class="hljs-built_in">CB</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CB 的构造函数 ~CB()&quot;</span> &lt;&lt; endl;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CB::go</span><span class="hljs-params">()</span> </span>{
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CB 重写的成员函数 go()&quot;</span> &lt;&lt; endl;
+}
+
+CN::<span class="hljs-built_in">CN</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CN 的构造函数 CN()&quot;</span> &lt;&lt; endl;
+}
+
+CN::~<span class="hljs-built_in">CN</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CN 的析造函数 ~CN()&quot;</span> &lt;&lt; endl;
+}
+</code></pre>
+<h1 id="重载和重写"><a name="重载和重写" class="anchor-navigation-ex-anchor" href="#重载和重写"><i class="fa fa-link" aria-hidden="true"></i></a>重载和重写</h1>
+<ul>
+<li><strong>重载：</strong>类自身的函数重载。</li>
+<li><strong>重写：</strong>类之间的继承，重写同名函数。</li>
+<li>重写后继续想使用父类的函数可以使用作用域 <code>::</code>​​​</li>
+<li>子类如果重写了父类的函数，父类的所有重载函数均为失效，只能使用作用域访问。</li>
+</ul>
+<h1 id="多继承"><a name="多继承" class="anchor-navigation-ex-anchor" href="#多继承"><i class="fa fa-link" aria-hidden="true"></i></a>多继承</h1>
+<ul>
+<li><p>调用方法指定，父类有，父类的父类也有~</p>
+<p><img src="assets/image-20221021003054-syzbq45.png" alt="image">​</p>
+</li>
+<li><p>需要一层一层的逐步调用</p>
+<ul>
+<li>class CA</li>
+<li>class CB :public CA</li>
+<li>class CC :public CA</li>
+<li>class CD :public CB, public CC</li>
+</ul>
+<p>菱形继承</p>
+<p><img src="assets/Snipaste_2022-10-21_00-13-48-20221021001434-uxqrjs8.png" alt="Snipaste_2022-10-21_00-13-48"></p>
+</li>
+<li>同一变量有两个值（副本）【二义性问题】 -- <strong>虚基类</strong>解决 <code>virtual</code>​</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CN</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CN</span>(); <span class="hljs-comment">// 普通构造函数</span>
+    ~<span class="hljs-built_in">CN</span>(); <span class="hljs-comment">// 析构函数</span>
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CA</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">int</span> nAge;
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CA</span>(); <span class="hljs-comment">// 普通构造函数</span>
+    ~<span class="hljs-built_in">CA</span>(); <span class="hljs-comment">// 析构函数</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">go</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sleep</span><span class="hljs-params">()</span></span>;
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CB</span> :</span><span class="hljs-keyword">public</span> <span class="hljs-keyword">virtual</span> CA{
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CB</span>(); <span class="hljs-comment">// 普通构造函数</span>
+    ~<span class="hljs-built_in">CB</span>(); <span class="hljs-comment">// 析构函数</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">go</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// 重写继承自 CA 的 go() 函数</span>
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CC</span> :</span><span class="hljs-keyword">public</span> <span class="hljs-keyword">virtual</span> CA {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CC</span>(); <span class="hljs-comment">// 普通构造函数</span>
+    ~<span class="hljs-built_in">CC</span>(); <span class="hljs-comment">// 析构函数</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">go</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sleep</span><span class="hljs-params">()</span></span>;
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CD</span> :</span><span class="hljs-keyword">public</span> CB, <span class="hljs-keyword">public</span> CC {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CD</span>(); <span class="hljs-comment">// 普通构造函数</span>
+    ~<span class="hljs-built_in">CD</span>(); <span class="hljs-comment">// 析构函数</span>
+
+    <span class="hljs-comment">//void go();</span>
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// 调用顺序测试</span>
+    CD * objCD1 = <span class="hljs-keyword">new</span> CD;
+
+    objCD1-&gt;CC::<span class="hljs-built_in">go</span>(); 
+    objCD1-&gt;CB::<span class="hljs-built_in">go</span>(); <span class="hljs-comment">// 重写后还想调用父类的 go() 函数就需要使用作用域</span>
+
+    <span class="hljs-comment">// objCD1-&gt;CA::sleep(); // 这样会出错，提示：错误    C2385    对“CA”的访问不明确</span>
+    objCD1-&gt;CB::CA::<span class="hljs-built_in">sleep</span>(); <span class="hljs-comment">// 需要一步一步的走,CB 是继承的 sleep() 没有重写</span>
+    objCD1-&gt;CC::<span class="hljs-built_in">sleep</span>();
+    objCD1-&gt;CC::CA::<span class="hljs-built_in">sleep</span>(); <span class="hljs-comment">// // CC 是继承并重写的 sleep()，也能走到 CA</span>
+
+    objCD1-&gt;CB::nAge = <span class="hljs-number">10</span>;
+    <span class="hljs-comment">//objCD1-&gt;CA::nAge = 11;  // 这样还会报错</span>
+    objCD1-&gt;CC::nAge = <span class="hljs-number">12</span>;  <span class="hljs-comment">// 同一个变量，存在多个副本，就好像一个人有两个年龄一样，这不合理</span>
+    <span class="hljs-comment">// 使用虚基类解决此问题 virtual</span>
+    <span class="hljs-comment">// class CB :public virtual CA</span>
+    <span class="hljs-comment">// class CC :public virtual CA</span>
+    <span class="hljs-comment">// 可以把 virtual 关键字去掉看看效果</span>
+
+    cout &lt;&lt; objCD1-&gt;CB::nAge &lt;&lt; endl &lt;&lt; objCD1-&gt;CC::nAge &lt;&lt; endl;
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+}
+
+
+CA::<span class="hljs-built_in">CA</span>(){
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CA 的构造函数 CA()&quot;</span> &lt;&lt; endl;
+}
+
+CA::~<span class="hljs-built_in">CA</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CA 的析造函数 ~CA()&quot;</span> &lt;&lt; endl;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CA::go</span><span class="hljs-params">()</span> </span>{
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CA 的成员函数 go()&quot;</span> &lt;&lt; endl;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CA::sleep</span><span class="hljs-params">()</span> </span>{
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CA 的成员函数 sleep()&quot;</span> &lt;&lt; endl;
+}
+
+CB::<span class="hljs-built_in">CB</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CB 的构造函数 CB()&quot;</span> &lt;&lt; endl;
+}
+
+CB::~<span class="hljs-built_in">CB</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CB 的构造函数 ~CB()&quot;</span> &lt;&lt; endl;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CB::go</span><span class="hljs-params">()</span> </span>{
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CB 重写的成员函数 go()&quot;</span> &lt;&lt; endl;
+}
+
+CN::<span class="hljs-built_in">CN</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CN 的构造函数 CN()&quot;</span> &lt;&lt; endl;
+}
+
+CN::~<span class="hljs-built_in">CN</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CN 的析造函数 ~CN()&quot;</span> &lt;&lt; endl;
+}
+
+CC::<span class="hljs-built_in">CC</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CC 的构造函数 CC()&quot;</span> &lt;&lt; endl;
+}
+
+CC::~<span class="hljs-built_in">CC</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CC 的析构函数 ~CC()&quot;</span> &lt;&lt; endl;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CC::go</span><span class="hljs-params">()</span> </span>{
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CC 重写的成员函数 go()&quot;</span> &lt;&lt; endl;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CC::sleep</span><span class="hljs-params">()</span> </span>{
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CC 的成员函数 sleep()&quot;</span> &lt;&lt; endl;
+}
+
+CD::<span class="hljs-built_in">CD</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CD 的构造函数 CD()&quot;</span> &lt;&lt; endl;
+}
+
+CD::~<span class="hljs-built_in">CD</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了 CD 的析构函数 ~CD()&quot;</span> &lt;&lt; endl;
+}
+</code></pre>
+<pre><code class="lang-cpp">调用了 CA 的构造函数 <span class="hljs-built_in">CA</span>()
+调用了 CB 的构造函数 <span class="hljs-built_in">CB</span>()
+调用了 CA 的构造函数 <span class="hljs-built_in">CA</span>()
+调用了 CC 的构造函数 <span class="hljs-built_in">CC</span>()
+调用了 CD 的构造函数 <span class="hljs-built_in">CD</span>()
+调用了 CC 重写的成员函数 <span class="hljs-built_in">go</span>()
+调用了 CB 重写的成员函数 <span class="hljs-built_in">go</span>()
+调用了 CA 的成员函数 <span class="hljs-built_in">sleep</span>()
+调用了 CC 的成员函数 <span class="hljs-built_in">sleep</span>()
+调用了 CA 的成员函数 <span class="hljs-built_in">sleep</span>()
+<span class="hljs-number">10</span>
+<span class="hljs-number">12</span>
+请按任意键继续. . .
+
+----------
+调用了 CA 的构造函数 <span class="hljs-built_in">CA</span>()
+调用了 CB 的构造函数 <span class="hljs-built_in">CB</span>()
+调用了 CC 的构造函数 <span class="hljs-built_in">CC</span>()
+调用了 CD 的构造函数 <span class="hljs-built_in">CD</span>()
+调用了 CC 重写的成员函数 <span class="hljs-built_in">go</span>()
+调用了 CB 重写的成员函数 <span class="hljs-built_in">go</span>()
+调用了 CA 的成员函数 <span class="hljs-built_in">sleep</span>()
+调用了 CC 的成员函数 <span class="hljs-built_in">sleep</span>()
+调用了 CA 的成员函数 <span class="hljs-built_in">sleep</span>()
+<span class="hljs-number">12</span>
+<span class="hljs-number">12</span>
+请按任意键继续. . .
+</code></pre>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-11-08 05:10:56
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="CPP - 02 重载.html" class="navigation navigation-prev " aria-label="Previous page: CPP - 02 重载">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="CPP - 04 多态.html" class="navigation navigation-next " aria-label="Next page: CPP - 04 多态">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CPP - 03 继承","level":"2.2.3","depth":2,"next":{"title":"CPP - 04 多态","level":"2.2.4","depth":2,"path":"C++ 基础/CPP - 04 多态.md","ref":"C++ 基础/CPP - 04 多态.md","articles":[]},"previous":{"title":"CPP - 02 重载","level":"2.2.2","depth":2,"path":"C++ 基础/CPP - 02 重载.md","ref":"C++ 基础/CPP - 02 重载.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-Windows 高级攻防/","text":"Windows 高级攻防","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Windows 高级攻防","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"C++ 基础/CPP - 03 继承.md","mtime":"2022-11-07T21:10:56.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-11-08T06:00:50.224Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

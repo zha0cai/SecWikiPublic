@@ -1,0 +1,975 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>CPP - 现代 C++ 基础（二） · Windows 高级攻防</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.0">
+        <meta name="author" content="zha0cai">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="CPP - 现代 C++ 基础（三）.html" />
+    
+    
+    <link rel="prev" href="CPP - 现代 C++ 基础（一）.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/zha0cai" target="_blank" class="custom-link">My github</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Windows 高级攻防
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">0x01 基础阶段</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    C 语言程序设计基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                <a href="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                    
+                    01 环境和编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                <a href="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                    
+                    02 基础数据类型与输入输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../C 语言程序设计基础/03 - 运算符.html">
+            
+                <a href="../C 语言程序设计基础/03 - 运算符.html">
+            
+                    
+                    03 运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                <a href="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                    
+                    04 选择结构与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                <a href="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                    
+                    05 函数、数组与指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                <a href="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                    
+                    06 复杂数据类型与文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    C ++ 基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="CPP - 01 面向对象基础.html">
+            
+                <a href="CPP - 01 面向对象基础.html">
+            
+                    
+                    CPP - 01 面向对象基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="CPP - 02 重载.html">
+            
+                <a href="CPP - 02 重载.html">
+            
+                    
+                    CPP - 02 重载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="CPP - 03 继承.html">
+            
+                <a href="CPP - 03 继承.html">
+            
+                    
+                    CPP - 03 继承
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="CPP - 04 多态.html">
+            
+                <a href="CPP - 04 多态.html">
+            
+                    
+                    CPP - 04 多态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="CPP - 05 探索类对象模型（一）.html">
+            
+                <a href="CPP - 05 探索类对象模型（一）.html">
+            
+                    
+                    CPP - 05 探索类对象模型（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="CPP - 06 探索类对象模型（二）.html">
+            
+                <a href="CPP - 06 探索类对象模型（二）.html">
+            
+                    
+                    CPP - 06 探索类对象模型（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="CPP - 07 探索类对象模型（三）.html">
+            
+                <a href="CPP - 07 探索类对象模型（三）.html">
+            
+                    
+                    CPP - 07 探索类对象模型（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.8" data-path="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                <a href="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                    
+                    CPP - 08 寄存器基础与函数调用约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="CPP - 09 探索对象模型（四）.html">
+            
+                <a href="CPP - 09 探索对象模型（四）.html">
+            
+                    
+                    CPP - 09 探索对象模型（四）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="CPP - 10 探索对象模型（五）.html">
+            
+                <a href="CPP - 10 探索对象模型（五）.html">
+            
+                    
+                    CPP - 10 探索对象模型（五）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.11" data-path="CPP - 11 函数模板和类模板.html">
+            
+                <a href="CPP - 11 函数模板和类模板.html">
+            
+                    
+                    CPP - 11 函数模板和类模板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.12" data-path="CPP - 12 函数模板和类模板（总结）.html">
+            
+                <a href="CPP - 12 函数模板和类模板（总结）.html">
+            
+                    
+                    CPP - 12 函数模板和类模板（总结）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.13" data-path="CPP - 现代 C++ 基础（一）.html">
+            
+                <a href="CPP - 现代 C++ 基础（一）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2.14" data-path="CPP - 现代 C++ 基础（二）.html">
+            
+                <a href="CPP - 现代 C++ 基础（二）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.15" data-path="CPP - 现代 C++ 基础（三）.html">
+            
+                <a href="CPP - 现代 C++ 基础（三）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">MASM 汇编语言（待更新）</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x02 高级安全</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x03 内网攻防</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x04 CTF（浅）</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >CPP - 现代 C++ 基础（二）</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#引用变量"><b></b>引用变量</a></li><ul><li><span class="title-icon "></span><a href="#引用"><b></b>引用</a></li><li><span class="title-icon "></span><a href="#完美转发"><b></b>完美转发</a></li></ul><li><span class="title-icon "></span><a href="#lambda-函数与表达式"><b></b>Lambda 函数与表达式</a></li><li><span class="title-icon "></span><a href="#断言"><b></b>断言</a></li><li><span class="title-icon "></span><a href="#tuple-元组"><b></b>tuple 元组</a></li><li><span class="title-icon "></span><a href="#别名"><b></b>别名</a></li><li><span class="title-icon "></span><a href="#she-异常"><b></b>SHE 异常</a></li><li><span class="title-icon "></span><a href="#其他"><b></b>其他</a></li><li><span class="title-icon "></span><a href="#前人栽树"><b></b>前人栽树</a></li></ul></div><a href="#引用变量" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="引用变量"><a name="引用变量" class="anchor-navigation-ex-anchor" href="#引用变量"><i class="fa fa-link" aria-hidden="true"></i></a>引用变量</h1>
+<ul>
+<li>左值：一般情况下拥有特定内存，并且声明周期较长的称为左值。</li>
+<li>右值：一般生命周期较短且临时存在的就称为右值。如：函数的运行结果或表达式中间变量。</li>
+<li>左值可以放在赋值号 <code>=</code>​ 的左右两边，右值只能放在赋值号 <code>=</code>​ 的右边。</li>
+<li><strong>变量可以是左值，也可以为右值，但常量只能是右值</strong>。</li>
+<li><strong>右值只能被 </strong>​<strong><code>const</code></strong>​<strong> 类型的引用所指向；而左值可以被</strong> <strong><code>const</code></strong>​<strong> 或 </strong>​<strong><code>非 const</code></strong>​<strong> 类型引用指向。</strong></li>
+<li>一般右值是不能取地址的 <code>&amp;</code>​</li>
+<li>字符串是左值</li>
+</ul>
+<h2 id="引用"><a name="引用" class="anchor-navigation-ex-anchor" href="#引用"><i class="fa fa-link" aria-hidden="true"></i></a>引用</h2>
+<ul>
+<li>左值引用 <code>&amp;</code>​</li>
+<li>右值引用 <code>&amp;&amp;</code>​</li>
+<li><p>万能引用</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-function">T <span class="hljs-title">foo</span><span class="hljs-params">(T &amp;&amp; i)</span> </span>{
+    cout &lt;&lt; i &lt;&lt; endl;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">foo</span>(<span class="hljs-number">123</span>);
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="完美转发"><a name="完美转发" class="anchor-navigation-ex-anchor" href="#完美转发"><i class="fa fa-link" aria-hidden="true"></i></a>完美转发</h2>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(T i)</span> </span>{
+    cout &lt;&lt; i &lt;&lt; endl;
+}
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">foo_forwarding</span><span class="hljs-params">(T &amp;&amp; i)</span> </span>{ <span class="hljs-comment">// const T &amp; i，也是可以传递右值引用的，但是那样就不能修改它的值了</span>
+    <span class="hljs-built_in">foo</span>(i);
+    <span class="hljs-built_in">foo</span>(<span class="hljs-keyword">static_cast</span>&lt;T&amp;&amp;&gt;(i)); <span class="hljs-comment">// 和下面标准库提供的函数是一样的</span>
+    <span class="hljs-built_in">foo</span>(std::forward&lt;T&gt;(i)); 
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">foo_forwarding</span>(<span class="hljs-number">123</span>);
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h1 id="lambda-函数与表达式"><a name="lambda-函数与表达式" class="anchor-navigation-ex-anchor" href="#lambda-函数与表达式"><i class="fa fa-link" aria-hidden="true"></i></a>Lambda 函数与表达式</h1>
+<blockquote>
+<p>C++11 提供了对匿名函数的支持,称为 Lambda 函数(也叫 Lambda 表达式)。</p>
+<p>Lambda 表达式把函数看作对象。Lambda 表达式可以像对象一样使用，比如可以将它们赋给变量和作为参数传递，还可以像函数一样对其求值。</p>
+<p>Lambda 表达式本质上与函数声明非常类似。</p>
+</blockquote>
+<pre><code class="lang-cpp">[capture](parameters)-&gt;<span class="hljs-keyword">return</span>-type{body}
+
+<span class="hljs-comment">// [capture] 捕获列表</span>
+<span class="hljs-comment">// parameters 参数，形参</span>
+<span class="hljs-comment">// -&gt; return-type 不就是函数返回类型后置吗</span>
+<span class="hljs-comment">// body 代码块</span>
+</code></pre>
+<blockquote>
+<p>如果 lambda 函数没有传回值（例如 void），其返回类型可被完全忽略。</p>
+<p>在 Lambda 表达式内可以访问当前作用域的变量，这是 Lambda 表达式的闭包（Closure）行为。 与 JavaScript 闭包不同，C++ 变量传递有<strong>传值</strong>和<strong>传引用</strong>的区别。可以通过前面的 <code>[]</code>​ 来指定：</p>
+</blockquote>
+<pre><code class="lang-cpp">[]      <span class="hljs-comment">// 沒有定义任何变量。使用未定义变量会引发错误。</span>
+[x, &amp;y] <span class="hljs-comment">// x 以传值方式传入（默认），y 以引用方式传入。</span>
+[&amp;]     <span class="hljs-comment">// 任何被使用到的外部变量都隐式地以引用方式加以引用。</span>
+[=]     <span class="hljs-comment">// 任何被使用到的外部变量都隐式地以传值方式加以引用。</span>
+[&amp;, x]  <span class="hljs-comment">// x 显式地以传值方式加以引用。其余变量以引用方式加以引用。</span>
+[=, &amp;z] <span class="hljs-comment">// z 显式地以引用方式加以引用。其余变量以传值方式加以引用。</span>
+</code></pre>
+<blockquote>
+<p>另外有一点需要注意。对于 <code>[=]</code>​ 或 <code>[&amp;]</code>​ 的形式，lambda 表达式可以直接使用 this 指针。但是，对于 <code>[]</code>​ 的形式，如果要使用 this 指针，必须显式传入：</p>
+</blockquote>
+<pre><code class="lang-cpp">[<span class="hljs-keyword">this</span>]() { <span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">someFunc</span>(); }();
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> x = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">int</span> y = <span class="hljs-number">3</span>;
+
+    <span class="hljs-comment">// func 相当于函数指针</span>
+    <span class="hljs-keyword">auto</span> func = [x, &amp;y](<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)-&gt;<span class="hljs-keyword">int</span> {
+        <span class="hljs-comment">//x += 1; 会报错，表达式必须是可修改的左值</span>
+        y += <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">return</span> x * y + a + b; };
+
+    cout &lt;&lt; <span class="hljs-built_in">func</span>(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>) &lt;&lt; endl; <span class="hljs-comment">// 2 * 4 + 4 + 5</span>
+    cout &lt;&lt; <span class="hljs-string">&quot;y: &quot;</span> &lt;&lt; y &lt;&lt; endl;
+
+    <span class="hljs-keyword">auto</span> func1 = [](<span class="hljs-keyword">auto</span> aValue) {<span class="hljs-keyword">return</span> aValue;};
+    cout &lt;&lt; <span class="hljs-built_in">func1</span>(<span class="hljs-string">&quot;hello lambda~&quot;</span>) &lt;&lt; endl;
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h1 id="断言"><a name="断言" class="anchor-navigation-ex-anchor" href="#断言"><i class="fa fa-link" aria-hidden="true"></i></a>断言</h1>
+<blockquote>
+<p>assert 事实上，它居然是个宏，并且作用并非&quot;报错&quot;。</p>
+<p>在经过对其进行一定了解之后，对其作用及用法有了一定的了解，assert() 的用法像是一种&quot;契约式编程&quot;。</p>
+<ul>
+<li><strong>在函数开始处检验传入参数的合法性</strong></li>
+<li><strong>每个 assert 只检验一个条件，因为同时检验多个条件时,如果断言失败,无法直观的判断是哪个条件失败</strong></li>
+<li><strong>不能使用改变环境的语句，因为 assert 只在 DEBUG 个生效，如果这么做，会使用程序在真正运行时遇到问题</strong></li>
+<li><strong>assert 和后面的语句应空一行，以形成逻辑和视觉上的一致感</strong></li>
+<li><strong>有的地方，assert 不能代替条件过滤</strong></li>
+</ul>
+</blockquote>
+<p><strong>运行时断言</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cassert&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">char</span>* szBuffer = <span class="hljs-literal">nullptr</span>;
+    <span class="hljs-built_in">assert</span>(szBuffer != <span class="hljs-literal">nullptr</span>);
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>编译期断言</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cassert&gt;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FLAG 0;</span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in"><span class="hljs-keyword">static_assert</span></span>(FLAG != <span class="hljs-number">0</span>);
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h1 id="tuple-元组"><a name="tuple-元组" class="anchor-navigation-ex-anchor" href="#tuple-元组"><i class="fa fa-link" aria-hidden="true"></i></a>tuple 元组</h1>
+<blockquote>
+<p><a href="https://zh.cppreference.com/w/cpp/utility/tuple" target="_blank">std::tuple - cppreference.com</a></p>
+</blockquote>
+<pre><code class="lang-cpp">#include &lt;iostream&gt;
+#include &lt;Windows.h&gt;
+#include &lt;cassert&gt;
+
+using namespace std;
+
+std::tuple&lt;int, double, std::string&gt; test() {
+    return std::make_tuple(12, 7.5, &quot;hello tuple&quot;);
+}
+
+int main() {
+    auto [x, y, z] = test();
+    cout &lt;&lt; x &lt;&lt; endl;
+    cout &lt;&lt; y &lt;&lt; endl;
+    cout &lt;&lt; z &lt;&lt; endl;
+
+    system(&quot;pause&quot;);
+    return 0;
+}
+</code></pre>
+<h1 id="别名"><a name="别名" class="anchor-navigation-ex-anchor" href="#别名"><i class="fa fa-link" aria-hidden="true"></i></a>别名</h1>
+<blockquote>
+<p><a href="https://zh.cppreference.com/w/cpp/language/type_alias" target="_blank">类型别名，别名模板 (C++11 起) - cppreference.com</a></p>
+<p>类型别名是指代【先前定义的类型】的名字（与 <a href="https://zh.cppreference.com/w/cpp/language/typedef" title="cpp/language/typedef" target="_blank">typedef</a> 类似）。</p>
+<p>别名模版是指代一族类型的名字。</p>
+</blockquote>
+<pre><code class="lang-cpp">using identifier attr(optional) = type-id ;
+
+template &lt; template-parameter-list &gt;
+using identifier attr(optional) = type-id ;
+
+----------
+attr - optional sequence of any number of attributes
+
+identifier - the name that is introduced by this declaration, which becomes either a type name (1) or a template name (2)
+
+template-parameter-list    - template parameter list, as in template declaration
+
+type-id    - abstract declarator or any other valid type-id (which may introduce a new type, as noted in type-id). The type-id cannot directly or indirectly refer to identifier. Note that the point of declaration of the identifier is at the semicolon following type-id.
+</code></pre>
+<p><strong>e.g</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Alloc</span> {</span> };
+
+<span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;</span>
+<span class="hljs-keyword">using</span> Vec = vector&lt;T, Alloc&lt;T&gt;&gt;; <span class="hljs-comment">// type-id is vector&lt;T, Alloc&lt;T&gt;&gt;</span>
+Vec&lt;<span class="hljs-keyword">int</span>&gt; v; <span class="hljs-comment">// Vec&lt;int&gt; is the same as vector&lt;int, Alloc&lt;int&gt;&gt;</span>
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">uint_t</span>;
+<span class="hljs-comment">// 被重定义的类型并不是一个新的类型，仅仅只是原有的类型取了一个新的名字。</span>
+
+<span class="hljs-comment">// 重定义 unsigned int</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">uint_t</span>;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">uint_t</span> = <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>;
+
+<span class="hljs-comment">// 重定义 std::map</span>
+<span class="hljs-keyword">typedef</span> std::map&lt;std::string, <span class="hljs-keyword">int</span>&gt; <span class="hljs-keyword">map_int_t</span>;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">map_int_t</span> = std::map&lt;std::string, <span class="hljs-keyword">int</span>&gt;;
+
+<span class="hljs-comment">//在重定义普通类型上，两种使用方法的效果是等价的，唯一不同的是定义语法。</span>
+
+----------
+<span class="hljs-comment">/* C++98/03 */</span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">func_t</span> {</span>
+    <span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">void</span> <span class="hljs-params">(*type)</span><span class="hljs-params">(T, T)</span></span>;
+};
+<span class="hljs-comment">// 使用 func_t 模板</span>
+<span class="hljs-keyword">func_t</span>&lt;<span class="hljs-keyword">int</span>&gt;::type xx_1;
+
+<span class="hljs-comment">/* C++11 */</span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">func_t</span> = <span class="hljs-built_in"><span class="hljs-keyword">void</span></span> (*)(T, T);
+<span class="hljs-comment">// 使用 func_t 模板</span>
+<span class="hljs-keyword">func_t</span>&lt;<span class="hljs-keyword">int</span>&gt; xx_2;
+
+从示例中可以看出，通过 <span class="hljs-keyword">using</span> 定义模板别名的语法，只是在普通类型别名语法的基础上增加 <span class="hljs-keyword">template</span> 的参数列表。使用 <span class="hljs-keyword">using</span> 可以轻松地创建一个新的模板别名，而不需要像 C++<span class="hljs-number">98</span>/<span class="hljs-number">03</span> 那样使用烦琐的外敷模板。
+
+---------- 函数指针举例
+<span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">void</span> <span class="hljs-params">(*p_fptr)</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>; <span class="hljs-comment">// 定义一个函数指针 p_fptr</span>
+等价于
+<span class="hljs-keyword">using</span> fn = <span class="hljs-built_in"><span class="hljs-keyword">void</span></span>(*)(<span class="hljs-keyword">int</span>) <span class="hljs-comment">// fn == p_fptr</span>
+</code></pre>
+<p><strong>可以称之为模板别名</strong></p>
+<pre><code class="lang-cpp">---------- 使用 <span class="hljs-keyword">using</span> 给模板起别名
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">type_t</span> = T;
+
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">type_t</span>&lt;<span class="hljs-keyword">int</span>&gt; i;
+
+<span class="hljs-comment">// type_t 实例化后的类型和它的模板参数类型等价。这里，type_t&lt;int&gt; 将等价于 int。</span>
+
+----------
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-keyword">using</span> int_map = std::<span class="hljs-built_in">map</span>(<span class="hljs-keyword">int</span>, T); <span class="hljs-comment">// int_map == std::map(int, T)</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    int_map&lt;string&gt; ins;
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h1 id="she-异常"><a name="she-异常" class="anchor-navigation-ex-anchor" href="#she-异常"><i class="fa fa-link" aria-hidden="true"></i></a>SHE 异常</h1>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;excpt.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    __try {
+        <span class="hljs-keyword">int</span> x = <span class="hljs-number">100</span>;
+        <span class="hljs-keyword">int</span> y = <span class="hljs-number">0</span>;
+        x = x / y;
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER) {
+        cout &lt;&lt; <span class="hljs-string">&quot;除数不能为 0&quot;</span> &lt;&lt; endl;
+    }
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h1 id="其他"><a name="其他" class="anchor-navigation-ex-anchor" href="#其他"><i class="fa fa-link" aria-hidden="true"></i></a>其他</h1>
+<ul>
+<li><p>修改编译器 C++ 版本</p>
+<p><img src="assets/Snipaste_2022-11-05_15-27-45-20221105152802-krn0dkm.png" alt="Snipaste_2022-11-05_15-27-45">​</p>
+</li>
+<li>if/switch 中的 init-statement 【待初始化的判断条件】需要 C++ 17 后才支持。【错误 C2429】</li>
+</ul>
+<h1 id="前人栽树"><a name="前人栽树" class="anchor-navigation-ex-anchor" href="#前人栽树"><i class="fa fa-link" aria-hidden="true"></i></a>前人栽树</h1>
+<ul>
+<li><a href="https://m.runoob.com/cplusplus/cpp-functions.html" target="_blank">C++ 函数 | 菜鸟教程 (runoob.com)</a></li>
+<li><a href="https://learn.microsoft.com/zh-cn/visualstudio/debugger/c-cpp-assertions?view=vs-2022" target="_blank">C/C++ 断言 - Visual Studio (Windows) | Microsoft Learn</a></li>
+<li><a href="http://c.biancheng.net/view/3730.html" target="_blank">C++11使用using定义别名（替代typedef） (biancheng.net)</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-11-08 05:10:58
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="CPP - 现代 C++ 基础（一）.html" class="navigation navigation-prev " aria-label="Previous page: CPP - 现代 C++ 基础（一）">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="CPP - 现代 C++ 基础（三）.html" class="navigation navigation-next " aria-label="Next page: CPP - 现代 C++ 基础（三）">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CPP - 现代 C++ 基础（二）","level":"2.2.14","depth":2,"next":{"title":"CPP - 现代 C++ 基础（三）","level":"2.2.15","depth":2,"path":"C++ 基础/CPP - 现代 C++ 基础（三）.md","ref":"C++ 基础/CPP - 现代 C++ 基础（三）.md","articles":[]},"previous":{"title":"CPP - 现代 C++ 基础（一）","level":"2.2.13","depth":2,"path":"C++ 基础/CPP - 现代 C++ 基础（一）.md","ref":"C++ 基础/CPP - 现代 C++ 基础（一）.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-Windows 高级攻防/","text":"Windows 高级攻防","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Windows 高级攻防","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"C++ 基础/CPP - 现代 C++ 基础（二）.md","mtime":"2022-11-07T21:10:58.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-11-08T06:00:50.224Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

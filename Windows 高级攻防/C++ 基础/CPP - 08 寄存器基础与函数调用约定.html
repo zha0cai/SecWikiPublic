@@ -1,0 +1,1361 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>CPP - 08 寄存器基础与函数调用约定 · Windows 高级攻防</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.0">
+        <meta name="author" content="zha0cai">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="CPP - 09 探索对象模型（四）.html" />
+    
+    
+    <link rel="prev" href="CPP - 07 探索类对象模型（三）.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/zha0cai" target="_blank" class="custom-link">My github</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Windows 高级攻防
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">0x01 基础阶段</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    C 语言程序设计基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                <a href="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                    
+                    01 环境和编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                <a href="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                    
+                    02 基础数据类型与输入输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../C 语言程序设计基础/03 - 运算符.html">
+            
+                <a href="../C 语言程序设计基础/03 - 运算符.html">
+            
+                    
+                    03 运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                <a href="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                    
+                    04 选择结构与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                <a href="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                    
+                    05 函数、数组与指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                <a href="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                    
+                    06 复杂数据类型与文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    C ++ 基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="CPP - 01 面向对象基础.html">
+            
+                <a href="CPP - 01 面向对象基础.html">
+            
+                    
+                    CPP - 01 面向对象基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="CPP - 02 重载.html">
+            
+                <a href="CPP - 02 重载.html">
+            
+                    
+                    CPP - 02 重载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="CPP - 03 继承.html">
+            
+                <a href="CPP - 03 继承.html">
+            
+                    
+                    CPP - 03 继承
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="CPP - 04 多态.html">
+            
+                <a href="CPP - 04 多态.html">
+            
+                    
+                    CPP - 04 多态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="CPP - 05 探索类对象模型（一）.html">
+            
+                <a href="CPP - 05 探索类对象模型（一）.html">
+            
+                    
+                    CPP - 05 探索类对象模型（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="CPP - 06 探索类对象模型（二）.html">
+            
+                <a href="CPP - 06 探索类对象模型（二）.html">
+            
+                    
+                    CPP - 06 探索类对象模型（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="CPP - 07 探索类对象模型（三）.html">
+            
+                <a href="CPP - 07 探索类对象模型（三）.html">
+            
+                    
+                    CPP - 07 探索类对象模型（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2.8" data-path="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                <a href="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                    
+                    CPP - 08 寄存器基础与函数调用约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="CPP - 09 探索对象模型（四）.html">
+            
+                <a href="CPP - 09 探索对象模型（四）.html">
+            
+                    
+                    CPP - 09 探索对象模型（四）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="CPP - 10 探索对象模型（五）.html">
+            
+                <a href="CPP - 10 探索对象模型（五）.html">
+            
+                    
+                    CPP - 10 探索对象模型（五）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.11" data-path="CPP - 11 函数模板和类模板.html">
+            
+                <a href="CPP - 11 函数模板和类模板.html">
+            
+                    
+                    CPP - 11 函数模板和类模板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.12" data-path="CPP - 12 函数模板和类模板（总结）.html">
+            
+                <a href="CPP - 12 函数模板和类模板（总结）.html">
+            
+                    
+                    CPP - 12 函数模板和类模板（总结）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.13" data-path="CPP - 现代 C++ 基础（一）.html">
+            
+                <a href="CPP - 现代 C++ 基础（一）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.14" data-path="CPP - 现代 C++ 基础（二）.html">
+            
+                <a href="CPP - 现代 C++ 基础（二）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.15" data-path="CPP - 现代 C++ 基础（三）.html">
+            
+                <a href="CPP - 现代 C++ 基础（三）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">MASM 汇编语言（待更新）</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x02 高级安全</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x03 内网攻防</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x04 CTF（浅）</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >CPP - 08 寄存器基础与函数调用约定</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#寄存器基础"><b></b>寄存器基础</a></li><ul><li><span class="title-icon "></span><a href="#概念"><b></b>概念</a></li><li><span class="title-icon "></span><a href="#通用寄存器"><b></b>通用寄存器</a></li><li><span class="title-icon "></span><a href="#数据寄存器（通用）"><b></b>数据寄存器（通用）</a></li><li><span class="title-icon "></span><a href="#指针寄存器（通用，pointer-register）"><b></b>指针寄存器（通用，Pointer Register）</a></li><li><span class="title-icon "></span><a href="#变址寄存器（通用，index-register）"><b></b>变址寄存器（通用，Index Register）</a></li><li><span class="title-icon "></span><a href="#段寄存器（非通用）"><b></b>段寄存器（非通用）</a></li><li><span class="title-icon "></span><a href="#控制寄存器（非通用）"><b></b>控制寄存器（非通用）</a></li><li><span class="title-icon "></span><a href="#标志寄存器（非通用）"><b></b>标志寄存器（非通用）</a></li></ul><li><span class="title-icon "></span><a href="#64-位-cpu-寄存器"><b></b>64 位 CPU 寄存器</a></li><li><span class="title-icon "></span><a href="#8086"><b></b>8086</a></li><li><span class="title-icon "></span><a href="#函数调用约定"><b></b>函数调用约定</a></li><ul><li><span class="title-icon "></span><a href="#调用约定"><b></b>调用约定</a></li><li><span class="title-icon "></span><a href="#cdecl-参数顺序问题"><b></b>_cdecl 参数顺序问题</a></li><li><span class="title-icon "></span><a href="#stdcall"><b></b>_stdcall</a></li><li><span class="title-icon "></span><a href="#fastcall"><b></b>_fastcall</a></li><li><span class="title-icon "></span><a href="#thiscall"><b></b>_thiscall</a></li></ul><li><span class="title-icon "></span><a href="#前人栽树"><b></b>前人栽树</a></li></ul></div><a href="#寄存器基础" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="寄存器基础"><a name="寄存器基础" class="anchor-navigation-ex-anchor" href="#寄存器基础"><i class="fa fa-link" aria-hidden="true"></i></a>寄存器基础</h1>
+<h2 id="概念"><a name="概念" class="anchor-navigation-ex-anchor" href="#概念"><i class="fa fa-link" aria-hidden="true"></i></a>概念</h2>
+<ul>
+<li>计算机常见架构：x86、arm、MIPS 等</li>
+<li><p>触发器</p>
+<p><img src="assets/image-20221026085343-t713b8a.png" alt="image">​</p>
+</li>
+<li><p>寄存器</p>
+<p><img src="assets/image-20221026090118-p6qaghu.png" alt="image">​</p>
+</li>
+<li><p>内存</p>
+<p><img src="assets/Snipaste_2022-10-26_09-08-59-20221026090948-c9hviia.png" alt="Snipaste_2022-10-26_09-08-59">​</p>
+</li>
+<li><p>8 位处理器雏形</p>
+<p><img src="assets/image-20221027143642-celj9ek.png" alt="image">​</p>
+</li>
+<li>16 位、32 位、64 位处理器</li>
+</ul>
+<h2 id="通用寄存器"><a name="通用寄存器" class="anchor-navigation-ex-anchor" href="#通用寄存器"><i class="fa fa-link" aria-hidden="true"></i></a>通用寄存器</h2>
+<p><strong>8 位</strong></p>
+<ul>
+<li>AL</li>
+<li>BL</li>
+<li>CL</li>
+<li>DL</li>
+<li>AH</li>
+<li>BH</li>
+<li>CH</li>
+<li>DH</li>
+</ul>
+<p><strong>16 位（</strong>通用寄存器共有 8 个<strong>）</strong></p>
+<ul>
+<li>AX -- 累加器</li>
+<li>BX -- 基址寄存器</li>
+<li>CX -- 计数寄存器</li>
+<li>DX -- 数据寄存器，字的乘、除运算，间接的输入输出</li>
+<li>BP -- 基址寄存器，基指针，存储器指针、存取堆栈的指针</li>
+<li>SP -- 堆栈指针，堆栈的==栈顶指针==</li>
+<li>SI -- 变址寄存器，存储器指针、串指令中的==源==操作数指针（用来存放偏移）</li>
+<li>DI -- 变址寄存器，存储器指针、串指令中的==目的==操作数指针（用来存放偏移）</li>
+</ul>
+<p>【段基址，实模式】</p>
+<p><strong>32 位（</strong>通用寄存器共有 8 个，和 16 一样，多了个 E<strong>）</strong></p>
+<ul>
+<li>EAX</li>
+<li>EBX</li>
+<li>ECX</li>
+<li>EDX</li>
+<li>EBP</li>
+<li>ESP</li>
+<li>ESI</li>
+<li>EDI</li>
+</ul>
+<p>【段选择子，保护模式，段描述符】</p>
+<p><strong>64 位</strong></p>
+<blockquote>
+<p>8 位寄存器在 16 位寄存器中，而 16 位寄存器在 32 位寄存器中。或者说：32 位寄存器中，取 0 到 15 位的部分组成 16 位寄存器，16 位寄存器对半分，成为 8 位寄存器。</p>
+</blockquote>
+<h2 id="数据寄存器（通用）"><a name="数据寄存器（通用）" class="anchor-navigation-ex-anchor" href="#数据寄存器（通用）"><i class="fa fa-link" aria-hidden="true"></i></a>数据寄存器（通用）</h2>
+<blockquote>
+<p>主要用来保存操作数和运算结果等信息，从而节省读取操作数所需要占用总线和访问存储器的时间。</p>
+<ul>
+<li>32 位 CPU 有 4 个 32 位的通用寄存器 EAX、EBX、ECX、EDX。对于低 16 位的数据的存取，不会影响高 16 位的数据。</li>
+<li>这些低 16 位的寄存器分别命名为：AX、BX、CX 和 DX，这和 16 位 CPU 的命名是一致的。</li>
+<li>4 个 16 位寄存器又可分割成 8 个独立的 8 位寄存器（AX：AH-AL、BX：BH-BL、CX：CH-CL、DX：DH-DL）。</li>
+</ul>
+<p>每个寄存器都有自己的名称，可独立存取。</p>
+<p>在 16 位 CPU 中，AX、BX、CX 和 DX <strong>不能作为基址和变址寄存器</strong>来存放存储单元的地址，但在 32 位 CPU 中，其 32 位寄存器 EAX、EBX、ECX 和 EDX 不仅可传送数据、暂存数据保存算数逻辑运算结果，而且也可作为指针寄存器。所以这些 32 位寄存器更具有通用性。</p>
+</blockquote>
+<p>AH(8 位)  AL(8 位)  AX(16 位)   (AX 和 AL 又称累加器，<strong><em>Accumulator</em></strong>)</p>
+<p>BH(8 位)  BL(8 位)  BX(16 位)   (BX 又称基址寄存器,唯一作为存储器指针使用寄存器，<strong><em>Base Register</em></strong>)</p>
+<p>CH(8 位)  CL(8 位)  CX(16 位)   (CX 用于字符串操作，控制循环的次数，CL 用于移位，<strong><em>Count Register</em></strong>)</p>
+<p>DH(8 位)  DL(8 位)  DX(16 位)   (DX 一般用来做 32 位的乘除法时存放被除数或者保留余数，<strong><em>Data Register</em></strong>)</p>
+<h2 id="指针寄存器（通用，pointer-register）"><a name="指针寄存器（通用，pointer-register）" class="anchor-navigation-ex-anchor" href="#指针寄存器（通用，pointer-register）"><i class="fa fa-link" aria-hidden="true"></i></a>指针寄存器（通用，<em>Pointer Register</em>）</h2>
+<blockquote>
+<p>主要用于存放堆栈内存单元的偏移量，指针寄存器不可分割为 8 位寄存器。</p>
+</blockquote>
+<ul>
+<li>SP -- 堆栈指针 (存放==栈顶==地址，<em>Stack Pointer</em>)</li>
+<li>BP -- 基址指针 (存放堆栈基址偏移，<em>Base Pointer</em>)</li>
+</ul>
+<h2 id="变址寄存器（通用，index-register）"><a name="变址寄存器（通用，index-register）" class="anchor-navigation-ex-anchor" href="#变址寄存器（通用，index-register）"><i class="fa fa-link" aria-hidden="true"></i></a>变址寄存器（通用，<em>Index Register</em>）</h2>
+<blockquote>
+<p>主要用于存放存储单元在段内的偏移量，变址寄存器不可分割为 8 位寄存器。</p>
+</blockquote>
+<ul>
+<li>SI -- 变址寄存器，存储器指针、串指令中的==源==操作数指针（用来存放偏移）</li>
+<li>DI -- 变址寄存器，存储器指针、串指令中的==目的==操作数指针（用来存放偏移）</li>
+</ul>
+<h2 id="段寄存器（非通用）"><a name="段寄存器（非通用）" class="anchor-navigation-ex-anchor" href="#段寄存器（非通用）"><i class="fa fa-link" aria-hidden="true"></i></a>段寄存器（非通用）</h2>
+<blockquote>
+<p>段寄存器是根据内存分段的管理模式而设置的。内存单元的==物理地址==由<strong>段寄存器的值</strong>和一个<strong>偏移量</strong>组合而成，这样可以用两个较少位数的值组合成一个可访问的较大物理空间的内存地址。【物理地址 = 段寄存器的值 + 偏移量】</p>
+<ul>
+<li>16 位：【段基址，实模式】</li>
+<li>32 位：【段选择子，保护模式，段描述符】</li>
+<li><strong>实方式：</strong>前 4 个段寄存器 CS、DS、ES 和 SS 与 16 位 CPU 中所对应的段寄存器的含义完全一致，内存单元的逻辑地址仍为 <code>&quot;段值：偏移量&quot;</code>​ 的形式。为访问某内存端内的数据，必须使用该段寄存器和存储单元的偏移量。</li>
+<li><strong>保护方式：</strong>在此方式下，情况要复杂的多，装入段寄存器的不再是段值，而是称为 <code>&quot;选择子（Selector）&quot;</code>​ 的某个值。</li>
+</ul>
+</blockquote>
+<p><strong>16 位</strong></p>
+<ul>
+<li>ES -- 附加段寄存器</li>
+<li>CS -- 代码段寄存器</li>
+<li>SS -- 堆栈段寄存器</li>
+<li>DS -- 数据段寄存器</li>
+</ul>
+<p><strong>32 位在 16 位的基础上增加两个</strong></p>
+<ul>
+<li>FS -- 附加段寄存器</li>
+<li>GS -- 附加段寄存器</li>
+</ul>
+<blockquote>
+<p>CS 为代码段寄存器【存段地址】，还有个与 CS 息息相关的寄存器叫 <code>IP</code>​​，为<strong>指令指针寄存器</strong>【存偏移地址】。</p>
+<ul>
+<li>​<code>IP</code>​​、<code>EIP</code>​​（Instruction Pointer）是存放<strong>下次将要执行的指令在代码段中的偏移量</strong>。</li>
+<li>32 位中由于每个段的最大范围为 64K，所以，EIP 中的高 16 位肯定都为 0，此时，相当于只用其低 16 位的 IP 来反映程序中指令的执行次序。</li>
+</ul>
+</blockquote>
+<h2 id="控制寄存器（非通用）"><a name="控制寄存器（非通用）" class="anchor-navigation-ex-anchor" href="#控制寄存器（非通用）"><i class="fa fa-link" aria-hidden="true"></i></a>控制寄存器（非通用）</h2>
+<ul>
+<li>IP -- 指令指针，32 位就是 EIP</li>
+<li>FLAG -- 标志寄存器，32 位就是 EFlags</li>
+</ul>
+<h2 id="标志寄存器（非通用）"><a name="标志寄存器（非通用）" class="anchor-navigation-ex-anchor" href="#标志寄存器（非通用）"><i class="fa fa-link" aria-hidden="true"></i></a>标志寄存器（非通用）</h2>
+<ul>
+<li>进位标志 CF （<em>Carry Flag</em>），记录运算时最高有效位产生的进位值。</li>
+<li>奇偶标志 PF （<em>Parity Flag</em>），用来为机器中传送信息时可能产生的代码出错情况提供检验条件。当结果操作数中 1 的个数为偶数时置 1，否则置 0。</li>
+<li>辅助进位标志 AF （<em>Auxiliary Carry Flag</em>），记录运算时第 3 位（半个字节）产生的进位值。</li>
+<li>零标志 ZF （<em>Zero Flag</em>），运算结果为 0 时 ZF 位置 1，否则置 0。</li>
+<li>符号标志 SF （<em>Sign Flag</em>），记录运算结果的符号。结果为负时置 1，否则置 0。</li>
+<li>溢出标志 OF （<em>Overflow Flag</em>），在运算过程中，如操作数超出了机器可表示数的范围称为溢出。溢出时 OF 位置 1，否则置 0。</li>
+<li>追踪标志 TF（<em>Trap Flag</em>），当追踪标志 TF 被置为 1 时，CPU 进入单步执行方式，即每执行一条指令，产生一个单步中断请求，这种方式主要用于程序的调试。指令系统中没有专门的指令来改变标志位 TF 的值。</li>
+<li><p>中断允许标志 IF（<em>Interrupt-enable Flag</em>），中断允许标志 IF 是用来决定 CPU 是否响应 CPU 外部的可屏蔽中断发出的中断请求。但不管该标志位何值，CPU 都必须响应 CPU 外部的不可屏蔽中断所发出的中断请求，以及 CPU 内部产生的中断请求。</p>
+<ul>
+<li>当 IF=1 时，CPU 可以响应 CPU 外部的可屏蔽中断发出的中断请求；</li>
+<li>当 IF=0 时，CPU 不响应 CPU 外部的可屏蔽中断发出的中断请求。</li>
+</ul>
+<p>CPU 的指令系统中也有专门的指令来改变标志位 IF 的值。</p>
+</li>
+<li>方向标志 DF（<em>Direction Flag</em>），方向标志 DF 用来决定在串操作指令执行时有关指针寄存器发生调整的方向。在微机的指令系统汇总，还提供了专门的指令来改变标志位 DF 的值。</li>
+</ul>
+<p><strong>32位 标志寄存器增加的标志位</strong></p>
+<ul>
+<li><p>​<code>I/O</code>​ 特权标志 IOPL（<em><code>I/O</code></em>​<em> Privilege Level</em>）</p>
+<p><code>I/O</code>​ 特权标志用两位二进制来表示，也称为 <code>I/O</code>​ 特权级字段。该字段指定了要求执行 <code>I/O</code>​ 指令的特权级。如果当前的特权级别在数值上小于等于 IOPL 的值，那么，该 <code>I/O</code>​ 指令可执行，否则将发生一个保护异常。</p>
+</li>
+<li><p>嵌套任务标志 NT（<em>Nested Task</em>），嵌套任务标志 NT 用来控制中断返回指令 IRET 的执行。具体规定如下：</p>
+<ul>
+<li>当 NT=0 时，用堆栈中保存的值恢复 EFLAGS、CS 和 EIP，执行常规的中断返回操</li>
+<li>当 NT=1 时，通过任务转换实现中断返回</li>
+</ul>
+</li>
+<li><p>重启动标志 RF（<em>Restart Flag</em>），重启动标志 RF 用来控制是否接受调试故障。</p>
+<p>RF=0 时，表示“接受”调试故障，否则拒绝。在成功执行完一条指令后，处理机把 RF 置为 0，当接受到一个非调试故障时，处理机就把它置为 1。</p>
+</li>
+<li><p>虚拟 8086 方式标志 VM（<em>Virtual 8086 Mode</em>）</p>
+<p>如果该标志的值为 1，则表示处理机处于虚拟 8086 方式下的工作状态，否则，处理机处于一般保护方式下的工作状态。</p>
+</li>
+</ul>
+<h1 id="64-位-cpu-寄存器"><a name="64-位-cpu-寄存器" class="anchor-navigation-ex-anchor" href="#64-位-cpu-寄存器"><i class="fa fa-link" aria-hidden="true"></i></a>64 位 CPU 寄存器</h1>
+<p>x86-64CPU 在向后兼容的同时，更主要的是注入了全新的特性，特别的：x86-64 有两种工作模式，32 位 OS 既可以跑在传统模式中，把 CPU 当成 <strong>i386</strong> 来用；又可以跑在 64 位的兼容模式中，更加神奇的是，可以在 32 位的 OS 上跑 64 位的应用程序。</p>
+<p>x86-64 中，所有的寄存器都是 64 位，相对 32 位的 x86 来说，标识符发生了变化，比如：从原来的 ebp 变成了 rbp。为了向后兼容，ebp 依然可以使用，不过指向了 rbp 的低 32 位。</p>
+<p>x86-64 寄存器的变化，不仅体现在位数上，更加体现在寄存器数量上。新增加寄存器 r8 到 r15。加上 x86 原有的 8 个，一共 16 个寄存器。寄存器集成在 CPU 上，存取速度比存储器快了好几个数量级，寄存器多了，gcc 就可以更多的寄存器，替换之前的存储器堆栈使用，从而大大提升性能。寄存器的用途一般都涉及到函数调用，x86-64 有 16 个 64 位寄存器，分别是：</p>
+<ul>
+<li>rax -- 作为函数返回值使用</li>
+<li>rbx</li>
+<li>rcx</li>
+<li>rdx</li>
+<li>rsi</li>
+<li>rdi</li>
+<li>rbp</li>
+<li>rsp -- 栈指针寄存器，指向栈顶</li>
+<li>r8</li>
+<li>r9</li>
+<li>r10</li>
+<li>r11</li>
+<li>r12</li>
+<li>r13</li>
+<li>r14</li>
+<li>r15</li>
+</ul>
+<blockquote>
+<ul>
+<li>rdi，rsi，rdx，rcx，r8，r9 用作<strong>函数参数</strong>，依次对应第 1 参数，第 2 参数。。。</li>
+<li>rbx，rbp，r10，r11，r12，r13，14，r15 用作<strong>数据存储</strong>，遵循被调用者使用规则，简单说就是随便用，调用子函数之前要备份它，以防他被修改。</li>
+</ul>
+</blockquote>
+<h1 id="8086"><a name="8086" class="anchor-navigation-ex-anchor" href="#8086"><i class="fa fa-link" aria-hidden="true"></i></a>8086</h1>
+<p><img src="assets/image-20221026095527-2klru79.png" alt="image">​</p>
+<ul>
+<li>在 8086 启动或者复位(CPU 刚开始运作)后，<code>CS = FFFFH, IP = 0000H</code>​​，即最开始是从 <code>CS = FFFFH</code>​​ 开始读取指令的</li>
+</ul>
+<h1 id="函数调用约定"><a name="函数调用约定" class="anchor-navigation-ex-anchor" href="#函数调用约定"><i class="fa fa-link" aria-hidden="true"></i></a>函数调用约定</h1>
+<p><strong>call</strong></p>
+<p>调用函数，call address。</p>
+<p><strong>push</strong></p>
+<p><strong>pop</strong></p>
+<p><strong>ret</strong></p>
+<p><strong>jmp</strong></p>
+<p>地址跳转，jmp address。</p>
+<pre><code class="lang-cpp">函数调用流程：
+# 调用
+call address   (如：12345)
+push stack 下一行的地址【入栈 EIP】
+jmp 12345【jmp 到 call 的地址】
+
+# 函数结束，返回
+ret     【函数结束】
+pop eip 【将调用前入栈的下一行的地址出栈】
+jmp eip 【jmp 到该地址】
+</code></pre>
+<p><strong>栈（相对较小）</strong></p>
+<ul>
+<li>局部变量</li>
+<li>参数</li>
+<li>返回地址</li>
+<li>每个空间：<code>地址:值</code>​ ，如 16 位就是 2 字节地址，2 字节值。</li>
+</ul>
+<p><strong>虚拟内存</strong></p>
+<ul>
+<li>属于进程自己的</li>
+<li>x86：32 根地址线，4 GB，只能用 3 GB，内核占 1 GB</li>
+<li><p>x64：64 根地址线，x64 CPU 限制了只提供 48 位可用，共 256 TB。</p>
+<ul>
+<li>Windows 只能用 44 位，即 16 TB。</li>
+</ul>
+</li>
+<li><p><a href="https://blog.csdn.net/lionzl/article/details/19475113" target="_blank">linux/windows 64位CPU内存限制_lionzl的博客-CSDN博客</a></p>
+<pre><code class="lang-cpp"><span class="hljs-number">1</span>TB = <span class="hljs-number">1024</span> GB  = <span class="hljs-number">2</span>^<span class="hljs-number">40</span> bit
+<span class="hljs-number">1</span>GB = <span class="hljs-number">1024</span> MB  = <span class="hljs-number">2</span>^<span class="hljs-number">30</span> bit
+<span class="hljs-number">1</span>MB = <span class="hljs-number">1024</span> KB  = <span class="hljs-number">2</span>^<span class="hljs-number">20</span> bit
+<span class="hljs-number">1</span>KB = <span class="hljs-number">1024</span> bit = <span class="hljs-number">2</span>^<span class="hljs-number">10</span> bit
+
+<span class="hljs-number">2</span>^<span class="hljs-number">10</span> = <span class="hljs-number">1024</span> bit = <span class="hljs-number">1</span>KB
+<span class="hljs-number">2</span>^<span class="hljs-number">20</span> = <span class="hljs-number">1024</span> KB = <span class="hljs-number">1</span>MB = <span class="hljs-number">2</span>^<span class="hljs-number">10</span> * <span class="hljs-number">1024</span> bit
+
+<span class="hljs-number">2</span>^<span class="hljs-number">0</span>  = <span class="hljs-number">1</span>
+<span class="hljs-number">2</span>^<span class="hljs-number">1</span>  = <span class="hljs-number">2</span>
+<span class="hljs-number">2</span>^<span class="hljs-number">2</span>  = <span class="hljs-number">4</span>
+<span class="hljs-number">2</span>^<span class="hljs-number">3</span>  = <span class="hljs-number">8</span>
+<span class="hljs-number">2</span>^<span class="hljs-number">4</span>  = <span class="hljs-number">16</span>
+<span class="hljs-number">2</span>^<span class="hljs-number">5</span>  = <span class="hljs-number">32</span>
+<span class="hljs-number">2</span>^<span class="hljs-number">6</span>  = <span class="hljs-number">64</span>
+<span class="hljs-number">2</span>^<span class="hljs-number">7</span>  = <span class="hljs-number">128</span>
+<span class="hljs-number">2</span>^<span class="hljs-number">8</span>  = <span class="hljs-number">256</span>
+<span class="hljs-number">2</span>^<span class="hljs-number">9</span>  = <span class="hljs-number">512</span>
+<span class="hljs-number">2</span>^<span class="hljs-number">10</span> = <span class="hljs-number">1024</span>
+</code></pre>
+</li>
+</ul>
+<h2 id="调用约定"><a name="调用约定" class="anchor-navigation-ex-anchor" href="#调用约定"><i class="fa fa-link" aria-hidden="true"></i></a>调用约定</h2>
+<p><strong>x86</strong></p>
+<ul>
+<li>_cdecl <code>c/c++ 基本调用约定</code>​​​，<strong>调用方平栈</strong>，不定参数的函数可以使用，参数通过堆栈传递。</li>
+<li><p>_stdcall <code>win32</code>​​​，<strong>被调方平栈</strong>，不定参数的函数无法使用，参数默认全部通过堆栈传递。</p>
+<pre><code class="lang-cpp"><span class="hljs-number">1.</span> 参数是从右往左传递的，也是放在堆栈中。
+<span class="hljs-number">2.</span> 函数的堆栈平衡操作是由被调用函数执行的。
+<span class="hljs-number">3.</span> 在函数名的前面用下划线修饰，在函数名的后面由 @ 来修饰并加上栈需要的字节数的空间（_sumExample@<span class="hljs-number">8</span>）。
+</code></pre>
+</li>
+<li><p>_fastcall32 <strong>被调方平栈</strong>，不定参数的函数无法使用，前两个参数放入(<code>ECX</code>​​​, <code>EDX</code>​​​)，剩下的参数压栈保存。</p>
+<pre><code class="lang-cpp">表明了参数应该放在寄存器中，而不是在栈中，VC 编译器采用调用约定传递参数时，最左边的两个不大于 <span class="hljs-number">4</span> 个字节（DWORD）的参数分别放在 ecx 和 edx 寄存器。当寄存器用完的时候，其余参数仍然从右到左的顺序压入堆栈。像浮点值、远指针和 __int64 类型总是通过堆栈来传递的。
+</code></pre>
+</li>
+<li>_thiscall <code>类函数传参使用</code>​​</li>
+</ul>
+<p><strong>x64</strong></p>
+<ul>
+<li>_fastcall64 <strong>被调方平栈</strong>，不定参数的函数无法使用，前四个参数放入(<code>RCX</code>​​, <code>RDX</code>​​, <code>R8</code>​​, <code>R9</code>​​)，剩下的参数压栈保存。</li>
+<li>System V：类 Linux 系统默认约定，前八个参数放入(<code>RDI</code>​,<code>RSI</code>​, <code>RDX</code>​, <code>RCX</code>​, <code>R8</code>​, <code>R9</code>​)，剩下的参数压栈保存。</li>
+</ul>
+<blockquote>
+<p>当栈顶指针 esp 小于栈底指针 ebp 时，就形成了栈帧，栈帧中可以寻址的数据有局部变量，函数返回地址，函数参数等。不同的两次函数调用，所形成的栈帧也不相同，当由一个函数进入另一个函数时，就会针对调用的函数开辟出其所需的栈空间，形成此函数的独有栈帧，而当调用结束时，则清除掉它所使用的栈空间，关闭栈帧，该过程通俗的讲叫做栈平衡。而如果栈在使用结束后没有恢复或过度恢复，则会造成栈的上溢或下溢，给程序带来致命错误。-- <a href="https://www.cnblogs.com/LyShark/p/15901950.html" target="_blank">https://www.cnblogs.com/LyShark/p/15901950.html</a></p>
+</blockquote>
+<ul>
+<li>栈结构在内存中占用一段连续存储空间，通过 esp 与 ebp 这两个栈指针寄存器来保存当前栈起始地址与结束地址，每 4 个字节保存一个数据。</li>
+<li>堆栈的操作都是对一个字进行操作的，所以参数都是 4 个字节的。</li>
+<li>Win32 API函数绝大部分都是采用 <code>__stdcall</code>​​ 调用约定的。WINAPI 其实也只是 <code>__stdcall</code>​​ 的一个别名而已。</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span> </span>{
+    cout &lt;&lt; <span class="hljs-string">&quot;test&quot;</span> &lt;&lt; endl;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">test</span>();
+
+    <span class="hljs-comment">/*
+    test();
+    00082751  call        000814F1  // 在反汇编处 F11 跟进调试
+
+    // 查看寄存器
+    EAX = 00EEF066 
+    EBX = 0117F000 
+    ECX = 00EEF066 
+    EDX = 00000001 
+    ESI = 00EE1023 
+    EDI = 00FFF784 
+    EIP = 00EE25F1 
+    ESP = 00FFF6B8 
+    EBP = 00FFF784 
+    EFL = 00000246 
+
+    // 反汇编跟进调试
+    000814F1  jmp         00082650  // 继续跟进
+
+    // 来到函数主体
+    void test() {
+    00EE2540  push        ebp  
+    00EE2541  mov         ebp,esp  
+    00EE2543  sub         esp,0C0h  
+    00EE2549  push        ebx  
+    00EE254A  push        esi  
+    00EE254B  push        edi  
+    00EE254C  mov         edi,ebp  
+    00EE254E  xor         ecx,ecx  
+    00EE2550  mov         eax,0CCCCCCCCh  
+    00EE2555  rep stos    dword ptr es:[edi]  
+    00EE2557  mov         ecx,offset _80A111C0_CPPTest1@cpp (0EEF066h)  
+    00EE255C  call        @__CheckForDebuggerJustMyCode@4 (0EE1389h)  
+        cout &lt;&lt; &quot;test&quot; &lt;&lt; endl;
+    00EE2561  mov         esi,esp  
+    00EE2563  push        offset std::endl&lt;char,std::char_traits&lt;char&gt; &gt; (0EE103Ch)  
+    00EE2568  push        offset string &quot;test&quot; (0EE9B30h)  
+    00EE256D  mov         eax,dword ptr [__imp_std::cout (0EED0D4h)]  
+    00EE2572  push        eax  
+    00EE2573  call        std::operator&lt;&lt;&lt;std::char_traits&lt;char&gt; &gt; (0EE11A9h)  
+    00EE2578  add         esp,8  
+    00EE257B  mov         ecx,eax  
+    00EE257D  call        dword ptr [__imp_std::basic_ostream&lt;char,std::char_traits&lt;char&gt; &gt;::operator&lt;&lt; (0EED0A0h)]  
+    00EE2583  cmp         esi,esp  
+    00EE2585  call        __RTC_CheckEsp (0EE1294h)  
+    }
+    00EE258A  pop         edi  
+    00EE258B  pop         esi  
+    00EE258C  pop         ebx  
+    00EE258D  add         esp,0C0h  
+    00EE2593  cmp         ebp,esp  
+    00EE2595  call        __RTC_CheckEsp (0EE1294h)  
+    00EE259A  mov         esp,ebp  
+    00EE259C  pop         ebp  
+    00EE259D  ret 
+
+    1. EIP（Instruction Pointer）是存放下次将要执行的指令在代码段中的偏移量。
+
+    */</span>
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-cpp">    <span class="hljs-built_in">test</span>();
+<span class="hljs-number">009E25</span><span class="hljs-function">F1  call        <span class="hljs-title">test</span> <span class="hljs-params">(<span class="hljs-number">09E1208</span>h)</span>  
+    <span class="hljs-title">system</span><span class="hljs-params">(<span class="hljs-string">&quot;pause&quot;</span>)</span></span>;
+<span class="hljs-number">009E25</span>F6  mov         esi,esp  
+<span class="hljs-number">009E25</span>F8  push        offset string <span class="hljs-string">&quot;pause&quot;</span> (<span class="hljs-number">09E9</span>B38h)  
+<span class="hljs-number">009E25</span>FD  call        dword ptr [__imp__system (<span class="hljs-number">09</span>ED1CCh)]  
+<span class="hljs-number">009E2603</span>  add         esp,<span class="hljs-number">4</span>  
+<span class="hljs-number">009E2606</span>  cmp         esi,esp  
+<span class="hljs-number">009E2608</span>  call        __RTC_CheckEsp (<span class="hljs-number">09E1294</span>h)  
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+<span class="hljs-number">009E260</span>D  <span class="hljs-keyword">xor</span>         eax,eax  
+
+----------
+    <span class="hljs-built_in">test</span>();
+<span class="hljs-number">00</span><span class="hljs-function">EE25F1  call        <span class="hljs-title">test</span> <span class="hljs-params">(<span class="hljs-number">0</span>EE1208h)</span>  
+    <span class="hljs-title">system</span><span class="hljs-params">(<span class="hljs-string">&quot;pause&quot;</span>)</span></span>;
+<span class="hljs-number">00</span>EE25F6【一会函数 <span class="hljs-keyword">return</span> esp 寄存器地址里面存的就是这个地址】  mov         esi,esp
+</code></pre>
+<p><img src="assets/Snipaste_2022-10-26_23-44-53-20221026234514-f3s851k.png" alt="Snipaste_2022-10-26_23-44-53">​</p>
+<p><img src="assets/Snipaste_2022-10-26_23-37-27-20221026233819-jj8ocwk.png" alt="Snipaste_2022-10-26_23-37-27"></p>
+<pre><code class="lang-cpp">009E25F1  call        test (09E1208h)  
+
+----------
+009E1208  jmp         test (09E2540h) 
+
+----------
+void test() {
+009E2540  push        ebp  
+009E2541  mov         ebp,esp  
+009E2543  sub         esp,0C0h  
+009E2549  push        ebx  
+009E254A  push        esi  
+009E254B  push        edi  
+009E254C  mov         edi,ebp  
+009E254E  xor         ecx,ecx  
+009E2550  mov         eax,0CCCCCCCCh  
+009E2555  rep stos    dword ptr es:[edi]  
+009E2557  mov         ecx,offset _80A111C0_CPPTest1@cpp (09EF066h)  
+009E255C  call        @__CheckForDebuggerJustMyCode@4 (09E1389h)  
+    cout &lt;&lt; &quot;test&quot; &lt;&lt; endl;
+009E2561  mov         esi,esp  
+009E2563  push        offset std::endl&lt;char,std::char_traits&lt;char&gt; &gt; (09E103Ch)  
+009E2568  push        offset string &quot;test&quot; (09E9B30h)  
+009E256D  mov         eax,dword ptr [__imp_std::cout (09ED0D4h)]  
+009E2572  push        eax  
+009E2573  call        std::operator&lt;&lt;&lt;std::char_traits&lt;char&gt; &gt; (09E11A9h)  
+009E2578  add         esp,8  
+009E257B  mov         ecx,eax  
+009E257D  call        dword ptr [__imp_std::basic_ostream&lt;char,std::char_traits&lt;char&gt; &gt;::operator&lt;&lt; (09ED0A0h)]  
+009E2583  cmp         esi,esp  
+009E2585  call        __RTC_CheckEsp (09E1294h)  
+}
+009E258A  pop         edi  
+009E258B  pop         esi  
+009E258C  pop         ebx  
+009E258D  add         esp,0C0h  
+009E2593  cmp         ebp,esp  
+009E2595  call        __RTC_CheckEsp (09E1294h)  
+009E259A  mov         esp,ebp  
+009E259C  pop         ebp  
+009E259D  ret
+</code></pre>
+<h2 id="cdecl-参数顺序问题"><a name="cdecl-参数顺序问题" class="anchor-navigation-ex-anchor" href="#cdecl-参数顺序问题"><i class="fa fa-link" aria-hidden="true"></i></a>_cdecl 参数顺序问题</h2>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-comment">// 参数是从右往左传的</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> _cdecl <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> nNumberA, <span class="hljs-keyword">int</span> nNumberB)</span> </span>{
+    cout &lt;&lt; <span class="hljs-string">&quot;test&quot;</span> &lt;&lt; endl;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// 返回地址，参数 n，参数 n-1... </span>
+    <span class="hljs-comment">// _cdecl：从右像左传参，调用方负责栈平衡，在这里是 main 函数负责~</span>
+    <span class="hljs-built_in">test</span>(<span class="hljs-number">0xFFFFFFFF</span>, <span class="hljs-number">0xEEEEEEEE</span>);
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-cpp">    test(0xFFFFFFFF, 0xEEEEEEEE);
+006925F1  push        0EEEEEEEEh  // 压栈
+006925F6  push        0FFFFFFFFh  
+006925F8  call        test (0691442h)  
+006925FD  add         esp,8 // 平栈
+
+   system(&quot;pause&quot;);
+00692600  mov         esi,esp  
+00692602  push        offset string &quot;pause&quot; (0699B38h)  
+00692607  call        dword ptr [__imp__system (069D1CCh)]  
+0069260D  add         esp,4  
+00692610  cmp         esi,esp  
+00692612  call        __RTC_CheckEsp (0691294h)  
+    return 0;
+00692617  xor         eax,eax  
+
+------ 压栈和平栈时 esp 的变化，为什么压栈是降低的？
+ESP = 00B3F904 // esp 初始状态
+
+006925F1  push        0EEEEEEEEh  // 压栈
+ESP = 00B3F900 
+
+006925F6  push        0FFFFFFFFh
+ESP = 00B3F8FC
+
+006925F8  call        test (0691442h)  // 在主函数看来 esp 没变化，函数内自平衡
+ESP = 00B3F8FC
+
+006925FD  add         esp,8  // 平栈，主调函数负责栈平衡
+ESP = 00B3F904 // esp 又恢复初始状态了~
+
+// 为什么是平 8
+x86 push 4 字节
+x64 push 8 字节
+
+1. 都是整字节压栈的
+2. 若压进去的字节超出，就会造成缓冲区溢出漏洞
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> _cdecl <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> nNumberA, <span class="hljs-keyword">int</span> nNumberB)</span> </span>{
+<span class="hljs-number">00692540</span>  push        ebp  
+<span class="hljs-number">00692541</span>  mov         ebp,esp  
+<span class="hljs-number">00692543</span>  sub         esp,<span class="hljs-number">0</span>C0h  
+<span class="hljs-number">00692549</span>  push        ebx  
+<span class="hljs-number">0069254</span>A  push        esi  
+<span class="hljs-number">0069254B</span>  push        edi  
+<span class="hljs-number">0069254</span>C  mov         edi,ebp  
+<span class="hljs-number">0069254</span>E  <span class="hljs-keyword">xor</span>         ecx,ecx  
+<span class="hljs-number">00692550</span>  mov         eax,<span class="hljs-number">0</span>CCCCCCCCh  
+<span class="hljs-number">00692555</span>  rep stos    dword ptr es:[edi]  
+<span class="hljs-number">00692557</span>  mov         ecx,offset _80A111C0_CPPTest1@<span class="hljs-built_in">cpp</span> (<span class="hljs-number">069F</span>066h)  
+<span class="hljs-number">0069255</span>C  call        @__CheckForDebuggerJustMyCode@<span class="hljs-number">4</span> (<span class="hljs-number">0691389</span>h)  
+    cout &lt;&lt; <span class="hljs-string">&quot;test&quot;</span> &lt;&lt; endl;
+<span class="hljs-number">00692561</span>  mov         esi,esp  
+<span class="hljs-number">00692563</span>  push        offset std::endl&lt;<span class="hljs-keyword">char</span>,std::char_traits&lt;<span class="hljs-keyword">char</span>&gt; &gt; (<span class="hljs-number">069103</span>Ch)  
+<span class="hljs-number">00692568</span>  push        offset string <span class="hljs-string">&quot;test&quot;</span> (<span class="hljs-number">0699B</span>30h)  
+<span class="hljs-number">0069256</span>D  mov         eax,dword ptr [__imp_std::<span class="hljs-built_in">cout</span> (<span class="hljs-number">069</span>D0D4h)]  
+<span class="hljs-number">00692572</span>  push        eax  
+<span class="hljs-number">00692573</span>  call        std::<span class="hljs-keyword">operator</span>&lt;&lt;&lt;std::char_traits&lt;<span class="hljs-keyword">char</span>&gt; &gt; (<span class="hljs-number">06911</span>A9h)  
+<span class="hljs-number">00692578</span>  add         esp,<span class="hljs-number">8</span>  
+<span class="hljs-number">0069257B</span>  mov         ecx,eax  
+<span class="hljs-number">0069257</span>D  call        dword ptr [__imp_std::basic_ostream&lt;<span class="hljs-keyword">char</span>,std::char_traits&lt;<span class="hljs-keyword">char</span>&gt; &gt;::<span class="hljs-keyword">operator</span>&lt;&lt; (<span class="hljs-number">069</span>D0A0h)]  
+<span class="hljs-number">00692583</span>  cmp         esi,esp  
+<span class="hljs-number">00692585</span>  call        __RTC_CheckEsp (<span class="hljs-number">0691294</span>h)  
+}
+<span class="hljs-number">0069258</span>A  pop         edi  
+<span class="hljs-number">0069258B</span>  pop         esi  
+<span class="hljs-number">0069258</span>C  pop         ebx  
+<span class="hljs-number">0069258</span>D  add         esp,<span class="hljs-number">0</span>C0h  
+<span class="hljs-number">00692593</span>  cmp         ebp,esp  
+<span class="hljs-number">00692595</span>  call        __RTC_CheckEsp (<span class="hljs-number">0691294</span>h)  
+<span class="hljs-number">0069259</span>A  mov         esp,ebp  
+<span class="hljs-number">0069259</span>C  pop         ebp  
+<span class="hljs-number">0069259</span>D  ret
+</code></pre>
+<p><img src="assets/Snipaste_2022-10-27_00-10-55-20221027001106-7cinjo6.png" alt="Snipaste_2022-10-27_00-10-55"></p>
+<h2 id="stdcall"><a name="stdcall" class="anchor-navigation-ex-anchor" href="#stdcall"><i class="fa fa-link" aria-hidden="true"></i></a>_stdcall</h2>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// </span>
+    <span class="hljs-built_in">MessageBox</span>(<span class="hljs-literal">NULL</span>, <span class="hljs-string">L&quot;zhaocai&quot;</span>, <span class="hljs-string">L&quot;__stdcall&quot;</span>, MB_OK);
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>对比上面的 _cdcel 的 <code>test()</code>​ 函数，可以看到 _stdcall 的 <code>MessageBox()</code>​ 函数并没有进行堆栈平衡的平栈操作。</p>
+<pre><code class="lang-cpp">    <span class="hljs-built_in">MessageBox</span>(<span class="hljs-literal">NULL</span>, <span class="hljs-string">L&quot;zhaocai&quot;</span>, <span class="hljs-string">L&quot;__stdcall&quot;</span>, MB_OK);
+<span class="hljs-number">00F</span>01831  mov         esi,esp  
+<span class="hljs-number">00F</span>01833  push        <span class="hljs-number">0</span>  
+<span class="hljs-number">00F</span>01835  push        offset string <span class="hljs-string">L&quot;__stdcall&quot;</span> (<span class="hljs-number">0F</span>07CE8h)  
+<span class="hljs-number">00F</span>0183A  push        offset string <span class="hljs-string">L&quot;zhaocai&quot;</span> (<span class="hljs-number">0F</span>07BE8h)  
+<span class="hljs-number">00F</span>0183F  push        <span class="hljs-number">0</span>  
+<span class="hljs-number">00F</span>01841  call        dword ptr [__imp__MessageBoxW@<span class="hljs-number">16</span> (<span class="hljs-number">0F</span>0B098h)]  
+<span class="hljs-number">00F</span>01847  cmp         esi,esp  
+<span class="hljs-number">00F</span>01849  call        __RTC_CheckEsp (<span class="hljs-number">0F</span>0123Ah)  
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+<span class="hljs-number">00F</span>0184E  mov         esi,esp  
+<span class="hljs-number">00F</span>01850  push        offset string <span class="hljs-string">&quot;pause&quot;</span> (<span class="hljs-number">0F</span>07B40h)  
+<span class="hljs-number">00F</span>01855  call        dword ptr [__imp__system (<span class="hljs-number">0F</span>0B17Ch)]  
+<span class="hljs-number">00F</span>0185B  add         esp,<span class="hljs-number">4</span>  <span class="hljs-comment">// 平栈</span>
+<span class="hljs-number">00F</span>0185E  cmp         esi,esp  
+<span class="hljs-number">00F</span>01860  call        __RTC_CheckEsp (<span class="hljs-number">0F</span>0123Ah)  
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+<span class="hljs-number">00F</span>01865  <span class="hljs-keyword">xor</span>         eax,eax
+</code></pre>
+<h2 id="fastcall"><a name="fastcall" class="anchor-navigation-ex-anchor" href="#fastcall"><i class="fa fa-link" aria-hidden="true"></i></a>_fastcall</h2>
+<ul>
+<li>32 位：前两位使用寄存器，edx，ecx</li>
+<li>64 为：前四位使用寄存器，rcx，rdx，r8，r9</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-comment">// 参数是从右往左传的，第 1，2 个参数会放到寄存器里面。</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> _fastcall <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> nNumberA, <span class="hljs-keyword">int</span> nNumberB, <span class="hljs-keyword">int</span> nNumberC, <span class="hljs-keyword">int</span> nNumberD)</span> </span>{
+    cout &lt;&lt; <span class="hljs-string">&quot;test&quot;</span> &lt;&lt; endl;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">test</span>(<span class="hljs-number">0xAAAAAAAA</span>, <span class="hljs-number">0xBBBBBBBB</span>, <span class="hljs-number">0xCCCCCCCC</span>, <span class="hljs-number">0xDDDDDDDD</span>);
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-cpp">    <span class="hljs-built_in">test</span>(<span class="hljs-number">0xAAAAAAAA</span>, <span class="hljs-number">0xBBBBBBBB</span>, <span class="hljs-number">0xCCCCCCCC</span>, <span class="hljs-number">0xDDDDDDDD</span>);
+<span class="hljs-number">00F</span>32601  push        <span class="hljs-number">0</span>DDDDDDDDh  
+<span class="hljs-number">00F</span>32606  push        <span class="hljs-number">0</span>CCCCCCCCh  
+<span class="hljs-number">00F</span>3260B  mov         edx,<span class="hljs-number">0B</span>BBBBBBBh  
+<span class="hljs-number">00F</span>32610  mov         ecx,<span class="hljs-number">0</span>AAAAAAAAh  <span class="hljs-comment">// 第 1，2 个参数直接放到了寄存器中</span>
+<span class="hljs-number">00F</span>32615  <span class="hljs-function">call        <span class="hljs-title">test</span> <span class="hljs-params">(<span class="hljs-number">0F</span>31172h)</span>  
+
+    <span class="hljs-title">system</span><span class="hljs-params">(<span class="hljs-string">&quot;pause&quot;</span>)</span></span>;
+<span class="hljs-number">00F</span>3261A  mov         esi,esp  
+<span class="hljs-number">00F</span>3261C  push        offset string <span class="hljs-string">&quot;pause&quot;</span> (<span class="hljs-number">0F</span>39B38h)  
+<span class="hljs-number">00F</span>32621  call        dword ptr [__imp__system (<span class="hljs-number">0F</span>3D1CCh)]  
+<span class="hljs-number">00F</span>32627  add         esp,<span class="hljs-number">4</span>  
+<span class="hljs-number">00F</span>3262A  cmp         esi,esp  
+<span class="hljs-number">00F</span>3262C  call        __RTC_CheckEsp (<span class="hljs-number">0F</span>31294h)  
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+<span class="hljs-number">00F</span>32631  <span class="hljs-keyword">xor</span>         eax,eax
+
+----------
+EAX = <span class="hljs-number">00F</span>3F0F2 
+EBX = <span class="hljs-number">0065</span>A000 
+ECX = AAAAAAAA <span class="hljs-comment">// 参数 1</span>
+EDX = BBBBBBBB <span class="hljs-comment">// 参数 2 </span>
+ESI = <span class="hljs-number">00F</span>31023 
+EDI = <span class="hljs-number">005</span>EF968 
+EIP = <span class="hljs-number">00F</span>32540 
+ESP = <span class="hljs-number">005</span>EF890 
+EBP = <span class="hljs-number">005</span>EF968 
+EFL = <span class="hljs-number">00000246</span>
+
+----------
+<span class="hljs-keyword">void</span> _fastcall <span class="hljs-built_in">test</span>(<span class="hljs-keyword">int</span> nNumberA, <span class="hljs-keyword">int</span> nNumberB, <span class="hljs-keyword">int</span> nNumberC, <span class="hljs-keyword">int</span> nNumberD) {
+<span class="hljs-number">00F</span>32540  push        ebp  
+<span class="hljs-number">00F</span>32541  mov         ebp,esp  
+<span class="hljs-number">00F</span>32543  sub         esp,<span class="hljs-number">0</span>D8h  
+<span class="hljs-number">00F</span>32549  push        ebx  
+<span class="hljs-number">00F</span>3254A  push        esi  
+<span class="hljs-number">00F</span>3254B  push        edi  
+<span class="hljs-number">00F</span>3254C  push        ecx  
+<span class="hljs-number">00F</span>3254D  lea         edi,[ebp<span class="hljs-number">-18</span>h]  
+<span class="hljs-number">00F</span>32550  mov         ecx,<span class="hljs-number">6</span>  
+<span class="hljs-number">00F</span>32555  mov         eax,<span class="hljs-number">0</span>CCCCCCCCh  
+<span class="hljs-number">00F</span>3255A  rep stos    dword ptr es:[edi]  
+<span class="hljs-number">00F</span>3255C  pop         ecx  
+<span class="hljs-number">00F</span>3255D  mov         dword ptr [nNumberB],edx <span class="hljs-comment">//dword ptr [ebp-14h],edx，这里如果是 + 基本都是参数</span>
+<span class="hljs-number">00F</span>32560  mov         dword ptr [nNumberA],ecx <span class="hljs-comment">//dword ptr [ebp-8],ecx， - 的话基本是局部变量 </span>
+<span class="hljs-number">00F</span>32563  mov         ecx,offset _F1BB1F3A_CPPTest1@<span class="hljs-built_in">cpp</span> (<span class="hljs-number">0F</span>3F0F2h)  
+<span class="hljs-number">00F</span>32568  call        @__CheckForDebuggerJustMyCode@<span class="hljs-number">4</span> (<span class="hljs-number">0F</span>31389h)
+</code></pre>
+<h2 id="thiscall"><a name="thiscall" class="anchor-navigation-ex-anchor" href="#thiscall"><i class="fa fa-link" aria-hidden="true"></i></a>_thiscall</h2>
+<blockquote>
+<p>​<code>ecx,[ebp-0Ch]</code>​</p>
+</blockquote>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-comment">// _thiscall</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">int</span> a;
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">seta</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span> </span>{
+        <span class="hljs-keyword">this</span>-&gt;a = a;
+
+        <span class="hljs-keyword">return</span> a;
+    };
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    Test testObj;
+    testObj.<span class="hljs-built_in">seta</span>(<span class="hljs-number">888</span>);
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-cpp">   testObj.seta(888);
+009C215F  push        378h  
+009C2164  lea         ecx,[testObj]  
+009C2167  call        Test::seta (09C143Dh)  
+
+# 把显示符号名关掉，就是这样的表现形式：
+    testObj.seta(888);
+009C215F  push        378h  
+009C2164  lea         ecx,[ebp-0Ch]   // 这就是将 obj 放到寄存器，然后传到类内作为 this 指针使用
+009C2167  call        009C143D
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">seta</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span> </span>{
+<span class="hljs-number">009</span>C1F00  push        ebp  
+<span class="hljs-number">009</span>C1F01  mov         ebp,esp  
+<span class="hljs-number">009</span>C1F03  sub         esp,<span class="hljs-number">0</span>CCh  
+<span class="hljs-number">009</span>C1F09  push        ebx  
+<span class="hljs-number">009</span>C1F0A  push        esi  
+<span class="hljs-number">009</span>C1F0B  push        edi  
+<span class="hljs-number">009</span>C1F0C  push        ecx  
+<span class="hljs-number">009</span>C1F0D  lea         edi,[ebp<span class="hljs-number">-0</span>Ch]  
+<span class="hljs-number">009</span>C1F10  mov         ecx,<span class="hljs-number">3</span>  
+<span class="hljs-number">009</span>C1F15  mov         eax,<span class="hljs-number">0</span>CCCCCCCCh  
+<span class="hljs-number">009</span>C1F1A  rep stos    dword ptr es:[edi]  
+<span class="hljs-number">009</span>C1F1C  pop         ecx  
+<span class="hljs-number">009</span>C1F1D  mov         dword ptr [ebp<span class="hljs-number">-8</span>],ecx  <span class="hljs-comment">//dword ptr [this],ecx</span>
+<span class="hljs-number">009</span>C1F20  mov         ecx,<span class="hljs-number">9</span>CF0F2h  
+<span class="hljs-number">009</span>C1F25  call        <span class="hljs-number">009</span>C1389  
+        <span class="hljs-keyword">this</span>-&gt;a = a;
+<span class="hljs-number">009</span>C1F2A  mov         eax,dword ptr [ebp<span class="hljs-number">-8</span>]  <span class="hljs-comment">//eax,dword ptr [this]</span>
+<span class="hljs-number">009</span>C1F2D  mov         ecx,dword ptr [ebp+<span class="hljs-number">8</span>]  <span class="hljs-comment">//ecx,dword ptr [a]</span>
+<span class="hljs-number">009</span>C1F30  mov         dword ptr [eax],ecx  
+
+        <span class="hljs-keyword">return</span> a;
+<span class="hljs-number">009</span>C1F32  mov         eax,dword ptr [ebp+<span class="hljs-number">8</span>]  <span class="hljs-comment">//eax,dword ptr [a]</span>
+    };
+</code></pre>
+<h1 id="前人栽树"><a name="前人栽树" class="anchor-navigation-ex-anchor" href="#前人栽树"><i class="fa fa-link" aria-hidden="true"></i></a>前人栽树</h1>
+<ul>
+<li><a href="https://www.cnblogs.com/ToBeExpert/p/9768546.html" target="_blank">梦回----32位CPU和64位CPU的通用寄存器 - 古I月 - 博客园 (cnblogs.com)</a></li>
+<li>《C++反汇编与逆向分析技术揭秘》</li>
+<li><a href="https://learn.microsoft.com/zh-cn/cpp/cpp/argument-passing-and-naming-conventions?view=msvc-170" target="_blank">参数传递和命名约定 | Microsoft Learn</a></li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-11-08 05:10:58
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="CPP - 07 探索类对象模型（三）.html" class="navigation navigation-prev " aria-label="Previous page: CPP - 07 探索类对象模型（三）">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="CPP - 09 探索对象模型（四）.html" class="navigation navigation-next " aria-label="Next page: CPP - 09 探索对象模型（四）">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CPP - 08 寄存器基础与函数调用约定","level":"2.2.8","depth":2,"next":{"title":"CPP - 09 探索对象模型（四）","level":"2.2.9","depth":2,"path":"C++ 基础/CPP - 09 探索对象模型（四）.md","ref":"C++ 基础/CPP - 09 探索对象模型（四）.md","articles":[]},"previous":{"title":"CPP - 07 探索类对象模型（三）","level":"2.2.7","depth":2,"path":"C++ 基础/CPP - 07 探索类对象模型（三）.md","ref":"C++ 基础/CPP - 07 探索类对象模型（三）.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-Windows 高级攻防/","text":"Windows 高级攻防","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Windows 高级攻防","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"C++ 基础/CPP - 08 寄存器基础与函数调用约定.md","mtime":"2022-11-07T21:10:58.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-11-08T06:00:50.224Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

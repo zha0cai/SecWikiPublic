@@ -1,0 +1,1477 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>CPP - 10 探索对象模型（五） · Windows 高级攻防</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.0">
+        <meta name="author" content="zha0cai">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="CPP - 11 函数模板和类模板.html" />
+    
+    
+    <link rel="prev" href="CPP - 09 探索对象模型（四）.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/zha0cai" target="_blank" class="custom-link">My github</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Windows 高级攻防
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">0x01 基础阶段</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    C 语言程序设计基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                <a href="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                    
+                    01 环境和编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                <a href="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                    
+                    02 基础数据类型与输入输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../C 语言程序设计基础/03 - 运算符.html">
+            
+                <a href="../C 语言程序设计基础/03 - 运算符.html">
+            
+                    
+                    03 运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                <a href="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                    
+                    04 选择结构与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                <a href="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                    
+                    05 函数、数组与指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                <a href="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                    
+                    06 复杂数据类型与文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    C ++ 基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="CPP - 01 面向对象基础.html">
+            
+                <a href="CPP - 01 面向对象基础.html">
+            
+                    
+                    CPP - 01 面向对象基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="CPP - 02 重载.html">
+            
+                <a href="CPP - 02 重载.html">
+            
+                    
+                    CPP - 02 重载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="CPP - 03 继承.html">
+            
+                <a href="CPP - 03 继承.html">
+            
+                    
+                    CPP - 03 继承
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="CPP - 04 多态.html">
+            
+                <a href="CPP - 04 多态.html">
+            
+                    
+                    CPP - 04 多态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="CPP - 05 探索类对象模型（一）.html">
+            
+                <a href="CPP - 05 探索类对象模型（一）.html">
+            
+                    
+                    CPP - 05 探索类对象模型（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="CPP - 06 探索类对象模型（二）.html">
+            
+                <a href="CPP - 06 探索类对象模型（二）.html">
+            
+                    
+                    CPP - 06 探索类对象模型（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="CPP - 07 探索类对象模型（三）.html">
+            
+                <a href="CPP - 07 探索类对象模型（三）.html">
+            
+                    
+                    CPP - 07 探索类对象模型（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.8" data-path="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                <a href="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                    
+                    CPP - 08 寄存器基础与函数调用约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="CPP - 09 探索对象模型（四）.html">
+            
+                <a href="CPP - 09 探索对象模型（四）.html">
+            
+                    
+                    CPP - 09 探索对象模型（四）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2.10" data-path="CPP - 10 探索对象模型（五）.html">
+            
+                <a href="CPP - 10 探索对象模型（五）.html">
+            
+                    
+                    CPP - 10 探索对象模型（五）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.11" data-path="CPP - 11 函数模板和类模板.html">
+            
+                <a href="CPP - 11 函数模板和类模板.html">
+            
+                    
+                    CPP - 11 函数模板和类模板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.12" data-path="CPP - 12 函数模板和类模板（总结）.html">
+            
+                <a href="CPP - 12 函数模板和类模板（总结）.html">
+            
+                    
+                    CPP - 12 函数模板和类模板（总结）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.13" data-path="CPP - 现代 C++ 基础（一）.html">
+            
+                <a href="CPP - 现代 C++ 基础（一）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.14" data-path="CPP - 现代 C++ 基础（二）.html">
+            
+                <a href="CPP - 现代 C++ 基础（二）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.15" data-path="CPP - 现代 C++ 基础（三）.html">
+            
+                <a href="CPP - 现代 C++ 基础（三）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">MASM 汇编语言（待更新）</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x02 高级安全</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x03 内网攻防</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x04 CTF（浅）</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >CPP - 10 探索对象模型（五）</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#成员函数和全局函数"><b></b>成员函数和全局函数</a></li><li><span class="title-icon "></span><a href="#是否使用指针"><b></b>是否使用指针</a></li><li><span class="title-icon "></span><a href="#编译器-vcall"><b></b>编译器 vcall</a></li><li><span class="title-icon "></span><a href="#类的构造过程"><b></b>类的构造过程</a></li><ul><li><span class="title-icon "></span><a href="#单继承"><b></b>单继承</a></li><li><span class="title-icon "></span><a href="#构造函数过程"><b></b>构造函数过程</a></li><li><span class="title-icon "></span><a href="#析构函数过程"><b></b>析构函数过程</a></li><li><span class="title-icon "></span><a href="#new-构造"><b></b>new 构造</a></li><li><span class="title-icon "></span><a href="#delete-析构"><b></b>delete 析构</a></li></ul></ul></div><a href="#成员函数和全局函数" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><blockquote>
+<p>函数与对象总结</p>
+</blockquote>
+<h1 id="成员函数和全局函数"><a name="成员函数和全局函数" class="anchor-navigation-ex-anchor" href="#成员函数和全局函数"><i class="fa fa-link" aria-hidden="true"></i></a>成员函数和全局函数</h1>
+<pre><code class="lang-cpp">cb1Obj.testCB(110);
+00A8195F  push        6Eh  // 传递参数
+00A81961  lea         ecx,[cb1Obj]  // thiscall 把对象用 ecx 传递，给类内用作 this 指针
+00A81964  call        CB::testCB (0A81497h)  
+
+    func(&amp;cb1Obj, 110);
+00A81969  push        6Eh  // 传递参数
+00A8196B  lea         eax,[cb1Obj]  // 把对象地址取出放入 eax 寄存器
+00A8196E  push        eax  // 把 eax 压栈，作为参数 _cdecl
+00A8196F  call        func (0A81492h)  
+00A81974  add         esp,8  // 平栈
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CB</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">int</span> nCB1;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">testCB</span><span class="hljs-params">(<span class="hljs-keyword">int</span> nNum)</span> </span>{
+        nCB1 += nNum;
+    }
+};
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(CB *obj, <span class="hljs-keyword">int</span> nNum)</span> </span>{
+    obj-&gt;nCB1 += nNum;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    CB cb1Obj;
+    cb1Obj.<span class="hljs-built_in">testCB</span>(<span class="hljs-number">110</span>);
+
+    <span class="hljs-built_in">func</span>(&amp;cb1Obj, <span class="hljs-number">110</span>);
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;cb1Obj.testCB: 0x%X\r\n&quot;</span>, &amp;CB::testCB);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;func: 0x%X\r\n&quot;</span>, func);
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h1 id="是否使用指针"><a name="是否使用指针" class="anchor-navigation-ex-anchor" href="#是否使用指针"><i class="fa fa-link" aria-hidden="true"></i></a>是否使用指针</h1>
+<ul>
+<li>使用指针可能会产生多态</li>
+</ul>
+<pre><code class="lang-json">#include &lt;iostream&gt;
+#include &lt;Windows.h&gt;
+
+using namespace std;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CB</span> </span>{
+<span class="hljs-attr">public</span>:
+    int nCB1;
+
+    virtual <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">testCB</span>(<span class="hljs-params"></span>)</span> {
+        cout &lt;&lt; <span class="hljs-string">&quot;testCB&quot;</span> &lt;&lt; endl;
+    }
+};
+
+int <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"></span>)</span> {
+    CB cb1Obj;
+    cb1Obj.testCB();
+
+    CB* pCB = <span class="hljs-keyword">new</span> CB;
+    pCB-&gt;testCB();
+
+    system(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-json">不会产生多态，因此没有必要去访问虚函数表，动态寻址，直接访问固定地址  
+
+    cb1Obj.testCB();
+007B2527  lea         ecx,[cb1Obj]  <span class="hljs-comment">// this</span>
+007B252A  call        CB::testCB (07B14C9h)
+
+----------
+在可能会产生多态的情况下，使用虚表指针，需要在虚函数表里面查找函数地址进行调用
+
+ pCB-&gt;testCB();
+005A27BE  mov         eax,dword ptr [ebp-1Ch]  
+005A27C1  mov         edx,dword ptr [eax]  
+005A27C3  mov         esi,esp  
+005A27C5  mov         ecx,dword ptr [ebp-1Ch]  
+005A27C8  mov         eax,dword ptr [edx]  
+005A27CA  call        eax  
+005A27CC  cmp         esi,esp  
+005A27CE  call        005A12F3
+</code></pre>
+<ul>
+<li>虚函数内调用虚函数 -- 隐式 <code>this</code>​</li>
+<li>this 指针调用虚函数 -- 显示 <code>this</code>​</li>
+<li>类内 <code>::</code>​ 作用域下调用虚函数  -- 类内函数的固定地址</li>
+<li><p>静态成员函数【属于类，不属于对象】 -- 类内函数的固定地址，不管是否使用指针访问</p>
+<pre><code>`cb1Obj.testCB3();
+</code></pre><p>006E2797  call        CB::testCB3 (06E14E7h)`​</p>
+<p>   <code>pCB-&gt;testCB3();
+006E27DB  call        CB::testCB3 (06E14E7h)</code>​</p>
+</li>
+</ul>
+<pre><code class="lang-json">        testCB2();
+00DA1EC3  mov         eax,dword ptr [ebp-<span class="hljs-number">8</span>]  <span class="hljs-comment">// ebp-8 == this</span>
+00DA1EC6  mov         edx,dword ptr [eax]  
+00DA1EC8  mov         esi,esp  
+00DA1ECA  mov         ecx,dword ptr [ebp-<span class="hljs-number">8</span>]  
+00DA1ECD  mov         eax,dword ptr [edx+<span class="hljs-number">4</span>]  
+00DA1ED0  call        eax  
+00DA1ED2  cmp         esi,esp  
+00DA1ED4  call        00DA12F3  
+        <span class="hljs-built_in">this</span>-&gt;testCB2();
+00DA1ED9  mov         eax,dword ptr [ebp-<span class="hljs-number">8</span>]  
+00DA1EDC  mov         edx,dword ptr [eax]  
+00DA1EDE  mov         esi,esp  
+00DA1EE0  mov         ecx,dword ptr [ebp-<span class="hljs-number">8</span>]  
+00DA1EE3  mov         eax,dword ptr [edx+<span class="hljs-number">4</span>]  
+00DA1EE6  call        eax  
+00DA1EE8  cmp         esi,esp  
+00DA1EEA  call        00DA12F3  
+        <span class="hljs-attr">CB</span>::testCB2();
+00DA1EEF  mov         ecx,dword ptr [ebp-<span class="hljs-number">8</span>]  
+00DA1EF2  call        00DA14E2
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CB</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">int</span> nCB1;
+
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCB1</span><span class="hljs-params">()</span> </span>{
+        cout &lt;&lt; <span class="hljs-string">&quot;testCB1&quot;</span> &lt;&lt; endl;
+        <span class="hljs-built_in">testCB2</span>();
+        <span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">testCB2</span>();
+        CB::<span class="hljs-built_in">testCB2</span>();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCB2</span><span class="hljs-params">()</span> </span>{
+        cout &lt;&lt; <span class="hljs-string">&quot;testCB2&quot;</span> &lt;&lt; endl;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCB3</span><span class="hljs-params">()</span> </span>{
+        cout &lt;&lt; <span class="hljs-string">&quot;testCB3&quot;</span> &lt;&lt; endl;
+    }
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    CB cb1Obj;
+    cb1Obj.<span class="hljs-built_in">testCB3</span>();
+
+    CB* pCB = <span class="hljs-keyword">new</span> CB;
+    pCB-&gt;<span class="hljs-built_in">testCB3</span>();
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h1 id="编译器-vcall"><a name="编译器-vcall" class="anchor-navigation-ex-anchor" href="#编译器-vcall"><i class="fa fa-link" aria-hidden="true"></i></a>编译器 vcall</h1>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CB</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">int</span> nCB1;
+
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCB1</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CB vir testCB1 this:0x%X\r\n&quot;</span>, <span class="hljs-keyword">this</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCB2</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CB vir testCB2 this:0x%X\r\n&quot;</span>, <span class="hljs-keyword">this</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCB3</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CB static testCB3\r\n&quot;</span>);
+    }
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    CB* pCB = <span class="hljs-keyword">new</span> CB;
+    pCB-&gt;<span class="hljs-built_in">testCB1</span>();
+    pCB-&gt;<span class="hljs-built_in">testCB2</span>();
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CB vir testCB1 :0x%X\r\n&quot;</span>, &amp;CB::testCB1);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CB vir testCB1 :0x%X\r\n&quot;</span>, &amp;CB::testCB2);
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-cpp">printf(&quot;CB vir testCB1 :0x%X\r\n&quot;, &amp;CB::testCB1);
+00F41ABF  push        offset CB::`vcall&apos;{0}&apos; (0F414F6h)  
+00F41AC4  push        offset string &quot;CB vir testCB1 :0x%X\r\n&quot; (0F49EDCh)  
+00F41AC9  call        _printf (0F414ECh)  
+00F41ACE  add         esp,8  
+
+----------
+CB vir testCB1 this:0xBDFC60
+CB vir testCB2 this:0xBDFC60
+CB vir testCB1 :0xF414F6
+CB vir testCB1 :0xF41500
+请按任意键继续. . .
+</code></pre>
+<h1 id="类的构造过程"><a name="类的构造过程" class="anchor-navigation-ex-anchor" href="#类的构造过程"><i class="fa fa-link" aria-hidden="true"></i></a>类的构造过程</h1>
+<h2 id="单继承"><a name="单继承" class="anchor-navigation-ex-anchor" href="#单继承"><i class="fa fa-link" aria-hidden="true"></i></a>单继承</h2>
+<ul>
+<li>地址都一样，因为共用空间。</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CA</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CA</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CA obj:0x%X\r\n&quot;</span>, <span class="hljs-keyword">this</span>);
+    }
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CB</span> :</span> <span class="hljs-keyword">public</span> CA{
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CB</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CB obj:0x%X\r\n&quot;</span>, <span class="hljs-keyword">this</span>);
+    }
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CC</span> :</span> <span class="hljs-keyword">public</span> CB{
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CC</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CC obj:0x%X\r\n&quot;</span>, <span class="hljs-keyword">this</span>);
+    }
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    CC ccObj;
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-cpp">CA obj:<span class="hljs-number">0x6FF743</span>
+CB obj:<span class="hljs-number">0x6FF743</span>
+CC obj:<span class="hljs-number">0x6FF743</span>
+请按任意键继续. . .
+</code></pre>
+<h2 id="构造函数过程"><a name="构造函数过程" class="anchor-navigation-ex-anchor" href="#构造函数过程"><i class="fa fa-link" aria-hidden="true"></i></a>构造函数过程</h2>
+<pre><code class="lang-cpp">    CC ccObj;
+00261A5F  lea         ecx,[ccObj]  // 把对象地址作为 this 指针传入 ecx 中，传入类内
+00261A62  call        CC::CC (026150Fh) // 调用 CC 构造函数~
+
+----------
+0026150F  jmp         CC::CC (0261BF0h)  // 跳转表
+
+----------
+class CC : public CB{
+public:
+    CC() {
+00261BF0  push        ebp  
+00261BF1  mov         ebp,esp  
+00261BF3  sub         esp,0CCh  
+00261BF9  push        ebx  
+00261BFA  push        esi  
+00261BFB  push        edi  
+00261BFC  push        ecx  
+00261BFD  lea         edi,[ebp-0Ch]  
+00261C00  mov         ecx,3  
+00261C05  mov         eax,0CCCCCCCCh  
+00261C0A  rep stos    dword ptr es:[edi]  
+00261C0C  pop         ecx  
+00261C0D  mov         dword ptr [this],ecx  // 将 exc （对象地址）放入 this 指针（成员变量）
+00261C10  mov         ecx,offset _80A111C0_CPPTest1@cpp (026F0F2h)  
+00261C15  call        @__CheckForDebuggerJustMyCode@4 (0261406h)  
+00261C1A  mov         ecx,dword ptr [this]  // thiscall ecx 给 CB 一个自己的子对象
+00261C1D  call        CB::CB (0261442h)  // 调用 CB 的构造函数
+        printf(&quot;CC obj:0x%X\r\n&quot;, this);
+00261C22  mov         eax,dword ptr [this]  
+00261C25  push        eax  
+00261C26  push        offset string &quot;CC obj:0x%X\r\n&quot; (0269EC0h)  
+00261C2B  call        _printf (02614ECh)  
+00261C30  add         esp,8  
+    }
+00261C33  mov         eax,dword ptr [this]  
+00261C36  pop         edi  
+00261C37  pop         esi  
+00261C38  pop         ebx  
+00261C39  add         esp,0CCh  
+00261C3F  cmp         ebp,esp  
+00261C41  call        __RTC_CheckEsp (02612F3h)  
+00261C46  mov         esp,ebp  
+00261C48  pop         ebp  
+00261C49  ret  
+
+----------
+00261442  jmp         CB::CB (0261FA0h) 
+F11 跟进 CB，逻辑和结构基本与 CC 的一致
+
+----------
+class CB : public CA{
+public:
+    CB() {
+00261FA0  push        ebp  
+00261FA1  mov         ebp,esp  
+00261FA3  sub         esp,0CCh  
+00261FA9  push        ebx  
+00261FAA  push        esi  
+00261FAB  push        edi  
+00261FAC  push        ecx  
+00261FAD  lea         edi,[ebp-0Ch]  
+00261FB0  mov         ecx,3  
+00261FB5  mov         eax,0CCCCCCCCh  
+00261FBA  rep stos    dword ptr es:[edi]  
+00261FBC  pop         ecx  
+00261FBD  mov         dword ptr [this],ecx  
+00261FC0  mov         ecx,offset _80A111C0_CPPTest1@cpp (026F0F2h)  
+00261FC5  call        @__CheckForDebuggerJustMyCode@4 (0261406h)  
+00261FCA  mov         ecx,dword ptr [this]  
+00261FCD  call        CA::CA (026150Ah)  // 调用 CA 的构造函数
+
+----------
+0026150A  jmp         CA::CA (0261B90h)
+
+----------
+class CA {
+public:
+    CA() {
+00261B90  push        ebp  
+00261B91  mov         ebp,esp  
+00261B93  sub         esp,0CCh  
+00261B99  push        ebx  
+00261B9A  push        esi  
+00261B9B  push        edi  
+00261B9C  push        ecx  
+00261B9D  lea         edi,[ebp-0Ch]  
+00261BA0  mov         ecx,3  
+00261BA5  mov         eax,0CCCCCCCCh  
+00261BAA  rep stos    dword ptr es:[edi]  
+00261BAC  pop         ecx  
+00261BAD  mov         dword ptr [this],ecx  
+00261BB0  mov         ecx,offset _80A111C0_CPPTest1@cpp (026F0F2h)  
+00261BB5  call        @__CheckForDebuggerJustMyCode@4 (0261406h)  
+        printf(&quot;CA obj:0x%X\r\n&quot;, this);
+00261BBA  mov         eax,dword ptr [this]  
+00261BBD  push        eax  
+00261BBE  push        offset string &quot;CA obj:0x%X\r\n&quot; (0269B30h)  
+00261BC3  call        _printf (02614ECh)  
+00261BC8  add         esp,8  
+    }
+00261BCB  mov         eax,dword ptr [this]  // 按照调用约定，eax、rax 都是返回值，所以将 this 指针放到 eax 进行返回
+00261BCE  pop         edi  
+00261BCF  pop         esi  
+00261BD0  pop         ebx  
+00261BD1  add         esp,0CCh  
+00261BD7  cmp         ebp,esp  
+00261BD9  call        __RTC_CheckEsp (02612F3h)  
+00261BDE  mov         esp,ebp  
+00261BE0  pop         ebp  
+00261BE1  ret  // 返回到 CB 中
+</code></pre>
+<h2 id="析构函数过程"><a name="析构函数过程" class="anchor-navigation-ex-anchor" href="#析构函数过程"><i class="fa fa-link" aria-hidden="true"></i></a>析构函数过程</h2>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CA</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CA</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CA obj:0x%X\r\n&quot;</span>, <span class="hljs-keyword">this</span>);
+    }
+    ~<span class="hljs-built_in">CA</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CA~\r\n&quot;</span>);
+    }
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CB</span> :</span> <span class="hljs-keyword">public</span> CA{
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CB</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CB obj:0x%X\r\n&quot;</span>, <span class="hljs-keyword">this</span>);
+    }
+
+    ~<span class="hljs-built_in">CB</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CB~\r\n&quot;</span>);
+    }
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CC</span> :</span> <span class="hljs-keyword">public</span> CB{
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CC</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CC obj:0x%X\r\n&quot;</span>, <span class="hljs-keyword">this</span>);
+    }
+
+    ~<span class="hljs-built_in">CC</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CC~\r\n&quot;</span>);
+    }
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    CC *ccObj = <span class="hljs-keyword">new</span> CC;
+    <span class="hljs-keyword">delete</span> ccObj;
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-cpp">delete ccObj;
+00CB1DAD  mov         eax,dword ptr [ccObj]  
+00CB1DB0  mov         dword ptr [ebp-0F8h],eax  
+00CB1DB6  cmp         dword ptr [ebp-0F8h],0  
+00CB1DBD  je          __$EncStackInitStart+0AAh (0CB1DD4h)  
+00CB1DBF  push        1  
+00CB1DC1  mov         ecx,dword ptr [ebp-0F8h]  
+00CB1DC7  call        CC::`scalar deleting destructor&apos; (0CB1523h) // 调用 CC 的析构函数 
+00CB1DCC  mov         dword ptr [ebp-100h],eax  
+00CB1DD2  jmp         __$EncStackInitStart+0B4h (0CB1DDEh)  
+00CB1DD4  mov         dword ptr [ebp-100h],0  
+
+----------
+00CB1523  jmp         CC::`scalar deleting destructor&apos; // 从跳转表，跳转到 CC 的析构函数中
+
+----------
+CPPTest1.exe!CC::`scalar deleting destructor&apos;(unsigned int):
+00CB2390  push        ebp  
+00CB2391  mov         ebp,esp  
+00CB2393  sub         esp,0CCh  
+00CB2399  push        ebx  
+00CB239A  push        esi  
+00CB239B  push        edi  
+00CB239C  push        ecx  
+00CB239D  lea         edi,[ebp-0Ch]  
+00CB23A0  mov         ecx,3  
+00CB23A5  mov         eax,0CCCCCCCCh  
+00CB23AA  rep stos    dword ptr es:[edi]  
+00CB23AC  pop         ecx  
+00CB23AD  mov         dword ptr [this],ecx  
+00CB23B0  mov         ecx,dword ptr [this]  
+00CB23B3  call        CC::~CC (0CB1514h)  // 调用 CC 的析构函数
+00CB23B8  mov         eax,dword ptr [ebp+8]  
+00CB23BB  and         eax,1  
+00CB23BE  je          __$EncStackInitStart+31h (0CB23CEh)  
+00CB23C0  push        1  
+00CB23C2  mov         eax,dword ptr [this]  
+00CB23C5  push        eax  
+00CB23C6  call        operator delete (0CB10A0h)  
+00CB23CB  add         esp,8  
+00CB23CE  mov         eax,dword ptr [this]  
+00CB23D1  pop         edi  
+00CB23D2  pop         esi  
+00CB23D3  pop         ebx  
+00CB23D4  add         esp,0CCh  
+00CB23DA  cmp         ebp,esp  
+00CB23DC  call        __RTC_CheckEsp (0CB12F3h)  
+00CB23E1  mov         esp,ebp  
+00CB23E3  pop         ebp
+
+----------
+00CB150A  jmp         CA::CA (0CB1B90h)  
+00CB150F  jmp         CC::CC (0CB1BF0h)  
+00CB1514  jmp         CC::~CC (0CB22A0h)  
+00CB1519  jmp         CA::~CA (0CB2070h)  
+00CB151E  jmp         CB::~CB (0CB2130h)  
+00CB1523  jmp         CC::`scalar deleting destructor&apos; (0CB2390h)
+
+----------
+    ~CC() {
+00CB22A0  push        ebp  
+00CB22A1  mov         ebp,esp  
+00CB22A3  sub         esp,0CCh  
+00CB22A9  push        ebx  
+00CB22AA  push        esi  
+00CB22AB  push        edi  
+00CB22AC  push        ecx  
+00CB22AD  lea         edi,[ebp-0Ch]  
+00CB22B0  mov         ecx,3  
+00CB22B5  mov         eax,0CCCCCCCCh  
+00CB22BA  rep stos    dword ptr es:[edi]  
+00CB22BC  pop         ecx  
+00CB22BD  mov         dword ptr [this],ecx  // 执行 CC 的析构函数
+00CB22C0  mov         ecx,offset _80A111C0_CPPTest1@cpp (0CBF0F2h)  
+00CB22C5  call        @__CheckForDebuggerJustMyCode@4 (0CB1406h)  
+        printf(&quot;CA~\r\n&quot;);
+00CB22CA  push        offset string &quot;CC~\r\n&quot; (0CB9D70h)  
+00CB22CF  call        _printf (0CB14ECh)  
+00CB22D4  add         esp,4  
+    }
+00CB22D7  mov         ecx,dword ptr [this]  // 将 this 指针放到 ecx 中
+00CB22DA  call        CB::~CB (0CB151Eh)  // 调用 CB 的析构函数
+00CB22DF  pop         edi  
+00CB22E0  pop         esi  
+00CB22E1  pop         ebx  
+00CB22E2  add         esp,0CCh  
+00CB22E8  cmp         ebp,esp  
+00CB22EA  call        __RTC_CheckEsp (0CB12F3h)  
+00CB22EF  mov         esp,ebp  
+00CB22F1  pop         ebp  
+00CB22F2  ret 
+
+----------
+进入到 CB 的析构函数
+    ~CB() {
+00152130  push        ebp  
+00152131  mov         ebp,esp  
+00152133  sub         esp,0CCh  
+00152139  push        ebx  
+0015213A  push        esi  
+0015213B  push        edi  
+0015213C  push        ecx  
+0015213D  lea         edi,[ebp-0Ch]  
+00152140  mov         ecx,3  
+00152145  mov         eax,0CCCCCCCCh  
+0015214A  rep stos    dword ptr es:[edi]  
+0015214C  pop         ecx  
+0015214D  mov         dword ptr [this],ecx  // 执行 CB 的析构函数
+00152150  mov         ecx,offset _80A111C0_CPPTest1@cpp (015F0F2h)  
+00152155  call        @__CheckForDebuggerJustMyCode@4 (0151406h)  
+        printf(&quot;CB~\r\n&quot;);
+0015215A  push        offset string &quot;CB~\r\n&quot; (0159EDCh)  
+0015215F  call        _printf (01514ECh)  
+00152164  add         esp,4  
+    }
+00152167  mov         ecx,dword ptr [this]  
+0015216A  call        CA::~CA (0151519h)  // 调用 CA 的析构函数
+0015216F  pop         edi  
+00152170  pop         esi  
+00152171  pop         ebx  
+00152172  add         esp,0CCh  
+00152178  cmp         ebp,esp  
+0015217A  call        __RTC_CheckEsp (01512F3h)  
+0015217F  mov         esp,ebp  
+00152181  pop         ebp  
+00152182  ret  // 返回到 CC 的析构函数中
+
+----------
+进入到 CA 的析构函数
+ ~CA() {
+00152070  push        ebp  
+00152071  mov         ebp,esp  
+00152073  sub         esp,0CCh  
+00152079  push        ebx  
+0015207A  push        esi  
+0015207B  push        edi  
+0015207C  push        ecx  
+0015207D  lea         edi,[ebp-0Ch]  
+00152080  mov         ecx,3  
+00152085  mov         eax,0CCCCCCCCh  
+0015208A  rep stos    dword ptr es:[edi]  
+0015208C  pop         ecx  
+0015208D  mov         dword ptr [this],ecx  // 执行 CA 的析构函数
+00152090  mov         ecx,offset _80A111C0_CPPTest1@cpp (015F0F2h)  
+00152095  call        @__CheckForDebuggerJustMyCode@4 (0151406h)  
+        printf(&quot;CA~\r\n&quot;);
+0015209A  push        offset string &quot;CA~\r\n&quot; (0159D70h)  
+0015209F  call        _printf (01514ECh)  
+001520A4  add         esp,4  // 平栈返回~
+    }
+001520A7  pop         edi  
+001520A8  pop         esi  
+001520A9  pop         ebx  
+001520AA  add         esp,0CCh  
+001520B0  cmp         ebp,esp  
+001520B2  call        __RTC_CheckEsp (01512F3h)  
+001520B7  mov         esp,ebp  
+001520B9  pop         ebp  
+001520BA  ret // 返回到 CB 的析构函数中
+</code></pre>
+<pre><code class="lang-cpp">CA obj:<span class="hljs-number">0x95BFD8</span>
+CB obj:<span class="hljs-number">0x95BFD8</span>
+CC obj:<span class="hljs-number">0x95BFD8</span>
+CC~
+CB~
+CA~
+请按任意键继续. . .
+</code></pre>
+<h2 id="new-构造"><a name="new-构造" class="anchor-navigation-ex-anchor" href="#new-构造"><i class="fa fa-link" aria-hidden="true"></i></a>new 构造</h2>
+<ul>
+<li>重载的 new 关键字先进行 malloc 开辟空间，返回缓冲区指针</li>
+<li>再调用类固定地址的构造函数</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CA</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CA</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CA obj:0x%X\r\n&quot;</span>, <span class="hljs-keyword">this</span>);
+    }
+    ~<span class="hljs-built_in">CA</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CA~\r\n&quot;</span>);
+    }
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CB</span> :</span> <span class="hljs-keyword">public</span> CA{
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CB</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CB obj:0x%X\r\n&quot;</span>, <span class="hljs-keyword">this</span>);
+    }
+
+    ~<span class="hljs-built_in">CB</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CB~\r\n&quot;</span>);
+    }
+};
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CC</span> :</span> <span class="hljs-keyword">public</span> CB{
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CC</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CC obj:0x%X\r\n&quot;</span>, <span class="hljs-keyword">this</span>);
+    }
+
+    ~<span class="hljs-built_in">CC</span>() {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CC~\r\n&quot;</span>);
+    }
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    CC *ccObj = <span class="hljs-keyword">new</span> CC;
+    <span class="hljs-keyword">delete</span> ccObj;
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><strong>new 反汇编</strong></p>
+<pre><code class="lang-cpp">CC *ccObj = new CC;
+00151D54  push        1 // 空对象的大小就是 1 
+00151D56  call        operator new (0151140h)  // 可以看到 new 关键字是通过 operator 重载而来的，F11 跟进
+00151D5B  add         esp,4  
+00151D5E  mov         dword ptr [ebp-0ECh],eax  
+00151D64  mov         dword ptr [ebp-4],0  
+00151D6B  cmp         dword ptr [ebp-0ECh],0  
+00151D72  je          __$EncStackInitStart+5Dh (0151D87h)  
+00151D74  mov         ecx,dword ptr [ebp-0ECh]  
+00151D7A  call        CC::CC (015150Fh) // 调用固定地址的类构造函数
+
+----------  重载的 new 的跳转表
+00151140  jmp         operator new (01528E0h)
+
+----------  new 函数源码
+_CRT_SECURITYCRITICAL_ATTRIBUTE
+void* __CRTDECL operator new(size_t const size)
+{
+001528E0  push        ebp  
+001528E1  mov         ebp,esp  
+001528E3  push        ecx  
+    for (;;)
+    {
+        if (void* const block = malloc(size))
+001528E4  mov         eax,dword ptr [size]  
+001528E7  push        eax  
+001528E8  call        _malloc (0151069h)  // 可以看到 new 也是通过 malloc 分配内存空间的
+001528ED  add         esp,4  
+001528F0  mov         dword ptr [ebp-4],eax  
+001528F3  cmp         dword ptr [ebp-4],0  
+001528F7  je          operator new+1Eh (01528FEh)  
+        {
+            return block;
+001528F9  mov         eax,dword ptr [ebp-4]  
+001528FC  jmp         operator new+42h (0152922h)  
+        }
+
+        if (_callnewh(size) == 0)
+001528FE  mov         ecx,dword ptr [size]  
+00152901  push        ecx  
+00152902  call        __callnewh (01512B7h)  
+00152907  add         esp,4  
+0015290A  test        eax,eax  
+0015290C  jne         operator new+40h (0152920h)  
+        {
+            if (size == SIZE_MAX)
+0015290E  cmp         dword ptr [size],0FFFFFFFFh  
+00152912  jne         operator new+3Bh (015291Bh)  
+            {
+                __scrt_throw_std_bad_array_new_length();
+00152914  call        __scrt_throw_std_bad_array_new_length (01514ABh)  
+            }
+00152919  jmp         operator new+40h (0152920h)  
+            else
+            {
+                __scrt_throw_std_bad_alloc();
+0015291B  call        __scrt_throw_std_bad_alloc (015113Bh)  
+            }
+        }
+
+        // The new handler was successful; try to allocate again...
+    }
+00152920  jmp         operator new+4h (01528E4h)  
+}
+00152922  mov         esp,ebp  
+00152924  pop         ebp  
+00152925  ret
+</code></pre>
+<p><strong>malloc 实现 new</strong></p>
+<pre><code class="lang-cpp">CC* ccObj2 = (CC *)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(CC)); <span class="hljs-comment">// 只是开辟了空间，并没有调用 CC 的构造函数</span>
+ccObj2-&gt;CC::<span class="hljs-built_in">CC</span>(); <span class="hljs-comment">// 需要手动的调用一下 CC 的构造函数</span>
+</code></pre>
+<pre><code class="lang-cpp">CC* ccObj2 = (CC *)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(CC));
+<span class="hljs-number">007B</span>2095  mov         esi,esp  
+<span class="hljs-number">007B</span>2097  push        <span class="hljs-number">4</span>  
+<span class="hljs-number">007B</span>2099  call        dword ptr [__imp__malloc (<span class="hljs-number">07B</span>D1D0h)]  <span class="hljs-comment">// 开辟空间</span>
+<span class="hljs-number">007B</span>209F  add         esp,<span class="hljs-number">4</span>  
+<span class="hljs-number">007B</span>20A2  cmp         esi,esp  
+<span class="hljs-number">007B</span>20A4  call        __RTC_CheckEsp (<span class="hljs-number">07B</span>12F3h)  
+<span class="hljs-number">007B</span>20A9  mov         dword ptr [ccObj2],eax  
+
+---------- 手动调用 CC 的构造函数
+    ccObj2-&gt;CC::<span class="hljs-built_in">CC</span>();
+<span class="hljs-number">00321</span>C2C  mov         ecx,dword ptr [ccObj2]  
+<span class="hljs-number">00321</span><span class="hljs-function">C2F  call        <span class="hljs-title">CC::CC</span> <span class="hljs-params">(<span class="hljs-number">032154B</span>h)</span>
+</span></code></pre>
+<p><img src="assets/Snipaste_2022-10-29_19-14-43-20221029191453-z32xggt.png" alt="Snipaste_2022-10-29_19-14-43"></p>
+<p><img src="assets/Snipaste_2022-10-29_19-20-29-20221029192039-kb2novr.png" alt="Snipaste_2022-10-29_19-20-29">​</p>
+<h2 id="delete-析构"><a name="delete-析构" class="anchor-navigation-ex-anchor" href="#delete-析构"><i class="fa fa-link" aria-hidden="true"></i></a>delete 析构</h2>
+<ul>
+<li>先调用析构函数</li>
+<li>再调用 free 释放内存</li>
+</ul>
+<pre><code class="lang-cpp">00A7219E  call        CC::`scalar deleting destructor&apos; (0A7155Ah)
+
+---------- jmp
+00A7155A  jmp         CC::`scalar deleting destructor&apos; (0A71E20h)
+
+----------
+CPPTest1.exe!CC::`scalar deleting destructor&apos;(unsigned int):
+00A71E20  push        ebp  
+00A71E21  mov         ebp,esp  
+00A71E23  sub         esp,0CCh  
+00A71E29  push        ebx  
+00A71E2A  push        esi  
+00A71E2B  push        edi  
+00A71E2C  push        ecx  
+00A71E2D  lea         edi,[ebp-0Ch]  
+00A71E30  mov         ecx,3  
+00A71E35  mov         eax,0CCCCCCCCh  
+00A71E3A  rep stos    dword ptr es:[edi]  
+00A71E3C  pop         ecx  
+00A71E3D  mov         dword ptr [this],ecx  
+00A71E40  mov         ecx,dword ptr [this]  
+00A71E43  call        CC::~CC (0A71550h)  // 先调用 CC 的析构函数
+00A71E48  mov         eax,dword ptr [ebp+8]  
+00A71E4B  and         eax,1  
+00A71E4E  je          __$EncStackInitStart+31h (0A71E5Eh)  
+00A71E50  push        4  
+00A71E52  mov         eax,dword ptr [this]  
+00A71E55  push        eax  
+00A71E56  call        operator delete (0A710A0h)  // 再调用重载的 delete
+00A71E5B  add         esp,8  
+00A71E5E  mov         eax,dword ptr [this]  
+00A71E61  pop         edi  
+00A71E62  pop         esi  
+00A71E63  pop         ebx  
+00A71E64  add         esp,0CCh  
+00A71E6A  cmp         ebp,esp  
+00A71E6C  call        __RTC_CheckEsp (0A712F3h)  
+00A71E71  mov         esp,ebp  
+00A71E73  pop         ebp  
+
+----------
+00A710A0  jmp         operator delete (0A741E0h)
+
+----------
+_CRT_SECURITYCRITICAL_ATTRIBUTE
+void __CRTDECL operator delete(void* const block, size_t const) noexcept
+{
+00A741E0  push        ebp  
+00A741E1  mov         ebp,esp  
+    operator delete(block);
+00A741E3  mov         eax,dword ptr [block]  
+00A741E6  push        eax  
+00A741E7  call        operator delete (0A710D7h)  
+00A741EC  add         esp,4  
+}
+00A741EF  pop         ebp  
+00A741F0  ret
+</code></pre>
+<p><strong>delete 源码</strong></p>
+<pre><code class="lang-cpp">_CRT_SECURITYCRITICAL_ATTRIBUTE
+void __CRTDECL operator delete(void* const block, size_t const) noexcept
+{
+00E341E0  push        ebp  
+00E341E1  mov         ebp,esp  
+    operator delete(block);
+00E341E3  mov         eax,dword ptr [block]  
+00E341E6  push        eax  
+00E341E7  call        operator delete (0E310D7h)  
+00E341EC  add         esp,4  
+}
+00E341EF  pop         ebp  
+00E341F0  ret
+</code></pre>
+<p><strong>free 实现</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">//delete ccObj2;</span>
+ccObj2-&gt;~<span class="hljs-built_in">CC</span>();
+<span class="hljs-built_in">free</span>(ccObj2);
+</code></pre>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-11-08 05:10:58
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="CPP - 09 探索对象模型（四）.html" class="navigation navigation-prev " aria-label="Previous page: CPP - 09 探索对象模型（四）">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="CPP - 11 函数模板和类模板.html" class="navigation navigation-next " aria-label="Next page: CPP - 11 函数模板和类模板">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CPP - 10 探索对象模型（五）","level":"2.2.10","depth":2,"next":{"title":"CPP - 11 函数模板和类模板","level":"2.2.11","depth":2,"path":"C++ 基础/CPP - 11 函数模板和类模板.md","ref":"C++ 基础/CPP - 11 函数模板和类模板.md","articles":[]},"previous":{"title":"CPP - 09 探索对象模型（四）","level":"2.2.9","depth":2,"path":"C++ 基础/CPP - 09 探索对象模型（四）.md","ref":"C++ 基础/CPP - 09 探索对象模型（四）.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-Windows 高级攻防/","text":"Windows 高级攻防","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Windows 高级攻防","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"C++ 基础/CPP - 10 探索对象模型（五）.md","mtime":"2022-11-07T21:10:58.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-11-08T06:00:50.224Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

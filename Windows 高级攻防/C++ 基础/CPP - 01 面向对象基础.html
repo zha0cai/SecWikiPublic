@@ -1,0 +1,1809 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>CPP - 01 面向对象基础 · Windows 高级攻防</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.0">
+        <meta name="author" content="zha0cai">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="CPP - 02 重载.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/zha0cai" target="_blank" class="custom-link">My github</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Windows 高级攻防
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">0x01 基础阶段</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    C 语言程序设计基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                <a href="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                    
+                    01 环境和编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                <a href="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                    
+                    02 基础数据类型与输入输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../C 语言程序设计基础/03 - 运算符.html">
+            
+                <a href="../C 语言程序设计基础/03 - 运算符.html">
+            
+                    
+                    03 运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                <a href="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                    
+                    04 选择结构与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                <a href="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                    
+                    05 函数、数组与指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                <a href="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                    
+                    06 复杂数据类型与文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    C ++ 基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="2.2.1" data-path="CPP - 01 面向对象基础.html">
+            
+                <a href="CPP - 01 面向对象基础.html">
+            
+                    
+                    CPP - 01 面向对象基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="CPP - 02 重载.html">
+            
+                <a href="CPP - 02 重载.html">
+            
+                    
+                    CPP - 02 重载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="CPP - 03 继承.html">
+            
+                <a href="CPP - 03 继承.html">
+            
+                    
+                    CPP - 03 继承
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="CPP - 04 多态.html">
+            
+                <a href="CPP - 04 多态.html">
+            
+                    
+                    CPP - 04 多态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="CPP - 05 探索类对象模型（一）.html">
+            
+                <a href="CPP - 05 探索类对象模型（一）.html">
+            
+                    
+                    CPP - 05 探索类对象模型（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="CPP - 06 探索类对象模型（二）.html">
+            
+                <a href="CPP - 06 探索类对象模型（二）.html">
+            
+                    
+                    CPP - 06 探索类对象模型（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="CPP - 07 探索类对象模型（三）.html">
+            
+                <a href="CPP - 07 探索类对象模型（三）.html">
+            
+                    
+                    CPP - 07 探索类对象模型（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.8" data-path="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                <a href="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                    
+                    CPP - 08 寄存器基础与函数调用约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="CPP - 09 探索对象模型（四）.html">
+            
+                <a href="CPP - 09 探索对象模型（四）.html">
+            
+                    
+                    CPP - 09 探索对象模型（四）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="CPP - 10 探索对象模型（五）.html">
+            
+                <a href="CPP - 10 探索对象模型（五）.html">
+            
+                    
+                    CPP - 10 探索对象模型（五）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.11" data-path="CPP - 11 函数模板和类模板.html">
+            
+                <a href="CPP - 11 函数模板和类模板.html">
+            
+                    
+                    CPP - 11 函数模板和类模板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.12" data-path="CPP - 12 函数模板和类模板（总结）.html">
+            
+                <a href="CPP - 12 函数模板和类模板（总结）.html">
+            
+                    
+                    CPP - 12 函数模板和类模板（总结）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.13" data-path="CPP - 现代 C++ 基础（一）.html">
+            
+                <a href="CPP - 现代 C++ 基础（一）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.14" data-path="CPP - 现代 C++ 基础（二）.html">
+            
+                <a href="CPP - 现代 C++ 基础（二）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.15" data-path="CPP - 现代 C++ 基础（三）.html">
+            
+                <a href="CPP - 现代 C++ 基础（三）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">MASM 汇编语言（待更新）</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x02 高级安全</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x03 内网攻防</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x04 CTF（浅）</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >CPP - 01 面向对象基础</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#简介"><b></b>简介</a></li><ul><li><span class="title-icon "></span><a href="#标准化"><b></b>标准化</a></li><li><span class="title-icon "></span><a href="#关键字"><b></b>关键字</a></li><li><span class="title-icon "></span><a href="#三字符组"><b></b>三字符组</a></li><li><span class="title-icon "></span><a href="#左值--右值"><b></b>左值 &amp; 右值</a></li><li><span class="title-icon "></span><a href="#长代码分割"><b></b>长代码分割</a></li><li><span class="title-icon "></span><a href="#类型限定符"><b></b>类型限定符</a></li><li><span class="title-icon "></span><a href="#存储类"><b></b>存储类</a></li><ul><li><span class="title-icon "></span><a href="#auto-存储类"><b></b>auto 存储类</a></li><li><span class="title-icon "></span><a href="#register-存储类"><b></b>register 存储类</a></li><li><span class="title-icon "></span><a href="#static-存储类"><b></b>static 存储类</a></li><li><span class="title-icon "></span><a href="#extern-存储类"><b></b>extern 存储类</a></li><li><span class="title-icon "></span><a href="#mutable-存储类"><b></b>mutable 存储类</a></li><li><span class="title-icon "></span><a href="#threadlocal-存储类"><b></b>thread_local 存储类</a></li></ul></ul><li><span class="title-icon "></span><a href="#类和对象"><b></b>类和对象</a></li><ul><li><span class="title-icon "></span><a href="#成员变量函数"><b></b>成员变量/函数</a></li><ul><li><span class="title-icon "></span><a href="#修饰符"><b></b>修饰符</a></li><li><span class="title-icon "></span><a href="#普通成员"><b></b>普通成员</a></li><li><span class="title-icon "></span><a href="#静态成员"><b></b>静态成员</a></li></ul><li><span class="title-icon "></span><a href="#构造函数"><b></b>构造函数</a></li><li><span class="title-icon "></span><a href="#拷贝构造函数"><b></b>拷贝构造函数</a></li><li><span class="title-icon "></span><a href="#析构函数"><b></b>析构函数</a></li><li><span class="title-icon "></span><a href="#对象数组"><b></b>对象数组</a></li><li><span class="title-icon "></span><a href="#this-指针"><b></b>This 指针</a></li><li><span class="title-icon "></span><a href="#内联函数"><b></b>内联函数</a></li></ul><li><span class="title-icon "></span><a href="#常函数"><b></b>常函数</a></li><li><span class="title-icon "></span><a href="#流"><b></b>流</a></li><ul><li><span class="title-icon "></span><a href="#标准输出流（cout）"><b></b>标准输出流（cout）</a></li><li><span class="title-icon "></span><a href="#标准输入流（cin）"><b></b>标准输入流（cin）</a></li><li><span class="title-icon "></span><a href="#标准错误流（cerr）"><b></b>标准错误流（cerr）</a></li><li><span class="title-icon "></span><a href="#标准日志流（clog）"><b></b>标准日志流（clog）</a></li><li><span class="title-icon "></span><a href="#endl"><b></b>endl</a></li><li><span class="title-icon "></span><a href="#作用域运算符"><b></b>:: 作用域运算符</a></li></ul><li><span class="title-icon "></span><a href="#命名空间"><b></b>命名空间</a></li><ul><li><span class="title-icon "></span><a href="#定义命名空间"><b></b>定义命名空间</a></li><li><span class="title-icon "></span><a href="#using-指令"><b></b>using 指令</a></li><li><span class="title-icon "></span><a href="#不连续的命名空间"><b></b>不连续的命名空间</a></li><li><span class="title-icon "></span><a href="#嵌套的命名空间"><b></b>嵌套的命名空间</a></li></ul><li><span class="title-icon "></span><a href="#内存管道"><b></b>内存管道</a></li><ul><li><span class="title-icon "></span><a href="#new-和-delete-运算符"><b></b>new 和 delete 运算符</a></li></ul><li><span class="title-icon "></span><a href="#异常处理"><b></b>异常处理</a></li><ul><li><span class="title-icon "></span><a href="#捕获异常"><b></b>捕获异常</a></li><li><span class="title-icon "></span><a href="#定义新的异常"><b></b>定义新的异常</a></li></ul><li><span class="title-icon "></span><a href="#引用"><b></b>引用</a></li><ul><li><span class="title-icon "></span><a href="#引用和指针的区别"><b></b>引用和指针的区别</a></li></ul><li><span class="title-icon "></span><a href="#文件流"><b></b>文件流</a></li><ul><li><span class="title-icon "></span><a href="#打开文件"><b></b>打开文件</a></li><li><span class="title-icon "></span><a href="#关闭文件"><b></b>关闭文件</a></li></ul><li><span class="title-icon "></span><a href="#练习"><b></b>练习</a></li></ul></div><a href="#简介" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="简介"><a name="简介" class="anchor-navigation-ex-anchor" href="#简介"><i class="fa fa-link" aria-hidden="true"></i></a>简介</h1>
+<p>C++ 进一步扩充和完善了 C 语言，最初命名为带类的C，后来在 1983 年更名为 C++。 -- <a href="https://en.wikipedia.org/wiki/Bjarne_Stroustrup" target="_blank">Bjarne Stroustrup</a></p>
+<p><strong>注意：</strong>使用静态类型的编程语言是在编译时执行类型检查，而不是在运行时执行类型检查。</p>
+<h2 id="标准化"><a name="标准化" class="anchor-navigation-ex-anchor" href="#标准化"><i class="fa fa-link" aria-hidden="true"></i></a>标准化</h2>
+<table>
+<thead>
+<tr>
+<th>发布时间</th>
+<th>通称</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2017</td>
+<td>C++17</td>
+<td style="text-align:left">第五个C++标准</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>coroutines TS</td>
+<td style="text-align:left">协程库扩展</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>ranges TS</td>
+<td style="text-align:left">提供范围机制</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>library fundamentals TS</td>
+<td style="text-align:left">标准库扩展</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>concurrency TS</td>
+<td style="text-align:left">用于并发计算的扩展</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>concepts TS</td>
+<td style="text-align:left">概念库，用于优化编译期信息</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>TM TS</td>
+<td style="text-align:left">事务性内存操作</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>parallelism TS</td>
+<td style="text-align:left">用于并行计算的扩展</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>filesystem TS</td>
+<td style="text-align:left">文件系统</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>C++14</td>
+<td style="text-align:left">第四个C++标准</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>-</td>
+<td style="text-align:left">十进制浮点数扩展</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>C++11</td>
+<td style="text-align:left">第三个C++标准</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>-</td>
+<td style="text-align:left">数学函数扩展</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>C++TR1</td>
+<td style="text-align:left">C++技术报告：库扩展</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>-</td>
+<td style="text-align:left">C++性能技术报告</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>C++03</td>
+<td style="text-align:left">第二个C++标准</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>C++98</td>
+<td style="text-align:left">第一个C++标准</td>
+</tr>
+</tbody>
+</table>
+<h2 id="关键字"><a name="关键字" class="anchor-navigation-ex-anchor" href="#关键字"><i class="fa fa-link" aria-hidden="true"></i></a>关键字</h2>
+<ul>
+<li><a href="https://www.runoob.com/w3cnote/cpp-keyword-intro.html" target="_blank">https://www.runoob.com/w3cnote/cpp-keyword-intro.html</a></li>
+</ul>
+<p><img src="assets/image-20221020091739-sbiu7aj.png" alt="image">​</p>
+<h2 id="三字符组"><a name="三字符组" class="anchor-navigation-ex-anchor" href="#三字符组"><i class="fa fa-link" aria-hidden="true"></i></a>三字符组</h2>
+<p>三字符组就是用于表示另一个字符的三个字符序列，又称为三字符序列。三字符序列总是以两个问号开头。</p>
+<p>三字符序列不太常见，但 C++ 标准允许把某些字符指定为三字符序列。以前为了表示键盘上没有的字符，这是必不可少的一种方法。</p>
+<p>三字符序列可以出现在任何地方，包括字符串、字符序列、注释和预处理指令。</p>
+<table>
+<thead>
+<tr>
+<th>三字符组</th>
+<th>替换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>??=</code></td>
+<td><code>#</code></td>
+</tr>
+<tr>
+<td><code>??/</code></td>
+<td><code>\</code></td>
+</tr>
+<tr>
+<td><code>??&apos;</code></td>
+<td><code>^</code></td>
+</tr>
+<tr>
+<td><code>??(</code></td>
+<td><code>[</code></td>
+</tr>
+<tr>
+<td><code>??)</code></td>
+<td><code>]</code></td>
+</tr>
+<tr>
+<td><code>??!</code></td>
+<td>|</td>
+</tr>
+<tr>
+<td><code>??&lt;</code></td>
+<td><code>{</code></td>
+</tr>
+<tr>
+<td><code>??&gt;</code></td>
+<td><code>}</code></td>
+</tr>
+<tr>
+<td><code>??-</code></td>
+<td><code>~</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="左值--右值"><a name="左值--右值" class="anchor-navigation-ex-anchor" href="#左值--右值"><i class="fa fa-link" aria-hidden="true"></i></a>左值 &amp; 右值</h2>
+<ul>
+<li><strong>左值（lvalue）：</strong>​==指向内存位置的表达式==被称为左值（lvalue）表达式。左值可以出现在赋值号的左边或右边。</li>
+<li><strong>右值（rvalue）：</strong>术语右值（rvalue）==指的是存储在内存中某些地址的数值==。右值是不能对其进行赋值的表达式，也就是说，右值可以出现在赋值号的右边，但不能出现在赋值号的左边。</li>
+</ul>
+<p>变量是左值，因此可以出现在赋值号的左边。数值型的字面值是右值，因此不能被赋值，不能出现在赋值号的左边。</p>
+<h2 id="长代码分割"><a name="长代码分割" class="anchor-navigation-ex-anchor" href="#长代码分割"><i class="fa fa-link" aria-hidden="true"></i></a>长代码分割</h2>
+<p>字符串字面值或常量是括在双引号 <strong><code>&quot;&quot;</code></strong>​ 中的。一个字符串包含类似于字符常量的字符：普通的字符、转义序列和通用的字符。</p>
+<p>您可以使用 <em>**</em> 做分隔符，把一个很长的字符串常量进行分行。</p>
+<pre><code class="lang-cpp">string greeting2 = <span class="hljs-string">&quot;hello, \
+                   runoob&quot;</span>;
+</code></pre>
+<h2 id="类型限定符"><a name="类型限定符" class="anchor-navigation-ex-anchor" href="#类型限定符"><i class="fa fa-link" aria-hidden="true"></i></a>类型限定符</h2>
+<table>
+<thead>
+<tr>
+<th>限定符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>const</td>
+<td><strong>const</strong> 类型的对象在程序执行期间不能被修改改变。</td>
+</tr>
+<tr>
+<td>volatile</td>
+<td>修饰符 <strong>volatile</strong> 告诉编译器不需要优化volatile声明的变量，让程序可以直接从内存中读取变量。对于一般的变量编译器会对变量进行优化，将内存中的变量值放在寄存器中以加快读写效率。</td>
+</tr>
+<tr>
+<td>restrict</td>
+<td>由 <strong>restrict</strong> 修饰的指针是唯一一种访问它所指向的对象的方式。只有 C99 增加了新的类型限定符 restrict。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="存储类"><a name="存储类" class="anchor-navigation-ex-anchor" href="#存储类"><i class="fa fa-link" aria-hidden="true"></i></a>存储类</h2>
+<p><strong>存储类定义 C++ 程序中变量/函数的范围（可见性）和生命周期。</strong>这些说明符放置在它们所修饰的类型之前。下面列出 C++ 程序中可用的存储类：</p>
+<ul>
+<li>​<code>auto</code>​</li>
+<li>​<code>register</code>​</li>
+<li>​<code>static</code>​</li>
+<li>​<code>extern</code>​</li>
+<li>​<code>mutable</code>​</li>
+<li>​<code>thread_local (C++11)</code>​</li>
+</ul>
+<p>从 C++ 17 开始，auto 关键字不再是 C++ 存储类说明符，且 register 关键字被弃用。</p>
+<h3 id="auto-存储类"><a name="auto-存储类" class="anchor-navigation-ex-anchor" href="#auto-存储类"><i class="fa fa-link" aria-hidden="true"></i></a>auto 存储类</h3>
+<p>自 C++ 11 以来，<strong>auto</strong> 关键字用于两种情况：声明变量时根据初始化表达式自动推断该变量的类型、声明函数时函数返回值的占位符。</p>
+<p>C++98标准中auto关键字用于自动变量的声明，但由于使用极少且多余，在 C++17 中已删除这一用法。</p>
+<p>根据初始化表达式自动推断被声明的变量的类型，如：</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">auto</span> f=<span class="hljs-number">3.14</span>;      <span class="hljs-comment">//double</span>
+<span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">s</span><span class="hljs-params">(<span class="hljs-string">&quot;hello&quot;</span>)</span></span>;  <span class="hljs-comment">//const char*</span>
+<span class="hljs-keyword">auto</span> z = <span class="hljs-keyword">new</span> <span class="hljs-built_in"><span class="hljs-keyword">auto</span></span>(<span class="hljs-number">9</span>); <span class="hljs-comment">// int*</span>
+<span class="hljs-keyword">auto</span> x1 = <span class="hljs-number">5</span>, x2 = <span class="hljs-number">5.0</span>, x3=<span class="hljs-string">&apos;r&apos;</span>;<span class="hljs-comment">//错误，必须是初始化为同一类型</span>
+</code></pre>
+<h3 id="register-存储类"><a name="register-存储类" class="anchor-navigation-ex-anchor" href="#register-存储类"><i class="fa fa-link" aria-hidden="true"></i></a>register 存储类</h3>
+<p><strong>register</strong> 存储类用于定义存储在==寄存器==中而不是 RAM 中的局部变量。这意味着变量的最大尺寸等于寄存器的大小（通常是一个词），且不能对它应用一元的 <code>&apos;&amp;&apos;</code>​ 运算符（因为它没有内存位置）。</p>
+<pre><code class="lang-cpp">{
+   <span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span>  miles;
+}
+</code></pre>
+<h3 id="static-存储类"><a name="static-存储类" class="anchor-navigation-ex-anchor" href="#static-存储类"><i class="fa fa-link" aria-hidden="true"></i></a>static 存储类</h3>
+<p><strong>static</strong> 存储类指示编译器在程序的生命周期内保持局部变量的存在，而不需要在每次它进入和离开作用域时进行创建和销毁。因此，使用 static 修饰局部变量可以在函数调用之间保持局部变量的值。</p>
+<p>static 修饰符也可以应用于全局变量。当 static 修饰全局变量时，会使变量的作用域限制在声明它的文件内。</p>
+<p>在 C++ 中，当 static 用在类数据成员上时，会导致仅有一个该成员的副本被类的所有对象共享。【==属于类==】</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-comment">// 函数声明 </span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> count = <span class="hljs-number">10</span>; <span class="hljs-comment">/* 全局变量 */</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">while</span>(count--)
+    {
+       <span class="hljs-built_in">func</span>();
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+<span class="hljs-comment">// 函数定义</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">( <span class="hljs-keyword">void</span> )</span> </span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">5</span>; <span class="hljs-comment">// 局部静态变量</span>
+    i++;
+    std::cout &lt;&lt; <span class="hljs-string">&quot;变量 i 为 &quot;</span> &lt;&lt; i ;
+    std::cout &lt;&lt; <span class="hljs-string">&quot; , 变量 count 为 &quot;</span> &lt;&lt; count &lt;&lt; std::endl;
+}
+</code></pre>
+<h3 id="extern-存储类"><a name="extern-存储类" class="anchor-navigation-ex-anchor" href="#extern-存储类"><i class="fa fa-link" aria-hidden="true"></i></a>extern 存储类</h3>
+<p><strong>extern</strong> 存储类==用于提供一个全局变量的引用==，全局变量对所有的程序文件都是可见的。当使用 <code>&apos;extern&apos;</code>​ 时，对于无法初始化的变量，会把变量名指向一个之前定义过的存储位置。</p>
+<p>有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 <code>extern</code>​ 来得到已定义的变量或函数的引用。可以这么理解，<code>extern</code>​ 是用来在另一个文件中声明一个全局变量或函数。</p>
+<p>​<code>extern</code>​ 修饰符通常用于当有两个或多个文件共享相同的全局变量或函数的时候，如下所示：</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">int</span> count ;
+<span class="hljs-function"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write_extern</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+   count = <span class="hljs-number">5</span>;
+   <span class="hljs-built_in">write_extern</span>();
+}
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> count;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">write_extern</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>{
+   std::cout &lt;&lt; <span class="hljs-string">&quot;Count is &quot;</span> &lt;&lt; count &lt;&lt; std::endl;
+}
+</code></pre>
+<h3 id="mutable-存储类"><a name="mutable-存储类" class="anchor-navigation-ex-anchor" href="#mutable-存储类"><i class="fa fa-link" aria-hidden="true"></i></a>mutable 存储类</h3>
+<p><strong>mutable</strong> 说明符仅适用于类的对象，它允许对象的成员替代常量。也就是说，<code>mutable</code>​ 成员可以通过 const 成员函数修改。</p>
+<h3 id="threadlocal-存储类"><a name="threadlocal-存储类" class="anchor-navigation-ex-anchor" href="#threadlocal-存储类"><i class="fa fa-link" aria-hidden="true"></i></a>thread_local 存储类</h3>
+<p>使用 <code>thread_local</code>​ 说明符声明的变量==仅可在它在其上创建的线程上访问==。 变量在创建线程时创建，并在销毁线程时销毁。 每个线程都有其自己的变量副本。</p>
+<p>​<code>thread_local</code>​ 说明符可以与 <code>static</code>​ 或 <code>extern</code>​ 合并。</p>
+<p>可以将 <code>thread_local</code>​ 仅应用于数据声明和定义，<code>thread_local</code>​ 不能用于函数声明或定义。</p>
+<p>以下演示了可以被声明为 <code>thread_local</code>​ 的变量：</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">thread_local</span> <span class="hljs-keyword">int</span> x;  <span class="hljs-comment">// 命名空间下的全局变量</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">X</span> {</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">thread_local</span> std::string s; <span class="hljs-comment">// 类的 static 成员变量</span>
+};
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">thread_local</span> std::string X::s;  <span class="hljs-comment">// X::s 是需要定义的</span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">thread_local</span> std::vector&lt;<span class="hljs-keyword">int</span>&gt; v;  <span class="hljs-comment">// 本地变量</span>
+}
+</code></pre>
+<h1 id="类和对象"><a name="类和对象" class="anchor-navigation-ex-anchor" href="#类和对象"><i class="fa fa-link" aria-hidden="true"></i></a>类和对象</h1>
+<p>定义一个类，本质上是定义一个数据类型的蓝图。这实际上并没有定义任何数据，但它定义了类的名称意味着什么，也就是说，它定义了类的对象包括了什么，以及可以在这个对象上执行哪些操作。</p>
+<p>如 Human 类：身高、体重、年龄、行为等都可以抽象出来。</p>
+<p><img src="assets/image-20221014173640-m4v6wa7.png" alt="image">​</p>
+<p>类定义是以关键字 <code>class</code> 开头，后跟类的名称。类的主体是包含在一对花括号中。类定义后必须跟着一个分号或一个声明列表。</p>
+<pre><code class="lang-cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Box</span> {</span>
+   <span class="hljs-keyword">public</span>:
+      <span class="hljs-keyword">double</span> length;   <span class="hljs-comment">// 盒子的长度</span>
+      <span class="hljs-keyword">double</span> breadth;  <span class="hljs-comment">// 盒子的宽度</span>
+      <span class="hljs-keyword">double</span> height;   <span class="hljs-comment">// 盒子的高度</span>
+};
+
+<span class="hljs-comment">// 类名可以当作数据类型来用，相当于自定义的数据类型标识</span>
+Box Box1;          <span class="hljs-comment">// 声明 Box1，类型为 Box</span>
+</code></pre>
+<h2 id="成员变量函数"><a name="成员变量函数" class="anchor-navigation-ex-anchor" href="#成员变量函数"><i class="fa fa-link" aria-hidden="true"></i></a>成员变量/函数</h2>
+<p><img src="assets/image-20221014173902-l7qj8ei.png" alt="image">​</p>
+<ul>
+<li><strong>类的成员函数</strong>：是指那些把定义和原型写在类定义内部的函数，就像类定义中的其他变量一样。类成员函数是类的一个成员，它可以操作类的任意对象，可以访问对象中的所有成员。</li>
+<li><strong>成员函数</strong>可以定义在类定义内部，或者单独使用 <code>范围解析运算符 ::</code> 来定义。在类定义中定义的成员函数把函数声明为<strong>内联</strong>的，即便没有使用 <code>inline</code> 标识符。</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Box</span> {</span>
+   <span class="hljs-keyword">public</span>:
+      <span class="hljs-comment">// 成员变量声明</span>
+      <span class="hljs-keyword">double</span> length;         <span class="hljs-comment">// 长度</span>
+      <span class="hljs-keyword">double</span> breadth;        <span class="hljs-comment">// 宽度</span>
+      <span class="hljs-keyword">double</span> height;         <span class="hljs-comment">// 高度</span>
+
+      <span class="hljs-comment">// 成员函数声明</span>
+      <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getVolume</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setLength</span><span class="hljs-params">( <span class="hljs-keyword">double</span> len )</span></span>;
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setBreadth</span><span class="hljs-params">( <span class="hljs-keyword">double</span> bre )</span></span>;
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setHeight</span><span class="hljs-params">( <span class="hljs-keyword">double</span> hei )</span></span>;
+};
+</code></pre>
+<h3 id="修饰符"><a name="修饰符" class="anchor-navigation-ex-anchor" href="#修饰符"><i class="fa fa-link" aria-hidden="true"></i></a>修饰符</h3>
+<p>数据封装是面向对象编程的一个重要特点，它防止函数直接访问类类型的内部成员。类成员的访问限制是通过在类主体内部对各个区域标记 <code>public、private、protected</code> 来指定的。</p>
+<ul>
+<li><strong>成员和类的默认访问修饰符是</strong> <code>private</code>。</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Base</span> {</span>
+
+   <span class="hljs-keyword">public</span>:
+  <span class="hljs-comment">// 公有成员：在程序中类的外部是可访问的。</span>
+
+   <span class="hljs-keyword">protected</span>:
+  <span class="hljs-comment">// 受保护成员：成员变量或函数与私有成员十分相似，但有一点不同，protected（受保护）成员在派生类（即子类）中是可访问的。</span>
+
+   <span class="hljs-keyword">private</span>:
+  <span class="hljs-comment">// 私有成员：变量或函数在类的外部是不可访问的，甚至是不可查看的。只有类和友元函数可以访问私有成员。</span>
+};
+</code></pre>
+<h3 id="普通成员"><a name="普通成员" class="anchor-navigation-ex-anchor" href="#普通成员"><i class="fa fa-link" aria-hidden="true"></i></a>普通成员</h3>
+<h3 id="静态成员"><a name="静态成员" class="anchor-navigation-ex-anchor" href="#静态成员"><i class="fa fa-link" aria-hidden="true"></i></a>静态成员</h3>
+<p>可以使用 <code>static</code>​ 关键字来把类成员定义为静态的。当我们声明类的成员为静态时，这意味着无论创建多少个类的对象，静态成员都只有一个副本。【静态的是属于类的而不是属于对象的~】</p>
+<p>如果把函数成员声明为静态的，就可以把函数与类的任何特定对象独立开来。静态成员函数即使在类对象不存在的情况下也能被调用，<strong>静态函数</strong>只要使用<strong>类名加范围解析运算符</strong> <code>::</code>​ 就可以访问。</p>
+<p><strong>静态成员函数只能访问静态成员数据、其他静态成员函数和类外部的其他函数。</strong></p>
+<p>静态成员函数有一个类范围，他们不能访问类的 this 指针。您可以使用静态成员函数来判断类的某些对象是否已被创建。</p>
+<ul>
+<li><strong>静态成员函数没有 this 指针，</strong>只能访问静态成员（包括静态成员变量和静态成员函数）。【因为属于类，<code>this</code>​ 指针本质上是一个可变对象~】</li>
+<li>普通成员函数有 this 指针，可以访问类中的任意成员；而静态成员函数没有 this 指针。</li>
+</ul>
+<h2 id="构造函数"><a name="构造函数" class="anchor-navigation-ex-anchor" href="#构造函数"><i class="fa fa-link" aria-hidden="true"></i></a>构造函数</h2>
+<ul>
+<li><p>类的<strong>构造函数</strong>是类的一种特殊的成员函数，它会在每次创建类的新对象时执行。</p>
+</li>
+<li><p><strong>构造函数的名称与类的名称是完全相同的，并且不会返回任何类型，也不会返回 void</strong></p>
+</li>
+<li><p>构造函数可用于为某些成员变量设置初始值。</p>
+</li>
+<li><p>默认的构造函数没有任何参数</p>
+</li>
+<li><p>构造函数也可以带有参数。</p>
+</li>
+<li><p><strong>使用初始化列表来初始化字段（列表）</strong></p>
+</li>
+<li><p><a href="https://www.runoob.com/cplusplus/cpp-constructor-destructor.html" target="_blank">C++ 类构造函数 &amp; 析构函数 | 菜鸟教程 (runoob.com)</a></p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Line</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setLength</span><span class="hljs-params">(<span class="hljs-keyword">double</span> len)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getLength</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getWidthLength</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;
+
+    <span class="hljs-built_in">Line</span>(); <span class="hljs-comment">// 无参构造函数</span>
+    <span class="hljs-built_in">Line</span>(<span class="hljs-keyword">double</span> len);  <span class="hljs-comment">// 这是有参构造函数</span>
+    <span class="hljs-built_in">Line</span>(<span class="hljs-keyword">double</span> len, <span class="hljs-keyword">double</span> wid); <span class="hljs-comment">// 测试初始化列表的构造函数</span>
+
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">double</span> length;
+    <span class="hljs-keyword">double</span> width;
+};
+
+<span class="hljs-comment">// 成员函数定义，包括构造函数</span>
+Line::<span class="hljs-built_in">Line</span>() {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了无参构造函数~&quot;</span> &lt;&lt; <span class="hljs-string">&quot;Object is being created, length = null&quot;</span>  &lt;&lt; endl;
+}
+
+<span class="hljs-comment">// 成员函数定义，包括构造函数</span>
+Line::<span class="hljs-built_in">Line</span>(<span class="hljs-keyword">double</span> len) {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了有参构造函数进行初始化~&quot;</span> &lt;&lt; <span class="hljs-string">&quot;Object is being created, length = &quot;</span> &lt;&lt; len &lt;&lt; endl;
+    length = len;
+}
+
+<span class="hljs-comment">// 调用初始化列表</span>
+Line::<span class="hljs-built_in">Line</span>( <span class="hljs-keyword">double</span> len, <span class="hljs-keyword">double</span> wid): <span class="hljs-built_in">length</span>(len), <span class="hljs-built_in">width</span>(wid) { <span class="hljs-comment">// 直接在这里就赋值了</span>
+    cout &lt;&lt; <span class="hljs-string">&quot;调用了初始化列表的构造函数：&quot;</span> &lt;&lt; len &lt;&lt; endl;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Line::setLength</span><span class="hljs-params">(<span class="hljs-keyword">double</span> len)</span> </span>{
+    length = len;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">Line::getLength</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>{
+    <span class="hljs-keyword">return</span> length;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">Line::getWidthLength</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>{
+    <span class="hljs-keyword">return</span> width;
+}
+
+<span class="hljs-comment">// 程序的主函数</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    Line line2;
+    <span class="hljs-function">Line <span class="hljs-title">line</span><span class="hljs-params">(<span class="hljs-number">10.0</span>)</span></span>;
+
+    <span class="hljs-comment">// 获取默认设置的长度</span>
+    cout &lt;&lt; <span class="hljs-string">&quot;调用构造函数初始化的长度是: &quot;</span> &lt;&lt; line.<span class="hljs-built_in">getLength</span>() &lt;&lt; endl;
+    <span class="hljs-comment">// 再次设置长度</span>
+    line.<span class="hljs-built_in">setLength</span>(<span class="hljs-number">6.0</span>);
+    cout &lt;&lt; <span class="hljs-string">&quot;调用设置函数设置的长度是: &quot;</span> &lt;&lt; line.<span class="hljs-built_in">getLength</span>() &lt;&lt; endl;
+
+    <span class="hljs-function">Line <span class="hljs-title">line1</span><span class="hljs-params">(<span class="hljs-number">6.66</span>, <span class="hljs-number">8.88</span>)</span></span>;
+    <span class="hljs-comment">// 获取默认设置的长度</span>
+    cout &lt;&lt; <span class="hljs-string">&quot;调用初始化列表初始化的长度是: &quot;</span> &lt;&lt; line.<span class="hljs-built_in">getLength</span>() &lt;&lt; endl;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2 id="拷贝构造函数"><a name="拷贝构造函数" class="anchor-navigation-ex-anchor" href="#拷贝构造函数"><i class="fa fa-link" aria-hidden="true"></i></a>拷贝构造函数</h2>
+</li>
+<li><p><a href="https://www.runoob.com/cplusplus/cpp-copy-constructor.html" target="_blank">C++ 拷贝构造函数 | 菜鸟教程 (runoob.com)</a></p>
+</li>
+</ul>
+<p><strong>拷贝构造函数</strong>是一种特殊的构造函数，它在创建对象时，==是使用同一类中之前创建的对象来初始化新创建的对象。==拷贝构造函数通常用于：</p>
+<ul>
+<li>通过使用另一个同类型的对象来初始化新创建的对象。</li>
+<li>复制对象把它作为参数传递给函数。</li>
+<li>复制对象，并从函数返回这个对象。</li>
+</ul>
+<p><strong>如果在类中没有定义拷贝构造函数，编译器会自行定义一个。</strong>如果==类带有指针变量==，并有动态内存分配，则它必须有一个拷贝构造函数。拷贝构造函数的最常见形式如下：</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">classname</span> (<span class="hljs-keyword">const</span> classname &amp;obj) {
+   <span class="hljs-comment">// 构造函数的主体</span>
+}
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Line</span> {</span>
+   <span class="hljs-keyword">public</span>:
+      <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getLength</span><span class="hljs-params">( <span class="hljs-keyword">void</span> )</span></span>;
+      <span class="hljs-built_in">Line</span>( <span class="hljs-keyword">int</span> len );             <span class="hljs-comment">// 简单的构造函数</span>
+      <span class="hljs-built_in">Line</span>( <span class="hljs-keyword">const</span> Line &amp;obj);      <span class="hljs-comment">// 拷贝构造函数</span>
+      ~<span class="hljs-built_in">Line</span>();                     <span class="hljs-comment">// 析构函数</span>
+
+   <span class="hljs-keyword">private</span>:
+      <span class="hljs-keyword">int</span> *ptr;
+};
+
+<span class="hljs-comment">// 成员函数定义，包括构造函数</span>
+Line::<span class="hljs-built_in">Line</span>(<span class="hljs-keyword">int</span> len) {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用构造函数&quot;</span> &lt;&lt; endl;
+    <span class="hljs-comment">// 为指针分配内存</span>
+    ptr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>;
+    *ptr = len;
+}
+
+Line::<span class="hljs-built_in">Line</span>(<span class="hljs-keyword">const</span> Line &amp;obj) {
+    cout &lt;&lt; <span class="hljs-string">&quot;调用拷贝构造函数并为指针 ptr 分配内存&quot;</span> &lt;&lt; endl;
+    ptr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>;
+    *ptr = *obj.ptr; <span class="hljs-comment">// 拷贝值</span>
+}
+
+Line::~<span class="hljs-built_in">Line</span>(<span class="hljs-keyword">void</span>) {
+    cout &lt;&lt; <span class="hljs-string">&quot;释放内存&quot;</span> &lt;&lt; endl;
+    <span class="hljs-keyword">delete</span> ptr;
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Line::getLength</span><span class="hljs-params">( <span class="hljs-keyword">void</span> )</span> </span>{
+    <span class="hljs-keyword">return</span> *ptr;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">display</span><span class="hljs-params">(Line obj)</span> </span>{
+   cout &lt;&lt; <span class="hljs-string">&quot;line 大小 : &quot;</span> &lt;&lt; obj.<span class="hljs-built_in">getLength</span>() &lt;&lt;endl;
+}
+
+<span class="hljs-comment">// 程序的主函数</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span>{
+   <span class="hljs-function">Line <span class="hljs-title">line1</span><span class="hljs-params">(<span class="hljs-number">10</span>)</span></span>; <span class="hljs-comment">// 调用构造函数</span>
+
+   Line line2 = line1; <span class="hljs-comment">// 这里调用了拷贝构造函数</span>
+
+   <span class="hljs-built_in">display</span>(line1); <span class="hljs-comment">// 这里也调用了拷贝构造函数</span>
+   <span class="hljs-built_in">display</span>(line2); <span class="hljs-comment">// 这里也调用了拷贝构造函数</span>
+
+   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-cpp">调用构造函数
+
+调用拷贝构造函数并为指针 ptr 分配内存
+
+调用拷贝构造函数并为指针 ptr 分配内存
+line 大小 : <span class="hljs-number">10</span>
+释放内存
+
+调用拷贝构造函数并为指针 ptr 分配内存
+line 大小 : <span class="hljs-number">10</span>
+释放内存
+
+释放内存
+释放内存
+</code></pre>
+<h2 id="析构函数"><a name="析构函数" class="anchor-navigation-ex-anchor" href="#析构函数"><i class="fa fa-link" aria-hidden="true"></i></a>析构函数</h2>
+<p>类的<strong>析构函数</strong>是类的一种特殊的成员函数，它会在每次删除所创建的对象时执行。</p>
+<p>析构函数的名称与类的名称是完全相同的，只是在前面加了个波浪号（<code>~</code>​）作为前缀，它不会返回任何值，也不能带有任何参数。析构函数有助于在跳出程序（比如关闭文件、释放内存等）前释放资源。</p>
+<p>​<code>~TestClass();  // 这是析构函数声明</code>​</p>
+<h2 id="对象数组"><a name="对象数组" class="anchor-navigation-ex-anchor" href="#对象数组"><i class="fa fa-link" aria-hidden="true"></i></a>对象数组</h2>
+<h2 id="this-指针"><a name="this-指针" class="anchor-navigation-ex-anchor" href="#this-指针"><i class="fa fa-link" aria-hidden="true"></i></a>This 指针</h2>
+<ul>
+<li><a href="https://www.runoob.com/cplusplus/cpp-this-pointer.html" target="_blank">C++ 中的 this 指针 | 菜鸟教程 (runoob.com)</a></li>
+</ul>
+<p>在 C++ 中，每一个对象都能通过 <strong>this</strong> 指针来访问自己的地址。<code>this</code>​ <strong>指针是所有成员函数的隐含参数。</strong>因此，在成员函数内部，它可以用来指向调用对象。</p>
+<p>友元函数没有 <code>this</code>​ 指针，因为友元不是类的成员。只有<strong>成员函数</strong>才有 <code>this</code>​ 指针。</p>
+<p>当我们调用成员函数时，实际上是<strong>替某个对象调用它</strong>。</p>
+<p>成员函数通过一个名为 <code>this</code>​​ 的额外隐式参数来访问调用它的那个对象，当我们调用一个成员函数时，用请求该函数的对象地址初始化 this。</p>
+<h2 id="内联函数"><a name="内联函数" class="anchor-navigation-ex-anchor" href="#内联函数"><i class="fa fa-link" aria-hidden="true"></i></a>内联函数</h2>
+<p>C++ <strong>内联函数</strong>是通常与类一起使用。如果一个函数是内联的，那么在编译时，编译器会把该函数的代码副本放置在每个调用该函数的地方。</p>
+<p>对内联函数进行任何修改，都需要重新编译函数的所有客户端，因为编译器需要重新更换一次所有的代码，否则将会继续使用旧的函数。</p>
+<p>如果想把一个函数定义为内联函数，则需要在函数名前面放置关键字 <code>inline</code>​，在调用函数之前需要对函数进行定义。如果已定义的函数多于一行，编译器会忽略 <code>inline</code>​ 限定符。</p>
+<p><strong>在类定义中的定义的函数都是内联函数，即使没有使用</strong> <code>inline</code>​ <strong>说明符。</strong></p>
+<h1 id="常函数"><a name="常函数" class="anchor-navigation-ex-anchor" href="#常函数"><i class="fa fa-link" aria-hidden="true"></i></a>常函数</h1>
+<p>‍</p>
+<p>‍</p>
+<h1 id="流"><a name="流" class="anchor-navigation-ex-anchor" href="#流"><i class="fa fa-link" aria-hidden="true"></i></a>流</h1>
+<table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>函数和描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;iostream&gt;</code></td>
+<td>该文件定义了 <code>cin、cout、cerr</code> 和 <code>clog</code> 对象，分别对应于<strong>标准输入流、标准输出流、非缓冲标准错误流和缓冲标准错误流</strong>。<code>&lt;iostream&gt;</code> 包含 <code>&lt;istream&gt;</code> 和 <code>&lt;ostream&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;iomanip&gt;</code></td>
+<td>该文件通过所谓的参数化的流操纵器（比如 <code>setw</code> 和  <code>setprecision</code> ），来声明对执行标准化 I/O 有用的服务。</td>
+</tr>
+<tr>
+<td><code>&lt;fstream&gt;</code></td>
+<td>该文件为用户控制的文件处理声明服务。我们将在文件和流的相关章节讨论它的细节。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="标准输出流（cout）"><a name="标准输出流（cout）" class="anchor-navigation-ex-anchor" href="#标准输出流（cout）"><i class="fa fa-link" aria-hidden="true"></i></a>标准输出流（cout）</h2>
+<p>预定义的对象 <code>cout</code> 是 <code>iostream 类</code> 的一个实例。cout 对象&quot;连接&quot;到标准输出设备，通常是显示屏。<code>cout</code> 是与流插入运算符 <code>&lt;&lt;</code> 结合使用的，如下所示：</p>
+<p><strong>实例</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span>{
+   <span class="hljs-keyword">char</span> str[] = <span class="hljs-string">&quot;Hello C++&quot;</span>;
+
+   cout &lt;&lt; <span class="hljs-string">&quot;Value of str is : &quot;</span> &lt;&lt; str &lt;&lt; endl;
+}
+</code></pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre><code>Value of str is : Hello C++
+</code></pre><h2 id="标准输入流（cin）"><a name="标准输入流（cin）" class="anchor-navigation-ex-anchor" href="#标准输入流（cin）"><i class="fa fa-link" aria-hidden="true"></i></a>标准输入流（cin）</h2>
+<p>预定义的对象 <code>cin</code> 是 <code>iostream 类</code> 的一个实例。cin 对象附属到标准输入设备，通常是键盘。<strong>cin</strong> 是与流提取运算符 <code>&gt;&gt;</code> 结合使用的，如下所示：</p>
+<p><strong>实例</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span>{
+   <span class="hljs-keyword">char</span> name[<span class="hljs-number">50</span>];
+
+   cout &lt;&lt; <span class="hljs-string">&quot;请输入您的名称： &quot;</span>;
+   cin &gt;&gt; name;
+   cout &lt;&lt; <span class="hljs-string">&quot;您的名称是： &quot;</span> &lt;&lt; name &lt;&lt; endl;
+
+}
+</code></pre>
+<h2 id="标准错误流（cerr）"><a name="标准错误流（cerr）" class="anchor-navigation-ex-anchor" href="#标准错误流（cerr）"><i class="fa fa-link" aria-hidden="true"></i></a>标准错误流（cerr）</h2>
+<p>预定义的对象 <code>cerr</code> 是 <code>iostream 类</code> 的一个实例。cerr 对象附属到标准输出设备，通常也是显示屏，但是 <strong>cerr 对象是非缓冲的</strong>，且每个流插入到 cerr 都会立即输出。</p>
+<p><strong>cerr</strong> 也是与流插入运算符 <code>&lt;&lt;</code> 结合使用的，如下所示：</p>
+<p><strong>实例</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span>{
+   <span class="hljs-keyword">char</span> str[] = <span class="hljs-string">&quot;Unable to read....&quot;</span>;
+
+   cerr &lt;&lt; <span class="hljs-string">&quot;Error message : &quot;</span> &lt;&lt; str &lt;&lt; endl;
+}
+</code></pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre><code class="lang-cpp">Error message : Unable to read....
+</code></pre>
+<h2 id="标准日志流（clog）"><a name="标准日志流（clog）" class="anchor-navigation-ex-anchor" href="#标准日志流（clog）"><i class="fa fa-link" aria-hidden="true"></i></a>标准日志流（clog）</h2>
+<p>预定义的对象 <code>clog</code> 是 <code>iostream 类</code> 的一个实例。clog 对象附属到标准输出设备，通常也是显示屏，但是 <strong>clog 对象是缓冲的</strong>。这意味着每个流插入到 clog 都会先存储在缓冲区，直到缓冲填满或者缓冲区刷新时才会输出。</p>
+<p><strong>clog</strong> 也是与流插入运算符 <code>&lt;&lt;</code> 结合使用的，如下所示：</p>
+<p><strong>实例</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span>{
+   <span class="hljs-keyword">char</span> str[] = <span class="hljs-string">&quot;Unable to read....&quot;</span>;
+
+   clog &lt;&lt; <span class="hljs-string">&quot;Error message : &quot;</span> &lt;&lt; str &lt;&lt; endl;
+}
+</code></pre>
+<p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<pre><code>Error message : Unable to read....
+</code></pre><p>通过这些小实例，我们无法区分 cout、cerr 和 clog 的差异，但在编写和执行大型程序时，它们之间的差异就变得非常明显。所以良好的编程实践告诉我们，使用 cerr 流来显示错误消息，而其他的日志消息则使用 clog 流来输出。</p>
+<h2 id="endl"><a name="endl" class="anchor-navigation-ex-anchor" href="#endl"><i class="fa fa-link" aria-hidden="true"></i></a>endl</h2>
+<blockquote>
+<p>插入换行符并刷新输出流。</p>
+</blockquote>
+<ul>
+<li><p><a href="https://blog.csdn.net/xiaofei0859/article/details/78452510" target="_blank">C++ 中 endl 的本质是什么_xiaofei0859 的博客-CSDN 博客_c++ endl</a></p>
+</li>
+<li><p>原因是对于一个函数而言，函数名本身就代表函数的入口地址，而函数名前加 &amp; 也代表函数的入口地址。<code>cout&lt;&lt;&quot;Hello world&quot;&lt;&lt;&amp;endl;</code> == <code>cout&lt;&lt;&quot;Hello world&quot;&lt;&lt;endl;</code></p>
+</li>
+<li><p>在 <code>&lt;iostream&gt;</code> 头文件中定义的操纵符有：</p>
+<pre><code class="lang-cpp">endl:输出时插入换行符并刷新流
+endls：输出时在字符 插入 <span class="hljs-literal">NULL</span> 作为尾符
+flush：刷新缓冲区，把流从缓冲区输出到目标设备，并清空缓冲区
+ws：输入时略去空白字符
+dec：令 IO 数据按十进制格式
+hex：令 IO 数据按十六进制格式
+oct：令 IO 数据按八进制格式
+</code></pre>
+</li>
+</ul>
+<h2 id="作用域运算符"><a name="作用域运算符" class="anchor-navigation-ex-anchor" href="#作用域运算符"><i class="fa fa-link" aria-hidden="true"></i></a><strong>::</strong> 作用域运算符</h2>
+<blockquote>
+<p><code>std::</code> 使用定义在 std 命名空间的名称。</p>
+<p><code>std::</code> 是个名称空间标示符，C++ <strong>标准库中的函数或者对象</strong>都是在 <code>命名空间 std</code> 中定义的，所以我们要使用标准函数库中的函数或对象都要使用 std 来限定。</p>
+</blockquote>
+<p>如：</p>
+<pre><code class="lang-cpp">----------
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream.h&gt;</span> <span class="hljs-comment">// 这种非标准的库包含就不需要加 std:: 限定</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span> <span class="hljs-comment">// 这种标准的就需要</span></span>
+----------
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> std::cout; <span class="hljs-comment">// 指定命名空间中的特定项目，如使用 std 命名空间中的 cout 部分</span>
+<span class="hljs-keyword">using</span> std::endl;
+
+<span class="hljs-comment">// 或者直接：using namespace std;</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    cout &lt;&lt; <span class="hljs-string">&quot;我喜欢C++&quot;</span>; <span class="hljs-comment">// 输出一句话</span>
+    cout &lt;&lt; endl; <span class="hljs-comment">// 换行</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h1 id="命名空间"><a name="命名空间" class="anchor-navigation-ex-anchor" href="#命名空间"><i class="fa fa-link" aria-hidden="true"></i></a>命名空间</h1>
+<blockquote>
+<p><a href="https://www.runoob.com/cplusplus/cpp-namespaces.html" target="_blank">C++ 命名空间 | 菜鸟教程 (runoob.com)</a></p>
+</blockquote>
+<p>为了解决同名问题，比如有两只猫都叫招财，但是你家的招财和我家的招财应该是两只不同的猫，怎么区分呢？那就是加限定词，如“张三家的”，”李四家的“ 用来区分。</p>
+<p>因此，引入了<strong>命名空间</strong>这个概念，专门用于解决上面的问题，它可作为附加信息来区分不同库中相同名称的 <code>函数、类、变量</code> 等。使用了命名空间即定义了上下文。本质上，命名空间就是定义了一个范围。</p>
+<h2 id="定义命名空间"><a name="定义命名空间" class="anchor-navigation-ex-anchor" href="#定义命名空间"><i class="fa fa-link" aria-hidden="true"></i></a>定义命名空间</h2>
+<p>命名空间的定义使用关键字  <code>namespace</code> ，后跟命名空间的名称，如下所示：</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 定义命名空间</span>
+<span class="hljs-keyword">namespace</span> namespace_name {
+   <span class="hljs-comment">// 代码声明</span>
+}
+
+<span class="hljs-comment">// 调用</span>
+name::code;  <span class="hljs-comment">// code 可以是变量或函数</span>
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-comment">// 第一个命名空间</span>
+<span class="hljs-keyword">namespace</span> first_space {
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span></span>{
+      cout &lt;&lt; <span class="hljs-string">&quot;Inside first_space&quot;</span> &lt;&lt; endl;
+   }
+}
+<span class="hljs-comment">// 第二个命名空间</span>
+<span class="hljs-keyword">namespace</span> second_space {
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span></span>{
+      cout &lt;&lt; <span class="hljs-string">&quot;Inside second_space&quot;</span> &lt;&lt; endl;
+   }
+}
+
+<span class="hljs-comment">// 同样是 func 但是在不同的命名空间中，其实就是同名的两个不一样的函数。</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>{
+
+   <span class="hljs-comment">// 调用第一个命名空间中的函数</span>
+   first_space::<span class="hljs-built_in">func</span>();
+
+   <span class="hljs-comment">// 调用第二个命名空间中的函数</span>
+   second_space::<span class="hljs-built_in">func</span>(); 
+
+   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h2 id="using-指令"><a name="using-指令" class="anchor-navigation-ex-anchor" href="#using-指令"><i class="fa fa-link" aria-hidden="true"></i></a>using 指令</h2>
+<p>您可以使用 <code>using namespace</code> 指令，这样在使用命名空间时就可以不用在前面加上命名空间的名称。这个指令会告诉编译器，后续的代码将使用指定的命名空间中的名称。【<strong>就近原则</strong>】</p>
+<p><code>using std::cout; // 指定命名空间中的特定项目，如使用 std 命名空间中的 cout 部分</code></p>
+<h2 id="不连续的命名空间"><a name="不连续的命名空间" class="anchor-navigation-ex-anchor" href="#不连续的命名空间"><i class="fa fa-link" aria-hidden="true"></i></a>不连续的命名空间</h2>
+<p>命名空间可以定义在几个不同的部分中，因此命名空间是由几个单独定义的部分组成的。一个命名空间的各个组成部分可以分散在多个文件中。</p>
+<p>所以，如果命名空间中的某个组成部分需要请求定义在另一个文件中的名称，则仍然需要声明该名称。</p>
+<h2 id="嵌套的命名空间"><a name="嵌套的命名空间" class="anchor-navigation-ex-anchor" href="#嵌套的命名空间"><i class="fa fa-link" aria-hidden="true"></i></a>嵌套的命名空间</h2>
+<p>命名空间可以嵌套，您可以在一个命名空间中定义另一个命名空间。</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">namespace</span> namespace_name1 {
+   <span class="hljs-comment">// 代码声明</span>
+   <span class="hljs-keyword">namespace</span> namespace_name2 {
+      <span class="hljs-comment">// 代码声明</span>
+   }
+}
+
+----------
+<span class="hljs-comment">// 可以通过使用 :: 运算符来访问嵌套的命名空间中的成员</span>
+<span class="hljs-comment">// 访问 namespace_name2 中的成员</span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> namespace_name1::namespace_name2;
+
+<span class="hljs-comment">// 访问 namespace_name1 中的成员</span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> namespace_name1;
+</code></pre>
+<h1 id="内存管道"><a name="内存管道" class="anchor-navigation-ex-anchor" href="#内存管道"><i class="fa fa-link" aria-hidden="true"></i></a>内存管道</h1>
+<blockquote>
+<p><a href="https://www.runoob.com/cplusplus/cpp-dynamic-memory.html" target="_blank">C++ 动态内存 | 菜鸟教程 (runoob.com)</a></p>
+</blockquote>
+<p><strong>C++ 程序中的内存分为两个部分：</strong></p>
+<ul>
+<li><strong>栈：</strong> 在函数内部声明的所有变量都将占用栈内存。</li>
+<li><strong>堆：</strong> 这是程序中未使用的内存，在程序运行时可用于动态分配内存。</li>
+</ul>
+<h2 id="new-和-delete-运算符"><a name="new-和-delete-运算符" class="anchor-navigation-ex-anchor" href="#new-和-delete-运算符"><i class="fa fa-link" aria-hidden="true"></i></a>new 和 delete 运算符</h2>
+<p>下面是使用 new 运算符来为任意的数据类型动态分配内存的通用语法：</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">new</span> data-type;
+</code></pre>
+<p>在这里，<code>data-type</code> 可以是包括数组在内的任意内置的数据类型，也可以是包括类或结构在内的用户自定义的任何数据类型。例如，我们可以定义一个指向 double 类型的指针，然后请求内存，该内存在执行时被分配。我们可以按照下面的语句使用 <code>new</code> 运算符来完成这点：</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 如果自由存储区已被用完，可能无法成功分配内存。所以建议检查 new 运算符是否返回 NULL 指针，并采取以下适当的操作：</span>
+
+<span class="hljs-keyword">double</span>* pvalue  = <span class="hljs-literal">NULL</span>; <span class="hljs-comment">// 初始化为 null 的指针</span>
+<span class="hljs-keyword">if</span>(!(pvalue  = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span> )) { <span class="hljs-comment">// 为变量请求内存</span>
+   cout &lt;&lt; <span class="hljs-string">&quot;Error: out of memory.&quot;</span> &lt;&lt;endl;
+   <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);
+}
+</code></pre>
+<p>new 与 malloc() 函数相比，其主要的优点是，<code>new</code> <strong>不只是分配了内存，它还创建了对象。</strong></p>
+<p>在任何时候，当您觉得某个已经动态分配内存的变量不再需要使用时，您可以使用 delete 操作符释放它所占用的内存。</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">delete</span> pvalue;        <span class="hljs-comment">// 释放 pvalue 所指向的内存</span>
+
+----------
+<span class="hljs-keyword">char</span>* pvalue  = <span class="hljs-literal">NULL</span>;   <span class="hljs-comment">// 初始化为 null 的指针</span>
+pvalue  = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">20</span>]; <span class="hljs-comment">// 为变量请求内存</span>
+
+<span class="hljs-comment">// 要删除我们刚才创建的数组，语句如下：</span>
+<span class="hljs-keyword">delete</span> [] pvalue;        <span class="hljs-comment">// 删除 pvalue 所指向的数组</span>
+</code></pre>
+<p><strong>二维数组</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">int</span> **array
+<span class="hljs-comment">// 假定数组第一维长度为 m， 第二维长度为 n</span>
+<span class="hljs-comment">// 动态分配空间</span>
+array = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span> *[m];
+<span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++ ) {
+    array[i] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span> [n]  ;
+}
+<span class="hljs-comment">//释放</span>
+<span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++ ) {
+    <span class="hljs-keyword">delete</span> [] array[i];
+}
+<span class="hljs-keyword">delete</span> [] array;
+</code></pre>
+<p><strong>三维数组</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">int</span> ***array;
+<span class="hljs-comment">// 假定数组第一维为 m， 第二维为 n， 第三维为h</span>
+<span class="hljs-comment">// 动态分配空间</span>
+array = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span> **[m];
+<span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++ ) {
+
+    array[i] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span> *[n];
+    <span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;n; j++ ) {
+        array[i][j] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span> [h];
+    }
+}
+<span class="hljs-comment">//释放</span>
+<span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++ ) {
+    <span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;n; j++ ) {
+        <span class="hljs-keyword">delete</span>[] array[i][j];
+    }
+    <span class="hljs-keyword">delete</span>[] array[i];
+}
+<span class="hljs-keyword">delete</span>[] array;
+</code></pre>
+<p><strong>对象数组</strong></p>
+<pre><code class="lang-cpp">TestClass * myTestClassArray = <span class="hljs-keyword">new</span> TestClass[<span class="hljs-number">4</span>]; <span class="hljs-comment">// 定义 TestClass 类数组</span>
+
+<span class="hljs-keyword">delete</span> [] myTestClassArray; <span class="hljs-comment">// 删除数组</span>
+</code></pre>
+<h1 id="异常处理"><a name="异常处理" class="anchor-navigation-ex-anchor" href="#异常处理"><i class="fa fa-link" aria-hidden="true"></i></a>异常处理</h1>
+<p><img src="assets/image-20221013235949-7z86x5w.png" alt="image">​</p>
+<table>
+<thead>
+<tr>
+<th>异常</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>std::exception</code></td>
+<td>该异常是所有标准 C++ 异常的父类。</td>
+</tr>
+<tr>
+<td><code>std::bad_alloc</code></td>
+<td>该异常可以通过 <code>new</code> 抛出。</td>
+</tr>
+<tr>
+<td><code>std::bad_cast</code></td>
+<td>该异常可以通过 <code>dynamic_cast</code> 抛出。</td>
+</tr>
+<tr>
+<td><code>std::bad_exception</code></td>
+<td>这在处理 C++ 程序中无法预期的异常时非常有用。</td>
+</tr>
+<tr>
+<td><code>std::bad_typeid</code></td>
+<td>该异常可以通过 <code>typeid</code> 抛出。</td>
+</tr>
+<tr>
+<td><code>std::logic_error</code></td>
+<td>理论上可以通过读取代码来检测到的异常。</td>
+</tr>
+<tr>
+<td><code>std::domain_error</code></td>
+<td>当使用了一个无效的数学域时，会抛出该异常。</td>
+</tr>
+<tr>
+<td><code>std::invalid_argument</code></td>
+<td>当使用了无效的参数时，会抛出该异常。</td>
+</tr>
+<tr>
+<td><code>std::length_error</code></td>
+<td>当创建了太长的 <code>std::string</code> 时，会抛出该异常。</td>
+</tr>
+<tr>
+<td><code>std::out_of_range</code></td>
+<td>该异常可以通过方法抛出，例如 <code>std::vector</code> 和 <code>std::bitset&lt;&gt;::operator[]()</code>。</td>
+</tr>
+<tr>
+<td><code>std::runtime_error</code></td>
+<td>理论上不可以通过读取代码来检测到的异常。</td>
+</tr>
+<tr>
+<td><code>std::overflow_error</code></td>
+<td>当发生数学上溢时，会抛出该异常。</td>
+</tr>
+<tr>
+<td><code>std::range_error</code></td>
+<td>当尝试存储超出范围的值时，会抛出该异常。</td>
+</tr>
+<tr>
+<td><code>std::underflow_error</code></td>
+<td>当发生数学下溢时，会抛出该异常。</td>
+</tr>
+</tbody>
+</table>
+<p>C++ 异常处理涉及到三个关键字： <strong>try、catch、throw</strong> 。</p>
+<ul>
+<li><p>C++ 提供了一系列标准的异常，定义在 <code>&lt;exception&gt;</code> 中。</p>
+</li>
+<li><p><code>throw:</code> 当问题出现时，程序会抛出一个异常。这是通过使用 <strong>throw</strong> 关键字来完成的。</p>
+<p><code>throw</code> 语句的操作数可以是任意的表达式（任何地方），表达式的结果的类型决定了抛出的异常的类型。</p>
+</li>
+<li><p><code>catch:</code> 在您想要处理问题的地方，通过异常处理程序捕获异常。<strong>catch</strong> 关键字用于捕获异常。</p>
+</li>
+<li><p><code>try:</code> <strong>try</strong> 块中的代码标识将被激活的特定异常。它后面通常跟着一个或多个 catch 块。</p>
+<p><code>try</code> 块中放置可能抛出异常的代码，try 块中的代码被称为保护代码。</p>
+</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-keyword">try</span> {
+   <span class="hljs-comment">// 保护代码</span>
+}<span class="hljs-built_in"><span class="hljs-keyword">catch</span></span>( ExceptionName e1 ) {
+   <span class="hljs-comment">// catch 块</span>
+}<span class="hljs-built_in"><span class="hljs-keyword">catch</span></span>( ExceptionName e2 ) {
+   <span class="hljs-comment">// catch 块</span>
+}<span class="hljs-built_in"><span class="hljs-keyword">catch</span></span>( ExceptionName eN ) {
+   <span class="hljs-comment">// catch 块</span>
+}
+
+<span class="hljs-comment">// 不一定真的处理，取决于你写的异常处理代码，然后程序继续往下执行~</span>
+</code></pre>
+<h2 id="捕获异常"><a name="捕获异常" class="anchor-navigation-ex-anchor" href="#捕获异常"><i class="fa fa-link" aria-hidden="true"></i></a>捕获异常</h2>
+<p><code>catch</code> 块跟在 <code>try</code> 块后面，用于捕获异常。您可以指定想要捕捉的异常类型，这是由 catch 关键字后的括号内的异常声明决定的。</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">try</span> {
+   <span class="hljs-comment">// 保护代码</span>
+}<span class="hljs-built_in"><span class="hljs-keyword">catch</span></span>( ExceptionName e ) {
+  <span class="hljs-comment">// 处理 ExceptionName 异常的代码</span>
+}
+</code></pre>
+<blockquote>
+<p>会捕获一个类型为 <code>ExceptionName</code> 的异常。如果您想让 catch 块能够处理 try 块抛出的<strong>任何类型</strong>的异常，则必须在异常声明的括号内使用省略号 <code>...</code></p>
+</blockquote>
+<pre><code class="lang-cpp"><span class="hljs-keyword">try</span> {
+   <span class="hljs-comment">// 保护代码</span>
+}<span class="hljs-built_in"><span class="hljs-keyword">catch</span></span>(...) {
+  <span class="hljs-comment">// 能处理任何异常的代码</span>
+}
+</code></pre>
+<h2 id="定义新的异常"><a name="定义新的异常" class="anchor-navigation-ex-anchor" href="#定义新的异常"><i class="fa fa-link" aria-hidden="true"></i></a>定义新的异常</h2>
+<p>您可以通过 <code>继承和重载 exception 类</code> 来定义新的异常。</p>
+<p><code>what()</code> 是异常类提供的一个公共方法，它已被所有子异常类重载。这将返回异常产生的原因。</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;exception&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyException</span> :</span> <span class="hljs-keyword">public</span> exception {
+  <span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-title">what</span> <span class="hljs-params">()</span> <span class="hljs-keyword">const</span> <span class="hljs-title">throw</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;C++ Exception&quot;</span>;
+  }
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">throw</span> <span class="hljs-built_in">MyException</span>();
+  }<span class="hljs-built_in"><span class="hljs-keyword">catch</span></span>(MyException&amp; e) { <span class="hljs-comment">// 自定义的异常类型，重写了 what() 函数</span>
+    std::cout &lt;&lt; <span class="hljs-string">&quot;MyException caught&quot;</span> &lt;&lt; std::endl;
+    std::cout &lt;&lt; e.<span class="hljs-built_in">what</span>() &lt;&lt; std::endl;
+  }<span class="hljs-built_in"><span class="hljs-keyword">catch</span></span>(std::exception&amp; e) {
+    <span class="hljs-comment">//其他的错误</span>
+  }
+}
+
+----------
+D:\CPP_Project\CppTest\cmake-build-debug\CppTest.exe
+MyException caught
+C++ Exception
+</code></pre>
+<h1 id="引用"><a name="引用" class="anchor-navigation-ex-anchor" href="#引用"><i class="fa fa-link" aria-hidden="true"></i></a>引用</h1>
+<blockquote>
+<p><a href="https://www.runoob.com/cplusplus/cpp-references.html" target="_blank">C++ 引用 | 菜鸟教程 (runoob.com)</a></p>
+</blockquote>
+<h2 id="引用和指针的区别"><a name="引用和指针的区别" class="anchor-navigation-ex-anchor" href="#引用和指针的区别"><i class="fa fa-link" aria-hidden="true"></i></a>引用和指针的区别</h2>
+<ul>
+<li>不存在空引用，引用必须连接到一个合法的内存。</li>
+<li><strong>一旦引用被初始化，就不能改变它的值。</strong>【就是说只能作为一块空间的引用，不能改变】指针可以随时改变指向的地址（空间）。</li>
+<li>引用必须在创建的时候进行初始化，指针可以随时初始化。</li>
+</ul>
+<p><strong>引用：</strong>就是给同一块内存空间起别名。</p>
+<pre><code class="lang-cpp">变量类型 &amp; = 变量;
+
+e.g.
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>{
+   <span class="hljs-comment">// 声明简单的变量</span>
+   <span class="hljs-keyword">int</span>    i;
+   <span class="hljs-keyword">double</span> d;
+
+   <span class="hljs-comment">// 声明引用变量</span>
+   <span class="hljs-keyword">int</span>&amp;    r = i;
+   <span class="hljs-keyword">double</span>&amp; s = d;
+
+   i = <span class="hljs-number">5</span>;
+   cout &lt;&lt; <span class="hljs-string">&quot;Value of i : &quot;</span> &lt;&lt; i &lt;&lt; endl;
+   cout &lt;&lt; <span class="hljs-string">&quot;Value of i reference : &quot;</span> &lt;&lt; r  &lt;&lt; endl;
+
+   d = <span class="hljs-number">11.7</span>;
+   cout &lt;&lt; <span class="hljs-string">&quot;Value of d : &quot;</span> &lt;&lt; d &lt;&lt; endl;
+   cout &lt;&lt; <span class="hljs-string">&quot;Value of d reference : &quot;</span> &lt;&lt; s  &lt;&lt; endl;
+
+   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+----------
+<span class="hljs-comment">// 题外话</span>
+- e.g. 是拉丁语 exempli gratia 的缩写，
+
+- 如果直译，它的语义是： <span class="hljs-keyword">for</span> the sake of example（为了举例）
+
+- e.g.两个字母后面需不需要加“.”呢？都可以，有三种方法：
+<span class="hljs-number">1.</span> e.g.
+<span class="hljs-number">2.</span> eg.
+<span class="hljs-number">3.</span> eg
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.runoob.com/cplusplus/passing-parameters-by-references.html" title="C++ 中通过引用传参" target="_blank">把引用作为参数</a></td>
+<td>C++ 支持把引用作为参数传给函数，这比传一般的参数更安全。</td>
+</tr>
+<tr>
+<td><a href="https://www.runoob.com/cplusplus/returning-values-by-reference.html" title="C++ 中通过引用返回值" target="_blank">把引用作为返回值</a></td>
+<td>可以从 C++ 函数中返回引用，就像返回其他数据类型一样。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>把引用作为参数</strong></p>
+<p><code>void swap(int&amp; x, int&amp; y);</code> 和用指针是一样的，同样是对地址的值进行操作，会影响实参的值。</p>
+<p><strong>把引用作为返回值</strong></p>
+<p>C++ 函数可以返回一个引用，方式与返回一个指针类似。</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">double</span>&amp; <span class="hljs-title">setValues</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{  
+   <span class="hljs-keyword">double</span>&amp; ref = vals[i];  
+   <span class="hljs-keyword">return</span> ref;   <span class="hljs-comment">// 返回第 i 个元素的引用，ref 是一个引用变量，ref 引用 vals[i]</span>
+}
+</code></pre>
+<p><strong>当返回一个引用时，要注意被引用的对象不能超出作用域。</strong>所以返回一个对局部变量的引用是不合法的，但是，可以返回一个对静态变量的引用。</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">int</span>&amp; <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>{
+   <span class="hljs-keyword">int</span> q;
+   <span class="hljs-comment">//! return q; // 在编译时发生错误</span>
+   <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> x;
+   <span class="hljs-keyword">return</span> x;     <span class="hljs-comment">// 安全，x 在函数作用域外依然是有效的</span>
+}
+</code></pre>
+<h1 id="文件流"><a name="文件流" class="anchor-navigation-ex-anchor" href="#文件流"><i class="fa fa-link" aria-hidden="true"></i></a>文件流</h1>
+<blockquote>
+<p>C++ 中的一个标准库 <code>fstream</code> 。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ofstream</code></td>
+<td>该数据类型表示输出文件流，用于创建文件并向文件<strong>写入</strong>信息。【对外输出】</td>
+</tr>
+<tr>
+<td><code>ifstream</code></td>
+<td>该数据类型表示输入文件流，用于从文件<strong>读取</strong>信息。【从外接收/输入】</td>
+</tr>
+<tr>
+<td><code>fstream</code></td>
+<td>该数据类型通常表示文件流，且同时具有 ofstream 和 ifstream 两种功能，这意味着它可以创建文件，向文件写入信息，从文件读取信息。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="打开文件"><a name="打开文件" class="anchor-navigation-ex-anchor" href="#打开文件"><i class="fa fa-link" aria-hidden="true"></i></a>打开文件</h2>
+<p><code>open()</code> 函数是 fstream、ifstream 和 ofstream 对象的一个成员。</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">open</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename, ios::openmode mode)</span></span>;
+<span class="hljs-comment">// 第一参数指定要打开的文件的名称和位置，第二个参数定义文件被打开的模式。</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>模式标志</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ios::app</code></td>
+<td>追加模式。所有写入都追加到文件末尾。</td>
+</tr>
+<tr>
+<td><code>ios::ate</code></td>
+<td>文件打开后定位到文件末尾。</td>
+</tr>
+<tr>
+<td><code>ios::in</code></td>
+<td>打开文件用于读取。</td>
+</tr>
+<tr>
+<td><code>ios::out</code></td>
+<td>打开文件用于写入。</td>
+</tr>
+<tr>
+<td><code>ios::trunc</code></td>
+<td>如果该文件已经存在，其内容将在打开文件之前被截断，即把文件长度设为 0。</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;fstream&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>{
+    ofstream outfile;
+    outfile.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;file.txt&quot;</span>, ios::out | ios::trunc);
+    outfile &lt;&lt; <span class="hljs-string">&quot;Writetest-----&quot;</span> &lt;&lt; endl;
+    outfile &lt;&lt; <span class="hljs-string">&quot;Write test+++++&quot;</span> &lt;&lt; endl; <span class="hljs-comment">// 再次输出到文件</span>
+    outfile.<span class="hljs-built_in">close</span>();
+
+    <span class="hljs-keyword">char</span> * data = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">100</span>];
+    ifstream  infile;
+    infile.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;file.txt&quot;</span>);
+    infile &gt;&gt; data;
+    cout &lt;&lt; data &lt;&lt; endl;
+
+    infile &gt;&gt; data; <span class="hljs-comment">// 再次读取数据，运行可知每次只会读取到空格或者换行</span>
+    cout &lt;&lt; data &lt;&lt; endl;
+
+    infile &gt;&gt; data; <span class="hljs-comment">// 再次读取数据</span>
+    cout &lt;&lt; data &lt;&lt; endl;
+
+    infile.<span class="hljs-built_in">close</span>();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<blockquote>
+<p>以 <code>空格</code> 或 <code>换行</code> 作为一次流的读取分割符号。</p>
+</blockquote>
+<h2 id="关闭文件"><a name="关闭文件" class="anchor-navigation-ex-anchor" href="#关闭文件"><i class="fa fa-link" aria-hidden="true"></i></a>关闭文件</h2>
+<p>当 C++ 程序终止时，<strong>它会自动关闭刷新所有流</strong>，释放所有分配的内存，并关闭所有打开的文件。但程序员应该养成一个好习惯，在程序终止前关闭所有打开的文件。</p>
+<p>下面是 close() 函数的标准语法，<code>close()</code> 函数是 fstream、ifstream 和 ofstream 对象的一个成员。</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">close</span><span class="hljs-params">()</span></span>;
+</code></pre>
+<p>cin 对象的附加函数，比如 <code>getline()</code> 函数从外部读取一行，<code>ignore()</code> <strong>函数会忽略掉之前读语句留下的多余字符。</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// 定位到 fileObject 的第 n 个字节（假设是 ios::beg）</span>
+fileObject.<span class="hljs-built_in">seekg</span>( n );
+
+<span class="hljs-comment">// 把文件的读指针从 fileObject 当前位置向后移 n 个字节</span>
+fileObject.<span class="hljs-built_in">seekg</span>( n, ios::cur );
+
+<span class="hljs-comment">// 把文件的读指针从 fileObject 末尾往回移 n 个字节</span>
+fileObject.<span class="hljs-built_in">seekg</span>( n, ios::end );
+
+<span class="hljs-comment">// 定位到 fileObject 的末尾</span>
+fileObject.<span class="hljs-built_in">seekg</span>( <span class="hljs-number">0</span>, ios::end );
+
+<span class="hljs-comment">// 和 C 的 fseek() 类似</span>
+</code></pre>
+<h1 id="练习"><a name="练习" class="anchor-navigation-ex-anchor" href="#练习"><i class="fa fa-link" aria-hidden="true"></i></a>练习</h1>
+<ol>
+<li>实现一个基本 NPC 类，具备常规属性及功能(ID,名称，HP,MP，坐标，喊话，攻击技能，移动)</li>
+<li>使用 C++ 的输入输出方式完成一个具有加减乘除功能的计算器。</li>
+<li>使用 C++ 文件流的方式，将计算过程及结果输出至文件（例如 1 + 2 = 3）（在使用文件流的过程中，使用 new 和 delete 动态分配释放内存。）</li>
+<li>根据第二题的计算机，重新编写，计算器的四个函数，使用同一个函数名，根据命名空间不同，具有不同的效果。</li>
+</ol>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-11-08 13:36:54
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="CPP - 02 重载.html" class="navigation navigation-next navigation-unique" aria-label="Next page: CPP - 02 重载">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CPP - 01 面向对象基础","level":"2.2.1","depth":2,"next":{"title":"CPP - 02 重载","level":"2.2.2","depth":2,"path":"C++ 基础/CPP - 02 重载.md","ref":"C++ 基础/CPP - 02 重载.md","articles":[]},"previous":{"title":"C ++ 基础","level":"2.2","depth":1,"ref":"","articles":[{"title":"CPP - 01 面向对象基础","level":"2.2.1","depth":2,"path":"C++ 基础/CPP - 01 面向对象基础.md","ref":"C++ 基础/CPP - 01 面向对象基础.md","articles":[]},{"title":"CPP - 02 重载","level":"2.2.2","depth":2,"path":"C++ 基础/CPP - 02 重载.md","ref":"C++ 基础/CPP - 02 重载.md","articles":[]},{"title":"CPP - 03 继承","level":"2.2.3","depth":2,"path":"C++ 基础/CPP - 03 继承.md","ref":"C++ 基础/CPP - 03 继承.md","articles":[]},{"title":"CPP - 04 多态","level":"2.2.4","depth":2,"path":"C++ 基础/CPP - 04 多态.md","ref":"C++ 基础/CPP - 04 多态.md","articles":[]},{"title":"CPP - 05 探索类对象模型（一）","level":"2.2.5","depth":2,"path":"C++ 基础/CPP - 05 探索类对象模型（一）.md","ref":"C++ 基础/CPP - 05 探索类对象模型（一）.md","articles":[]},{"title":"CPP - 06 探索类对象模型（二）","level":"2.2.6","depth":2,"path":"C++ 基础/CPP - 06 探索类对象模型（二）.md","ref":"C++ 基础/CPP - 06 探索类对象模型（二）.md","articles":[]},{"title":"CPP - 07 探索类对象模型（三）","level":"2.2.7","depth":2,"path":"C++ 基础/CPP - 07 探索类对象模型（三）.md","ref":"C++ 基础/CPP - 07 探索类对象模型（三）.md","articles":[]},{"title":"CPP - 08 寄存器基础与函数调用约定","level":"2.2.8","depth":2,"path":"C++ 基础/CPP - 08 寄存器基础与函数调用约定.md","ref":"C++ 基础/CPP - 08 寄存器基础与函数调用约定.md","articles":[]},{"title":"CPP - 09 探索对象模型（四）","level":"2.2.9","depth":2,"path":"C++ 基础/CPP - 09 探索对象模型（四）.md","ref":"C++ 基础/CPP - 09 探索对象模型（四）.md","articles":[]},{"title":"CPP - 10 探索对象模型（五）","level":"2.2.10","depth":2,"path":"C++ 基础/CPP - 10 探索对象模型（五）.md","ref":"C++ 基础/CPP - 10 探索对象模型（五）.md","articles":[]},{"title":"CPP - 11 函数模板和类模板","level":"2.2.11","depth":2,"path":"C++ 基础/CPP - 11 函数模板和类模板.md","ref":"C++ 基础/CPP - 11 函数模板和类模板.md","articles":[]},{"title":"CPP - 12 函数模板和类模板（总结）","level":"2.2.12","depth":2,"path":"C++ 基础/CPP - 12 函数模板和类模板（总结）.md","ref":"C++ 基础/CPP - 12 函数模板和类模板（总结）.md","articles":[]},{"title":"CPP - 现代 C++ 基础（一）","level":"2.2.13","depth":2,"path":"C++ 基础/CPP - 现代 C++ 基础（一）.md","ref":"C++ 基础/CPP - 现代 C++ 基础（一）.md","articles":[]},{"title":"CPP - 现代 C++ 基础（二）","level":"2.2.14","depth":2,"path":"C++ 基础/CPP - 现代 C++ 基础（二）.md","ref":"C++ 基础/CPP - 现代 C++ 基础（二）.md","articles":[]},{"title":"CPP - 现代 C++ 基础（三）","level":"2.2.15","depth":2,"path":"C++ 基础/CPP - 现代 C++ 基础（三）.md","ref":"C++ 基础/CPP - 现代 C++ 基础（三）.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-Windows 高级攻防/","text":"Windows 高级攻防","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Windows 高级攻防","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"C++ 基础/CPP - 01 面向对象基础.md","mtime":"2022-11-08T05:36:54.075Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-11-08T06:00:50.224Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

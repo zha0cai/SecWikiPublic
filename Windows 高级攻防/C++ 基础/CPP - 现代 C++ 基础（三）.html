@@ -1,0 +1,858 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>CPP - 现代 C++ 基础（三） · Windows 高级攻防</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.0">
+        <meta name="author" content="zha0cai">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="CPP - 现代 C++ 基础（二）.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/zha0cai" target="_blank" class="custom-link">My github</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Windows 高级攻防
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">0x01 基础阶段</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    C 语言程序设计基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                <a href="../C 语言程序设计基础/01 - 环境和编译.html">
+            
+                    
+                    01 环境和编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                <a href="../C 语言程序设计基础/02 - 基础数据类型与输入输出.html">
+            
+                    
+                    02 基础数据类型与输入输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../C 语言程序设计基础/03 - 运算符.html">
+            
+                <a href="../C 语言程序设计基础/03 - 运算符.html">
+            
+                    
+                    03 运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                <a href="../C 语言程序设计基础/04 - 选择结构与顺序结构.html">
+            
+                    
+                    04 选择结构与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                <a href="../C 语言程序设计基础/05 - 函数、数组与指针.html">
+            
+                    
+                    05 函数、数组与指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                <a href="../C 语言程序设计基础/06 - 复杂数据类型与文件操作.html">
+            
+                    
+                    06 复杂数据类型与文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    C ++ 基础
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="CPP - 01 面向对象基础.html">
+            
+                <a href="CPP - 01 面向对象基础.html">
+            
+                    
+                    CPP - 01 面向对象基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="CPP - 02 重载.html">
+            
+                <a href="CPP - 02 重载.html">
+            
+                    
+                    CPP - 02 重载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="CPP - 03 继承.html">
+            
+                <a href="CPP - 03 继承.html">
+            
+                    
+                    CPP - 03 继承
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="CPP - 04 多态.html">
+            
+                <a href="CPP - 04 多态.html">
+            
+                    
+                    CPP - 04 多态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="CPP - 05 探索类对象模型（一）.html">
+            
+                <a href="CPP - 05 探索类对象模型（一）.html">
+            
+                    
+                    CPP - 05 探索类对象模型（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="CPP - 06 探索类对象模型（二）.html">
+            
+                <a href="CPP - 06 探索类对象模型（二）.html">
+            
+                    
+                    CPP - 06 探索类对象模型（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="CPP - 07 探索类对象模型（三）.html">
+            
+                <a href="CPP - 07 探索类对象模型（三）.html">
+            
+                    
+                    CPP - 07 探索类对象模型（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.8" data-path="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                <a href="CPP - 08 寄存器基础与函数调用约定.html">
+            
+                    
+                    CPP - 08 寄存器基础与函数调用约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="CPP - 09 探索对象模型（四）.html">
+            
+                <a href="CPP - 09 探索对象模型（四）.html">
+            
+                    
+                    CPP - 09 探索对象模型（四）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="CPP - 10 探索对象模型（五）.html">
+            
+                <a href="CPP - 10 探索对象模型（五）.html">
+            
+                    
+                    CPP - 10 探索对象模型（五）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.11" data-path="CPP - 11 函数模板和类模板.html">
+            
+                <a href="CPP - 11 函数模板和类模板.html">
+            
+                    
+                    CPP - 11 函数模板和类模板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.12" data-path="CPP - 12 函数模板和类模板（总结）.html">
+            
+                <a href="CPP - 12 函数模板和类模板（总结）.html">
+            
+                    
+                    CPP - 12 函数模板和类模板（总结）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.13" data-path="CPP - 现代 C++ 基础（一）.html">
+            
+                <a href="CPP - 现代 C++ 基础（一）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.14" data-path="CPP - 现代 C++ 基础（二）.html">
+            
+                <a href="CPP - 现代 C++ 基础（二）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（二）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2.15" data-path="CPP - 现代 C++ 基础（三）.html">
+            
+                <a href="CPP - 现代 C++ 基础（三）.html">
+            
+                    
+                    CPP - 现代 C++ 基础（三）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">MASM 汇编语言（待更新）</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x02 高级安全</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x03 内网攻防</li>
+        
+        
+    
+
+    
+        
+        <li class="header">0x04 CTF（浅）</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >CPP - 现代 C++ 基础（三）</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#列表初始化"><b></b>列表初始化</a></li><li><span class="title-icon "></span><a href="#类相关"><b></b>类相关</a></li><li><span class="title-icon "></span><a href="#实现一个模板数组"><b></b>实现一个模板数组</a></li><ul><li><span class="title-icon "></span><a href="#stduniqueptr​"><b></b>std::unique_ptr​</a></li><li><span class="title-icon "></span><a href="#stdweakptr​"><b></b>std::weak_ptr​</a></li></ul></ul></div><a href="#列表初始化" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="列表初始化"><a name="列表初始化" class="anchor-navigation-ex-anchor" href="#列表初始化"><i class="fa fa-link" aria-hidden="true"></i></a>列表初始化</h1>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">Info</span> {</span>
+    string szStr;
+    <span class="hljs-keyword">int</span> nValue;
+}Info, *PInfo;
+
+<span class="hljs-function">Info <span class="hljs-title">GetInfo</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> { <span class="hljs-string">&quot;hello&quot;</span>, <span class="hljs-number">110</span> };
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    Info info = <span class="hljs-built_in">GetInfo</span>();
+    cout &lt;&lt; info.szStr &lt;&lt; endl &lt;&lt; info.nValue &lt;&lt; endl;
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h1 id="类相关"><a name="类相关" class="anchor-navigation-ex-anchor" href="#类相关"><i class="fa fa-link" aria-hidden="true"></i></a>类相关</h1>
+<p><strong>一些初始操作</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CA</span> {</span>
+<span class="hljs-keyword">public</span>：
+    <span class="hljs-built_in">CA</span>() = <span class="hljs-keyword">delete</span>; <span class="hljs-comment">// 删除默认构造函数</span>
+    <span class="hljs-built_in">CA</span>() = <span class="hljs-keyword">default</span>; <span class="hljs-comment">// 使用默认的构造函数</span>
+    <span class="hljs-keyword">new</span> = <span class="hljs-keyword">delete</span>; <span class="hljs-comment">// 那么 CA *pObj = new CA; 将会失效</span>
+}
+</code></pre>
+<p><strong>联合体 Union</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">MyUnion</span> {</span>
+    <span class="hljs-built_in">MyUnion</span>(); <span class="hljs-comment">// 加强型 uni31on</span>
+    ~<span class="hljs-built_in">MyUnion</span>();
+
+    string szStr; <span class="hljs-comment">// 存在非基础类型，需要构造和析构函数</span>
+}
+</code></pre>
+<h1 id="实现一个模板数组"><a name="实现一个模板数组" class="anchor-navigation-ex-anchor" href="#实现一个模板数组"><i class="fa fa-link" aria-hidden="true"></i></a>实现一个模板数组</h1>
+<pre><code class="lang-cpp">```
+
+# 智能指针
+
+&gt; 引用计数这种计数是为了防止内存泄露而产生的。 基本想法是对于动态分配的对象，进行引用计数，每当增加一次对同一个对象的引用，那么引用对象的引用计数就会增加一次， 每删除一次引用，引用计数就会减一，当一个对象的引用计数减为零时，就自动删除指向的堆内存。
+&gt;
+&gt; C++<span class="hljs-number">11</span> 引入了智能指针的概念，使用了引用计数的想法，让程序员不再需要关心手动释放内存。 这些智能指针包括 `std::shared_ptr`​ / `std::unique_ptr`​ / `std::weak_ptr`​，使用它们需要包含头文件 `&lt;memory&gt;`​。
+&gt;
+&gt; **注意：**
+&gt;
+&gt; * **引用计数不是垃圾回收，引用计数能够尽快收回不再被使用的对象，同时在回收的过程中也不会造成长时间的等待， 更能够清晰明确的表明资源的生命周期。**
+&gt; * **引用计数，有多少个指针指向这块内存**
+
+## `std::shared_ptr`
+
+&gt; ​`std::shared_ptr`​ 是一种共享式智能指针，它能够记录多少个 `shared_ptr`​ 共同指向一个对象，从而消除显式的调用 `<span class="hljs-keyword">delete</span>`​，当引用计数变为零的时候就会将对象自动删除。
+&gt;
+&gt; 但还不够，因为使用 `std::shared_ptr`​ 仍然需要使用 `<span class="hljs-keyword">new</span>`​ 来调用，这使得代码出现了某种程度上的不对称。
+&gt;
+&gt; ​`std::make_shared`​ 就能够用来消除显式的使用 `<span class="hljs-keyword">new</span>`​，所以 `std::make_shared`​ 会分配创建传入参数中的对象， 并返回这个对象类型的 `std::shared_ptr`​ 指针。
+
+```cpp
+<span class="hljs-keyword">auto</span> pointer
+
+<span class="hljs-keyword">auto</span> pointer = std::make_shared&lt;<span class="hljs-keyword">int</span>&gt;(<span class="hljs-number">10</span>);
+</code></pre>
+<p><strong>strong refs</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">//auto pointer = new int(10);</span>
+    <span class="hljs-function">std::shared_ptr&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">objA</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>(<span class="hljs-number">110</span>))</span></span>; 
+    <span class="hljs-comment">// +        objA    shared_ptr 110 [1 strong refs] [default]    std::shared_ptr&lt;int&gt;</span>
+    <span class="hljs-keyword">auto</span> pointer = std::make_shared&lt;<span class="hljs-keyword">int</span>&gt;(<span class="hljs-number">111</span>);
+
+    cout &lt;&lt; *objA &lt;&lt; endl;
+    cout &lt;&lt; *pointer &lt;&lt; endl;
+
+    <span class="hljs-function">std::shared_ptr&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">objB</span><span class="hljs-params">(objA)</span></span>; <span class="hljs-comment">// 执行这句之后</span>
+    <span class="hljs-comment">// +        objA    shared_ptr 110 [2 strong refs] [default]    std::shared_ptr&lt;int&gt;</span>
+    <span class="hljs-comment">// +        objB    shared_ptr 110 [2 strong refs] [default]    std::shared_ptr&lt;int&gt;</span>
+
+    <span class="hljs-function">std::shared_ptr&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">objC</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>(<span class="hljs-number">0</span>))</span></span>;
+
+    <span class="hljs-comment">// +        objC    shared_ptr 0 [1 strong ref] [default]    std::shared_ptr&lt;int&gt;</span>
+    objC = objA;
+    <span class="hljs-comment">// +        objC    shared_ptr 110 [3 strong refs] [default]    std::shared_ptr&lt;int&gt;</span>
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>​<code>std::shared_ptr</code>​ 可以通过 <code>get()</code>​ 方法来获取原始指针，通过 <code>reset()</code>​ 来减少一个引用计数， 并通过 <code>use_count()</code>​ 来查看一个对象的引用计数。【<strong>智能指针</strong>】</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">auto</span> pointer = std::make_shared&lt;<span class="hljs-keyword">int</span>&gt;(<span class="hljs-number">10</span>);
+<span class="hljs-keyword">auto</span> pointer2 = pointer; <span class="hljs-comment">// 引用计数 +1</span>
+<span class="hljs-keyword">auto</span> pointer3 = pointer; <span class="hljs-comment">// 引用计数 +1</span>
+<span class="hljs-keyword">int</span> *p = pointer.<span class="hljs-built_in">get</span>();  <span class="hljs-comment">// 这样不会增加引用计数</span>
+</code></pre>
+<h2 id="stduniqueptr​"><a name="stduniqueptr​" class="anchor-navigation-ex-anchor" href="#stduniqueptr​"><i class="fa fa-link" aria-hidden="true"></i></a><code>std::unique_ptr</code>​</h2>
+<p>​<code>std::unique_ptr</code>​ 是一种独占的智能指针，它禁止其他智能指针与其共享同一个对象，从而保证代码的安全。</p>
+<pre><code class="lang-cpp">std::unique_ptr&lt;<span class="hljs-keyword">int</span>&gt; pointer = std::make_unique&lt;<span class="hljs-keyword">int</span>&gt;(<span class="hljs-number">10</span>); <span class="hljs-comment">// make_unique 从 C++14 引入</span>
+std::unique_ptr&lt;<span class="hljs-keyword">int</span>&gt; pointer2 = pointer; <span class="hljs-comment">// 非法</span>
+</code></pre>
+<p>​<code>make_unique</code>​ 并不复杂，C++11 没有提供 <code>std::make_unique</code>​，可以自行实现：</p>
+<pre><code class="lang-cpp">template&lt;typename T, typename ...Args&gt;
+std::unique_ptr&lt;T&gt; make_unique( Args &amp;&amp; ...args ) { // 右值引用
+  return std::unique_ptr&lt;T&gt;( new T( std::forward&lt;Args&gt;(args)... ) );
+}
+</code></pre>
+<blockquote>
+<p>至于为什么没有提供，C++ 标准委员会主席 Herb Sutter 在他的<a href="https://herbsutter.com/gotw/_102/" target="_blank">博客</a>中提到原因是因为『被他们忘记了』。</p>
+</blockquote>
+<p>既然是独占，换句话说就是不可复制。但是，我们可以利用 <code>std::move</code>​ 将其转移给其他的 <code>unique_ptr</code>​。</p>
+<pre><code class="lang-cpp"><span class="hljs-function">std::unique_ptr&lt;Foo&gt; <span class="hljs-title">p1</span><span class="hljs-params">(std::make_unique&lt;Foo&gt;())</span></span>;
+
+<span class="hljs-function">std::unique_ptr&lt;Foo&gt; <span class="hljs-title">p2</span><span class="hljs-params">(std::move(p1))</span></span>;
+</code></pre>
+<h2 id="stdweakptr​"><a name="stdweakptr​" class="anchor-navigation-ex-anchor" href="#stdweakptr​"><i class="fa fa-link" aria-hidden="true"></i></a><code>std::weak_ptr</code>​</h2>
+<p>为了 解决<code>std::shared_ptr</code>​ 依然存在着资源无法释放的问题。需要使用到 <code>std::weak_ptr</code>​ 是一种弱引用（相比较而言 <code>std::shared_ptr</code>​ 就是一种强引用）。<strong>弱引用不会引起引用计数增加。</strong></p>
+<p>无法释放 e.g</p>
+<pre><code class="lang-cpp"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">A</span>;</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">B</span>;</span>
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">A</span> {</span>
+    std::shared_ptr&lt;B&gt; pointer;
+    ~<span class="hljs-built_in">A</span>() {
+        std::cout &lt;&lt; <span class="hljs-string">&quot;A 被销毁&quot;</span> &lt;&lt; std::endl;
+    }
+};
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">B</span> {</span>
+    std::shared_ptr&lt;A&gt; pointer;
+    ~<span class="hljs-built_in">B</span>() {
+        std::cout &lt;&lt; <span class="hljs-string">&quot;B 被销毁&quot;</span> &lt;&lt; std::endl;
+    }
+};
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">auto</span> a = std::make_shared&lt;A&gt;();
+    <span class="hljs-keyword">auto</span> b = std::make_shared&lt;B&gt;();
+    a-&gt;pointer = b;
+    b-&gt;pointer = a;
+}
+</code></pre>
+<p>运行结果是 A, B 都不会被销毁，这是因为 a,b 内部的 pointer 同时又引用了 <code>a,b</code>​，这使得 <code>a,b</code>​ 的引用计数均变为了 2，而离开作用域时，<code>a,b</code>​ 智能指针被析构，却只能造成这块区域的引用计数减一，这样就导致了 <code>a,b</code>​ 对象指向的内存区域引用计数不为零，而外部已经没有办法找到这块区域了，也就造成了内存泄露。下断点调试可以看到，已经炸裂了...</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">A</span>;</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">B</span>;</span>
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">A</span> {</span>
+    std::shared_ptr&lt;B&gt; pointer;
+    ~<span class="hljs-built_in">A</span>() {
+        std::cout &lt;&lt; <span class="hljs-string">&quot;A 被销毁&quot;</span> &lt;&lt; std::endl;
+    }
+};
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">B</span> {</span>
+    std::shared_ptr&lt;A&gt; pointer;
+    ~<span class="hljs-built_in">B</span>() {
+        std::cout &lt;&lt; <span class="hljs-string">&quot;B 被销毁&quot;</span> &lt;&lt; std::endl;
+    }
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">auto</span> a = std::make_shared&lt;A&gt;();
+    <span class="hljs-comment">// +        a    shared_ptr {pointer=empty } [1 strong ref] [{_Storage={_Value={pointer=empty } } }]    std::shared_ptr&lt;A&gt;</span>
+
+    <span class="hljs-keyword">auto</span> b = std::make_shared&lt;B&gt;();
+    <span class="hljs-comment">// +        b    shared_ptr {pointer=empty } [1 strong ref] [{_Storage={_Value={pointer=empty } } }]    std::shared_ptr&lt;B&gt;</span>
+
+    a-&gt;pointer = b;
+    <span class="hljs-comment">// +        a    shared_ptr {pointer=shared_ptr {pointer=empty } [2 strong refs] [{_Storage={_Value={pointer=empty } } }] } [1 strong ref] [{_Storage={_Value={pointer=shared_ptr {pointer=empty } [2 strong refs] [{_Storage={_Value={pointer=empty } } }] } } }]    std::shared_ptr&lt;A&gt;</span>
+    <span class="hljs-comment">// +        a-&gt;pointer    shared_ptr {pointer=empty } [2 strong refs] [{_Storage={_Value={pointer=empty } } }]    std::shared_ptr&lt;B&gt;</span>
+
+    b-&gt;pointer = a;
+    <span class="hljs-comment">// +        b    shared_ptr {pointer=empty } [2 strong refs] [{_Storage={_Value={pointer=empty } } }]    std::shared_ptr&lt;B&gt;</span>
+    <span class="hljs-comment">// +        b    shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{_Storage={...} }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{...}] } } }] } } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{...}] } } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{...}] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{...}] } } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{...}] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{...}] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{...}] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{...}] } [2 strong refs] [{_Storage={_Value={...} } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {...} [2 strong refs] [{_Storage={...} }] } } }] } } }] } } }] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr {...} [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [2 strong refs] [] } [2 strong refs] [{_Storage={...} }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr  [2 strong refs] [{...}] } } }] } } }] } [2 strong refs] [{_Storage={_Value={pointer=shared_ptr {pointer=shared_ptr {pointer=shared_ptr  [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } } }] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } } }] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] [] } [ strong refs] []    std::shared_ptr&lt;B&gt;</span>
+
+    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="assets/image-20221107152213-gb0cauv.png" alt="image">​</p>
+<p>使用 <code>std::weak_ptr</code>​</p>
+<p><img src="assets/image-20221107152249-xh1fbia.png" alt="image">​</p>
+<p>在上图中，最后一步只剩下 B，而 B 并没有任何智能指针引用它，因此这块内存资源也会被释放。</p>
+<p>​<code>std::weak_ptr</code>​ 没有 <code>*</code>​ 运算符和 <code>-&gt;</code>​ 运算符，所以不能够对资源进行操作，它可以用于检查 <code>std::shared_ptr</code>​ 是否存在，其 <code>expired()</code>​ 方法能在资源未被释放时，会返回 <code>false</code>​，否则返回 <code>true</code>​；除此之外，它也可以用于获取指向原始对象的 <code>std::shared_ptr</code>​ 指针，其 <code>lock()</code>​ 方法在原始对象未被释放时，返回一个指向原始对象的 <code>std::shared_ptr</code>​ 指针，进而访问原始对象的资源，否则返回 <code>nullptr</code>​。</p>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2022-11-08 05:10:58
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="CPP - 现代 C++ 基础（二）.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: CPP - 现代 C++ 基础（二）">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CPP - 现代 C++ 基础（三）","level":"2.2.15","depth":2,"previous":{"title":"CPP - 现代 C++ 基础（二）","level":"2.2.14","depth":2,"path":"C++ 基础/CPP - 现代 C++ 基础（二）.md","ref":"C++ 基础/CPP - 现代 C++ 基础（二）.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-Windows 高级攻防/","text":"Windows 高级攻防","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Windows 高级攻防","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"C++ 基础/CPP - 现代 C++ 基础（三）.md","mtime":"2022-11-07T21:10:58.000Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2022-11-08T06:00:50.224Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
