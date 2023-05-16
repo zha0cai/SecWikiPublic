@@ -176,9 +176,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="../web/readme.html">
+        <li class="chapter " data-level="2.1" data-path="../web/a-readme.html">
             
-                <a href="../web/readme.html">
+                <a href="../web/a-readme.html">
             
                     
                     Web
@@ -196,6 +196,19 @@
             
                     
                     CORS 跨域漏洞
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../web/Source Map 泄露.html">
+            
+                <a href="../web/Source Map 泄露.html">
+            
+                    
+                    Source Map 泄露
             
                 </a>
             
@@ -222,9 +235,9 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="readme.html">
+        <li class="chapter " data-level="4.1" data-path="a-readme.html">
             
-                <a href="readme.html">
+                <a href="a-readme.html">
             
                     
                     Email
@@ -326,7 +339,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#mime-邮件格式"><b></b>MIME 邮件格式</a></li><li><span class="title-icon "></span><a href="#spf"><b></b>SPF</a></li><ul><li><span class="title-icon "></span><a href="#what-is-spf"><b></b>What is SPF</a></li><li><span class="title-icon "></span><a href="#what-is-a-dns-txt-record"><b></b>What is a DNS TXT record?</a></li><li><span class="title-icon "></span><a href="#查询-spf"><b></b>查询 SPF</a></li><li><span class="title-icon "></span><a href="#spf-的绕过"><b></b>SPF 的绕过</a></li></ul><li><span class="title-icon "></span><a href="#0x00-前人栽树"><b></b>0x00 前人栽树</a></li></ul></div><a href="#mime-邮件格式" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="mime-邮件格式"><a name="mime-邮件格式" class="anchor-navigation-ex-anchor" href="#mime-邮件格式"><i class="fa fa-link" aria-hidden="true"></i></a>MIME 邮件格式</h1>
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#mime-邮件格式"><b></b>MIME 邮件格式</a></li><li><span class="title-icon "></span><a href="#smtp-发信"><b></b>SMTP 发信</a></li><li><span class="title-icon "></span><a href="#spf"><b></b>SPF</a></li><ul><li><span class="title-icon "></span><a href="#what-is-spf"><b></b>What is SPF</a></li><ul><li><span class="title-icon "></span><a href="#spf-记录是什么样的？"><b></b>SPF 记录是什么样的？</a></li><li><span class="title-icon "></span><a href="#spf-record-evaluation"><b></b>SPF Record evaluation</a></li><li><span class="title-icon "></span><a href="#spf-qualifiers"><b></b>SPF qualifiers</a></li><li><span class="title-icon "></span><a href="#spf-mechanisms"><b></b>SPF mechanisms</a></li><li><span class="title-icon "></span><a href="#spf-modifiers"><b></b>SPF modifiers</a></li><li><span class="title-icon "></span><a href="#example"><b></b>EXAMPLE</a></li></ul><li><span class="title-icon "></span><a href="#what-is-a-dns-txt-record"><b></b>What is a DNS TXT record?</a></li><li><span class="title-icon "></span><a href="#查询-spf"><b></b>查询 SPF</a></li><li><span class="title-icon "></span><a href="#spf-的绕过"><b></b>SPF 的绕过</a></li></ul><li><span class="title-icon "></span><a href="#dkim-与-dmarc"><b></b>DKIM 与 DMARC</a></li><li><span class="title-icon "></span><a href="#0x00-前人栽树"><b></b>0x00 前人栽树</a></li></ul></div><a href="#mime-邮件格式" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="mime-邮件格式"><a name="mime-邮件格式" class="anchor-navigation-ex-anchor" href="#mime-邮件格式"><i class="fa fa-link" aria-hidden="true"></i></a>MIME 邮件格式</h1>
+<h1 id="smtp-发信"><a name="smtp-发信" class="anchor-navigation-ex-anchor" href="#smtp-发信"><i class="fa fa-link" aria-hidden="true"></i></a>SMTP 发信</h1>
+<p><img src="assets/邮件协议-2.png" alt></p>
 <h1 id="spf"><a name="spf" class="anchor-navigation-ex-anchor" href="#spf"><i class="fa fa-link" aria-hidden="true"></i></a>SPF</h1>
 <h2 id="what-is-spf"><a name="what-is-spf" class="anchor-navigation-ex-anchor" href="#what-is-spf"><i class="fa fa-link" aria-hidden="true"></i></a>What is SPF</h2>
 <p><code>(Sender Policy Framework)</code> 的缩写，一种以 IP 地址认证电子邮件发件人身份的技术，是非常高效的垃圾邮件解决方案。</p>
@@ -336,7 +351,7 @@
 <li><a href="https://www.cloudflare.com/zh-cn/learning/dns/dns-records/dns-spf-record/" target="_blank">什么是 DNS SPF 记录？</a></li>
 <li><a href="https://dmarcly.com/blog/zh-CN/what-is-an-spf-record-and-how-does-it-work-spf-record-explained" target="_blank">SPF 记录是什么以及它如何工作：SPF 记录全解释</a></li>
 </ul>
-<h4 id="spf-记录是什么样的？"><a name="spf-记录是什么样的？" class="anchor-navigation-ex-anchor" href="#spf-记录是什么样的？"><i class="fa fa-link" aria-hidden="true"></i></a>SPF 记录是什么样的？</h4>
+<h3 id="spf-记录是什么样的？"><a name="spf-记录是什么样的？" class="anchor-navigation-ex-anchor" href="#spf-记录是什么样的？"><i class="fa fa-link" aria-hidden="true"></i></a>SPF 记录是什么样的？</h3>
 <blockquote>
 <p><a href="https://datatracker.ietf.org/doc/html/rfc7208" target="_blank">官方 SPF 记录文档</a></p>
 </blockquote>
@@ -350,7 +365,7 @@
 <li>Finally, <code>-all</code> 告诉服务器，SPF 记录中未列出的地址没有被授权发送电子邮件并应被拒绝。</li>
 </ul>
 <p>这里的其他可选项包括 <code>~all</code>：表示未列出的电子邮件将被标记为不安全邮件或垃圾邮件，但仍会被接受；不那么常见的是 <code>+all</code>：表示任何服务器都可以代表该域发送电子邮件。</p>
-<h4 id="spf-record-evaluation"><a name="spf-record-evaluation" class="anchor-navigation-ex-anchor" href="#spf-record-evaluation"><i class="fa fa-link" aria-hidden="true"></i></a>SPF Record evaluation</h4>
+<h3 id="spf-record-evaluation"><a name="spf-record-evaluation" class="anchor-navigation-ex-anchor" href="#spf-record-evaluation"><i class="fa fa-link" aria-hidden="true"></i></a>SPF Record evaluation</h3>
 <p>邮件服务器中的 SPF 模块在对 SPF 记录中的 terms 进行估值后，向邮件服务器返回认证 (authentication) 结果。</p>
 <p>SPF 中有 2 种 terms：mechanisms 以及 modifiers。</p>
 <p>SPF 认证结果为以下其中之一：</p>
@@ -364,7 +379,7 @@
 <li><code>Permerror</code>: 域名上发布的 SPF 无法解释。这种情况，域名管理员须修复此错误。</li>
 </ul>
 <p>如果一直到 SPF 记录的末尾都没有找到匹配，返回 neutral。这是 SPF 估值的缺省值。</p>
-<h4 id="spf-qualifiers"><a name="spf-qualifiers" class="anchor-navigation-ex-anchor" href="#spf-qualifiers"><i class="fa fa-link" aria-hidden="true"></i></a>SPF qualifiers</h4>
+<h3 id="spf-qualifiers"><a name="spf-qualifiers" class="anchor-navigation-ex-anchor" href="#spf-qualifiers"><i class="fa fa-link" aria-hidden="true"></i></a>SPF qualifiers</h3>
 <p><code>SPF qualifier</code> 前置于 SPF mechanism，用来指定该 SPF mechanism 的估值结果。以下是所有的 qualifiers，以及对应的结果：</p>
 <ul>
 <li><code>&quot;+&quot;</code> pass</li>
@@ -372,7 +387,7 @@
 <li><code>&quot;~&quot;</code> softfail</li>
 <li><code>&quot;?&quot;</code> neutral</li>
 </ul>
-<h4 id="spf-mechanisms"><a name="spf-mechanisms" class="anchor-navigation-ex-anchor" href="#spf-mechanisms"><i class="fa fa-link" aria-hidden="true"></i></a>SPF mechanisms</h4>
+<h3 id="spf-mechanisms"><a name="spf-mechanisms" class="anchor-navigation-ex-anchor" href="#spf-mechanisms"><i class="fa fa-link" aria-hidden="true"></i></a>SPF mechanisms</h3>
 <p>有两种 <code>SPF mechanisms</code>：基本 mechanisms 和指定发送者 mechanisms。</p>
 <ul>
 <li>基本 mechanisms 有 <code>all</code> 和 <code>include</code>。</li>
@@ -385,7 +400,7 @@
 <li>记录必须以 all 部分结束，或包含一个 <code>redirect:</code> 部分（表示该 SPF 记录由另一个域托管）。</li>
 <li>SPF 记录不能包含大写字母。</li>
 </ul>
-<h4 id="spf-modifiers"><a name="spf-modifiers" class="anchor-navigation-ex-anchor" href="#spf-modifiers"><i class="fa fa-link" aria-hidden="true"></i></a>SPF modifiers</h4>
+<h3 id="spf-modifiers"><a name="spf-modifiers" class="anchor-navigation-ex-anchor" href="#spf-modifiers"><i class="fa fa-link" aria-hidden="true"></i></a>SPF modifiers</h3>
 <p>SPF 有两个 modifiers：<code>redirect</code> 和 <code>exp</code>。</p>
 <ul>
 <li>SPF modifiers 是<strong>可选</strong>的。</li>
@@ -394,7 +409,7 @@
 <li><code>redirect=&lt;domain&gt;</code>：在 domain 上面的 SPF 记录会代替当前的 SPF 记录。</li>
 <li><code>exp=&lt;domain&gt;</code>：如果 SPF 记录估值失败，并且存在 exp modifier，SPF 返回一个串来解释原因。</li>
 </ul>
-<h4 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>EXAMPLE</h4>
+<h3 id="example"><a name="example" class="anchor-navigation-ex-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>EXAMPLE</h3>
 <p>如：
 如果 mail.smtp2go.com 是我的邮件服务器，那么 gmail 服务器收到的源 IP 也肯定是 mail.smtp2go.com 的 IP。
 gmail 会校验邮件发送者的 IP 是否存在于 <code>smtp.from</code> 的域名 spf 配置列表里。</p>
@@ -432,25 +447,24 @@ gmail 会校验邮件发送者的 IP 是否存在于 <code>smtp.from</code> 的�
 <p>如今，DNS TXT 记录的两个最重要用途是防止<strong>垃圾邮件</strong>和<strong>域名所有权验证</strong>，尽管 TXT 记录最初并非为这些用途而设计。</p>
 <h2 id="查询-spf"><a name="查询-spf" class="anchor-navigation-ex-anchor" href="#查询-spf"><i class="fa fa-link" aria-hidden="true"></i></a>查询 SPF</h2>
 <pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> nslookup -q=txt 域名</span>
-PS C:\Users\Zor0&gt; nslookup
-默认服务器:  public1.114dns.com
-Address:  114.114.114.114
-<span class="hljs-meta">
-&gt;</span><span class="bash"> <span class="hljs-built_in">set</span> q=txt</span>
-<span class="hljs-meta">&gt;</span><span class="bash"> xxxmail.cn</span>
+<span class="hljs-meta">#</span><span class="bash"> nslookup -<span class="hljs-built_in">type</span>=txt 域名，如 huawei 的</span>
+PS C:\Users\Zzzz&gt; nslookup -type=txt huawei.com
 服务器:  public1.114dns.com
 Address:  114.114.114.114
 
 非权威应答:
-xxxmail.cn     text =
+huawei.com      text =
 
-        &quot;v=spf1 include:spf.xxxmail.net -all&quot;
-xxxmail.cn     text =
+        &quot;MS=C4F6A693225CC6E058F6C9C39FD728C06C43E597&quot;
+huawei.com      text =
 
-        &quot;google-site-verification=gaJnHwop8lmlGBgKzMLsyFqJ9TY0_DOdkdM9UBvze0E&quot;
-xxxmail.cn     text =
+        &quot;N3U/UqKcdI+8rthQEYTbph+m6MCg7+IW43PP5SuPxww=&quot;
+huawei.com      text =
 
-        &quot;tg31lc1l55edu0a18a5pncvugs&quot;
+        &quot;v=spf1 ip4:45.249.212.32 ip4:45.249.212.35 ip4:45.249.212.255 ip4:45.249.212.187/29 ip4:45.249.212.191 ip4:168.195.93.47 ip4:185.176.79.56 ip4:119.8.179.247 ip4:119.8.89.136/31 ip4:119.8.89.135 ip4:119.8.177.36/31 ip4:119.8.177.38 -all&quot;
+huawei.com      text =
+
+        &quot;v=DMARC1;p=none;rua=mailto:dmarc@edm.huawei.com&quot;
 <span class="hljs-meta">
 #</span><span class="bash"> 没有 SPF</span>
 PS C:\Users\Zor0&gt; nslookup
@@ -478,14 +492,21 @@ Address:  192.168.170.16
 <pre><code class="lang-bash">swaks --to payloads@aliyun.com --from xx@smtp2go.com --h-From: <span class="hljs-string">&apos;管理员&lt;admin@qq.com&gt;&apos;</span> --ehlo gmail.com --body hello --server mail.smtp2go.com -p 2525 -au &lt;USER&gt; -ap &lt;PASSS&gt;
 </code></pre>
 <p>Gmail 接收到这封邮件后，会校验 <code>--from xx@smtp2go.com</code> 中的 smtp2go.com 是否等于 mail.smtp2go.com 的 IP，由于是相等的，所以完成了 SPF 的校验。</p>
-<p>而 DKIM 是校验邮件完整性的，smtp2go 与 Gmail 直接使用的是 TLS，不会发生什么问题。</p>
+<p>而 <code>DKIM</code> 是校验邮件完整性的，smtp2go 与 Gmail 直接使用的是 TLS，不会发生什么问题。</p>
 <p><img src="assets/邮件协议-1.png" alt></p>
+<h1 id="dkim-与-dmarc"><a name="dkim-与-dmarc" class="anchor-navigation-ex-anchor" href="#dkim-与-dmarc"><i class="fa fa-link" aria-hidden="true"></i></a>DKIM 与 DMARC</h1>
+<p>域名密钥识别邮件（DomainKeys Identified Mail，<code>DKIM</code>）是一套电子邮件认证机制，使用公开密钥加密邮件，以检测邮件是否是伪造或被篡改。【完整性校验】</p>
+<p>通常<strong>发送方</strong>会在电子邮件的标头插入 DKIM-Signature 及电子签名, 而<strong>接收方</strong>则透过 DNS 查询得到公钥后进行验证。</p>
+<p><code>DMARC</code> 建立在发件人策略框架 (SPF)和域名识别邮件 (DKIM)协议之上。如果这两种身份验证方法都不通过，<code>DMARC</code> 策略将决定如何处理该消息。<code>DMARC</code> 要求域名所有者在 DNS 记录中设置 SPF 记录和 DKIM 记录，并明确声明对验证失败邮件的处理策略。</p>
+<p>以上两种机制也是现有的电子邮件安全机制，不过以 SPF 策略为主。</p>
 <h1 id="0x00-前人栽树"><a name="0x00-前人栽树" class="anchor-navigation-ex-anchor" href="#0x00-前人栽树"><i class="fa fa-link" aria-hidden="true"></i></a>0x00 前人栽树</h1>
 <ul>
-<li><a href="https://payloads.online/archivers/2019-05-09/1/" target="_blank">https://payloads.online/archivers/2019-05-09/1/</a> </li>
+<li><a href="https://payloads.online/archivers/2019-05-09/1/" target="_blank">https://payloads.online/archivers/2019-05-09/1/</a></li>
+<li><a href="https://saucer-man.com/information_security/452.html#cl-4" target="_blank">https://saucer-man.com/information_security/452.html#cl-4</a></li>
+<li></li>
 </ul>
 <footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
-2023-05-14 17:51:41
+2023-05-15 17:59:50
 </span></footer></body></html>
                                 
                                 </section>
@@ -525,7 +546,7 @@ Address:  192.168.170.16
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"sticker":"1f48c","title":"邮件协议","level":"4.1.2","depth":2,"previous":{"title":"Attack Email","level":"4.1.1","depth":2,"path":"email/Attack Email.md","ref":"email/Attack Email.md","articles":[]},"dir":"ltr"},"config":{"plugins":["versions-select","-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"livereload":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-security/","text":"Security Book","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"readme.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"zha0cai's Security Book","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"email/邮件协议.md","mtime":"2023-05-14T09:51:41.754Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2023-05-14T12:34:39.659Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"sticker":"1f48c","title":"邮件协议","level":"4.1.2","depth":2,"previous":{"title":"Attack Email","level":"4.1.1","depth":2,"path":"email/Attack Email.md","ref":"email/Attack Email.md","articles":[]},"dir":"ltr"},"config":{"plugins":["versions-select","-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"livereload":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-security/","text":"Security Book","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"readme.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"zha0cai's Security Book","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"email/邮件协议.md","mtime":"2023-05-15T09:59:50.225Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2023-05-16T15:48:29.600Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
