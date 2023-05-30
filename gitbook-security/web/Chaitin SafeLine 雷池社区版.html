@@ -1,0 +1,845 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Chaitin SafeLine 雷池社区版 · zha0cai's Security Book</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.0">
+        <meta name="author" content="zha0cai">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="CORS 跨域漏洞.html" />
+    
+    
+    <link rel="prev" href="a-readme.html" />
+    
+
+    <script src="../gitbook/gitbook-plugin-graph/d3.min.js"></script>
+    <script src="../gitbook/gitbook-plugin-graph/function-plot.js"></script>    
+
+    
+    <link rel="stylesheet" href="../gitbook/gitbook-plugin-chart/c3/c3.min.css">
+    <script src="../gitbook/gitbook-plugin-chart/c3/d3.min.js"></script>
+    <script src="../gitbook/gitbook-plugin-chart/c3/c3.min.js"></script>
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/zha0cai" target="_blank" class="custom-link">My github</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">Readme</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Security Book
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Web Book</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="a-readme.html">
+            
+                <a href="a-readme.html">
+            
+                    
+                    Web
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="2.1.1" data-path="Chaitin SafeLine 雷池社区版.html">
+            
+                <a href="Chaitin SafeLine 雷池社区版.html">
+            
+                    
+                    Chaitin SafeLine 雷池社区版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="CORS 跨域漏洞.html">
+            
+                <a href="CORS 跨域漏洞.html">
+            
+                    
+                    CORS 跨域漏洞
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="Source Map 泄露.html">
+            
+                <a href="Source Map 泄露.html">
+            
+                    
+                    Source Map 泄露
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="TLS SSL 常见漏洞检测及修复方法.html">
+            
+                <a href="TLS SSL 常见漏洞检测及修复方法.html">
+            
+                    
+                    TLS/SSL 常见漏洞检测及修复方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="xss2pdf-制作.html">
+            
+                <a href="xss2pdf-制作.html">
+            
+                    
+                    xss2pdf-制作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Redteam Book</li>
+        
+        
+    
+
+    
+        
+        <li class="header">Email Book</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../email/a-readme.html">
+            
+                <a href="../email/a-readme.html">
+            
+                    
+                    Email
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../email/Attack Email.html">
+            
+                <a href="../email/Attack Email.html">
+            
+                    
+                    Attack Email
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../email/邮件协议.html">
+            
+                <a href="../email/邮件协议.html">
+            
+                    
+                    邮件协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Network Book</li>
+        
+        
+    
+
+    
+        
+        <li class="header">Other Book</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Chaitin SafeLine 雷池社区版</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#0x01-介绍"><b></b>0x01 介绍</a></li><li><span class="title-icon "></span><a href="#0x02-安装和使用"><b></b>0x02 安装和使用</a></li><ul><li><span class="title-icon "></span><a href="#环境准备--安装"><b></b>环境准备 &amp; 安装</a></li><ul><li><span class="title-icon "></span><a href="#ubuntu-安装-ssh"><b></b>Ubuntu 安装 SSH</a></li><li><span class="title-icon "></span><a href="#docker--docker-compose"><b></b>Docker &amp; Docker Compose</a></li><li><span class="title-icon "></span><a href="#safeline-安装"><b></b>SafeLine 安装</a></li><li><span class="title-icon "></span><a href="#safeline-更新"><b></b>SafeLine 更新</a></li><li><span class="title-icon "></span><a href="#配置国内镜像加速"><b></b>配置国内镜像加速</a></li></ul><li><span class="title-icon "></span><a href="#使用--测试"><b></b>使用 &amp; 测试</a></li><ul><li><span class="title-icon "></span><a href="#雷池的几个模块"><b></b>雷池的几个模块</a></li><li><span class="title-icon "></span><a href="#站点配置问题"><b></b>站点配置问题</a></li><li><span class="title-icon "></span><a href="#我该如何配置？-域名填什么？-端口怎么写？-上游服务器是什么？"><b></b>我该如何配置？/ 域名填什么？/ 端口怎么写？/ 上游服务器是什么？</a></li></ul></ul><li><span class="title-icon "></span><a href="#0x00-前人栽树"><b></b>0x00 前人栽树</a></li></ul></div><a href="#0x01-介绍" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="0x01-介绍"><a name="0x01-介绍" class="anchor-navigation-ex-anchor" href="#0x01-介绍"><i class="fa fa-link" aria-hidden="true"></i></a>0x01 介绍</h1>
+<p>一款简单、好用的 WAF 工具。基于<a href="https://www.chaitin.cn/" target="_blank">长亭科技</a>王牌的 🤖️ 智能语义分析算法 🤖️ 打造，专为社区设计。</p>
+<p>官方文档：</p>
+<ul>
+<li><a href="https://github.com/chaitin/safeline/blob/main/README_CN.md" target="_blank">https://github.com/chaitin/safeline/blob/main/README_CN.md</a></li>
+<li><a href="https://stack.chaitin.com/tool/detail?id=717" target="_blank">https://stack.chaitin.com/tool/detail?id=717</a></li>
+<li><a href="https://waf-ce.chaitin.cn/posts/faq_install" target="_blank">https://waf-ce.chaitin.cn/posts/faq_install</a></li>
+<li><a href="https://github.com/chaitin/safeline/blob/main/FAQ.md" target="_blank">FAQ</a></li>
+</ul>
+<p>总之就一个字，牛 🐐</p>
+<p>两个字，好用 🦸</p>
+<p><strong>社区版和企业版对比</strong></p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20.png" alt></p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-1.png" alt></p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-2.png" alt></p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-3.png" alt></p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-4.png" alt></p>
+<h1 id="0x02-安装和使用"><a name="0x02-安装和使用" class="anchor-navigation-ex-anchor" href="#0x02-安装和使用"><i class="fa fa-link" aria-hidden="true"></i></a>0x02 安装和使用</h1>
+<h2 id="环境准备--安装"><a name="环境准备--安装" class="anchor-navigation-ex-anchor" href="#环境准备--安装"><i class="fa fa-link" aria-hidden="true"></i></a>环境准备 &amp; 安装</h2>
+<h3 id="ubuntu-安装-ssh"><a name="ubuntu-安装-ssh" class="anchor-navigation-ex-anchor" href="#ubuntu-安装-ssh"><i class="fa fa-link" aria-hidden="true"></i></a>Ubuntu 安装 SSH</h3>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> 安装</span>
+sudo apt update
+sudo apt install openssh-server
+<span class="hljs-meta">
+#</span><span class="bash"> 查看运行状态</span>
+sudo systemctl status ssh
+or
+ps -e | grep ssh
+<span class="hljs-meta">
+#</span><span class="bash"> 关闭 ssh</span>
+sudo systemctl disable --now ssh
+<span class="hljs-meta">
+#</span><span class="bash"> 开启 ssh</span>
+sudo systemctl enable --now ssh
+<span class="hljs-meta">
+#</span><span class="bash"> 新版 Ubuntu 还需要开启 root 登录</span>
+sudo vim /etc/ssh/sshd_config
+1. 找到下面这一行
+PermitRootLogin prohibit-password
+2. 取消注释并将上面的 prohibit-password 替换成 yes，或者重新写一行
+<span class="hljs-meta">#</span><span class="bash">PermitRootLogin prohibit-password</span>
+PermitRootLogin yes # 这是新添加的一行
+3. 重启sshd.service
+sudo systemctl restart sshd.service
+or
+service sshd restart
+<span class="hljs-meta">
+#</span><span class="bash"> Ubuntu 自带一个配置防火墙配置工具，称为 UFW</span>
+<span class="hljs-meta">#</span><span class="bash"> 如果防火墙在你的系统上被启用，请确保打开了 SSH 端口</span>
+<span class="hljs-meta">#</span><span class="bash"> 允许 ssh 连接</span>
+sudo ufw allow ssh
+<span class="hljs-meta">
+#</span><span class="bash"> 可以通过 <span class="hljs-built_in">help</span> 查看操作</span>
+root@root-docker:~# ufw -help
+</code></pre>
+<h3 id="docker--docker-compose"><a name="docker--docker-compose" class="anchor-navigation-ex-anchor" href="#docker--docker-compose"><i class="fa fa-link" aria-hidden="true"></i></a>Docker &amp; Docker Compose</h3>
+<ul>
+<li><a href="https://docs.docker.com/engine/install/" target="_blank">https://docs.docker.com/engine/install/</a></li>
+<li><a href="https://docs.docker.com/compose/install/" target="_blank">https://docs.docker.com/compose/install/</a></li>
+<li><a href="https://docs.docker.com/engine/install/ubuntu/#set-up-the-repository" target="_blank">https://docs.docker.com/engine/install/ubuntu/#set-up-the-repository</a> -- 官方文档就是牛</li>
+<li><a href="https://blog.51cto.com/wutengfei/2946943" target="_blank">无法正常停止 docker 进程</a></li>
+<li><a href="https://stackoverflow.com/questions/51729836/error-response-from-daemon-cannot-stop-container-signaling-init-process-cause" target="_blank">https://stackoverflow.com/questions/51729836/error-response-from-daemon-cannot-stop-container-signaling-init-process-cause</a></li>
+</ul>
+<p><strong>使用 apt 存储库安装</strong></p>
+<p>在新主机上首次安装 Docker Engine 之前，您需要设置 Docker 存储库。之后，您可以从存储库安装和更新 Docker。</p>
+<p><strong>设置存储库</strong></p>
+<ol>
+<li>更新 apt​ ​包索引并安装包以允许 apt​ ​通过 HTTPS 使用存储库：</li>
+</ol>
+<pre><code class="lang-shell"><span class="hljs-meta">$</span><span class="bash"> sudo apt-get update</span>
+<span class="hljs-meta">$</span><span class="bash"> sudo apt-get install ca-certificates curl gnupg</span>
+</code></pre>
+<ol>
+<li>添加 Docker 的官方 GPG 密钥：</li>
+</ol>
+<pre><code class="lang-shell"><span class="hljs-meta">$</span><span class="bash"> sudo install -m 0755 -d /etc/apt/keyrings</span>
+<span class="hljs-meta">$</span><span class="bash"> curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</span>
+<span class="hljs-meta">$</span><span class="bash"> sudo chmod a+r /etc/apt/keyrings/docker.gpg</span>
+</code></pre>
+<ol>
+<li>使用以下命令设置存储库：</li>
+</ol>
+<pre><code class="lang-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">echo</span> \
+<span class="hljs-string">&quot;deb [arch=&quot;</span>$(dpkg --print-architecture)<span class="hljs-string">&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+&quot;</span>$(. /etc/os-release &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$VERSION_CODENAME</span>&quot;</span>)<span class="hljs-string">&quot; stable&quot;</span> | \
+sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</span>
+</code></pre>
+<p><strong>安装 Docker 引擎</strong></p>
+<ol>
+<li>更新 apt​​ ​包索引：</li>
+</ol>
+<pre><code class="lang-shell"><span class="hljs-meta">$</span><span class="bash"> sudo apt-get update</span>
+</code></pre>
+<ol>
+<li>安装 Docker Engine、containerd 和 Docker Compose。</li>
+</ol>
+<p>要安装最新版本，请运行：</p>
+<pre><code class="lang-shell"><span class="hljs-meta">$</span><span class="bash"> sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span>
+</code></pre>
+<p>要安装特定版本的 Docker Engine，首先在存储库中列出可用版本：</p>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> List the available versions:</span>
+<span class="hljs-meta">$</span><span class="bash"> apt-cache madison docker-ce | awk <span class="hljs-string">&apos;{ print $3 }&apos;</span></span>
+
+5:23.0.5-1~ubuntu.22.04~jammy
+5:23.0.4-1~ubuntu.22.04~jammy
+&lt;...&gt;
+</code></pre>
+<p>选择所需版本并安装：  </p>
+<pre><code class="lang-shell">VERSION_STRING=5:23.0.5-1~ubuntu.22.04~jammy
+sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+</code></pre>
+<ol>
+<li>通过运行映像验证 Docker 引擎安装是否成功 <code>hello-world</code>​​​。</li>
+</ol>
+<pre><code class="lang-shell"><span class="hljs-meta">$</span><span class="bash"> sudo docker run hello-world</span>
+</code></pre>
+<p>此命令下载测试图像并在容器中运行它。当容器运行时，它会打印一条确认消息并退出。</p>
+<p>您现在已经成功安装并启动了 Docker 引擎。</p>
+<p><strong>卸载 Docker 引擎</strong></p>
+<ol>
+<li>卸载 Docker Engine、CLI、containerd 和 Docker Compose 包：</li>
+</ol>
+<pre><code class="lang-shell"><span class="hljs-meta">$</span><span class="bash"> sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras</span>
+</code></pre>
+<ol>
+<li>主机上的图像、容器、卷或自定义配置文件不会自动删除。删除所有镜像、容器和卷：</li>
+</ol>
+<pre><code class="lang-shell"><span class="hljs-meta">$</span><span class="bash"> sudo rm -rf /var/lib/docker</span>
+<span class="hljs-meta">$</span><span class="bash"> sudo rm -rf /var/lib/containerd</span>
+</code></pre>
+<p>您必须手动删除任何已编辑的配置文件。</p>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> 设置开机启动</span>
+systemctl enable docker
+<span class="hljs-meta">
+#</span><span class="bash"> 查看版本</span>
+docker compose version
+Docker Compose version vN.N.N
+<span class="hljs-meta">
+#</span><span class="bash"> 手动指定版本 Docker-compose 安装</span>
+sudo curl -L &quot;https://github.com/docker/compose/releases/download/xxxx 版本号/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+</code></pre>
+<p><strong>停止所有容器</strong></p>
+<pre><code class="lang-shell">docker stop $(docker ps -a -q)
+</code></pre>
+<p><strong>停止 docker socket</strong></p>
+<pre><code class="lang-shell">sudo systemctl stop docker.socket
+sudo systemctl stop docker.service
+</code></pre>
+<p><strong>启动 docker 服务</strong></p>
+<pre><code class="lang-shell">sudo systemctl daemon-reload
+sudo systemctl restart docker.service
+</code></pre>
+<h3 id="safeline-安装"><a name="safeline-安装" class="anchor-navigation-ex-anchor" href="#safeline-安装"><i class="fa fa-link" aria-hidden="true"></i></a>SafeLine 安装</h3>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> docker info <span class="hljs-comment"># &gt;= 20.10.6</span></span>
+<span class="hljs-meta">#</span><span class="bash"> docker compose version <span class="hljs-comment"># &gt;= 2.0.0</span></span>
+
+root@root-docker:~# docker -v
+Docker version 24.0.0, build 98fdcd7
+root@root-docker:~# docker compose version
+Docker Compose version v2.17.3
+
+========
+mkdir -p safeline &amp;&amp; cd safeline
+<span class="hljs-meta">#</span><span class="bash"> setup</span>
+curl -kfLsS https://waf-ce.chaitin.cn/release/latest/setup.sh | bash
+<span class="hljs-meta">
+#</span><span class="bash"> launch</span>
+sudo docker compose up -d
+</code></pre>
+<p>突出一个丝滑，快速。</p>
+<pre><code class="lang-shell">root@root-docker:/home# mkdir -p safeline &amp;&amp; cd safeline
+root@root-docker:/home/safeline# curl -kfLsS https://waf-ce.chaitin.cn/release/latest/setup.sh | bash
+
+  ____             __          _       _      
+ / ___|    __ _   / _|   ___  | |     (_)  _ __     ___ 
+ \___ \   / _` | | |_   / _ \ | |     | | | &apos;_ \   / _ \
+  ___) | | (_| | |  _| |  __/ | |___  | | | | | | |  __/
+ |____/   \__,_| |_|    \___| |_____| |_| |_| |_|  \___|
+
+--2023-05-17 13:41:50--  https://waf-ce.chaitin.cn/release/latest/compose.yaml
+正在解析主机 waf-ce.chaitin.cn (waf-ce.chaitin.cn)... 101.200.136.115
+正在连接 waf-ce.chaitin.cn (waf-ce.chaitin.cn)|101.200.136.115|:443... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度： 3082 (3.0K) [application/octet-stream]
+正在保存至: “compose.yaml”
+
+compose.yaml                      100%[==========================================================&gt;]   3.01K  --.-KB/s    用时 0s  
+
+2023-05-17 13:41:51 (717 MB/s) - 已保存 “compose.yaml” [3082/3082])
+
+Setup success!
+Run &apos;docker compose up -d&apos; to start SafeLine.
+And then visit https://&lt;SafeLine-IP&gt;:9443.
+root@root-docker:/home/safeline# sudo docker compose up -d
+[+] Running 36/36ers [⠀⠀]      0B/0B      Pulling                                                                            1236.4s 
+ ✔ detector 2 layers [⣿⣿]      0B/0B      Pulled                                                                             1465.2s 
+   ✔ 2c28d2c9e7bf Pull complete                                                                                              1227.1s 
+   ✔ 556abd9ab8cb Pull complete                                                                                              1447.0s 
+ ✔ mario 2 layers [⣿⣿]      0B/0B      Pulled                                                                                1154.1s 
+......
+</code></pre>
+<p>安装完成之后，浏览器打开后台管理页面 <code>https://&lt;waf-ip&gt;:9443</code>​​。根据界面提示，使用 支持 TOTP 的认证软件 扫描二维码，然后输入动态口令登录。</p>
+<pre><code class="lang-shell">root@root-docker:/home/safeline# docker ps
+CONTAINER ID   IMAGE                              COMMAND                   CREATED          STATUS                    PORTS                                       NAMES
+0645a436cc64   postgres:15.2                      &quot;docker-entrypoint.s…&quot;   33 minutes ago   Up 33 minutes             5432/tcp                                    safeline-postgres
+4233d84592f1   chaitin/safeline-mario:latest      &quot;/mario/entrypoint.sh&quot;    33 minutes ago   Up 33 minutes (healthy)                                               safeline-mario
+28059557bc1a   chaitin/safeline-mgt-api:latest    &quot;/app/entrypoint.sh&quot;      33 minutes ago   Up 33 minutes (healthy)   0.0.0.0:9443-&gt;1443/tcp, :::9443-&gt;1443/tcp   safeline-mgt-api
+a5bf6b4a8e37   chaitin/safeline-tengine:latest    &quot;docker-entrypoint.s…&quot;   33 minutes ago   Up 33 minutes (healthy)                                               safeline-tengine
+a2c215f38371   chaitin/safeline-detector:latest   &quot;/detector/entrypoin…&quot;   33 minutes ago   Up 33 minutes (healthy)   8000-8001/tcp                               safeline-detector
+</code></pre>
+<h3 id="safeline-更新"><a name="safeline-更新" class="anchor-navigation-ex-anchor" href="#safeline-更新"><i class="fa fa-link" aria-hidden="true"></i></a>SafeLine 更新</h3>
+<p><strong>自动更新</strong></p>
+<blockquote>
+<p>WARN: SafeLine will be restarted and your traffic will be unavailable for a short period of time. You may need to choose a proper time for upgration.</p>
+</blockquote>
+<pre><code class="lang-shell">curl -kfLsS https://waf-ce.chaitin.cn/release/latest/upgrade.sh | bash
+<span class="hljs-meta">
+#</span><span class="bash"> replace with `docker-compose` <span class="hljs-keyword">if</span> necessary.</span>
+docker compose down &amp;&amp; docker compose pull &amp;&amp; docker compose up -d
+</code></pre>
+<p>有部分环境的默认 SafeLine 安装路径是在 <code>/data/safeline-ce</code>​​，安装之后可能会发现需要重新绑定 OTP、配置丢失等情况，可以修改 <code>.env</code> 的 <code>SAFELINE_DIR</code>​​ 变量，指向 <code>/data/safeline-ce</code>​​</p>
+<p><strong>手动更新镜像</strong></p>
+<p>适用于 docker hub 拉取镜像失败的场景，手动更新镜像，注意还是要执行 <code>upgrade.sh​​</code> 来处理 <code>.env</code>​​ 的更新，否则有可能会因为缺少参数而启动失败。</p>
+<ol>
+<li>在一台能够从 docker hub 拉取镜像的机器上执行</li>
+</ol>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> 拉取镜像</span>
+docker pull chaitin/safeline-tengine:latest
+docker pull chaitin/safeline-mgt-api:latest
+docker pull chaitin/safeline-mario:latest
+docker pull chaitin/safeline-detector:latest
+docker pull postgres:15.2
+<span class="hljs-meta">
+#</span><span class="bash"> 打包镜像</span>
+docker save -o image.tar chaitin/safeline-tengine:latest chaitin/safeline-mgt-api:latest chaitin/safeline-mario:latest chaitin/safeline-detector:latest postgres:15.2
+<span class="hljs-meta">
+#</span><span class="bash"> 传输到 SafeLine 要部署的目标服务器</span>
+<span class="hljs-meta">#</span><span class="bash"> scp image.tar &lt;target-server&gt;:/root/</span>
+</code></pre>
+<ol>
+<li>在目标服务器 load 镜像</li>
+</ol>
+<pre><code class="lang-shell">docker load -i image.tar
+
+curl -kfLsS https://waf-ce.chaitin.cn/release/latest/upgrade.sh | bash
+</code></pre>
+<h3 id="配置国内镜像加速"><a name="配置国内镜像加速" class="anchor-navigation-ex-anchor" href="#配置国内镜像加速"><i class="fa fa-link" aria-hidden="true"></i></a>配置国内镜像加速</h3>
+<pre><code class="lang-shell">Error response from daemon: Head &quot;https://registry-1.docker.io/v2/chaitin/safeline-detector/manifests/latest&quot;: net/http: TLS handshake timeout
+</code></pre>
+<p>根据官方 FAQ：docker hub 默认使用位于美西节点拉取镜像，可以自行配置国内镜像加速源。</p>
+<p>docker 安装后默认没有 daemon.json 这个配置文件，需要进行手动创建。配置文件的默认路径：<code>/etc/docker/daemon.json​​</code></p>
+<p><strong>标准格式为：</strong></p>
+<p>​<code>$ docker pull registry.docker-cn.com/myname/myrepo:mytag​​</code></p>
+<p>例：</p>
+<p>​<code>$ docker pull registry.docker-cn.com/library/ubuntu:16.04​​</code></p>
+<p>为了永久性保留更改，您可以修改 <code>/etc/docker/daemon.json</code>​​ 文件并添加上 <code>registry-mirrors​​</code> 键值。修改保存后重启 Docker 以使配置生效。</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;registry-mirrors&quot;</span>: [<span class="hljs-string">&quot;https://registry.docker-cn.com&quot;</span>]
+}
+</code></pre>
+<h2 id="使用--测试"><a name="使用--测试" class="anchor-navigation-ex-anchor" href="#使用--测试"><i class="fa fa-link" aria-hidden="true"></i></a>使用 &amp; 测试</h2>
+<p>🔥🔥🔥 Online Demo: <a href="https://demo.waf-ce.chaitin.cn:9443/" target="_blank">https://demo.waf-ce.chaitin.cn:9443/</a></p>
+<p><strong>社区版接入方式</strong></p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-5.png" alt></p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-6.png" alt></p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-7.png" alt></p>
+<p>浏览器打开后台管理页面 <code>https://&lt;waf-ip&gt;:9443</code>。根据界面提示，使用 支持 TOTP 的认证软件 扫描二维码，然后输入动态口令登录。</p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-8.png" alt></p>
+<p>pikachu 启动，开测~</p>
+<h3 id="雷池的几个模块"><a name="雷池的几个模块" class="anchor-navigation-ex-anchor" href="#雷池的几个模块"><i class="fa fa-link" aria-hidden="true"></i></a>雷池的几个模块</h3>
+<pre><code class="lang-shell">root@refl4:/home/safeline# docker ps
+CONTAINER ID   IMAGE                              COMMAND                   CREATED          STATUS                    PORTS                                       NAMES
+cbe79478a813   chaitin/safeline-tengine:latest    &quot;docker-entrypoint.s…&quot;   10 minutes ago   Up 10 minutes (healthy)                                               safeline-tengine
+146d1443c778   chaitin/safeline-mario:latest      &quot;/mario/entrypoint.sh&quot;    10 minutes ago   Up 10 minutes (healthy)                                               safeline-mario
+8146c10e4204   postgres:15.2                      &quot;docker-entrypoint.s…&quot;   10 minutes ago   Up 10 minutes             5432/tcp                                    safeline-postgres
+7758a73ccda1   chaitin/safeline-detector:latest   &quot;/detector/entrypoin…&quot;   10 minutes ago   Up 10 minutes (healthy)   8000-8001/tcp                               safeline-detector
+891f1f035346   chaitin/safeline-mgt-api:latest    &quot;/app/entrypoint.sh&quot;      10 minutes ago   Up 10 minutes (healthy)   0.0.0.0:9443-&gt;1443/tcp, :::9443-&gt;1443/tcp   safeline-mgt-api
+</code></pre>
+<h3 id="站点配置问题"><a name="站点配置问题" class="anchor-navigation-ex-anchor" href="#站点配置问题"><i class="fa fa-link" aria-hidden="true"></i></a>站点配置问题</h3>
+<p>在没有 SafeLine 的时候，假设小明的域名 <code>xiaoming.com</code>​​ 通过 DNS 解析到自己主机 <code>192.168.1.111</code>​​，上面在 <code>:8888</code>​​ 端口监听了自己的服务（网站/博客/靶场）等等。</p>
+<p>小明通过 <a href="http://xiaoming.com:8888​​" target="_blank">http://xiaoming.com:8888​​</a> 或者 <code>192.168.1.111:8888</code>​​ 来访问自己的服务。</p>
+<h3 id="我该如何配置？-域名填什么？-端口怎么写？-上游服务器是什么？"><a name="我该如何配置？-域名填什么？-端口怎么写？-上游服务器是什么？" class="anchor-navigation-ex-anchor" href="#我该如何配置？-域名填什么？-端口怎么写？-上游服务器是什么？"><i class="fa fa-link" aria-hidden="true"></i></a>我该如何配置？/ 域名填什么？/ 端口怎么写？/ 上游服务器是什么？</h3>
+<p>目前社区版 SafeLine 支持的是反向代理的方式接入站点，也就是类似于一台 nginx 服务。这时候小明需要做的就是让流量先抵达 SafeLine，然后经过 SafeLine 检测之后，再转发给自己原先的业务。</p>
+<p>小明只需要按照如下方式创建站点即可：</p>
+<ul>
+<li><code>xiaoming.com</code>​​ 填入页面的「域名」</li>
+<li>​<code>:7777</code>​ 填入「端口」；或者别的任意非 <code>:8888​​</code> 和 <code>:9443</code>​​（被 SafeLine 后台管理页面占用）端口</li>
+<li><code>​http://192.168.1.111:8888</code>​​ 填入「上游服务器」</li>
+</ul>
+<p>创建之后，就可以通过 <a href="http://xiaoming.com:7777​​" target="_blank">http://xiaoming.com:7777​​</a> 或者 <code>192.168.1.111:7777</code>​​ 访问自己的服务了，这时候请求到 <a href="http://xiaoming.com:7777​​" target="_blank">http://xiaoming.com:7777​​</a> 的流量都会被 SafeLine 检测。经过 SafeLine 过滤后，安全的流量会被透传到原先的 <code>:8888</code>​​ 业务服务器（即上游服务器）。</p>
+<p><strong>【注】</strong>：直接访问 <a href="http://xiaoming.com:8888​​" target="_blank">http://xiaoming.com:8888​​</a> 的流量，仍然不会被 SafeLine 检测，因为流量并没有经过 SafeLine，而是绕过 SafeLine 直接打到了上游服务器上。<a href="https://github.com/chaitin/safeline/blob/main/FAQ.md#%E9%85%8D%E7%BD%AE%E5%AE%8C%E6%88%90%E4%B9%8B%E5%90%8E%E8%BF%98%E6%98%AF%E6%B2%A1%E6%9C%89%E6%88%90%E5%8A%9F%E8%AE%BF%E9%97%AE%E5%88%B0%E4%B8%8A%E6%B8%B8%E6%9C%8D%E5%8A%A1%E5%99%A8" target="_blank">如果还不行请参看官方 FAQ 进行排查。</a></p>
+<p>Emmm，流量一直没打过去。。。</p>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> 查看日志</span>
+root@root-docker:/home/safeline# docker logs -f safeline-tengine
+
+nginx: [emerg] bind() to 0.0.0.0:65443 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:65443 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:65443 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:65443 failed (98: Unknown error)
+nginx: [emerg] bind() to 0.0.0.0:65443 failed (98: Unknown error)
+nginx: [emerg] still could not bind()
+</code></pre>
+<p>最终还是没办法，重新恢复了 Ubuntu 的环境【初始环境快照很重要】，重新安装后就好了。</p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-9.png" alt></p>
+<p>注意是经过雷池的流量才检测，直接访问的是不会检测的，所以访问 <a href="http://192.168.201.156:7777/pikachu/" target="_blank">http://192.168.201.156:7777/pikachu/</a> 开测~</p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-10.png" alt></p>
+<p>可以可以，看到界面了。只能说用过的都说好，Bypass 的话暂时就不测了，没啥实力。</p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-11.png" alt></p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-12.png" alt></p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-13.png" alt></p>
+<p><img src="assets/Chaitin%20SafeLine%20雷池%20社区版%20-14.png" alt></p>
+<h1 id="0x00-前人栽树"><a name="0x00-前人栽树" class="anchor-navigation-ex-anchor" href="#0x00-前人栽树"><i class="fa fa-link" aria-hidden="true"></i></a>0x00 前人栽树</h1>
+<ul>
+<li><a href="https://blog.csdn.net/u013948858/article/details/79974796" target="_blank">【Docker】daemon.json 的作用（八）</a> </li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2023-05-24 21:59:19
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="a-readme.html" class="navigation navigation-prev " aria-label="Previous page: Web">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="CORS 跨域漏洞.html" class="navigation navigation-next " aria-label="Next page: CORS 跨域漏洞">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"sticker":"1f996","tag":"WAF, 安全设备, Chaitin","title":"Chaitin SafeLine 雷池社区版","level":"2.1.1","depth":2,"next":{"title":"CORS 跨域漏洞","level":"2.1.2","depth":2,"path":"web/CORS 跨域漏洞.md","ref":"web/CORS 跨域漏洞.md","articles":[]},"previous":{"title":"Web","level":"2.1","depth":1,"path":"web/a-readme.md","ref":"web/a-readme.md","articles":[{"title":"Chaitin SafeLine 雷池社区版","level":"2.1.1","depth":2,"path":"web/Chaitin SafeLine 雷池社区版.md","ref":"web/Chaitin SafeLine 雷池社区版.md","articles":[]},{"title":"CORS 跨域漏洞","level":"2.1.2","depth":2,"path":"web/CORS 跨域漏洞.md","ref":"web/CORS 跨域漏洞.md","articles":[]},{"title":"Source Map 泄露","level":"2.1.3","depth":2,"path":"web/Source Map 泄露.md","ref":"web/Source Map 泄露.md","articles":[]},{"title":"TLS/SSL 常见漏洞检测及修复方法","level":"2.1.4","depth":2,"path":"web/TLS SSL 常见漏洞检测及修复方法.md","ref":"web/TLS SSL 常见漏洞检测及修复方法.md","articles":[]},{"title":"xss2pdf-制作","level":"2.1.5","depth":2,"path":"web/xss2pdf-制作.md","ref":"web/xss2pdf-制作.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["versions-select","-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-security/","text":"Security Book","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"readme.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"zha0cai's Security Book","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"web/Chaitin SafeLine 雷池社区版.md","mtime":"2023-05-24T13:59:19.622Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2023-05-30T14:19:08.583Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

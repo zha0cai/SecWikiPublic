@@ -1,0 +1,1604 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>TLS/SSL 常见漏洞检测及修复方法 · zha0cai's Security Book</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.0">
+        <meta name="author" content="zha0cai">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions-select/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="xss2pdf-制作.html" />
+    
+    
+    <link rel="prev" href="Source Map 泄露.html" />
+    
+
+    <script src="../gitbook/gitbook-plugin-graph/d3.min.js"></script>
+    <script src="../gitbook/gitbook-plugin-graph/function-plot.js"></script>    
+
+    
+    <link rel="stylesheet" href="../gitbook/gitbook-plugin-chart/c3/c3.min.css">
+    <script src="../gitbook/gitbook-plugin-chart/c3/d3.min.js"></script>
+    <script src="../gitbook/gitbook-plugin-chart/c3/c3.min.js"></script>
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/zha0cai" target="_blank" class="custom-link">My github</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">Readme</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Security Book
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Web Book</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="a-readme.html">
+            
+                <a href="a-readme.html">
+            
+                    
+                    Web
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="Chaitin SafeLine 雷池社区版.html">
+            
+                <a href="Chaitin SafeLine 雷池社区版.html">
+            
+                    
+                    Chaitin SafeLine 雷池社区版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="CORS 跨域漏洞.html">
+            
+                <a href="CORS 跨域漏洞.html">
+            
+                    
+                    CORS 跨域漏洞
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="Source Map 泄露.html">
+            
+                <a href="Source Map 泄露.html">
+            
+                    
+                    Source Map 泄露
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.1.4" data-path="TLS SSL 常见漏洞检测及修复方法.html">
+            
+                <a href="TLS SSL 常见漏洞检测及修复方法.html">
+            
+                    
+                    TLS/SSL 常见漏洞检测及修复方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="xss2pdf-制作.html">
+            
+                <a href="xss2pdf-制作.html">
+            
+                    
+                    xss2pdf-制作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Redteam Book</li>
+        
+        
+    
+
+    
+        
+        <li class="header">Email Book</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../email/a-readme.html">
+            
+                <a href="../email/a-readme.html">
+            
+                    
+                    Email
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../email/Attack Email.html">
+            
+                <a href="../email/Attack Email.html">
+            
+                    
+                    Attack Email
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../email/邮件协议.html">
+            
+                <a href="../email/邮件协议.html">
+            
+                    
+                    邮件协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Network Book</li>
+        
+        
+    
+
+    
+        
+        <li class="header">Other Book</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >TLS/SSL 常见漏洞检测及修复方法</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#0x01-常见漏洞"><b></b>0x01 常见漏洞</a></li><ul><li><span class="title-icon "></span><a href="#cve-2014-0160---心脏滴血漏洞"><b></b>CVE-2014-0160 - 心脏滴血漏洞</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2015-2808---bar-mitzvah-攻击漏洞【原理扫描】"><b></b>CVE-2015-2808 - BAR-MITZVAH 攻击漏洞【原理扫描】</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_1"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_1"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_1"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2013-2566---ssltls-rc4-信息泄露漏洞【原理扫描】"><b></b>CVE-2013-2566 - SSL/TLS RC4 信息泄露漏洞【原理扫描】</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_2"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_2"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_2"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2016-2183---ssltsl-协议信息泄露【原理扫描】---sweet32"><b></b>CVE-2016-2183 - SSL/TSL 协议信息泄露【原理扫描】-- SWEET32</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_3"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_3"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_3"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2015-4000---logjam-中间人安全限制绕过漏洞【原理扫描】"><b></b>CVE-2015-4000 - LogJam 中间人安全限制绕过漏洞【原理扫描】</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_4"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_4"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_4"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2016-0800---drown-跨协议攻击-tls-（溺水攻击溺亡攻击）"><b></b>CVE-2016-0800 - DROWN 跨协议攻击 TLS （溺水攻击/溺亡攻击）</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_5"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_5"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_5"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2015-0204---openssl-freak-attack"><b></b>CVE-2015-0204 - OpenSSL FREAK Attack</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_6"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_6"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_6"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2014-3566---poodle-sslv3-攻击信息泄露漏洞【原理扫描】（卷毛狗攻击）"><b></b>CVE-2014-3566 - POODLE SSLv3 攻击信息泄露漏洞【原理扫描】（卷毛狗攻击）</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_7"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_7"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_7"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2014-8730---poodle-tls（tls-卷毛狗攻击）"><b></b>CVE-2014-8730 - POODLE TLS（TLS 卷毛狗攻击）</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_8"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_8"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_8"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2013-3587---breach（野兽攻击）"><b></b>CVE-2013-3587 - BREACH（野兽攻击）</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_9"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_9"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_9"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2012-4929---crime（罪恶攻击）"><b></b>CVE-2012-4929 - CRIME（罪恶攻击）</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_10"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_10"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_10"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2016-2107---ssl-30-降级加密协议-openssl-padding-oracle-漏洞"><b></b>CVE-2016-2107 - SSL 3.0 降级加密协议 Openssl Padding Oracle 漏洞</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_11"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_11"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_11"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#ssltsl-瞬时-diffie-hellman-公共密钥过弱【原理扫描】"><b></b>SSL/TSL 瞬时 Diffie-Hellman 公共密钥过弱【原理扫描】</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_12"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_12"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_12"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2014-0224---ccs-注入漏洞"><b></b>CVE-2014-0224 - CCS 注入漏洞</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_13"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_13"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_13"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#cve-2009-3555---renegotiation"><b></b>CVE-2009-3555 - Renegotiation</a></li><ul><li><span class="title-icon "></span><a href="#漏洞描述_14"><b></b>漏洞描述</a></li><li><span class="title-icon "></span><a href="#测试方法_14"><b></b>测试方法</a></li><li><span class="title-icon "></span><a href="#修复方法_14"><b></b>修复方法</a></li></ul><li><span class="title-icon "></span><a href="#其他"><b></b>其他</a></li></ul><li><span class="title-icon "></span><a href="#0x02-检测方法"><b></b>0x02 检测方法</a></li><ul><li><span class="title-icon "></span><a href="#使用-nmap-检测"><b></b>使用 NMAP 检测</a></li><li><span class="title-icon "></span><a href="#使用-testsslsh-工具"><b></b>使用 testssl.sh 工具</a></li><li><span class="title-icon "></span><a href="#在线检测"><b></b>在线检测</a></li></ul><li><span class="title-icon "></span><a href="#0x03-漏洞复现"><b></b>0x03 漏洞复现</a></li><ul><li><span class="title-icon "></span><a href="#vulhub"><b></b>Vulhub</a></li><li><span class="title-icon "></span><a href="#心脏滴血复现"><b></b>心脏滴血复现</a></li><ul><li><span class="title-icon "></span><a href="#环境准备"><b></b>环境准备</a></li><li><span class="title-icon "></span><a href="#exploit"><b></b>Exploit</a></li><li><span class="title-icon "></span><a href="#编译-openssl-遇到的错误"><b></b>编译 OpenSSL 遇到的错误</a></li></ul></ul><li><span class="title-icon "></span><a href="#0x04-修复方法汇总"><b></b>0x04 修复方法汇总</a></li><ul><li><span class="title-icon "></span><a href="#windows"><b></b>Windows</a></li><li><span class="title-icon "></span><a href="#linux"><b></b>Linux</a></li><ul><li><span class="title-icon "></span><a href="#nginx"><b></b>Nginx</a></li><li><span class="title-icon "></span><a href="#apache"><b></b>Apache</a></li><li><span class="title-icon "></span><a href="#tomcat"><b></b>Tomcat</a></li></ul><li><span class="title-icon "></span><a href="#简单粗暴"><b></b>简单粗暴</a></li></ul><li><span class="title-icon "></span><a href="#0x00-前人栽树"><b></b>0x00 前人栽树</a></li></ul></div><a href="#0x01-常见漏洞" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="0x01-常见漏洞"><a name="0x01-常见漏洞" class="anchor-navigation-ex-anchor" href="#0x01-常见漏洞"><i class="fa fa-link" aria-hidden="true"></i></a>0x01 常见漏洞</h1>
+<h2 id="cve-2014-0160---心脏滴血漏洞"><a name="cve-2014-0160---心脏滴血漏洞" class="anchor-navigation-ex-anchor" href="#cve-2014-0160---心脏滴血漏洞"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2014-0160 - 心脏滴血漏洞</h2>
+<blockquote>
+<p><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0160" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0160</a></p>
+</blockquote>
+<h3 id="漏洞描述"><a name="漏洞描述" class="anchor-navigation-ex-anchor" href="#漏洞描述"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>主要出现在 OpenSSL 处理 TLS 心跳的过程中，TLS 心跳的流程是：A 向 B 发送请求包，B 收到包后读取这个包的内容(data)，并返回一个包含有请求包内容的响应包。请求包的内容(data)中包含有包的类型(type)和数据长度等信息。</p>
+<p><img src="assets/未命名.png" alt></p>
+<p>Heartbleed 漏洞是由于未能在 <code>memcpy()</code>​​​​ 调用受害用户输入内容作为长度参数之前正确进行边界检查。攻击者可以追踪 OpenSSL 所分配的 <code>64KB</code>​​ 缓存、将超出必要范围的字节信息复制到缓存当中再返回缓存内容，这样一来受害者的内存内容就会以每次 <code>64KB</code>​​ 的速度进行泄露。我们可以通过该漏洞读取每次攻击泄露出来的信息，所以可能也可以获取到服务器的私钥，用户 cookie 和密码等。</p>
+<h3 id="测试方法"><a name="测试方法" class="anchor-navigation-ex-anchor" href="#测试方法"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<p>在线测试：<a href="https://possible.lv/tools/hb/" target="_blank">Heartbleed OpenSSL extension testing tool, CVE-2014-0160 (possible.lv)</a></p>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> testssl.sh</span>
+./testssl.sh -H TARGET(ip:port/域名)
+<span class="hljs-meta">
+#</span><span class="bash"> nmap</span>
+nmap -p 443 --script ssl-heartbleed --script-args vulns.showall 10.x.x.x
+
+Starting Nmap 7.25BETA2 ( https://nmap.org ) at 2017-01-20 22:45 EST
+Nmap scan report for 10.0.1.159
+Host is up (0.00028s latency).
+PORT    STATE SERVICE
+443/tcp open  https
+| ssl-heartbleed: 
+|   VULNERABLE:
+|   The Heartbleed Bug is a serious vulnerability in the popular OpenSSL cryptographic software library. It allows for stealing information intended to be protected by SSL/TLS encryption.
+|     State: VULNERABLE
+|     Risk factor: High
+|       OpenSSL versions 1.0.1 and 1.0.2-beta releases (including 1.0.1f and 1.0.2-beta1) of OpenSSL are affected by the Heartbleed bug. The bug allows for reading memory of systems protected by the vulnerable OpenSSL versions and could allow for disclosure of otherwise encrypted confidential information as well as the encryption keys themselves.
+|   
+|     References:
+|       http://www.openssl.org/news/secadv_20140407.txt 
+|       http://cvedetails.com/cve/2014-0160/
+|_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0160
+MAC Address: 00:0C:29:35:3D:E8 (VMware)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.36 seconds
+</code></pre>
+<h3 id="修复方法"><a name="修复方法" class="anchor-navigation-ex-anchor" href="#修复方法"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<p>升级 openssl 到 1.01g 及以上版本</p>
+<h2 id="cve-2015-2808---bar-mitzvah-攻击漏洞【原理扫描】"><a name="cve-2015-2808---bar-mitzvah-攻击漏洞【原理扫描】" class="anchor-navigation-ex-anchor" href="#cve-2015-2808---bar-mitzvah-攻击漏洞【原理扫描】"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2015-2808 - BAR-MITZVAH 攻击漏洞【原理扫描】</h2>
+<h3 id="漏洞描述_1"><a name="漏洞描述_1" class="anchor-navigation-ex-anchor" href="#漏洞描述_1"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>该漏洞是由功能较弱而且已经过时的 <code>RC4</code> 加密算法中一个问题所导致的。它能够在某些情况下泄露 SSL/TLS​​ 加密流量中的密文，从而将账户用户名密码、信用卡数据和其他敏感信息泄露给黑客。</p>
+<h3 id="测试方法_1"><a name="测试方法_1" class="anchor-navigation-ex-anchor" href="#测试方法_1"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<pre><code class="lang-shell">openssl s_client -connect host:443 -cipher RC4
+<span class="hljs-meta">
+#</span><span class="bash"> 返回内容出现 handshake failure 说明 RC4 已禁用，否则需要修复</span>
+</code></pre>
+<h3 id="修复方法_1"><a name="修复方法_1" class="anchor-navigation-ex-anchor" href="#修复方法_1"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<ul>
+<li>服务器端禁止使用 RC4 加密算法。</li>
+<li>客户端应在浏览器 TLS 配置中禁止 RC4</li>
+<li>在 nginx 配置参数 ssl_ciphers​​ 中添加 <code>!RC4</code>​​ 参数 <code>ssl_ciphers ALL:!RC4​​</code></li>
+</ul>
+<h2 id="cve-2013-2566---ssltls-rc4-信息泄露漏洞【原理扫描】"><a name="cve-2013-2566---ssltls-rc4-信息泄露漏洞【原理扫描】" class="anchor-navigation-ex-anchor" href="#cve-2013-2566---ssltls-rc4-信息泄露漏洞【原理扫描】"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2013-2566 - SSL/TLS RC4 信息泄露漏洞【原理扫描】</h2>
+<h3 id="漏洞描述_2"><a name="漏洞描述_2" class="anchor-navigation-ex-anchor" href="#漏洞描述_2"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>TLS 协议和 SSL 协议中使用的 RC4 算法具有许多单字节偏移。远程攻击者可以通过使用相同明文的大量会话中的密文统计分析来进行明文破解攻击。</p>
+<h3 id="测试方法_2"><a name="测试方法_2" class="anchor-navigation-ex-anchor" href="#测试方法_2"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> testssl.sh</span>
+./testssl.sh -4 TARGET
+<span class="hljs-meta">
+#</span><span class="bash"> nmap</span>
+使用 ./testssl.sh -E TARGET 手动枚举服务器密码或者 nmap -p 443 --script=ssl-enum-ciphers TARGET 确保服务器支持密码类型不使用 RC4
+</code></pre>
+<h3 id="修复方法_2"><a name="修复方法_2" class="anchor-navigation-ex-anchor" href="#修复方法_2"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<ul>
+<li>同上</li>
+<li><a href="https://support.microsoft.com/en-us/help/2868725/microsoft-security-advisory-update-for-disabling-rc4" target="_blank">https://support.microsoft.com/en-us/help/2868725/microsoft-security-advisory-update-for-disabling-rc4</a></li>
+<li><a href="https://www.cnblogs.com/tsimfeiwan/p/16567279.html" target="_blank">https://www.cnblogs.com/tsimfeiwan/p/16567279.html</a></li>
+</ul>
+<h2 id="cve-2016-2183---ssltsl-协议信息泄露【原理扫描】---sweet32"><a name="cve-2016-2183---ssltsl-协议信息泄露【原理扫描】---sweet32" class="anchor-navigation-ex-anchor" href="#cve-2016-2183---ssltsl-协议信息泄露【原理扫描】---sweet32"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2016-2183 - SSL/TSL 协议信息泄露【原理扫描】-- SWEET32</h2>
+<h3 id="漏洞描述_3"><a name="漏洞描述_3" class="anchor-navigation-ex-anchor" href="#漏洞描述_3"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>64 位块大小（如 Triple-DES（3DES））的传统块密码在 CBC 模式下使用，易受到攻击。当使用 CBC 模式操作时，使用 simple birthday attack 来识别 64 位块密码冲突。当碰撞发生时，这意味着输入与输出相同，使得可以执行 BEAST style attack 来渗透加密的数据。</p>
+<p>作者 Karthik Bhargavan 和 Gaetan Leurent 能够在浏览器（作为 MITM）中运行 JavaScript，并发送大量的数据导致冲突，然后使用此信息来恢复会话 cookie。</p>
+<h3 id="测试方法_3"><a name="测试方法_3" class="anchor-navigation-ex-anchor" href="#测试方法_3"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<p>确定服务器是否支持 <code>Triple-DES</code>​​ 密码，如果服务器支持 <code>Triple-DES</code>​​，则易受 SWEET32 攻击。</p>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> testssl.sh</span>
+./testssl.sh --ciphers TARGET
+<span class="hljs-meta">
+#</span><span class="bash"> 如果输出显示 Tripe DES 密码，就像下面的截图一样，目标服务器容易受到 SWEET32 的影响，使用 3DES 的任何密码都易受 SWEET32 影响</span>
+<span class="hljs-meta">
+#</span><span class="bash"> nmap</span>
+nmap --script = ssl-enum-ciphers -p443 TARGET
+nmap -sV --script ssl-enum-ciphers -p 443 www.example.com (ip 也可以)
+<span class="hljs-meta">
+#</span><span class="bash"> 输出以下则表示有漏洞</span>
+warnings: 
+|       64-bit block cipher 3DES vulnerable to SWEET32 attack
+<span class="hljs-meta">
+#</span><span class="bash"> 手工测试：根据上面方法测试用 Nmap NSE 脚本枚举密码</span>
+</code></pre>
+<p><img src="assets/未命名-1.png" alt></p>
+<h3 id="修复方法_3"><a name="修复方法_3" class="anchor-navigation-ex-anchor" href="#修复方法_3"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<ul>
+<li><p>升级 OpenSSL 版本【最优解】or 修改 Nginx 加密算法</p>
+</li>
+<li><p>OpenSSL 1.1.0 以后没有此漏洞，并且本地的 openssl 版本高于 1.1.0
+<a href="https://www.openssl.org/news/secadv/20160922.txt" target="_blank">https://www.openssl.org/news/secadv/20160922.txt</a></p>
+</li>
+<li><p>绿盟还是能扫描出来，因为 nginx 还在使用旧版本的 OpenSSL，优先升级 OpenSSL。(这个加密算法是跟 443 端口相关，有的项目没有做 https 所以没法修改只能升级) -- 突出一个【原理扫描（版本）】</p>
+</li>
+<li><p>下载 openssl 的稳定版本
+<a href="https://www.openssl.org/" target="_blank">https://www.openssl.org/</a></p>
+</li>
+</ul>
+<pre><code class="lang-shell">wget https://www.openssl.org/source/openssl-1.1.1g.tar.gz --no-check-certificate
+</code></pre>
+<ul>
+<li><p>编译安装</p>
+<p>```shell
+tar xvf openssl-1.1.1g.tar.gz -C /usr/local/</p>
+</li>
+</ul>
+<p>cd /usr/local/openssl-1.1.1g/</p>
+<p>./config &amp;&amp; make &amp;&amp; make install</p>
+<p>echo &quot;/usr/local/lib64/&quot; &gt;&gt; /etc/ld.so.conf</p>
+<p>ldconfig</p>
+<p>mv /usr/bin/openssl /usr/bin/openssl.old</p>
+<p>ln -sv /usr/local/bin/openssl /usr/bin/openssl</p>
+<pre><code>
+-   ​openssl version​​​，查看版本
+
+-   替换 nginx 的 OpenSSL 旧版本为新版本，需要重新编译一下 nginx
+
+```shell
+./configure --user=www --group=www --prefix=/data/nginx --with-http_sub_module --with-http_stub_status_module --with-pcre --with-http_ssl_module --with-http_flv_module --with-http_gzip_static_module --with-http_realip_module --with-stream --with-stream_ssl_module --with-openssl=/usr/local/openssl-1.1.1g &amp;&amp; make &amp;&amp; make install
+
+pkill -9 nginx
+
+./nginx
+</code></pre><ul>
+<li><p>查看 nginx 的 openssl 版本 ./nginx -V​​​</p>
+</li>
+<li><p>nginx 开启的 443 端口，所以需要去修改 nginx 的配置文件，禁用 3DES 算法。<br>【注】: <code>!3DES</code>​​ 是后添加的过滤</p>
+</li>
+</ul>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> nginx.conf 文件如下：</span>
+
+server {
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4:!3DES;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+}
+
+./nginx -s reload
+</code></pre>
+<p>原文链接：<a href="https://blog.csdn.net/w184414332/article/details/126406154" target="_blank">https://blog.csdn.net/w184414332/article/details/126406154</a></p>
+<h2 id="cve-2015-4000---logjam-中间人安全限制绕过漏洞【原理扫描】"><a name="cve-2015-4000---logjam-中间人安全限制绕过漏洞【原理扫描】" class="anchor-navigation-ex-anchor" href="#cve-2015-4000---logjam-中间人安全限制绕过漏洞【原理扫描】"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2015-4000 - LogJam 中间人安全限制绕过漏洞【原理扫描】</h2>
+<h3 id="漏洞描述_4"><a name="漏洞描述_4" class="anchor-navigation-ex-anchor" href="#漏洞描述_4"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>该漏洞可帮助攻击者将 TLS 连接降级为 512 位导出级加密。这有助于攻击者读取和修改通过网络连接传输的任何数据。</p>
+<p>TLS 1.2 及更早版本，在服务器上启用但不在客户端启用 <code>DHE_EXPORT​​</code> 密码组时，没有正确转送 <code>DHE_EXPORT</code>​​ 选择，中间人攻击者通过用 <code>DHE_EXPORT</code>​​ 代替 DHE，重写 ClientHello，然后用 DHE 代替 <code>DHE_EXPORT</code>​​，重写 ServerHello(即&quot;Logjam&quot;问题)，利用此漏洞可执行密码降级攻击。</p>
+<h3 id="测试方法_4"><a name="测试方法_4" class="anchor-navigation-ex-anchor" href="#测试方法_4"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> testssl.sh</span>
+./testssl.sh -J TARGET
+<span class="hljs-meta">
+#</span><span class="bash"> nmap</span>
+禁用 EXPORT 密码，说明与 FREAK 攻击相同。
+</code></pre>
+<h3 id="修复方法_4"><a name="修复方法_4" class="anchor-navigation-ex-anchor" href="#修复方法_4"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<p>禁用 EXPORT 密码（​SSLCipherSuite !EXPORT​​）或者升级 openssl 到安全版本</p>
+<p>参考连接</p>
+<ul>
+<li><a href="https://geekflare.com/test-logjam-attack-cve-2015-4000-and-fix/" target="_blank">How to test Logjam Attack (CVE-2015-4000) and fix? (geekflare.com)</a></li>
+<li><a href="https://access.redhat.com/zh_CN/articles/1480493" target="_blank">Logjam：TLS 漏洞 (CVE-2015-4000)</a></li>
+</ul>
+<h2 id="cve-2016-0800---drown-跨协议攻击-tls-（溺水攻击溺亡攻击）"><a name="cve-2016-0800---drown-跨协议攻击-tls-（溺水攻击溺亡攻击）" class="anchor-navigation-ex-anchor" href="#cve-2016-0800---drown-跨协议攻击-tls-（溺水攻击溺亡攻击）"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2016-0800 - DROWN 跨协议攻击 TLS （溺水攻击/溺亡攻击）</h2>
+<h3 id="漏洞描述_5"><a name="漏洞描述_5" class="anchor-navigation-ex-anchor" href="#漏洞描述_5"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>DROWN（使用过时和弱化的 eNcryption 解密 RSA），DROWN 攻击的最一般变体利用了 SSLv2 协议的一个根本缺点，允许中间人（MITM）攻击者利用导入符合 20 世纪 90 年代美国政府的限制（EXPORT 等级加密在下面的 FREAK 漏洞描述中详细描述）的密码学，可造成 DROWN 攻击(Decrypting RSA usingObsolete and Weakened eNcryption)。</p>
+<h3 id="测试方法_5"><a name="测试方法_5" class="anchor-navigation-ex-anchor" href="#测试方法_5"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> testssl.sh</span>
+./testssl.sh -D TARGET
+<span class="hljs-meta">
+#</span><span class="bash"> nmap</span>
+nmap -p 443 -sV --script=sslv2-drown
+<span class="hljs-meta">
+#</span><span class="bash"> 针对 Web  Server</span>
+openssl s_client -connect 待测域名或IP:443-ssl2
+<span class="hljs-meta">
+#</span><span class="bash"> 针对 SMTP Server</span>
+
+openssl s_client -connect 待测域名或IP:25-starttls smtp -ssl2
+<span class="hljs-meta">
+#</span><span class="bash"> 如果出现如下错误信息，则 SSLv2 已禁用</span>
+419:error:1407F0E5:SSL routines:SSL2_WRITE:ssl handshake failure:s2_pkt.c:428:
+</code></pre>
+<h3 id="修复方法_5"><a name="修复方法_5" class="anchor-navigation-ex-anchor" href="#修复方法_5"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<ul>
+<li>如果是 cipher none 的话，能保证是不受影响的，或者说这是一个缓解措施。</li>
+<li>OpenSSL not 1.0.2a、1.0.1m、1.0.0r、0.9.8zf 及更早版本</li>
+<li><a href="https://www.cnblogs.com/liujiacai/p/10219833.html" target="_blank">(转)OpenSSL CVE-2016-0800 和 CVE-2016-0703 漏洞修复细节拾趣 - liujiacai - 博客园 (cnblogs.com)</a></li>
+</ul>
+<h2 id="cve-2015-0204---openssl-freak-attack"><a name="cve-2015-0204---openssl-freak-attack" class="anchor-navigation-ex-anchor" href="#cve-2015-0204---openssl-freak-attack"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2015-0204 - OpenSSL FREAK Attack</h2>
+<h3 id="漏洞描述_6"><a name="漏洞描述_6" class="anchor-navigation-ex-anchor" href="#漏洞描述_6"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>FREAK（破解 RSA 导出密钥），利用了 <code>TLS/SSL</code>​​ 中的加密弱点，这是美国政府几十年前最初引入的。使用 <code>RSA_EXPORT</code>​​ 密钥的想法是允许导出包含不能被大多数计算机破解的加密密钥。如果 <code>RSA_EXPORT</code>​​ 密钥加密为 512 位或更少，那么以目前的计算机性能很容易破解。</p>
+<p>FREAK 执行降级攻击（强制服务器使用较弱的密码），当与中间人（MITM）类型攻击相结合时，这允许攻击者捕获数据并中断弱密钥的解密。</p>
+<p>此问题存在于 OpenSSL 版本 0.9.8zd 之前, 或 1.0.0p 之前的 1.0.0，或 1.0.1k 之前的 1.0.1。</p>
+<h3 id="测试方法_6"><a name="测试方法_6" class="anchor-navigation-ex-anchor" href="#测试方法_6"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> testssl.sh</span>
+./testssl -F TARGET
+<span class="hljs-meta">
+#</span><span class="bash"> nmap</span>
+使用 ./testssl.sh -E TARGET 或者 nmap -p 443 --script=ssl-enum-ciphers TARGET 枚举服务器密码，确保服务器支持的以下类型密码不包含：EXPORT
+
+openssl s_client -connect www.fbi.gov:443 -cipher EXPORT
+<span class="hljs-meta">#</span><span class="bash"> 如果你看到 <span class="hljs-string">&quot;alert handshake failure&quot;</span> 这句话就说明该网站是安全的</span>
+</code></pre>
+<h3 id="修复方法_6"><a name="修复方法_6" class="anchor-navigation-ex-anchor" href="#修复方法_6"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<ul>
+<li>禁用 EXPORT 密码或者升级 openssl 到安全版本</li>
+<li>​<code>SSLCipherSuite HIGH:!aNULL:!MD5:!EXP​​</code></li>
+<li><a href="https://www.secpulse.com/archives/5193.html" target="_blank">OpenSSL FREAK Attack 漏洞(CVE-2015-0204)检测方法及修复建议 - SecPulse.COM | 安全脉搏</a></li>
+</ul>
+<h2 id="cve-2014-3566---poodle-sslv3-攻击信息泄露漏洞【原理扫描】（卷毛狗攻击）"><a name="cve-2014-3566---poodle-sslv3-攻击信息泄露漏洞【原理扫描】（卷毛狗攻击）" class="anchor-navigation-ex-anchor" href="#cve-2014-3566---poodle-sslv3-攻击信息泄露漏洞【原理扫描】（卷毛狗攻击）"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2014-3566 - POODLE SSLv3 攻击信息泄露漏洞【原理扫描】（卷毛狗攻击）</h2>
+<h3 id="漏洞描述_7"><a name="漏洞描述_7" class="anchor-navigation-ex-anchor" href="#漏洞描述_7"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>该漏洞只对 CBC 模式的明文进行了身份验证，但是没有对填充字节进行完整性验证，攻击者可以发动中间人攻击拦截用户浏览器和 HTTPS 站点的流量，然后窃取用户的敏感信息。</p>
+<p>Google 的安全小组在 2014 年 10 月 14 日发现了 POODLE 攻击（Padding Oracle On Downgraded Legacy Encryption）。该漏洞利用了 SSLv3 处理填充字节的方式（密码块链接）CBC 操作模式。</p>
+<p>该缺陷允许中间人（MITM）攻击者在少于 256 个 SSLv3 连接中解密密文的所选字节，如果他们能够强制受害者应用程序重复发送相同的数据通过新创建 SSL 3.0 连接。</p>
+<h3 id="测试方法_7"><a name="测试方法_7" class="anchor-navigation-ex-anchor" href="#测试方法_7"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<p>​<strong>testssl.sh​​</strong></p>
+<pre><code class="lang-shell">./testssl.sh -O TARGET
+</code></pre>
+<p><strong>Kali 附带的 openssl 版本不再支持 SSLv3。</strong> 使用二进制码 testssl.sh/bin/openssl.Linux.x86_64​​ 进行手动 SSLv3 测试。</p>
+<pre><code class="lang-shell">./openssl.Linux.x86_64 s_client -ssl3 -connect 10.0.1.159:443
+</code></pre>
+<p>如果握手完成，则服务器容易受到 POODLE 的影响。</p>
+<p>对于容易受到 POODLE 影响的服务器的输出示例（从响应中删除的证书）：</p>
+<pre><code class="lang-shell">---
+No client certificate CA names sent
+Server Temp Key: DH, 1024 bits
+---
+SSL handshake has read 1398 bytes and written 373 bytes
+---
+New, TLSv1/SSLv3, Cipher is DHE-RSA-AES256-SHA
+Server public key is 1024 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : SSLv3
+    Cipher    : DHE-RSA-AES256-SHA
+    Session-ID: 0450660185C7B2623CB2145A1C6655BDD8CC281F882C3B9E0ED35E88360639BA
+    Session-ID-ctx: 
+    Master-Key: 6A56AC01754D9441ACFD6C0B9E534E33450CD2F0E0D619F235E2ACC1780CFD86E769B9AE82D0D5AAA4C62B295B5BB598
+    Key-Arg   : None
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    Start Time: 1484971085
+    Timeout   : 7200 (sec)
+    Verify return code: 9 (certificate is not yet valid)
+---
+</code></pre>
+<p>如果服务器不容易受到 POODLE 的影响，握手将失败，发生如下错误</p>
+<pre><code class="lang-shell">CONNECTED(00000003)
+28395584:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:s3_pkt.c:1475:SSL alert number 40
+28395584:error:1409E0E5:SSL routines:ssl3_write_bytes:ssl handshake failure:s3_pkt.c:656:
+---
+no peer certificate available
+</code></pre>
+<p>​<strong>nmap​​</strong></p>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> nmap</span>
+nmap -p 443 --script ssl-poodle --script-args vulns.showall 10.0.1.159
+
+Starting Nmap 7.25BETA2 ( https://nmap.org ) at 2017-01-20 22:50 EST
+Nmap scan report for 10.0.1.159
+Host is up (0.00037s latency).
+PORT    STATE SERVICE
+443/tcp open  https
+| ssl-poodle: 
+|   VULNERABLE:
+|   SSL POODLE information leak
+|     State: VULNERABLE
+|     IDs:  CVE:CVE-2014-3566  OSVDB:113251
+|           The SSL protocol 3.0, as used in OpenSSL through 1.0.1i and other
+|           products, uses nondeterministic CBC padding, which makes it easier
+|           for man-in-the-middle attackers to obtain cleartext data via a
+|           padding-oracle attack, aka the &quot;POODLE&quot; issue.
+|     Disclosure date: 2014-10-14
+|     Check results:
+|       TLS_RSA_WITH_AES_128_CBC_SHA
+|     References:
+|       http://osvdb.org/113251
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3566
+|       https://www.imperialviolet.org/2014/10/14/poodle.html
+|_      https://www.openssl.org/~bodo/ssl-poodle.pdf
+MAC Address: 00:0C:29:35:3D:E8 (VMware)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.35 seconds
+</code></pre>
+<h3 id="修复方法_7"><a name="修复方法_7" class="anchor-navigation-ex-anchor" href="#修复方法_7"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<ul>
+<li>禁用 sslv3.0 协议</li>
+</ul>
+<h2 id="cve-2014-8730---poodle-tls（tls-卷毛狗攻击）"><a name="cve-2014-8730---poodle-tls（tls-卷毛狗攻击）" class="anchor-navigation-ex-anchor" href="#cve-2014-8730---poodle-tls（tls-卷毛狗攻击）"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2014-8730 - POODLE TLS（TLS 卷毛狗攻击）</h2>
+<h3 id="漏洞描述_8"><a name="漏洞描述_8" class="anchor-navigation-ex-anchor" href="#漏洞描述_8"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>由于 TLS 填充是 SSLv3 的一个子集，因此可以重新使用针对 TLS 的 POODLE 攻击。TLS 对于它的填充格式是非常严格的，但是一些 TLS 实现在解密之后不执行填充结构的检查。即使使用 TLS 也不会容易受到 POODLE 攻击的影响。</p>
+<p>资料来源：<a href="https://blog.qualys.com/ssllabs/2014/12/08/poodle-bites-tls" target="_blank">https://blog.qualys.com/ssllabs/2014/12/08/poodle-bites-tls</a></p>
+<h3 id="测试方法_8"><a name="测试方法_8" class="anchor-navigation-ex-anchor" href="#测试方法_8"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<pre><code class="lang-shell">openssl s_client -connect host:端口
+<span class="hljs-meta">
+#</span><span class="bash"> 输入 R 进行重协商，可重协商 10 次以上且连接未断开，证书链中的自签名证书，重协商成功，漏洞存在</span>
+<span class="hljs-meta">
+#</span><span class="bash"> testssl.sh</span>
+./testssl.sh -R ip:port
+</code></pre>
+<h3 id="修复方法_8"><a name="修复方法_8" class="anchor-navigation-ex-anchor" href="#修复方法_8"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<ul>
+<li>同上</li>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8730" target="_blank">CVE - CVE-2014-8730 (mitre.org)</a></li>
+</ul>
+<h2 id="cve-2013-3587---breach（野兽攻击）"><a name="cve-2013-3587---breach（野兽攻击）" class="anchor-navigation-ex-anchor" href="#cve-2013-3587---breach（野兽攻击）"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2013-3587 - BREACH（野兽攻击）</h2>
+<h3 id="漏洞描述_9"><a name="漏洞描述_9" class="anchor-navigation-ex-anchor" href="#漏洞描述_9"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>BREACH 代表通过自适应压缩超文本进行浏览器检测和渗透。与 CRIME 相似之处是利用 HTTP 压缩中的漏洞，允许攻击者识别页面中是否存在文本。</p>
+<h3 id="测试方法_9"><a name="测试方法_9" class="anchor-navigation-ex-anchor" href="#测试方法_9"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<p>BREACH 攻击基本流程</p>
+<p>当页面上发生文本重复时，将删除重复的术语，有助于减小页面的大小。这可以用于识别现有的页面内容，下面是 Web 应用程序的示例，显示当前登录的用户在页面中反映的用户名：</p>
+<ol>
+<li>输入您认为不存在于搜索参数中的用户名</li>
+<li>注意返回页面的大小</li>
+<li>发送您认为存在的用户名的其他搜索请求</li>
+<li>注意返回页面的大小，如果用户名与登录用户名匹配（确认存在），页面大小对比上次将会缩小</li>
+</ol>
+<p>通过分析响应的大小可以预测文本，实际上没有流量被“解密”</p>
+<p>为了使 BREACH 攻击成功地渗透数据，必须有一种机制来反映渲染页面中的用户输入，并且服务器必须支持 HTTP 压缩。</p>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> testssl.sh</span>
+./testssl.sh -B TARGET
+<span class="hljs-meta">
+#</span><span class="bash"> 使用 openssl client</span>
+openssl s_client -connect TARGET:443
+</code></pre>
+<p>输入以下内容来确定服务器是否使用压缩：</p>
+<pre><code class="lang-html">GET / HTTP / 1.1
+Host: TARGET
+Accept-Encoding: compress, gzip
+
+======== e.g.
+GET / HTTP/1.1
+Host: 192.168.201.216:9443
+Accept-Encoding: compress, gzip
+</code></pre>
+<p>如果服务器返回乱码的字符，如下面的截图所示，则服务器<strong>支持压缩</strong>，容易受到 BREACH 的攻击。</p>
+<p><img src="assets/未命名-2.png" alt></p>
+<p><strong>testssl.sh​​ 测试</strong></p>
+<p><img src="assets/未命名-3.png" alt></p>
+<h3 id="修复方法_9"><a name="修复方法_9" class="anchor-navigation-ex-anchor" href="#修复方法_9"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<ul>
+<li><a href="https://port135.com/breach-vulnerability/" target="_blank">How to fix the BREACH vulnerability (CVE-2013-3587 CWE-310) (port135.com)</a></li>
+<li><p><a href="https://www.breachattack.com/" target="_blank">https://www.breachattack.com/</a></p>
+</li>
+<li><p>禁用 HTTP 压缩</p>
+</li>
+<li>将秘密与用户输入分开</li>
+<li>根据请求随机化秘密</li>
+<li>屏蔽秘密（通过 XORing 与每个请求的随机秘密有效地随机化）</li>
+<li>使用 CSRF 保护易受攻击的页面</li>
+<li>长度隐藏（通过向响应添加随机数量的字节）</li>
+<li><p>对请求进行速率限制</p>
+</li>
+<li><p>第一个选项（禁用 HTTP 压缩）肯定会缓解此漏洞，并且扫描工具不会再显示它。但是，这可能会影响性能</p>
+</li>
+<li>2 - 5 的建议与应用程序的编码有关。它们可有效防止此类攻击。它们也是一般开发的最佳实践</li>
+<li>建议 #6​​ 和 #7​​ 是与托管相关的设置。</li>
+</ul>
+<p>安全版本</p>
+<ul>
+<li>OpenSSL 1.0.1k</li>
+<li>OpenSSL 1.0.0p</li>
+<li>OpenSSL 0.9.8zd</li>
+</ul>
+<h2 id="cve-2012-4929---crime（罪恶攻击）"><a name="cve-2012-4929---crime（罪恶攻击）" class="anchor-navigation-ex-anchor" href="#cve-2012-4929---crime（罪恶攻击）"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2012-4929 - CRIME（罪恶攻击）</h2>
+<h3 id="漏洞描述_10"><a name="漏洞描述_10" class="anchor-navigation-ex-anchor" href="#漏洞描述_10"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>CRIME 是 TLS 1.2 漏洞，允许中间人（MITM）攻击者识别加密数据，（潜在）执行会话劫持。攻击者可以通过检查密文的大小来识别加密数据，同时从浏览器引入多个有效载荷，当字符匹配在标题内时，其大小会有所不同，允许攻击者修改会话 cookie。实际上没有使用 CRIME 攻击解密数据，TLS 1.2 处理压缩的一个弱点使得攻击者可以通过比较返回的大小来识别头文件何时存在。</p>
+<h3 id="测试方法_10"><a name="测试方法_10" class="anchor-navigation-ex-anchor" href="#测试方法_10"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> testssl.sh</span>
+./testssl.sh -C TARGET
+<span class="hljs-meta">
+#</span><span class="bash"> 使用 openssl client，kali 使用的 openssl 似乎不再允许 TLS 1.2 压缩。如果您使用此版本的 openssl 进行测试，即使目标服务器启用了 TLS 1.2 压缩，响应将始终为 “Compression：NONE”。可以使用 testssl.sh 附带的 openssl.Linux.x86_64 二进制文件来解决此问题。</span>
+./bin/openssl.Linux.x86_64 s_client -connect 10.0.1.158:443
+<span class="hljs-meta">
+#</span><span class="bash"> 示例输出 – 不易受 CRIME 影响</span>
+如果服务器不容易受到 CRIME 的影响。“压缩：无”表示压缩在服务器上被禁用，并且不易受到 CRIME 的攻击。
+Compression: NONE
+<span class="hljs-meta">
+#</span><span class="bash"> 示例输出 – 易受 CRIME 影响</span>
+如果服务器易受 CRIME 攻击：
+Compression: zlib compression
+</code></pre>
+<h3 id="修复方法_10"><a name="修复方法_10" class="anchor-navigation-ex-anchor" href="#修复方法_10"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<ul>
+<li>SSL 压缩在下述版本是默认关闭的： nginx 1.1.6 及更高/1.0.9 及更高（如果使用了 OpenSSL 1.0.0 及更高）， nginx 1.3.2 及更高/1.2.2 及更高（如果使用较旧版本的 OpenSSL）。</li>
+</ul>
+<h2 id="cve-2016-2107---ssl-30-降级加密协议-openssl-padding-oracle-漏洞"><a name="cve-2016-2107---ssl-30-降级加密协议-openssl-padding-oracle-漏洞" class="anchor-navigation-ex-anchor" href="#cve-2016-2107---ssl-30-降级加密协议-openssl-padding-oracle-漏洞"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2016-2107 - SSL 3.0 降级加密协议 Openssl Padding Oracle 漏洞</h2>
+<h3 id="漏洞描述_11"><a name="漏洞描述_11" class="anchor-navigation-ex-anchor" href="#漏洞描述_11"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>当浏览器进行 HTTPS 连接失败的时候，将会尝试使用旧的协议版本，这其中就包括 SSL 3.0，于是加密协议由更加安全的协议（比如：TLS 1.0）降级成 SSL 3.0。然后利用 SSLv3 中存在的漏洞，解密得到其数据包的明文信息，而这些明文信息极有可能是用户的隐私数据，比如 cookie，这样攻击者就可以拿到这些隐私数据，进行更深层次的攻击。</p>
+<p><a href="https://blogs.360.net/post/openssl-cve-2016-2107-%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90.html" target="_blank">OpenSSL CVE-2016-2107 漏洞分析</a></p>
+<p>受影响的版本范围 ( <code>1.0.1—1.0.1f / 1.0.2 Beta1​​</code> )</p>
+<h3 id="测试方法_11"><a name="测试方法_11" class="anchor-navigation-ex-anchor" href="#测试方法_11"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<p>在线测试</p>
+<ul>
+<li><a href="https://filippo.io/cve-2016-2107/" target="_blank">CVE-2016-2107 test</a>（专项测试）</li>
+<li><a href="https://myssl.com/" target="_blank">SSL Server Test</a>（国内）</li>
+<li><a href="https://www.ssllabs.com/ssltest" target="_blank">SSL Server Test</a>（国外）</li>
+</ul>
+<p>本地测试</p>
+<pre><code class="lang-shell">git clone https://github.com/FiloSottile/CVE-2016-2107
+<span class="hljs-meta">
+#</span><span class="bash"> 然后进入 CVE-2016-2107 文件夹，执行命令</span>
+go run main.go jdddd.com
+
+========
+<span class="hljs-meta">$</span><span class="bash"> go version</span>
+go version go1.6.2 darwin/amd64
+<span class="hljs-meta">$</span><span class="bash"> go get github.com/FiloSottile/CVE-2016-2107</span>
+<span class="hljs-meta">
+$</span><span class="bash"> CVE-2016-2107 filippo.io</span>
+2016/05/03 17:50:49 Vulnerable: false
+</code></pre>
+<h3 id="修复方法_11"><a name="修复方法_11" class="anchor-navigation-ex-anchor" href="#修复方法_11"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<p><a href="https://www.seasidecrab.com/server/cve-2016-2017_bug_fixing.html" target="_blank">确认 443 端口被哪个服务调用，然后更新该程序所依赖的 OpenSSL（不一定是系统自带的 OpenSSL）</a>。</p>
+<ul>
+<li>推荐把 OpenSSL 版本更新到最新版本</li>
+<li>OpenSSL 1.0.2 应升级到 1.0.2h 或以上</li>
+<li>OpenSSL 1.0.1 应升级到 1.0.1t 或以上</li>
+<li>OpenSSL 1.0.0 应升级到 1.0.1t 或以上</li>
+</ul>
+<p>更新完毕后，请重启调用 443 端口的服务。</p>
+<h2 id="ssltsl-瞬时-diffie-hellman-公共密钥过弱【原理扫描】"><a name="ssltsl-瞬时-diffie-hellman-公共密钥过弱【原理扫描】" class="anchor-navigation-ex-anchor" href="#ssltsl-瞬时-diffie-hellman-公共密钥过弱【原理扫描】"><i class="fa fa-link" aria-hidden="true"></i></a><code>SSL/TSL</code> 瞬时 Diffie-Hellman 公共密钥过弱【原理扫描】</h2>
+<h3 id="漏洞描述_12"><a name="漏洞描述_12" class="anchor-navigation-ex-anchor" href="#漏洞描述_12"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>Diffie-Hellman 协议用于生成公共密钥对，以确保通信双方交换的密钥是安全的。其原理是：在两个节点之间交换一些随机数，然后使用这些随机数计算出一个固定的椭圆曲线参数（ECC），接着生成两个大质数 p 和 q，它们将成为 Diffie-Hellman 密钥交换的基础。在实际使用中，由于计算 ECC 的过程中可能存在误差，导致生成的密钥可能存在一定程度的弱点。</p>
+<h3 id="测试方法_12"><a name="测试方法_12" class="anchor-navigation-ex-anchor" href="#测试方法_12"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<pre><code class="lang-shell">nmap -sV -Pn --script ssl-dh-params 端口 IP
+</code></pre>
+<h3 id="修复方法_12"><a name="修复方法_12" class="anchor-navigation-ex-anchor" href="#修复方法_12"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<p>理论</p>
+<ol>
+<li>增加密钥长度：为了提高密钥的安全性，可以增加密钥长度。具体实现方法如下：一种简单的方法是将原始椭圆曲线参数扩展为 n 个点，每个点的离散距离为 <code>r=h/(2^n)</code>，其中 h 为大素数。另一种更复杂的方法是使用 RSA 加密算法中的大质数分解技术生成两个大质数 p 和 q。这些大质数将成为 Diffie-Hellman 密钥交换的基础。</li>
+<li>选择更好的证书：为了避免证书被伪造或篡改，可以选择更好的证书。</li>
+<li>使用 Diffie-Hellman 签名：为了保证通信双方交换的密钥是安全的，可以使用 Diffie-Hellman 签名来验证密钥交换过程中是否存在误差。具体实现方法如下：首先计算出每个节点生成的随机数 a 和 b，并使用公钥对它们进行加密生成公钥（e 和 d）。接着计算出私钥（d 和 c）并进行签名，即 e 和 d。通信双方将这两个签名与发送方交换的私钥对比，如果相同则认为无误差发生；如果不相同，则存在误差存在需要进行重传。</li>
+</ol>
+<p>实践</p>
+<ul>
+<li><a href="https://weakdh.org/sysadmin.html" target="_blank">https://weakdh.org/sysadmin.html</a></li>
+</ul>
+<p><strong>Nginx 配置</strong></p>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> 1. 生成 dhparams.pem</span>
+cd /usr/local/nginx/conf
+openssl dhparam -out dhparams.pem 2048
+chmod -R 755 dhparams.pem
+<span class="hljs-meta">
+#</span><span class="bash"> 编辑 nging.conf 文件，添加</span> 
+ssl_dhparam {path to dhparams.pem};
+ssl_dhparam /usr/local/nginx/conf/dhparams.pem;
+<span class="hljs-meta">
+#</span><span class="bash"> 重启 nginx</span>
+sudo nginx -s reload
+</code></pre>
+<h2 id="cve-2014-0224---ccs-注入漏洞"><a name="cve-2014-0224---ccs-注入漏洞" class="anchor-navigation-ex-anchor" href="#cve-2014-0224---ccs-注入漏洞"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2014-0224 - CCS 注入漏洞</h2>
+<h3 id="漏洞描述_13"><a name="漏洞描述_13" class="anchor-navigation-ex-anchor" href="#漏洞描述_13"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>某些版本的 OpenSSL 存在弱点，允许客户端和服务器通过特制的握手包来强制使用弱密钥进行通信。</p>
+<p>在客户端和服务端握手阶段，OpenSSL 协议不合时宜地接受密码更换说明(<code>ChangeCipherSpec :CCS​​</code>)，而产生了该漏洞。攻击者可以发起中间人攻击并利用此漏洞篡改或监听 SSL 加密传输的数据。<br>不受影响的 OpenSSL 版本：</p>
+<ul>
+<li>OpenSSL before 0.9.8za</li>
+<li>OpenSSL 1.0.0 before 1.0.0m</li>
+<li>OpenSSL 1.0.1 before 1.0.1</li>
+</ul>
+<p>受影响的版本包括：</p>
+<ul>
+<li>OpenSSL 1.0.1 through 1.0.1g</li>
+<li>OpenSSL 1.0.0 through 1.0.0l</li>
+<li>all versions before OpenSSL 0.9.8y</li>
+</ul>
+<p>资料来源</p>
+<ul>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2014-0224" target="_blank">https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2014-0224</a></li>
+<li><a href="https://www.openssl.org/news/secadv/20140605.txt" target="_blank">https://www.openssl.org/news/secadv/20140605.txt</a></li>
+</ul>
+<h3 id="测试方法_13"><a name="测试方法_13" class="anchor-navigation-ex-anchor" href="#测试方法_13"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> testssl.sh</span>
+./testssl.sh -I TARGET
+<span class="hljs-meta">
+#</span><span class="bash"> nmap</span>
+nmap -p 443 --script = ssl-ccs-injection TARGET
+
+nmap -sV -Pn --script ssl-ccs-injection 端口 IP
+</code></pre>
+<h3 id="修复方法_13"><a name="修复方法_13" class="anchor-navigation-ex-anchor" href="#修复方法_13"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<ul>
+<li>使用 ldd nginx​​ 指令检查是否有的 libssl.so​​ 和 libcrypto.so​​ 的调用，如果用，直接升级 openssl 就可以了，如果没有，那么需要重新编译 Nginx。</li>
+<li><a href="https://cloud.baidu.com/doc/CAS/s/Gkhlqq92f" target="_blank">https://cloud.baidu.com/doc/CAS/s/Gkhlqq92f</a></li>
+</ul>
+<h2 id="cve-2009-3555---renegotiation"><a name="cve-2009-3555---renegotiation" class="anchor-navigation-ex-anchor" href="#cve-2009-3555---renegotiation"><i class="fa fa-link" aria-hidden="true"></i></a>CVE-2009-3555 - Renegotiation</h2>
+<h3 id="漏洞描述_14"><a name="漏洞描述_14" class="anchor-navigation-ex-anchor" href="#漏洞描述_14"><i class="fa fa-link" aria-hidden="true"></i></a>漏洞描述</h3>
+<p>2009 年发现一个利用 TLS 和 SSL 协议 Renegotiation 的漏洞，允许攻击者将数据插入会话可危及其完整性。</p>
+<p>必须满足以下条件才能利用此漏洞</p>
+<ul>
+<li>服务器不支持 <code>secure renegotiation</code>​​</li>
+<li>服务器必须允许 <code>client side renegotiation​​</code></li>
+</ul>
+<h3 id="测试方法_14"><a name="测试方法_14" class="anchor-navigation-ex-anchor" href="#测试方法_14"><i class="fa fa-link" aria-hidden="true"></i></a>测试方法</h3>
+<pre><code class="lang-shell">┌──(root㉿kali)-[/home/testssl.sh]
+└─# ./testssl.sh -R 192.168.201.216:9443
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##########################################################</span></span>
+    testssl.sh       3.2rc2 from https://testssl.sh/dev/
+    (f716193 2023-05-16 10:44:56)
+      This program is free software. Distribution and
+             modification under GPLv2 permitted.
+      USAGE w/o ANY WARRANTY. USE IT AT YOUR OWN RISK!
+       Please file bugs @ https://testssl.sh/bugs/
+<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">##########################################################</span></span>
+ Using &quot;OpenSSL 1.0.2-bad (1.0.2k-dev)&quot; [~183 ciphers]
+ on kali:./bin/openssl.Linux.x86_64
+ (built: &quot;Sep  1 14:03:44 2022&quot;, platform: &quot;linux-x86_64&quot;)
+ Start 2023-05-23 05:38:17                --&gt;&gt; 192.168.201.216:9443 (192.168.201.216) &lt;&lt;--
+ rDNS (192.168.201.216): --
+ Service detected:       HTTP
+ Testing for Renegotiation vulnerabilities
+ Secure Renegotiation (RFC 5746)           supported (OK)
+ Secure Client-Initiated Renegotiation     not vulnerable (OK)
+ Done 2023-05-23 05:38:21 [   6s] --&gt;&gt; 192.168.201.216:9443 (192.168.201.216) &lt;&lt;--
+</code></pre>
+<p>使用 openssl client 测试</p>
+<pre><code class="lang-shell">openssl s_client -connect TARGET:443
+</code></pre>
+<p>Secure Renegotiation 启用</p>
+<p><img src="assets/未命名-4.png" alt></p>
+<p>测试 Client Initiated Secure Renegotiation​​</p>
+<pre><code class="lang-shell">openssl s_client -connect TARGET：443
+</code></pre>
+<p>类型：</p>
+<pre><code class="lang-html">HEAD / HTTP / 1.1 
+R
+</code></pre>
+<p>如果你看到响应：</p>
+<pre><code class="lang-html">HEAD / HTTP / 1.1 
+R
+RENEGOTIATING
+</code></pre>
+<p>即服务器允许 client renegotiation​​。</p>
+<p>如果你看到回应：</p>
+<pre><code class="lang-html">HEAD / HTTP/1.1 
+R
+RENEGOTIATING
+139681067286040:error:1409E0E5:SSL routines:ssl3_write_bytes:ssl handshake failure:s3_pkt.c:656:
+</code></pre>
+<p>则服务器不支持 client renegotiation​​。</p>
+<h3 id="修复方法_14"><a name="修复方法_14" class="anchor-navigation-ex-anchor" href="#修复方法_14"><i class="fa fa-link" aria-hidden="true"></i></a>修复方法</h3>
+<p>建议升级 openssl 来进行修复，openssl-0.98m 之后的版本就已经修复了该漏洞，使用了 Secure Renegotiation。</p>
+<h2 id="其他"><a name="其他" class="anchor-navigation-ex-anchor" href="#其他"><i class="fa fa-link" aria-hidden="true"></i></a>其他</h2>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> 验证 ssl-cert 证书问题可以使用</span>
+nmap -sV -Pn --script ssl-cert 端口 IP
+<span class="hljs-meta">
+#</span><span class="bash"> 验证 SSL 证书的有限期可以使用</span>
+nmap -sV -Pn --script ssl-date 端口 IP
+<span class="hljs-meta">
+#</span><span class="bash"> 验证 Debian OpenSSL keys 可使用</span>
+nmap -sV -Pn --script ssl-known-key 端口 IP
+<span class="hljs-meta">
+#</span><span class="bash"> 验证 CVE-2014-0160 OpenSSL Heartbleed bug 可使用</span>
+nmap -sV -Pn --script ssl-heartbleed 端口 IP
+
+========
+<span class="hljs-meta">#</span><span class="bash"> 测试单个主机上的所有内容并输出到控制台</span>
+./testssl.sh -e -E -f -p -y -Y -S -P -c -H -U TARGET-HOST
+<span class="hljs-meta">
+#</span><span class="bash"> 测试单个主机上的所有内容并输出到 HTML</span>
+./testssl.sh -e -E -f -p -y -Y -S -P -c -H -U TARGET-HOST | aha&gt; OUTPUT-FILE.html
+<span class="hljs-meta">
+#</span><span class="bash"> 测试子网上的所有主机并输出到 HTML</span>
+./testssl.sh -e -E -f -p -y -Y -S -P -c -H -U 192.168.1.0/24 | aha&gt; OUTPUT-FILE.html
+<span class="hljs-meta">
+#</span><span class="bash"> 与上述相同，但只列举每个服务器支持的密码类型</span>
+./testssl.sh -E 192.168.1.0/24 | aha&gt; OUTPUT-FILE.html
+</code></pre>
+<h1 id="0x02-检测方法"><a name="0x02-检测方法" class="anchor-navigation-ex-anchor" href="#0x02-检测方法"><i class="fa fa-link" aria-hidden="true"></i></a>0x02 检测方法</h1>
+<h2 id="使用-nmap-检测"><a name="使用-nmap-检测" class="anchor-navigation-ex-anchor" href="#使用-nmap-检测"><i class="fa fa-link" aria-hidden="true"></i></a>使用 NMAP 检测</h2>
+<ul>
+<li>Window 需要下载安装 nmap，官网地址：<a href="https://nmap.org/download.html/" target="_blank">https://nmap.org/download.html</a></li>
+<li>kali 可直接使用</li>
+</ul>
+<pre><code class="lang-shell">nmap -sV --script ssl-enum-ciphers 端口 IP
+
+┌──(root㉿kali)-[/home/testssl.sh]
+└─# nmap -sV --script ssl-enum-ciphers 9443 192.168.201.216
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-23 03:19 EDT
+</code></pre>
+<p><img src="assets/未命名-5.png" alt></p>
+<h2 id="使用-testsslsh-工具"><a name="使用-testsslsh-工具" class="anchor-navigation-ex-anchor" href="#使用-testsslsh-工具"><i class="fa fa-link" aria-hidden="true"></i></a>使用 testssl.sh 工具</h2>
+<blockquote>
+<p>testssl.sh 可以对 <code>TLS/SSL</code> Server​​ 端 Cipher、Protocol 进行检测，还可以进行 <a href="https://so.csdn.net/so/search?q=CCS&amp;spm=1001.2101.3001.7020" target="_blank">CCS</a> 注入（CCS injection）、Heartbleed 等安全漏洞测试，功能全面丰富，可运行在 Linux/BSD​​ 端，目前可以说是 TLS Server 端首选的测试工具。。</p>
+</blockquote>
+<ul>
+<li>官网：<a href="https://testssl.sh/" target="_blank">https://testssl.sh/</a></li>
+<li>GitHub：<a href="https://github.com/drwetter/testssl.sh" target="_blank">https://github.com/drwetter/testssl.sh</a></li>
+</ul>
+<pre><code class="lang-shell">git clone --depth 1 https://github.com/drwetter/testssl.sh.git
+
+┌──(root㉿kali)-[/home]
+└─# cd testssl.sh
+
+┌──(root㉿kali)-[/home/testssl.sh]
+└─# ./testssl.sh -U 172.16.10.160
+<span class="hljs-meta">
+#</span><span class="bash"> 测试子网上的所有主机并输出到 HTML</span>
+./testssl.sh -e -E -f -p -y -Y -S -P -c -H -U 192.168.1.0/24 | aha&gt; OUTPUT-FILE.html
+</code></pre>
+<p>其中常用的有</p>
+<ul>
+<li>​<code>-E</code>​​​​, --cipher-per-proto checks those per protocol, 检测各 Protocol ciphersuites 加密算法套件</li>
+<li>​<code>-P</code>​​​​, --server-preference displays the server’s picks: protocol+cipher，Server 的首选协议 + 密码</li>
+<li>​<code>-S</code>​​​​, --server-defaults displays the server’s default picks and certificate info，Server 的默认选择和证书信息</li>
+<li>​<code>-U​</code>​​​, --vulnerable tests all (of the following) vulnerabilities (if applicable)，检测所有漏洞</li>
+<li><code>​-J</code>​​​​, --logjam tests for LOGJAM vulnerability，检测 CVE-2015-4000</li>
+<li>​<code>-4</code>​​​​, --rc4, --appelbaum which RC4 ciphers are being offered，检测 CVE-2013-2566</li>
+<li>​<code>--ciphers</code>​​​ 弱密码识别</li>
+</ul>
+<p>其他可以参看 <code>--help</code>​​ 命令</p>
+<pre><code class="lang-shell">┌──(root㉿kali)-[/home/testssl.sh]
+└─# ./testssl.sh --help        
+
+     &quot;testssl.sh [options] &lt;URI&gt;&quot;    or    &quot;testssl.sh &lt;options&gt;&quot;
+
+&quot;testssl.sh &lt;option&gt;&quot;, where &lt;option&gt; is mostly standalone and one of:
+
+     --help                        what you&apos;re looking at
+     -b, --banner                  displays banner + version of testssl.sh
+     -v, --version                 same as previous
+     -V, --local [pattern]         pretty print all local ciphers (of openssl only). If search pattern supplied: it is an
+                                   an ignore case word pattern of cipher hexcode or any other string in its name, kx or bits
+
+&quot;testssl.sh [options] &lt;URI&gt;&quot;, where &lt;URI&gt; is:
+
+     &lt;URI&gt;                         host|host:port|URL|URL:port   port 443 is default, URL can only contain HTTPS as a protocol
+  and [options] is/are:
+
+     -t, --starttls &lt;protocol&gt;     Does a run against a STARTTLS enabled service which is one of ftp, smtp, lmtp, pop3, imap,
+                                   sieve, xmpp, xmpp-server, telnet, ldap, nntp, postgres, mysql
+     --xmpphost &lt;to_domain&gt;        For STARTTLS xmpp or xmpp-server checks it supplies the domainname (like SNI)
+     --mx &lt;domain/host&gt;            Tests MX records from high to low priority (STARTTLS, port 25)
+     --file/-iL &lt;fname&gt;            Mass testing option: Reads one testssl.sh command line per line from &lt;fname&gt;.
+                                   Can be combined with --serial or --parallel. Implicitly turns on &quot;--warnings batch&quot;.
+                                   Text format 1: Comments via # allowed, EOF signals end of &lt;fname&gt;
+                                   Text format 2: nmap output in greppable format (-oG), 1 port per line allowed
+     --mode &lt;serial|parallel&gt;      Mass testing to be done serial (default) or parallel (--parallel is shortcut for the latter)
+     --warnings &lt;batch|off&gt;        &quot;batch&quot; doesn&apos;t continue when a testing error is encountered, off continues and skips warnings
+     --connect-timeout &lt;seconds&gt;   useful to avoid hangers. Max &lt;seconds&gt; to wait for the TCP socket connect to return
+     --openssl-timeout &lt;seconds&gt;   useful to avoid hangers. Max &lt;seconds&gt; to wait before openssl connect will be terminated
+
+single check as &lt;options&gt;  (&quot;testssl.sh URI&quot; does everything except -E and -g):
+     -e, --each-cipher             checks each local cipher remotely
+     -E, --cipher-per-proto        checks those per protocol
+     -s, --std, --categories       tests standard cipher categories by strength
+     -f, --fs, --nsa               checks forward secrecy settings
+     -p, --protocols               checks TLS/SSL protocols (including SPDY/HTTP2)
+     -g, --grease                  tests several server implementation bugs like GREASE and size limitations
+     -S, --server-defaults         displays the server&apos;s default picks and certificate info
+     -P, --server-preference       displays the server&apos;s picks: protocol+cipher
+     -x, --single-cipher &lt;pattern&gt; tests matched &lt;pattern&gt; of ciphers
+                                   (if &lt;pattern&gt; not a number: word match)
+     -c, --client-simulation       test client simulations, see which client negotiates with cipher and protocol
+     -h, --header, --headers       tests HSTS, HPKP, server/app banner, security headers, cookie, reverse proxy, IPv4 address
+
+     -U, --vulnerable              tests all (of the following) vulnerabilities (if applicable)
+     -H, --heartbleed              tests for Heartbleed vulnerability
+     -I, --ccs, --ccs-injection    tests for CCS injection vulnerability
+     -T, --ticketbleed             tests for Ticketbleed vulnerability in BigIP loadbalancers
+     --BB, --robot                 tests for Return of Bleichenbacher&apos;s Oracle Threat (ROBOT) vulnerability
+     --SI, --starttls-injection    tests for STARTTLS injection issues
+     -R, --renegotiation           tests for renegotiation vulnerabilities
+     -C, --compression, --crime    tests for CRIME vulnerability (TLS compression issue)
+     -B, --breach                  tests for BREACH vulnerability (HTTP compression issue)
+     -O, --poodle                  tests for POODLE (SSL) vulnerability
+     -Z, --tls-fallback            checks TLS_FALLBACK_SCSV mitigation
+     -W, --sweet32                 tests 64 bit block ciphers (3DES, RC2 and IDEA): SWEET32 vulnerability
+     -A, --beast                   tests for BEAST vulnerability
+     -L, --lucky13                 tests for LUCKY13
+     -WS, --winshock               tests for winshock vulnerability
+     -F, --freak                   tests for FREAK vulnerability
+     -J, --logjam                  tests for LOGJAM vulnerability
+     -D, --drown                   tests for DROWN vulnerability
+     -4, --rc4, --appelbaum        which RC4 ciphers are being offered?
+</code></pre>
+<p><code>-U</code> 结果如下：</p>
+<pre><code class="lang-shell"> Start 2023-05-23 03:00:30                --&gt;&gt; 192.168.201.216:443 (192.168.201.216) &lt;&lt;--
+
+ rDNS (192.168.201.216): --
+ Service detected:       HTTP
+
+
+ Testing vulnerabilities 
+
+ Heartbleed (CVE-2014-0160)                not vulnerable (OK), no heartbeat extension
+ CCS (CVE-2014-0224)                       not vulnerable (OK)
+ Ticketbleed (CVE-2016-9244), experiment.  not vulnerable (OK)
+ ROBOT                                     not vulnerable (OK)
+ Secure Renegotiation (RFC 5746)           supported (OK)
+ Secure Client-Initiated Renegotiation     not vulnerable (OK)
+ CRIME, TLS (CVE-2012-4929)                not vulnerable (OK)
+ BREACH (CVE-2013-3587)                    no gzip/deflate/compress/br HTTP compression (OK)  - only supplied &quot;/&quot; tested
+ POODLE, SSL (CVE-2014-3566)               not vulnerable (OK)
+ TLS_FALLBACK_SCSV (RFC 7507)              No fallback possible (OK), no protocol below TLS 1.2 offered
+ SWEET32 (CVE-2016-2183, CVE-2016-6329)    not vulnerable (OK)
+ FREAK (CVE-2015-0204)                     not vulnerable (OK)
+ DROWN (CVE-2016-0800, CVE-2016-0703)      not vulnerable on this host and port (OK)
+                                           make sure you don&apos;t use this certificate elsewhere with SSLv2 enabled services, see                                           https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=5BD3F9DA1703B1FC188EC28E90BAD6854689D1E721B0645A7AF5DF88FC75DBBE
+ LOGJAM (CVE-2015-4000), experimental      not vulnerable (OK): no DH EXPORT ciphers, no DH key detected with &lt;= TLS 1.2
+ BEAST (CVE-2011-3389)                     not vulnerable (OK), no SSL3 or TLS1
+ LUCKY13 (CVE-2013-0169), experimental     potentially VULNERABLE, uses cipher block chaining (CBC) ciphers with TLS. Check patches
+ Winshock (CVE-2014-6321), experimental    not vulnerable (OK) - ARIA, CHACHA or CCM ciphers found
+ RC4 (CVE-2013-2566, CVE-2015-2808)        no RC4 ciphers detected (OK)
+
+
+ Done 2023-05-23 03:00:59 [  31s] --&gt;&gt; 192.168.201.216:443 (192.168.201.216) &lt;&lt;--
+</code></pre>
+<p><img src="assets/未命名-6.png" alt></p>
+<p>Web 网页版 testssl.sh（免安装）：<a href="https://inspect.rapydblok.com/" target="_blank">https://inspect.rapydblok.com</a>【不推荐】</p>
+<p>【注】：网页版使用要注意隐私，自用 Server 推荐还是用 cmd 版测试。</p>
+<h2 id="在线检测"><a name="在线检测" class="anchor-navigation-ex-anchor" href="#在线检测"><i class="fa fa-link" aria-hidden="true"></i></a>在线检测</h2>
+<ul>
+<li><a href="https://myssl.com/" target="_blank">SSL Server Test</a>（国内）</li>
+<li><a href="https://www.ssllabs.com/ssltest" target="_blank">SSL Server Test</a>（国外）</li>
+<li><a href="https://filippo.io/#:~:text=whoami.filippo.io-,Vulnerability%20tests,-/Heartbleed%0A/Ticketbleed%0A/CVE" target="_blank">filippo.io - Vulnerability tests</a></li>
+<li><a href="https://wosign.ssllabs.com/" target="_blank">https://wosign.ssllabs.com/</a></li>
+</ul>
+<h1 id="0x03-漏洞复现"><a name="0x03-漏洞复现" class="anchor-navigation-ex-anchor" href="#0x03-漏洞复现"><i class="fa fa-link" aria-hidden="true"></i></a>0x03 漏洞复现</h1>
+<h2 id="vulhub"><a name="vulhub" class="anchor-navigation-ex-anchor" href="#vulhub"><i class="fa fa-link" aria-hidden="true"></i></a>Vulhub</h2>
+<ul>
+<li><a href="https://vulhub.org/#/docs/run/" target="_blank">Vulhub - Docker-Compose file for vulnerability environment</a></li>
+<li><a href="https://github.com/vulhub/vulhub" target="_blank">https://github.com/vulhub/vulhub</a></li>
+<li><a href="https://www.w3cschool.cn/docker/" target="_blank">Docker 教程_w3cschool</a></li>
+</ul>
+<p><img src="assets/未命名-7.png" alt></p>
+<h2 id="心脏滴血复现"><a name="心脏滴血复现" class="anchor-navigation-ex-anchor" href="#心脏滴血复现"><i class="fa fa-link" aria-hidden="true"></i></a>心脏滴血复现</h2>
+<h3 id="环境准备"><a name="环境准备" class="anchor-navigation-ex-anchor" href="#环境准备"><i class="fa fa-link" aria-hidden="true"></i></a>环境准备</h3>
+<table>
+<thead>
+<tr>
+<th>主机</th>
+<th>IP</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ubuntu 虚拟机</td>
+<td>192.168.201.156</td>
+<td>基于 Vulhub 搭建 OpenSSL“心脏滴血”漏洞环境</td>
+</tr>
+<tr>
+<td>Kali Linux 虚拟机</td>
+<td>192.168.202.61</td>
+<td>使用 MSF 框架对存在漏洞的靶机进行攻击</td>
+</tr>
+</tbody>
+</table>
+<p><strong>手动搭建</strong></p>
+<ul>
+<li><p><a href="https://www.openssl.org/source/old/1.0.1/" target="_blank">https://www.openssl.org/source/old/1.0.1/source/old/1.0.1/index.html (openssl.org)</a></p>
+</li>
+<li><p>准备一台 kali 和一台装有 OpenSSL1.0.1 版本的虚拟机【漏洞环境】</p>
+</li>
+<li><p>下载有漏洞的 OpenSSL 版本</p>
+</li>
+</ul>
+<p><img src="assets/未命名-8.png" alt></p>
+<ul>
+<li>编译安装</li>
+</ul>
+<pre><code class="lang-shell"><span class="hljs-meta">#</span><span class="bash"> 升级源</span>
+apt-get upgrade
+sudo apt-get update
+<span class="hljs-meta">
+#</span><span class="bash"> 安装编译环境</span>
+root@refl4:/home/openssl-1.0.1# sudo apt-get install build-essential
+<span class="hljs-meta">
+#</span><span class="bash"> 编译安装</span>
+cd /home
+<span class="hljs-meta">
+#</span><span class="bash"> 在 /usr/<span class="hljs-built_in">local</span>/openssl 目录下安装 OpenSSL，并设置默认的 OpenSSL 目录为 /usr/<span class="hljs-built_in">local</span>/openssl</span>
+./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl
+<span class="hljs-meta">
+#</span><span class="bash"> 编译安装</span>
+sudo make clean
+sudo make  &amp;&amp; make install
+<span class="hljs-meta">
+#</span><span class="bash"> 设置软链</span>
+ln -s &lt;目标文件或目录&gt; &lt;链接名称&gt;
+<span class="hljs-meta">
+#</span><span class="bash"> ln -s /path/to/directory /path/to/symlink</span>
+<span class="hljs-meta">#</span><span class="bash"> 这将创建一个名为 /path/to/symlink 的符号链接，指向 /path/to/directory。</span>
+</code></pre>
+<p><strong>Vulhub 搭建</strong></p>
+<p>因为我使用的是 docker compose 是 Compose V2，所以使用 docker compose​​。</p>
+<p><a href="https://docs.docker.com/compose/history/" target="_blank">History of Compose | Docker Documentation</a></p>
+<p><img src="assets/未命名-9.png" alt></p>
+<pre><code class="lang-shell">root@refl4:/home# git clone https://github.com/vulhub/vulhub.git
+
+root@refl4:/home/vulhub/openssl/CVE-2014-0160# pwd
+/home/vulhub/openssl/CVE-2014-0160
+root@refl4:/home/vulhub/openssl/CVE-2014-0160# ls
+1.png  2.png  docker-compose.yml  README.md  README.zh-cn.md  ssltest.py  www
+root@refl4:/home/vulhub/openssl/CVE-2014-0160# docker compose up -d
+[+] Running 8/8
+ ✔ nginx 7 layers [⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                                             131.1s 
+   ✔ b281ebec60d2 Pull complete                                                                                113.1s 
+   ✔ 2700c1ade95c Pull complete                                                                                113.2s 
+   ✔ cd1f945398e5 Pull complete                                                                                113.8s 
+   ✔ 24291727d0f3 Pull complete                                                                                113.9s 
+   ✔ c661453e1eb5 Pull complete                                                                                113.9s 
+   ✔ f4f1857f7bb1 Pull complete                                                                                113.9s 
+   ✔ 951d0b01db0f Pull complete                                                                                113.9s 
+[+] Running 2/2
+ ✔ Network cve-2014-0160_default    Created                                                                      0.1s 
+ ✔ Container cve-2014-0160-nginx-1  Started                                                                      1.3s
+</code></pre>
+<p><img src="assets/未命名-10.png" alt></p>
+<p>访问</p>
+<ul>
+<li><a href="http://192.168.201.156:8080/" target="_blank">http://192.168.201.156:8080/</a></li>
+<li><a href="https://192.168.201.156:8443/" target="_blank">https://192.168.201.156:8443/</a></li>
+</ul>
+<p><img src="assets/未命名-11.png" alt></p>
+<h3 id="exploit"><a name="exploit" class="anchor-navigation-ex-anchor" href="#exploit"><i class="fa fa-link" aria-hidden="true"></i></a>Exploit</h3>
+<ul>
+<li>使用 namp 进行探测</li>
+</ul>
+<pre><code class="lang-shell">┌──(root㉿kali)-[~]
+└─# nmap -sV -p 8443 -script ssl-heartbleed.nse 192.168.201.156
+</code></pre>
+<p><img src="assets/未命名-12.png" alt></p>
+<ul>
+<li>使用 <code>testssl.sh</code>​​ 进行探测</li>
+</ul>
+<p><img src="assets/未命名-13.png" alt></p>
+<ul>
+<li>使用 Metasploit 验证已存在的 Heartbleed​​，使用详细设置将显示 Heartbleed​​ 暴露的内存泄漏。</li>
+</ul>
+<pre><code class="lang-shell">┌──(root㉿kali)-[/home/testssl.sh]
+└─# msfconsole
+<span class="hljs-meta">
+msf6&gt;</span><span class="bash"> search heartbleed</span>
+<span class="hljs-meta">
+msf6&gt;</span><span class="bash"> use auxiliary/scanner/ssl/openssl_heartbleed</span>
+<span class="hljs-meta">
+#</span><span class="bash"> 查看需要设置参数</span>
+msf6 auxiliary(scanner/ssl/openssl_heartbleed) &gt; show options
+
+msf6 auxiliary(scanner/ssl/openssl_heartbleed) &gt; set RHOSTS 192.168.201.156
+RHOSTS =&gt; 192.168.201.156
+msf6 auxiliary(scanner/ssl/openssl_heartbleed) &gt; set RPORT 8443
+RPORT =&gt; 8443
+msf6 auxiliary(scanner/ssl/openssl_heartbleed) &gt; set verbose true
+verbose =&gt; true
+msf6 auxiliary(scanner/ssl/openssl_heartbleed) &gt; run
+</code></pre>
+<p>每次都可以获取 <code>64 字节</code>​​ 的信息，如果有人此时在登录 Web 应用，还可以直接抓到账号密码等信息。</p>
+<p><img src="assets/未命名-14.png" alt></p>
+<p><img src="assets/未命名-15.png" alt></p>
+<p><strong>漏洞环境本机自测</strong></p>
+<p>​<code>root@refl4:/home/vulhub/openssl/CVE-2014-0160# python3 ssltest.py 192.168.201.156 -p 8443​​</code></p>
+<h3 id="编译-openssl-遇到的错误"><a name="编译-openssl-遇到的错误" class="anchor-navigation-ex-anchor" href="#编译-openssl-遇到的错误"><i class="fa fa-link" aria-hidden="true"></i></a>编译 OpenSSL 遇到的错误</h3>
+<p><strong>报错</strong></p>
+<p>​<code>POD document had syntax errors at /usr/bin/pod2man line 69. make: *** [install_docs]</code>​​</p>
+<pre><code class="lang-shell">cms.pod around line 457: Expected text after =item, not a number
+cms.pod around line 461: Expected text after =item, not a number
+cms.pod around line 465: Expected text after =item, not a number
+cms.pod around line 470: Expected text after =item, not a number
+cms.pod around line 474: Expected text after =item, not a number
+POD document had syntax errors at /usr/bin/pod2man line 69.
+make: *** [install_docs] Error 1
+</code></pre>
+<p><strong>解决方法</strong></p>
+<p>​<code>rm -f /usr/bin/pod2man</code>​​，重新编译安装即可。</p>
+<h1 id="0x04-修复方法汇总"><a name="0x04-修复方法汇总" class="anchor-navigation-ex-anchor" href="#0x04-修复方法汇总"><i class="fa fa-link" aria-hidden="true"></i></a>0x04 修复方法汇总</h1>
+<blockquote>
+<p>使用此方法上述所有漏洞可全部修复(将 <code>RC4,DES/3DES,EXP</code>​​ 等弱加密算法及 SSL 弱加密协议替换为安全性更高的)</p>
+</blockquote>
+<h2 id="windows"><a name="windows" class="anchor-navigation-ex-anchor" href="#windows"><i class="fa fa-link" aria-hidden="true"></i></a>Windows</h2>
+<ol>
+<li><p>按下 <code>Win + R</code>​​，进入&quot;运行&quot;，键入 <code>gpedit.msc</code>​​，打开&quot;本地组策略编辑器&quot;</p>
+</li>
+<li><p>计算机配置 &gt; 管理模板 &gt; 网络 &gt; ssl 配置设置。</p>
+</li>
+<li><p>在 SSL 配置设置，打开 SSL 密码套件顺序设置，点击已启用。</p>
+</li>
+<li><p>更换 SSL 密码套件。</p>
+</li>
+</ol>
+<p>原 SSL 密码套件：</p>
+<pre><code class="lang-json">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_DHE_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P384,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P384,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P384,TLS_DHE_DSS_WITH_AES_256_CBC_SHA256,TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,TLS_DHE_DSS_WITH_AES_256_CBC_SHA,TLS_DHE_DSS_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_3DES_EDE_CBC_SHA,TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA,TLS_RSA_WITH_RC4_128_SHA,TLS_RSA_WITH_RC4_128_MD5,TLS_RSA_WITH_NULL_SHA256,TLS_RSA_WITH_NULL_SHA,SSL_CK_RC4_128_WITH_MD5,SSL_CK_DES_192_EDE3_CBC_WITH_MD5
+</code></pre>
+<p>替换为：</p>
+<pre><code class="lang-json">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P521,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P521,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P521,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P521,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P521,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P521,TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,TLS_DHE_DSS_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_NULL_SHA256
+</code></pre>
+<ol>
+<li>重启系统再扫。</li>
+</ol>
+<blockquote>
+<p>使用以下方法可同时修复 <code>SSL/TLS​​</code> 受诫礼(BAR-MITZVAH​​)攻击漏洞(CVE-2015-2808)【原理扫描】，SSL/TLS​​ RC4 信息泄露漏洞(CVE-2013-2566)【原理扫描】</p>
+</blockquote>
+<p>这两个漏洞都是 RC4 算法的漏洞问题，方法就是禁用 RC4 改用别的算法。</p>
+<p><strong>方法一</strong></p>
+<pre><code class="lang-shell">控制面板 ---&gt; 系统和安全 ---&gt; 管理工具 ---&gt; 本地安全策略 ---&gt; 本地策略 ---&gt; 安全选项 ---&gt; 系统加密：将 FIPS 兼容算法用于加密、哈希和签名； 右键 ---&gt; 属性 ---&gt; 点击“已启用” ---&gt; “确定”
+</code></pre>
+<p>使用此方法之后可能会导致某些只支持 RC4 算法的服务无法正常启用。</p>
+<p><strong>方法二</strong></p>
+<p>注册表中启用 TLS1.2</p>
+<pre><code class="lang-shell"> [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+
+ [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client]
+
+&quot;DisabledByDefault&quot;=dword:00000000
+
+&quot;Enabled&quot;=dword:00000001
+
+ [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server]
+
+&quot;DisabledByDefault &quot;=dword:00000000
+
+&quot;Enabled&quot;=dword:00000001
+</code></pre>
+<p>注册表中禁用 SSL2.0</p>
+<pre><code class="lang-shell"> [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols]
+
+ [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0]
+
+ [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Client]
+
+&quot;DisabledByDefault&quot;=dword:00000000
+</code></pre>
+<p>禁用 RC4</p>
+<p>注册表中将 RC4 启用项都禁止，没有项需要新建</p>
+<p><img src="assets/未命名-16.png" alt></p>
+<pre><code class="lang-shell">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers]
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 128/128]
+
+ &quot;Enabled&quot;=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 40/128]
+
+ &quot;Enabled&quot;=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 56/128]
+
+ &quot;Enabled&quot;=dword:00000000
+</code></pre>
+<blockquote>
+<p>对于 SSL 3.0 POODLE 攻击信息泄露漏洞(CVE-2014-3566)【原理扫描】，目前已经调整为低危级别，不修复其实也可以。</p>
+</blockquote>
+<ol>
+<li>点击“开始”，“运行”，输入 “Regedit”，点击 OK.</li>
+<li>在注册表中寻找：<code>HKey_Local_Machine\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server​​</code></li>
+<li>如果在 Protocols 下没有“SSL 3.0”选项，请依次新建“SSL 3.0”和“Server”项。在 Protocols 文件夹，右键单击项(K)，然后重命名文件夹为 SSL 3.0；在 SSL 3.0 文件夹，右键单击项(K)，然后重命名文件夹为 Server；</li>
+<li>右键单击 server 的文件夹，选择新建，新建一个 DWORD 值。</li>
+<li>在名称中，输入“Enabled”，回车。</li>
+<li>请确保它显示 <code>00000000(0)</code> 的数据列下。如果没有，请右键单击并选择修改，输入 0 作为数值数据。</li>
+<li>点击 OK，退出注册表编辑器，然后重启电脑。</li>
+</ol>
+<p><strong>【注】</strong>：Windows 上关于 <code>SSL/TSL</code>​​ 及密码套件的更改，在注册表中手动敲比较繁琐，可以使用 IIS Crypto 来管理，比较方便。</p>
+<p>官方地址：<a href="https://www.nartac.com/Products/IISCrypto/Download" target="_blank">https://www.nartac.com/Products/IISCrypto/Download</a></p>
+<p><img src="assets/未命名-17.png" alt></p>
+<blockquote>
+<p>对于具体端口上的 SSL/TLS 服务器瞬时 Diffie-Hellman 公共密钥过弱【原理扫描】，首先需要使用生产大于 1 024bit​​ 的 key 值，再将生成的文件加到具体报漏洞服务的配置文件里。</p>
+</blockquote>
+<ol>
+<li>http 服务器相关配置<ul>
+<li>首先生成大于 <code>1024bit</code>(例如 <code>2048bit</code>)的 dhkey。<br>  <code>openssl dhparam -out dhparams.pem 2048</code></li>
+<li>然后在对应服务器中配置</li>
+</ul>
+</li>
+</ol>
+<p>Apache2.4.8 及以后版本<br>使用如下配置命令配置（http.conf 中或者对应的虚拟主机配置文件中添加）<br>​<code>SSLOpenSSLConfCmd DHParameters &quot;{path to dhparams.pem}&quot;​​</code></p>
+<p>Apache2.4.7 版本 Apache2.2.31 版本及以后版本<br>redhat debian 等大多发行版中最新 Apache2.2.x<br>通过把 dhparams.pem 的内容直接附加到证书文件后</p>
+<p>Apache2.4.7 之前 2.4.x 版本<br>Apache2.2.31 之前版本<br>dhparam 默认为 1024bit 无法修改</p>
+<p>nginx 使用如下命令配置（在对应的虚拟主机配置文件 nginx.conf​​ 中 server 字段内添加）</p>
+<p>​<code>ssl_dhparam {path to dhparams.pem}​​</code></p>
+<ol>
+<li>如果服务器配置无法修改，例如 Apache2.2.31 之前版本，可以禁用 DHE 系列算法，采用保密性更好的 ECDHE 系列算法，如果 ECDHE 不可用可以采用普通的 RSA。</li>
+</ol>
+<p>更多解决方案请参考：<a href="https://weakdh.org/sysadmin.html" target="_blank">https://weakdh.org/sysadmin.html</a></p>
+<h2 id="linux"><a name="linux" class="anchor-navigation-ex-anchor" href="#linux"><i class="fa fa-link" aria-hidden="true"></i></a>Linux</h2>
+<blockquote>
+<p>也可以在 Linux 针对具体端口服务上的 CVE-2016-2183，CVE-2015-2808，CVE-2013-2566，CVE-2015-4000 等弱加密算法导致的漏洞进行逐个修复，只需要针对具体服务在配置文件中将 <code>DES/3DES,RC4,EXP</code>​​ 等算法禁用或指定为其他强加密算法即可。</p>
+</blockquote>
+<h3 id="nginx"><a name="nginx" class="anchor-navigation-ex-anchor" href="#nginx"><i class="fa fa-link" aria-hidden="true"></i></a>Nginx</h3>
+<p>普通推荐如下</p>
+<pre><code class="lang-json">server {
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+    ssl_protocols TLSv1 TLSv1<span class="hljs-number">.1</span> TLSv1<span class="hljs-number">.2</span>;
+}
+</code></pre>
+<p>最佳实践</p>
+<pre><code class="lang-json">http {
+    ......
+    ssl_session_timeout  5m;
+    ssl_session_cache    shared:SSL:10m;
+    ssl_session_tickets  off;
+    ssl_protocols        SSLv3 TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers          &quot;ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES256-SHA:HIGH:!MEDIUM:!LOW:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4:@STRENGTH&quot;;
+    ssl_prefer_server_ciphers   on;
+    proxy_ssl_verify     off;
+
+   ......
+    server {
+        listen 80;
+        listen 443 ssl http2;
+
+        # server_name  @web_name
+        ssl_certificate     server.crt;
+        ssl_certificate_key server.key;
+        ssl_dhparam         dhparam.pem;
+        ssl_stapling        on;
+        ssl_stapling_verify on;
+        set $backend_ip 127.0.0.1;
+
+        location ~ ^/socket.io/ {
+            proxy_read_timeout      600;
+            proxy_send_timeout      600;
+            tcp_nodelay             on;
+            gzip                    off;
+            proxy_http_version      1.1;
+            proxy_set_header        X-FORWARDED-FOR $remote_addr;
+            proxy_set_header        X-FORWARDED-PROTO $scheme;
+            proxy_set_header        Upgrade $http_upgrade;
+            proxy_set_header        Connection &quot;upgrade&quot;;
+            proxy_set_header        Accept-Encoding &quot;&quot;;
+            proxy_pass              http://$backend_ip:8082;
+        }
+
+        ......
+
+        error_page 400 401 403 404 /404.html;
+        error_page 501 502 503 504 505 /50x.html;
+    }
+
+    #@do not remove the comment, @http_server
+    #@mirror_server_lookup
+}
+</code></pre>
+<h3 id="apache"><a name="apache" class="anchor-navigation-ex-anchor" href="#apache"><i class="fa fa-link" aria-hidden="true"></i></a>Apache</h3>
+<p>更新 Apache 根目录下 conf/httpd.conf​​ 文件如下</p>
+<pre><code class="lang-json">&lt;IfModule mod_ssl.c&gt;
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">VirtualHost</span> *<span class="hljs-attr">:443</span>&gt;</span>
+        SSLProtocol TLSv1 TLSv1.1 TLSv1.2
+        SSLCipherSuite ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4
+        <span class="hljs-tag">&lt;/<span class="hljs-name">VirtualHost</span>&gt;</span></span>
+&lt;/IfModule&gt;
+</code></pre>
+<h3 id="tomcat"><a name="tomcat" class="anchor-navigation-ex-anchor" href="#tomcat"><i class="fa fa-link" aria-hidden="true"></i></a>Tomcat</h3>
+<p>更新 <code>%TOMCAT_HOME%\conf\server.xml</code>​​ 文件如下</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Connector</span> <span class="hljs-attr">port</span>=<span class="hljs-string">&quot;443&quot;</span> <span class="hljs-attr">protocol</span>=<span class="hljs-string">&quot;HTTP/1.1&quot;</span> <span class="hljs-attr">SSLEnabled</span>=<span class="hljs-string">&quot;true&quot;</span>
+    <span class="hljs-attr">scheme</span>=<span class="hljs-string">&quot;https&quot;</span> <span class="hljs-attr">secure</span>=<span class="hljs-string">&quot;true&quot;</span>
+    <span class="hljs-attr">SSLProtocol</span>=<span class="hljs-string">&quot;TLSv1+TLSv1.1+TLSv1.2&quot;</span>
+    <span class="hljs-attr">SSLCipherSuite</span>=<span class="hljs-string">&quot;ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4&quot;</span> /&gt;</span>
+</code></pre>
+<h2 id="简单粗暴"><a name="简单粗暴" class="anchor-navigation-ex-anchor" href="#简单粗暴"><i class="fa fa-link" aria-hidden="true"></i></a>简单粗暴</h2>
+<p>此类漏洞，最简单的修复方式就是升级版本和禁用模块。</p>
+<p>如 OpenSSL“心脏出血”漏洞（CVE-2014-0160）受影响的 OpenSSL 版本：</p>
+<p>OpenSSL 1.0.2-beta<br>OpenSSL 1.0.1 - OpenSSL 1.0.1f</p>
+<p>要解决此漏洞，简单粗暴的方法就是升级 OpenSSL 软件。建议服务器管理员或使用 1.0.1g​​​ 版，或使用 -DOPENSSL_NO_HEARTBEATS​​​​ 选项重新编译 OpenSSL，从而禁用易受攻击的功能，直至可以更新服务器软件。</p>
+<ul>
+<li><a href="https://bbs.wosign.com/thread-2913-1-1.html" target="_blank">https://bbs.wosign.com/thread-2913-1-1.html</a></li>
+</ul>
+<h1 id="0x00-前人栽树"><a name="0x00-前人栽树" class="anchor-navigation-ex-anchor" href="#0x00-前人栽树"><i class="fa fa-link" aria-hidden="true"></i></a>0x00 前人栽树</h1>
+<blockquote>
+<p>对知识的尊重，就算是抄也没关系，你得说明来源且前提是能学到学会~</p>
+</blockquote>
+<ul>
+<li><a href="https://www.cnblogs.com/s1awwhy/p/13162213.html" target="_blank">Heartbleed 心脏滴血漏洞总结（CVE-2014-0106） - s1awwhy - 博客园 (cnblogs.com)</a></li>
+<li><a href="https://www.cnblogs.com/zcg-cpdd/p/14504490.html" target="_blank">SSL/TSL 相关漏洞 CVE-2015-2808,CVE-2013-2566,CVE-2014-3566,CVE-2016-2183,cve-2015-4000,瞬时 Diffie-Hellman 公共密钥过弱修复总结 - 迪克推多 0 - 博客园 (cnblogs.com)</a></li>
+<li><a href="https://www.infinisign.com/faq/tls-ssl-security-testing" target="_blank">使用 openSSL 开源工具进行 SSL/TLS 安全测试 - 全球可信 TLS/SSL 数字证书商店-INFINISIGN</a></li>
+<li><a href="https://www.aptive.co.uk/blog/tls-ssl-security-testing/" target="_blank">SSL &amp; TLS HTTPS Testing [Definitive Guide] - Aptive</a> -- 【原文，国内的文章基本出自这个】</li>
+<li><a href="https://www.infinisign.com/faq/any-ssl-tls-attach-hack" target="_blank">常见的几种 SSL/TLS 漏洞及攻击方式 - 全球可信 TLS/SSL 数字证书商店-INFINISIGN</a> -- 【译文】</li>
+<li><a href="https://vulhub.org/#/docs/run/" target="_blank">Vulhub - Docker-Compose file for vulnerability environment</a></li>
+<li><a href="https://blog.csdn.net/weixin_39190897/article/details/106879383" target="_blank">(84 条消息) 渗透测试-Openssl 心脏出血漏洞复现_Tr0e 的博客-CSDN 博客</a></li>
+<li><a href="https://annevi.cn/2021/02/14/https-study/" target="_blank">https://annevi.cn/2021/02/14/https-study/</a> </li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
+2023-05-24 22:43:19
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Source Map 泄露.html" class="navigation navigation-prev " aria-label="Previous page: Source Map 泄露">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="xss2pdf-制作.html" class="navigation navigation-next " aria-label="Next page: xss2pdf-制作">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"sticker":"1f3dd-fe0f","tag":"WebSec, SSL, TLS, 漏洞扫描","title":"TLS/SSL 常见漏洞检测及修复方法","level":"2.1.4","depth":2,"next":{"title":"xss2pdf-制作","level":"2.1.5","depth":2,"path":"web/xss2pdf-制作.md","ref":"web/xss2pdf-制作.md","articles":[]},"previous":{"title":"Source Map 泄露","level":"2.1.3","depth":2,"path":"web/Source Map 泄露.md","ref":"web/Source Map 泄露.md","articles":[]},"dir":"ltr"},"config":{"plugins":["versions-select","-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-security/","text":"Security Book","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"readme.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"zha0cai's Security Book","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"web/TLS SSL 常见漏洞检测及修复方法.md","mtime":"2023-05-24T14:43:19.340Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2023-05-30T14:19:08.583Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions-select/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

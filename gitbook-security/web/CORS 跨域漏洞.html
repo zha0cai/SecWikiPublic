@@ -109,7 +109,7 @@
     <link rel="next" href="Source Map 泄露.html" />
     
     
-    <link rel="prev" href="a-readme.html" />
+    <link rel="prev" href="Chaitin SafeLine 雷池社区版.html" />
     
 
     <script src="../gitbook/gitbook-plugin-graph/d3.min.js"></script>
@@ -192,7 +192,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="2.1.1" data-path="CORS 跨域漏洞.html">
+        <li class="chapter " data-level="2.1.1" data-path="Chaitin SafeLine 雷池社区版.html">
+            
+                <a href="Chaitin SafeLine 雷池社区版.html">
+            
+                    
+                    Chaitin SafeLine 雷池社区版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.1.2" data-path="CORS 跨域漏洞.html">
             
                 <a href="CORS 跨域漏洞.html">
             
@@ -205,12 +218,38 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2" data-path="Source Map 泄露.html">
+        <li class="chapter " data-level="2.1.3" data-path="Source Map 泄露.html">
             
                 <a href="Source Map 泄露.html">
             
                     
                     Source Map 泄露
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="TLS SSL 常见漏洞检测及修复方法.html">
+            
+                <a href="TLS SSL 常见漏洞检测及修复方法.html">
+            
+                    
+                    TLS/SSL 常见漏洞检测及修复方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="xss2pdf-制作.html">
+            
+                <a href="xss2pdf-制作.html">
+            
+                    
+                    xss2pdf-制作
             
                 </a>
             
@@ -341,7 +380,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#0x01-漏洞描述"><b></b>0x01 漏洞描述</a></li><ul><li><span class="title-icon "></span><a href="#概述"><b></b>概述</a></li><li><span class="title-icon "></span><a href="#测试方法"><b></b>测试方法</a></li></ul><li><span class="title-icon "></span><a href="#0x02-cors-详解"><b></b>0x02 CORS 详解</a></li><ul><li><span class="title-icon "></span><a href="#cors-工作流程（针对浏览器的）"><b></b>CORS 工作流程（针对浏览器的）</a></li><li><span class="title-icon "></span><a href="#什么是同源--跨域"><b></b>什么是同源 &amp; 跨域</a></li><li><span class="title-icon "></span><a href="#一些应用场景"><b></b>一些应用场景</a></li><li><span class="title-icon "></span><a href="#简单请求"><b></b>简单请求</a></li><ul><li><span class="title-icon "></span><a href="#基本流程"><b></b>基本流程</a></li><li><span class="title-icon "></span><a href="#withcredentials-属性"><b></b>withCredentials 属性</a></li></ul><li><span class="title-icon "></span><a href="#非简单请求"><b></b>非简单请求</a></li><ul><li><span class="title-icon "></span><a href="#预检请求"><b></b>预检请求</a></li><li><span class="title-icon "></span><a href="#预检请求的回应"><b></b>预检请求的回应</a></li><li><span class="title-icon "></span><a href="#浏览器的正常请求和回应"><b></b>浏览器的正常请求和回应</a></li></ul></ul><li><span class="title-icon "></span><a href="#0x03-cors-错误配置类型"><b></b>0x03 CORS 错误配置类型</a></li><ul><li><span class="title-icon "></span><a href="#反射-origin-头"><b></b>反射 Origin 头</a></li><li><span class="title-icon "></span><a href="#origin-校验错误"><b></b>Origin 校验错误</a></li><li><span class="title-icon "></span><a href="#信任-null"><b></b>信任 null</a></li><li><span class="title-icon "></span><a href="#https-域信任-http-域"><b></b>HTTPS 域信任 HTTP 域</a></li><li><span class="title-icon "></span><a href="#信任自身全部子域"><b></b>信任自身全部子域</a></li><li><span class="title-icon "></span><a href="#​origin​​​-与-credentialstrue​​​-共用"><b></b>​Origin:*​​​ 与 Credentials:true​​​ 共用</a></li><li><span class="title-icon "></span><a href="#缺少-varyorigin​​​-头"><b></b>缺少 Vary:Origin​​​ 头</a></li></ul><li><span class="title-icon "></span><a href="#0x04-挖掘利用"><b></b>0x04 挖掘利用</a></li><ul><li><span class="title-icon "></span><a href="#方法一：检测工具"><b></b>方法一：检测工具</a></li><ul><li><span class="title-icon "></span><a href="#exp--poc"><b></b>EXP &amp; POC</a></li><li><span class="title-icon "></span><a href="#绕过-httponly-获取-cookie"><b></b>绕过 http_only 获取 cookie</a></li></ul><li><span class="title-icon "></span><a href="#方法二：利用-burpsuit"><b></b>方法二：利用 Burpsuit</a></li><li><span class="title-icon "></span><a href="#方法三：curl-命令"><b></b>方法三：curl 命令</a></li><li><span class="title-icon "></span><a href="#方法四：浏览器测试"><b></b>方法四：浏览器测试</a></li><li><span class="title-icon "></span><a href="#实验测试"><b></b>实验测试</a></li><li><span class="title-icon "></span><a href="#获取用户凭证"><b></b>获取用户凭证</a></li><li><span class="title-icon "></span><a href="#绕过基于-ip-的认证"><b></b>绕过基于 IP 的认证</a></li><li><span class="title-icon "></span><a href="#客户端缓存中毒"><b></b>客户端缓存中毒</a></li><li><span class="title-icon "></span><a href="#服务器端缓存中毒"><b></b>服务器端缓存中毒</a></li><li><span class="title-icon "></span><a href="#配合-xss-劫持会话"><b></b>配合 XSS 劫持会话</a></li></ul><li><span class="title-icon "></span><a href="#0x05-修复方法"><b></b>0x05 修复方法</a></li><ul><li><span class="title-icon "></span><a href="#方法一：使用通配符-​​"><b></b>方法一：使用通配符 *​​</a></li><li><span class="title-icon "></span><a href="#方法二：指定域名白名单"><b></b>方法二：指定域名白名单</a></li><li><span class="title-icon "></span><a href="#方法三：使用正则表达式"><b></b>方法三：使用正则表达式</a></li></ul><li><span class="title-icon "></span><a href="#0x00-前人栽树"><b></b>0x00 前人栽树</a></li></ul></div><a href="#0x01-漏洞描述" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="0x01-漏洞描述"><a name="0x01-漏洞描述" class="anchor-navigation-ex-anchor" href="#0x01-漏洞描述"><i class="fa fa-link" aria-hidden="true"></i></a>0x01 漏洞描述</h1>
+                                <html><head></head><body><div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#0x01-漏洞描述"><b></b>0x01 漏洞描述</a></li><ul><li><span class="title-icon "></span><a href="#概述"><b></b>概述</a></li><li><span class="title-icon "></span><a href="#测试方法"><b></b>测试方法</a></li></ul><li><span class="title-icon "></span><a href="#0x02-同源及跨域"><b></b>0x02 同源及跨域</a></li><ul><li><span class="title-icon "></span><a href="#什么是同源--跨域"><b></b>什么是同源 &amp; 跨域</a></li><li><span class="title-icon "></span><a href="#一些应用场景"><b></b>一些应用场景</a></li><li><span class="title-icon "></span><a href="#跨域的方法"><b></b>跨域的方法</a></li><ul><li><span class="title-icon "></span><a href="#html--标签"><b></b>HTML  标签</a></li><li><span class="title-icon "></span><a href="#documentdomain"><b></b>document.domain</a></li><li><span class="title-icon "></span><a href="#windowname"><b></b>window.name</a></li><li><span class="title-icon "></span><a href="#windowpostmessage"><b></b>window.postMessage</a></li><li><span class="title-icon "></span><a href="#locationhash"><b></b>location.hash</a></li><li><span class="title-icon "></span><a href="#flash"><b></b>flash</a></li><li><span class="title-icon "></span><a href="#json--cors"><b></b>JSON &amp; CORS</a></li></ul></ul><li><span class="title-icon "></span><a href="#0x03-cors-详解"><b></b>0x03 CORS 详解</a></li><ul><li><span class="title-icon "></span><a href="#cors-工作流程（针对浏览器的）"><b></b>CORS 工作流程（针对浏览器的）</a></li><li><span class="title-icon "></span><a href="#简单请求"><b></b>简单请求</a></li><ul><li><span class="title-icon "></span><a href="#基本流程"><b></b>基本流程</a></li><li><span class="title-icon "></span><a href="#withcredentials-属性"><b></b>withCredentials 属性</a></li></ul><li><span class="title-icon "></span><a href="#非简单请求"><b></b>非简单请求</a></li><ul><li><span class="title-icon "></span><a href="#预检请求"><b></b>预检请求</a></li><li><span class="title-icon "></span><a href="#预检请求的回应"><b></b>预检请求的回应</a></li><li><span class="title-icon "></span><a href="#浏览器的正常请求和回应"><b></b>浏览器的正常请求和回应</a></li></ul></ul><li><span class="title-icon "></span><a href="#0x04-cors-错误配置类型"><b></b>0x04 CORS 错误配置类型</a></li><ul><li><span class="title-icon "></span><a href="#反射-origin-头"><b></b>反射 Origin 头</a></li><li><span class="title-icon "></span><a href="#origin-校验错误"><b></b>Origin 校验错误</a></li><li><span class="title-icon "></span><a href="#信任-null"><b></b>信任 null</a></li><li><span class="title-icon "></span><a href="#https-域信任-http-域"><b></b>HTTPS 域信任 HTTP 域</a></li><li><span class="title-icon "></span><a href="#信任自身全部子域"><b></b>信任自身全部子域</a></li><li><span class="title-icon "></span><a href="#​origin​​​-与-credentialstrue​​​-共用"><b></b>​Origin:*​​​ 与 Credentials:true​​​ 共用</a></li><li><span class="title-icon "></span><a href="#缺少-varyorigin​​​-头"><b></b>缺少 Vary:Origin​​​ 头</a></li></ul><li><span class="title-icon "></span><a href="#0x05-挖掘利用"><b></b>0x05 挖掘利用</a></li><ul><li><span class="title-icon "></span><a href="#方法一：检测工具"><b></b>方法一：检测工具</a></li><ul><li><span class="title-icon "></span><a href="#exp--poc"><b></b>EXP &amp; POC</a></li><li><span class="title-icon "></span><a href="#绕过-httponly-获取-cookie"><b></b>绕过 http_only 获取 cookie</a></li></ul><li><span class="title-icon "></span><a href="#方法二：利用-burpsuit"><b></b>方法二：利用 Burpsuit</a></li><li><span class="title-icon "></span><a href="#方法三：curl-命令"><b></b>方法三：curl 命令</a></li><li><span class="title-icon "></span><a href="#方法四：浏览器测试"><b></b>方法四：浏览器测试</a></li><li><span class="title-icon "></span><a href="#实验测试"><b></b>实验测试</a></li><li><span class="title-icon "></span><a href="#获取用户凭证"><b></b>获取用户凭证</a></li><li><span class="title-icon "></span><a href="#绕过基于-ip-的认证"><b></b>绕过基于 IP 的认证</a></li><li><span class="title-icon "></span><a href="#客户端缓存中毒"><b></b>客户端缓存中毒</a></li><li><span class="title-icon "></span><a href="#服务器端缓存中毒"><b></b>服务器端缓存中毒</a></li><li><span class="title-icon "></span><a href="#配合-xss-劫持会话"><b></b>配合 XSS 劫持会话</a></li><li><span class="title-icon "></span><a href="#cors-与-csrf-的区别"><b></b>CORS 与 CSRF 的区别</a></li></ul><li><span class="title-icon "></span><a href="#0x06-修复方法"><b></b>0x06 修复方法</a></li><ul><li><span class="title-icon "></span><a href="#方法一：使用通配符-​​"><b></b>方法一：使用通配符 *​​</a></li><li><span class="title-icon "></span><a href="#方法二：指定域名白名单"><b></b>方法二：指定域名白名单</a></li><li><span class="title-icon "></span><a href="#方法三：使用正则表达式"><b></b>方法三：使用正则表达式</a></li></ul><li><span class="title-icon "></span><a href="#0x07-优秀案例"><b></b>0x07 优秀案例</a></li><li><span class="title-icon "></span><a href="#0x00-前人栽树"><b></b>0x00 前人栽树</a></li></ul></div><a href="#0x01-漏洞描述" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="0x01-漏洞描述"><a name="0x01-漏洞描述" class="anchor-navigation-ex-anchor" href="#0x01-漏洞描述"><i class="fa fa-link" aria-hidden="true"></i></a>0x01 漏洞描述</h1>
 <h2 id="概述"><a name="概述" class="anchor-navigation-ex-anchor" href="#概述"><i class="fa fa-link" aria-hidden="true"></i></a>概述</h2>
 <p>CORS，跨域资源共享（<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS" target="_blank">Cross-Origin Resource Sharing</a>），是 H5 提供的一种机制，WEB 应用程序可以通过在 HTTP 增加字段来告诉浏览器，哪些不同来源的服务器是有权访问本站资源的，当不同域的请求发生时，就出现了跨域的现象。当该配置不当的时候，就导致资源被恶意操作。</p>
 <p>当 CORS 的设置不正确时，就会带来安全问题；当响应头中的 <code>Access-Control-Allow-Origin</code>​​ 设置为 <code>null</code>​​ 或 <code>*​​</code> 时，表示信任任何域，这时候就可能引入安全问题。</p>
@@ -362,25 +401,7 @@
 <p><img src="assets/CORS%20跨域漏洞-1.png" alt></p>
 <p>配置 Access-Control-Allow-Origin 但是该值可控</p>
 <p><img src="assets/CORS%20跨域漏洞-2.png" alt></p>
-<h1 id="0x02-cors-详解"><a name="0x02-cors-详解" class="anchor-navigation-ex-anchor" href="#0x02-cors-详解"><i class="fa fa-link" aria-hidden="true"></i></a>0x02 CORS 详解</h1>
-<p>CORS 是一个 W3C 标准，全称是&quot;跨域资源共享&quot;（Cross-origin resource sharing）。CORS 的基本原理是，第三方网站服务器生成访问控制策略，指导用户浏览器放宽 SOP 的限制，实现与指定的目标网站共享数据。</p>
-<p>它允许浏览器向跨源服务器，发出 <a href="https://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html" target="_blank">XMLHttpRequest</a>​​​ ​请求，从而克服了 AJAX 只能<a href="https://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html" target="_blank">同源</a>使用的限制</p>
-<p>CORS 需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE 浏览器不能低于 IE10。</p>
-<p><strong>整个 CORS 通信过程，都是浏览器自动完成，不需要用户参与</strong>。对于开发者来说，CORS 通信与同源的 AJAX 通信没有差别，代码完全一样。<strong>浏览器一旦发现 AJAX​​ 请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。</strong></p>
-<p>因此，实现 CORS 通信的关键是服务器。只要服务器实现了 CORS 接口，就可以跨源通信。</p>
-<ul>
-<li><p>JSONP 只支持 GET​​ 请求，CORS 支持所有类型的 HTTP 请求。</p>
-</li>
-<li><p>JSONP 的优势在于支持老式浏览器，以及可以向不支持 CORS 的网站请求数据。</p>
-</li>
-</ul>
-<h2 id="cors-工作流程（针对浏览器的）"><a name="cors-工作流程（针对浏览器的）" class="anchor-navigation-ex-anchor" href="#cors-工作流程（针对浏览器的）"><i class="fa fa-link" aria-hidden="true"></i></a>CORS 工作流程（针对浏览器的）</h2>
-<ol>
-<li>请求方脚本从用户浏览器发送跨域请求。浏览器会自动在每个跨域请求中添加 Origin 头，用于声明请求方的源。</li>
-<li>资源服务器根据请求中 Origin 头返回访问控制策略(Access-Control-Allow-Origin 响应头)，并在其中声明允许读取响应内容的源。</li>
-<li><strong>浏览器检查</strong>资源服务器在 Access-Control-Allow-Origin 头中声明的源，是否与请求方的源相符，如果相符合，则允许请求方脚本读取响应内容，否则不允许。</li>
-</ol>
-<p><img src="assets/CORS%20跨域漏洞-3.png" alt></p>
+<h1 id="0x02-同源及跨域"><a name="0x02-同源及跨域" class="anchor-navigation-ex-anchor" href="#0x02-同源及跨域"><i class="fa fa-link" aria-hidden="true"></i></a>0x02 同源及跨域</h1>
 <h2 id="什么是同源--跨域"><a name="什么是同源--跨域" class="anchor-navigation-ex-anchor" href="#什么是同源--跨域"><i class="fa fa-link" aria-hidden="true"></i></a>什么是同源 &amp; 跨域</h2>
 <p><strong>同源</strong>：协议相同 &amp; 端口相同 &amp; 主机（域名）相同</p>
 <p><strong>跨域</strong>：上述之一不同，如</p>
@@ -400,6 +421,135 @@
 <li>电商网站想通过用户浏览器加载第三方快递网站的物流信息。</li>
 <li>子站域名希望调用主站域名的用户资料接口，并将数据显示出来。</li>
 </ul>
+<h2 id="跨域的方法"><a name="跨域的方法" class="anchor-navigation-ex-anchor" href="#跨域的方法"><i class="fa fa-link" aria-hidden="true"></i></a>跨域的方法</h2>
+<blockquote>
+<p><a href="https://xz.aliyun.com/t/6614" target="_blank">https://xz.aliyun.com/t/6614</a>
+<a href="https://www.bedefended.com/papers/cors-security-guide" target="_blank">https://www.bedefended.com/papers/cors-security-guide</a></p>
+</blockquote>
+<h3 id="html--标签"><a name="html--标签" class="anchor-navigation-ex-anchor" href="#html--标签"><i class="fa fa-link" aria-hidden="true"></i></a>HTML  标签</h3>
+<p><code>&lt;script&gt; &lt;img&gt; &lt;iframe&gt; &lt;link&gt;</code> 等带 <code>src</code> 属性的标签都可以跨域加载资源，而不受同源策略的限制。<br>每次加载时都会由浏览器发送一次 GET 请求，通过 <code>src</code> 属性加载的资源，浏览器会限（<a href="CORS%20跨域漏洞#0x03%20CORS%20详解">0x03 CORS 详解</a> ）JavaScript 的权限，使其不能读写返回的内容。</p>
+<p><strong>常见标签</strong></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">embed</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">applet</span> <span class="hljs-attr">code</span>=<span class="hljs-string">&quot;...&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">applet</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">object</span> <span class="hljs-attr">data</span>=<span class="hljs-string">&quot;...&quot;</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">object</span>&gt;</span>
+</code></pre>
+<p>在 CSS 中，<code>@font-face</code> 可以引入跨域字体。</p>
+<pre><code class="lang-css">&lt;style type=&quot;text/css&quot;&gt;
+    @font-face {
+        src: url(&quot;http://developer.mozilla.org/@api/deki/files/2934/=VeraSeBd.ttf&quot;);
+    }
+&lt;/style&gt;
+</code></pre>
+<h3 id="documentdomain"><a name="documentdomain" class="anchor-navigation-ex-anchor" href="#documentdomain"><i class="fa fa-link" aria-hidden="true"></i></a>document.domain</h3>
+<p>同一主域不同子域之间默认不同源，但可以设置 <code>document.domain</code> 为相同的高级域名来使不同子域同源。</p>
+<p><code>document.domain</code> 只能向上设置更高级的域名，需要载入 iframe 来相互操作。</p>
+<pre><code class="lang-js"><span class="hljs-comment">// 父域的运行环境是 http://localhost:9092/</span>
+<span class="hljs-comment">// 同样在部署在同一台服务器上的不同端口的应用也是适用的</span>
+&lt;iframe src=<span class="hljs-string">&quot;http://localhost:9093/b.php&quot;</span> id=<span class="hljs-string">&quot;iframepage&quot;</span> width=<span class="hljs-string">&quot;100%&quot;</span> height=<span class="hljs-string">&quot;100%&quot;</span> frameborder=<span class="hljs-string">&quot;0&quot;</span> scrolling=<span class="hljs-string">&quot;yes&quot;</span> onLoad=<span class="hljs-string">&quot;getData&quot;</span>&gt;&lt;/iframe&gt;
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-built_in">window</span>.parentDate = {
+        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;hello world!&quot;</span>,
+        <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">18</span>
+        }
+        <span class="hljs-comment">/**
+        * 使用 document.domain 解决 iframe 父子模块跨域的问题
+        */</span>
+        <span class="hljs-keyword">let</span> parentDomain = <span class="hljs-built_in">window</span>.location.hostname;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;domain&quot;</span>,parentDomain); <span class="hljs-comment">//localhost</span>
+        <span class="hljs-built_in">document</span>.domain = parentDomain;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+</code></pre>
+<pre><code class="lang-js">&lt;script&gt;
+    <span class="hljs-comment">/**
+    * 使用 document.domain 解决 iframe 父子模块跨域的问题
+    */</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.domain); <span class="hljs-comment">// localhost</span>
+    <span class="hljs-keyword">let</span> childDomain = <span class="hljs-built_in">document</span>.domain;
+    <span class="hljs-built_in">document</span>.domain = childDomain;
+    <span class="hljs-keyword">let</span> parentDate = top.parentDate;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;从父域获取到的数据&quot;</span>,parentDate);   
+    <span class="hljs-comment">// 此处打印数据为</span>
+    <span class="hljs-comment">// {</span>
+    <span class="hljs-comment">//     &quot;name&quot;: &quot;hello world!&quot;,</span>
+    <span class="hljs-comment">//     &quot;age&quot;: 18</span>
+    <span class="hljs-comment">// }</span>
+&lt;/script&gt;
+</code></pre>
+<h3 id="windowname"><a name="windowname" class="anchor-navigation-ex-anchor" href="#windowname"><i class="fa fa-link" aria-hidden="true"></i></a>window.name</h3>
+<p><code>window.name</code> 有一个奇妙的性质，<br>页面如果设置了 <code>window.name</code>，那么在不关闭页面的情况下，<br>即使进行了页面跳转 <code>location.href=...</code>，这个 <code>window.name</code> 还是会保留。</p>
+<p>利用 <code>window.name</code> 的性质，我们可以在 <code>iframe</code> 中加载一个跨域页面。</p>
+<p>这个页面载入之后，让它设置自己的 window.name​​，<br>然后再让它进行当前页面的跳转，跳转到与 iframe 外的页面同域的页面，此时 window.name​​ 是不会改变的。</p>
+<p>这样，iframe 内外就属于同一个域了，且 window.name​​ 还是跨域的页面所设置的值。</p>
+<p>假设我们有 3 个页面</p>
+<pre><code class="lang-html">a.com/index.html
+a.com/empty.html
+b.com/index.html
+</code></pre>
+<p>（1）在 <code>a.com/index.html​</code> 页面中嵌入一个 iframe，设置 src 为 <code>b.com/index.html​</code><br>（2）<code>b.com/index.html​</code> 载入后，设置 window.name​，然后再使用 <code>location.href=&apos;a.com/empty.html&apos;​</code> 跳转到与 iframe 外页面同域的页面中。<br>（3）在 <code>a.com/index.html​</code> 页面中，就可以通过 <code>$(&apos;iframe&apos;).contentWindow.name​</code> ​来获取 iframe 内页面 <code>a.com/empty.html</code>​ 的 window.name​ ​值了，而这个值正是 <code>b.com/index.html</code> ​设置的。</p>
+<h3 id="windowpostmessage"><a name="windowpostmessage" class="anchor-navigation-ex-anchor" href="#windowpostmessage"><i class="fa fa-link" aria-hidden="true"></i></a>window.postMessage</h3>
+<p><code>window.postMessage(message, targetOrgin)</code> 方法是 html5 新引进的特性。
+调用 postMessage 方法的 window 对象<strong>是指要接受消息</strong>的哪一个 window 对象，该方法的第一个参数 message 为要发送的消息，类型只能为字符串；第二个参数 targetOrgin 用来限定接收消息的那个 window 对象所在的域，如果不想限定域，可以使用通配符 <code>*</code>。</p>
+<p>需要接收消息的 window 对象，可是通过监听自身的 message 时间来获取传过来的消息，消息内容存储在该事件对象的 data 属性中。</p>
+<h3 id="locationhash"><a name="locationhash" class="anchor-navigation-ex-anchor" href="#locationhash"><i class="fa fa-link" aria-hidden="true"></i></a>location.hash</h3>
+<p>location.hash 方式跨域，是子框架具有修改父框架 src 的 hash 值，通过这个属性进行传递数据，且更改 hash 值，页面不会刷新。但是传递的数据的字节数是有限的。</p>
+<p><strong>详细参考</strong>：<a href="https://www.cnblogs.com/rainman/archive/2011/02/20/1959325.html#m4" target="_blank">https://www.cnblogs.com/rainman/archive/2011/02/20/1959325.html#m4</a>
+a.html 欲与 b.html 跨域相互通信，通过中间页 c.html 来实现。 三个页面，不同域之间利用 iframe 的 location.hash 传值，相同域之间直接 js 访问来通信。</p>
+<p><strong>具体实现步骤</strong>：一开始 a.html 给 b.html 传一个 hash 值，然后 b.html 收到 hash 值后，再把 hash 值传递给 c.html，最后 c.html 将结果放到 a.html 的 hash 值中。</p>
+<p><img src="assets/CORS%20跨域漏洞-21.png" alt></p>
+<h3 id="flash"><a name="flash" class="anchor-navigation-ex-anchor" href="#flash"><i class="fa fa-link" aria-hidden="true"></i></a>flash</h3>
+<p>flash 有自己的一套安全策略，服务器可以通过 crossdomain.xml 文件来声明能被哪些域的 SWF 文件访问，SWF 也可以通过 API 来确定自身能被哪些域的 SWF 加载。
+具体见：<a href="https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html" target="_blank">https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html</a></p>
+<h3 id="json--cors"><a name="json--cors" class="anchor-navigation-ex-anchor" href="#json--cors"><i class="fa fa-link" aria-hidden="true"></i></a>JSON &amp; CORS</h3>
+<p>JSON with Padding，就是利用 script 标签没有跨域限制的特性，使得网页可以从其他来源域动态获取 Json 数据。JSONP 跨域请求一定需要对方的服务器支持才可以。</p>
+<p>JSONP 实现流程：</p>
+<ol>
+<li>定义一个 回调函数 handleResponse 用来接收返回的数据</li>
+</ol>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleResponse</span>(<span class="hljs-params">data</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(data);
+};
+</code></pre>
+<ol>
+<li>动态创建一个 script 标签，并且告诉后端回调函数名叫 handleResponse</li>
+</ol>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> body = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">&apos;body&apos;</span>)[<span class="hljs-number">0</span>];
+<span class="hljs-keyword">var</span> script = <span class="hljs-built_in">document</span>.gerElement(<span class="hljs-string">&apos;script&apos;</span>);
+script.src = <span class="hljs-string">&apos;http://test.com/json?callback=handleResponse&apos;</span>;
+body.appendChild(script);
+</code></pre>
+<ol>
+<li>通过 <code>script.src</code> 请求 <a href="http://test.com/json?callback=handleResponse%EF%BC%8C" target="_blank">http://test.com/json?callback=handleResponse，</a></li>
+<li>后端能够识别这样的 URL 格式并处理该请求，然后返回 <code>handleResponse({&quot;name&quot;: &quot;twosmi1e&quot;})</code> 给浏览器</li>
+<li>浏览器在接收到 <code>handleResponse({&quot;name&quot;: &quot;twosmi1e&quot;})</code> 之后立即执行 ，也就是执行 handleResponse 方法，获得后端返回的数据，这样就完成一次跨域请求了。</li>
+</ol>
+<p>CORS 见下文</p>
+<h1 id="0x03-cors-详解"><a name="0x03-cors-详解" class="anchor-navigation-ex-anchor" href="#0x03-cors-详解"><i class="fa fa-link" aria-hidden="true"></i></a>0x03 CORS 详解</h1>
+<p>CORS 是一个 W3C 标准，全称是&quot;跨域资源共享&quot;（Cross-origin resource sharing）。CORS 的基本原理是，第三方网站服务器生成访问控制策略，指导用户浏览器放宽 SOP 的限制，实现与指定的目标网站共享数据。</p>
+<p>它允许浏览器向跨源服务器，发出 <a href="https://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html" target="_blank">XMLHttpRequest</a>​​​ ​请求，从而克服了 AJAX 只能<a href="https://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html" target="_blank">同源</a>使用的限制</p>
+<p>CORS 需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE 浏览器不能低于 IE10。</p>
+<p><strong>整个 CORS 通信过程，都是浏览器自动完成，不需要用户参与</strong>。对于开发者来说，CORS 通信与同源的 AJAX 通信没有差别，代码完全一样。<strong>浏览器一旦发现 AJAX​​ 请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。</strong></p>
+<p>因此，实现 CORS 通信的关键是服务器。只要服务器实现了 CORS 接口，就可以跨源通信。</p>
+<ul>
+<li><p>JSONP 只支持 GET​​ 请求，CORS 支持所有类型的 HTTP 请求。</p>
+</li>
+<li><p>JSONP 的优势在于支持老式浏览器，以及可以向不支持 CORS 的网站请求数据。</p>
+</li>
+</ul>
+<h2 id="cors-工作流程（针对浏览器的）"><a name="cors-工作流程（针对浏览器的）" class="anchor-navigation-ex-anchor" href="#cors-工作流程（针对浏览器的）"><i class="fa fa-link" aria-hidden="true"></i></a>CORS 工作流程（针对浏览器的）</h2>
+<ol>
+<li>请求方脚本从用户浏览器发送跨域请求。浏览器会自动在每个跨域请求中添加 Origin 头，用于声明请求方的源。</li>
+<li>资源服务器根据请求中 Origin 头返回访问控制策略(Access-Control-Allow-Origin 响应头)，并在其中声明允许读取响应内容的源。</li>
+<li><strong>浏览器检查</strong>资源服务器在 Access-Control-Allow-Origin 头中声明的源，是否与请求方的源相符，如果相符合，则允许请求方脚本读取响应内容，否则不允许。</li>
+</ol>
+<p><img src="assets/CORS%20跨域漏洞-3.png" alt></p>
 <h2 id="简单请求"><a name="简单请求" class="anchor-navigation-ex-anchor" href="#简单请求"><i class="fa fa-link" aria-hidden="true"></i></a>简单请求</h2>
 <p>只要同时满足以下两大条件，就属于<a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS#%E7%B0%A1%E5%96%AE%E8%AB%8B%E6%B1%82" target="_blank">简单请求</a>。</p>
 <blockquote>
@@ -573,7 +723,7 @@ Origin http://api.bob.com is not allowed by Access-Control-Allow-Origin.
 <span class="hljs-attribute">Content-Type</span><span class="hljs-punctuation">: </span>text/html; charset=utf-8
 </code></pre>
 <p>上面头信息中，Access-Control-Allow-Origin​ ​字段是每次回应都必定包含的。</p>
-<h1 id="0x03-cors-错误配置类型"><a name="0x03-cors-错误配置类型" class="anchor-navigation-ex-anchor" href="#0x03-cors-错误配置类型"><i class="fa fa-link" aria-hidden="true"></i></a>0x03 CORS 错误配置类型</h1>
+<h1 id="0x04-cors-错误配置类型"><a name="0x04-cors-错误配置类型" class="anchor-navigation-ex-anchor" href="#0x04-cors-错误配置类型"><i class="fa fa-link" aria-hidden="true"></i></a>0x04 CORS 错误配置类型</h1>
 <h2 id="反射-origin-头"><a name="反射-origin-头" class="anchor-navigation-ex-anchor" href="#反射-origin-头"><i class="fa fa-link" aria-hidden="true"></i></a>反射 Origin 头</h2>
 <p>如下配置：</p>
 <pre><code class="lang-http"><span class="hljs-attribute">Access-Control-Allow-Origin</span><span class="hljs-punctuation">: </span>http://a.com, http://c.com
@@ -630,7 +780,7 @@ xhr.send();&lt;/script&gt;&apos;</span>&gt;</span>
 <p>这就意味着，<code>Access-Control-Allow-Origin:*</code>​​ 只能用于共享公开资源。</p>
 <h2 id="缺少-varyorigin​​​-头"><a name="缺少-varyorigin​​​-头" class="anchor-navigation-ex-anchor" href="#缺少-varyorigin​​​-头"><i class="fa fa-link" aria-hidden="true"></i></a>缺少 <code>Vary:Origin</code>​​​ 头</h2>
 <p>当资源服务器需要共享多个域名时，它需要每个不同请求域的跨域请求生成不同的访问控制策略。但一旦这个资源内容需要被缓存，则会带来 CORS 失效问题。例如，c.com 同时允许 a.com 和 b.com 共享。c.com 资源内容首先被 a.com 脚本跨域访问后被缓存，其中缓存响应头为 Access-Control-Allow-Origin: <a href="http://a.com​​”。这时，b.com" target="_blank">http://a.com​​”。这时，b.com</a> 脚本则不能读取缓存响应内容，因为缓存响应头是允许 a.com 共享，而不是 b.com。HTTP 协议提供了 Vary 头，用于解决这种情况，资源服务器需要在响应头中配置 <code>Vary:Origin</code>​​ <strong>头来指导缓存，为每个不同的 Origin 头缓存一份不同的内容</strong>。</p>
-<h1 id="0x04-挖掘利用"><a name="0x04-挖掘利用" class="anchor-navigation-ex-anchor" href="#0x04-挖掘利用"><i class="fa fa-link" aria-hidden="true"></i></a>0x04 挖掘利用</h1>
+<h1 id="0x05-挖掘利用"><a name="0x05-挖掘利用" class="anchor-navigation-ex-anchor" href="#0x05-挖掘利用"><i class="fa fa-link" aria-hidden="true"></i></a>0x05 挖掘利用</h1>
 <p>CORS 的漏洞主要看当我们发起的请求中带有 Origin 头部字段时，服务器的返回包带有 CORS 的相关字段并且允许 Origin 的域访问。</p>
 <p><strong>变换请求头的 origin 字段，如果返回包中的 Access-Control-Allow-Origin​​ 内容和发送的 origin 头内容相同，则存在此问题。</strong></p>
 <p><strong>利用</strong></p>
@@ -973,7 +1123,13 @@ Origin: z[0x0d]Content-Type: text/html; charset=UTF-7
 <img src="assets/CORS%20跨域漏洞-19.png" alt>​</p>
 </li>
 </ol>
-<h1 id="0x05-修复方法"><a name="0x05-修复方法" class="anchor-navigation-ex-anchor" href="#0x05-修复方法"><i class="fa fa-link" aria-hidden="true"></i></a>0x05 修复方法</h1>
+<h2 id="cors-与-csrf-的区别"><a name="cors-与-csrf-的区别" class="anchor-navigation-ex-anchor" href="#cors-与-csrf-的区别"><i class="fa fa-link" aria-hidden="true"></i></a>CORS 与 CSRF 的区别</h2>
+<p>CORS 机制的目的是为了解决脚本的跨域资源请求问题，不是为了防止 CSRF。</p>
+<p>CSRF 一般使用 form 表单提交请求，而浏览器是不会对 form 表单进行同源拦截的，因为这是无响应的请求，浏览器认为无响应请求是安全的。</p>
+<p>脚本的跨域请求在同源策略的限制下，响应会被拦截，即阻止获取响应，但是<strong>请求还是发送到了后端服务器</strong>。</p>
+<p><strong>相同点</strong>：都需要第三方网站；都需要借助 Ajax 的异步加载过程；一般都需要用户登录目标站点。</p>
+<p><strong>不同点</strong>：一般 CORS 漏洞用于读取受害者的敏感信息，获取请求响应的内容；而 CSRF 则是诱使受害者点击提交表单来进行某些敏感操作，不用获取请求响应内容。</p>
+<h1 id="0x06-修复方法"><a name="0x06-修复方法" class="anchor-navigation-ex-anchor" href="#0x06-修复方法"><i class="fa fa-link" aria-hidden="true"></i></a>0x06 修复方法</h1>
 <p>修复方法是合理配置 CORS，判断 Origin 是否合法；具体说就是不让在 nginx 或 tomcat 中配置【Access-Control-Allow-Origin <code>*</code>​​​​​】或【Access-Control-Allow-Origin null​​​​​】。</p>
 <ul>
 <li>关闭非正式开启的 CORS，不要信任全部自身子域，减少攻击面</li>
@@ -1149,6 +1305,12 @@ add_header &apos;Access-Control-Allow-Methods&apos; *;
   <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-name">urlpattern</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span>
 </code></pre>
+<h1 id="0x07-优秀案例"><a name="0x07-优秀案例" class="anchor-navigation-ex-anchor" href="#0x07-优秀案例"><i class="fa fa-link" aria-hidden="true"></i></a>0x07 优秀案例</h1>
+<ul>
+<li><a href="https://xz.aliyun.com/t/3514" target="_blank">组合漏洞导致的账号劫持 - 先知社区 (aliyun.com)</a></li>
+<li><a href="https://www.someattack.com/Playground/About" target="_blank">https://www.someattack.com/Playground/About</a></li>
+<li><a href="https://www.freebuf.com/articles/web/164069.html" target="_blank">鸡肋 CSRF 和 Self-XSS 组合的变废为宝 - FreeBuf 网络安全行业门户</a></li>
+</ul>
 <h1 id="0x00-前人栽树"><a name="0x00-前人栽树" class="anchor-navigation-ex-anchor" href="#0x00-前人栽树"><i class="fa fa-link" aria-hidden="true"></i></a>0x00 前人栽树</h1>
 <ul>
 <li><a href="https://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank">跨域资源共享 CORS 详解 - 阮一峰的网络日志 (ruanyifeng.com)</a> -- 可以顺便看看评论</li>
@@ -1166,7 +1328,7 @@ add_header &apos;Access-Control-Allow-Methods&apos; *;
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials</a> </li>
 </ul>
 <footer class="page-footer"><span class="copyright">Copyright &amp; Copy zha0cai all right reserved，powered by Gitbook</span><span class="footer-modification">该文件修订时间：
-2023-05-14 18:29:10
+2023-05-27 17:33:25
 </span></footer></body></html>
                                 
                                 </section>
@@ -1194,7 +1356,7 @@ add_header &apos;Access-Control-Allow-Methods&apos; *;
 
             
                 
-                <a href="a-readme.html" class="navigation navigation-prev " aria-label="Previous page: Web">
+                <a href="Chaitin SafeLine 雷池社区版.html" class="navigation navigation-prev " aria-label="Previous page: Chaitin SafeLine 雷池社区版">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1210,7 +1372,7 @@ add_header &apos;Access-Control-Allow-Methods&apos; *;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"tag":"WebSec","sticker":"1f41e","title":"CORS 跨域漏洞","level":"2.1.1","depth":2,"next":{"title":"Source Map 泄露","level":"2.1.2","depth":2,"path":"web/Source Map 泄露.md","ref":"web/Source Map 泄露.md","articles":[]},"previous":{"title":"Web","level":"2.1","depth":1,"path":"web/a-readme.md","ref":"web/a-readme.md","articles":[{"title":"CORS 跨域漏洞","level":"2.1.1","depth":2,"path":"web/CORS 跨域漏洞.md","ref":"web/CORS 跨域漏洞.md","articles":[]},{"title":"Source Map 泄露","level":"2.1.2","depth":2,"path":"web/Source Map 泄露.md","ref":"web/Source Map 泄露.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["versions-select","-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"livereload":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-security/","text":"Security Book","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"readme.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"zha0cai's Security Book","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"web/CORS 跨域漏洞.md","mtime":"2023-05-14T10:29:10.874Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2023-05-16T15:48:29.600Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"tag":"WebSec","sticker":"1f41e","title":"CORS 跨域漏洞","level":"2.1.2","depth":2,"next":{"title":"Source Map 泄露","level":"2.1.3","depth":2,"path":"web/Source Map 泄露.md","ref":"web/Source Map 泄露.md","articles":[]},"previous":{"title":"Chaitin SafeLine 雷池社区版","level":"2.1.1","depth":2,"path":"web/Chaitin SafeLine 雷池社区版.md","ref":"web/Chaitin SafeLine 雷池社区版.md","articles":[]},"dir":"ltr"},"config":{"plugins":["versions-select","-lunr","-search","search-pro","highlight","code","theme-comscore","-splitter","-summary","anchor-navigation-ex","expandable-chapters","versions-select","tbfed-pagefooter","flexible-alerts","advanced-emoji","ace","chart","graph","katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright & Copy zha0cai","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"ace":{},"search-pro":{},"code":{"copyButtons":true},"versions-select":{"type":"branches"},"graph":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":true,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"theme-comscore":{},"flexible-alerts":{"style":"callout","note":{"label":"Hinweis","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tipp","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warnung","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Achtung","icon":"fa fa-ban","className":"danger"}},"versions":{"gitbookConfigURL":"book.json","options":[{"value":"https://zha0cai.github.io/gitbookPublic/home/","text":"Home Page","selected":true},{"value":"https://zha0cai.github.io/gitbookPublic/gitbook-security/","text":"Security Book","selected":true}]},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"chart":{"type":"c3"},"expandable-chapters":{}},"theme":"default","author":"zha0cai","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"readme.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"zha0cai's Security Book","language":"zh-hans","links":{"sidebar":{"My github":"https://github.com/zha0cai"}},"gitbook":"*"},"file":{"path":"web/CORS 跨域漏洞.md","mtime":"2023-05-27T09:33:25.578Z","type":"markdown"},"gitbook":{"version":"4.0.0","time":"2023-05-30T14:19:08.583Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1297,10 +1459,6 @@ add_header &apos;Access-Control-Allow-Methods&apos; *;
     
         
         <script src="../gitbook/gitbook-plugin-ace/ace.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
