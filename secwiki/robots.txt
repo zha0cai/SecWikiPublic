@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://github.com/zha0cai/sitemap.xml
+Sitemap: https://github.com/zha0cai/SecWikiPublic/sitemap.xml
