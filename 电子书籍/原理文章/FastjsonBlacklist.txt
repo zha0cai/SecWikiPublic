@@ -1,0 +1,149 @@
+﻿原始项目
+
+https://github.com/LeadroyaL/fastjson-blacklist
+
+最后更新
+
+2020-07-24 10:57
+
+已知黑名单
+
+version     hash                    hex-hash            name
+
+1.2.42      -8720046426850100497    0x86fc2bf9beaf7aef  org.apache.commons.collections4.comparators
+1.2.42      -8109300701639721088    0x8f75f9fa0df03f80  org.python.core
+1.2.42      -7966123100503199569    0x9172a53f157930af  org.apache.tomcat
+1.2.42      -7766605818834748097    0x9437792831df7d3f  org.apache.xalan
+1.2.42      -6835437086156813536    0xa123a62f93178b20  javax.xml
+1.2.42      -4837536971810737970    0xbcdd9dc12766f0ce  org.springframework.
+1.2.42      -4082057040235125754    0xc7599ebfe3e72406  org.apache.commons.beanutils
+1.2.42      -2364987994247679115    0xdf2ddff310cdb375  org.apache.commons.collections.Transformer
+1.2.42      -1872417015366588117    0xe603d6a51fad692b  org.codehaus.groovy.runtime
+1.2.42      -254670111376247151     0xfc773ae20c827691  java.lang.Thread
+1.2.42      -190281065685395680     0xfd5bfc610056d720  javax.net.
+1.2.42      313864100207897507      0x45b11bc78a3aba3   com.mchange
+1.2.42      1203232727967308606     0x10b2bdca849d9b3e  org.apache.wicket.util
+1.2.42      1502845958873959152     0x14db2e6fead04af0  java.util.jar.
+1.2.42      3547627781654598988     0x313bb4abd8d4554c  org.mozilla.javascript
+1.2.42      3730752432285826863     0x33c64b921f523f2f  java.rmi
+1.2.42      3794316665763266033     0x34a81ee78429fdf1  java.util.prefs.
+1.2.42      4147696707147271408     0x398f942e01920cf0  com.sun.
+1.2.42      5347909877633654828     0x4a3797b30328202c  java.util.logging.
+1.2.42      5450448828334921485     0x4ba3e254e758d70d  org.apache.bcel
+1.2.42      5751393439502795295     0x4fd10ddc6d13821f  java.net.Socket
+1.2.42      5944107969236155580     0x527db6b46ce3bcbc  org.apache.commons.fileupload
+1.2.42      6742705432718011780     0x5d92e6ddde40ed84  org.jboss
+1.2.42      7179336928365889465     0x63a220e60a17c7b9  org.hibernate
+1.2.42      7442624256860549330     0x6749835432e0f0d2  org.apache.commons.collections.functors
+1.2.42      8838294710098435315     0x7aa7ee3627a19cf3  org.apache.myfaces.context.servlet
+1.2.43      -2262244760619952081    0xe09ae4604842582f  java.net.URL
+1.2.46      -8165637398350707645    0x8eadd40cb2a94443  junit.
+1.2.46      -8083514888460375884    0x8fd1960988bce8b4  org.apache.ibatis.datasource
+1.2.46      -7921218830998286408    0x92122d710e364fb8  org.osjava.sj.
+1.2.46      -7768608037458185275    0x94305c26580f73c5  org.apache.log4j.
+1.2.46      -6179589609550493385    0xaa3daffdb10c4937  org.logicalcobwebs.
+1.2.46      -5194641081268104286    0xb7e8ed757f5d13a2  org.apache.logging.
+1.2.46      -3935185854875733362    0xc963695082fd728e  org.apache.commons.dbcp
+1.2.46      -2753427844400776271    0xd9c9dbf6bbd27bb1  com.ibatis.sqlmap.engine.datasource
+1.2.46      -1589194880214235129    0xe9f20bad25f60807  org.jdom.
+1.2.46      1073634739308289776     0xee6511b66fd5ef0   org.slf4j.
+1.2.46      5688200883751798389     0x4ef08c90ff16c675  javassist.
+1.2.46      7017492163108594270     0x616323f12c2ce25e  oracle.net
+1.2.46      8389032537095247355     0x746bd4a53ec195fb  org.jaxen.
+1.2.48      1459860845934817624     0x144277b467723158  java.net.InetAddress
+1.2.48      8409640769019589119     0x74b50bb9260e31ff  java.lang.Class
+1.2.49      4904007817188630457     0x440e89208f445fb9  com.alibaba.fastjson.annotation
+1.2.59      5100336081510080343     0x46c808a4b5841f57  org.apache.cxf.jaxrs.provider.
+1.2.59      6456855723474196908     0x599b5c1213a099ac  ch.qos.logback.
+1.2.59      8537233257283452655     0x767a586a5107feef  net.sf.ehcache.transaction.manager.
+1.2.60      3688179072722109200     0x332f0b5369a18310  com.zaxxer.hikari.
+1.2.61      -4401390804044377335    0xc2eb1e621f439309  flex.messaging.util.concurrent.AsynchBeansWorkManagerExecutor
+1.2.61      -1650485814983027158    0xe9184be55b1d962a  org.apache.openjpa.ee.
+1.2.61      -1251419154176620831    0xeea210e8da2ec6e1  oracle.jdbc.rowset.OracleJDBCRowSet
+1.2.61      -9822483067882491       0xffdd1a80f1ed3405  com.mysql.cj.jdbc.admin.
+1.2.61      99147092142056280       0x1603dc147a3e358   oracle.jdbc.connector.OracleManagedConnectionFactory
+1.2.61      3114862868117605599     0x2b3a37467a344cdf  org.apache.ibatis.parsing.
+1.2.61      4814658433570175913     0x42d11a560fc9fba9  org.apache.axis2.jaxws.spi.handler.
+1.2.61      6511035576063254270     0x5a5bd85c072e5efe  jodd.db.connection.
+1.2.61      8925522461579647174     0x7bddd363ad3998c6  org.apache.commons.configuration.JNDIConfiguration
+1.2.62      -9164606388214699518    0x80d0c70bcc2fea02  org.apache.ibatis.executor.
+1.2.62      -8649961213709896794    0x87f52a1b07ea33a6  net.sf.cglib.
+1.2.62      -6316154655839304624    0xa85882ce1044c450  oracle.net.
+1.2.62      -5764804792063216819    0xafff4c95b99a334d  com.mysql.cj.jdbc.MysqlDataSource
+1.2.62      -4438775680185074100    0xc2664d0958ecfe4c  aj.org.objectweb.asm.
+1.2.62      -3319207949486691020    0xd1efcdf4b3316d34  oracle.jdbc.
+1.2.62      -2192804397019347313    0xe1919804d5bf468f  org.apache.commons.collections.comparators.
+1.2.62      -2095516571388852610    0xe2eb3ac7e56c467e  net.sf.ehcache.hibernate.
+1.2.62      4750336058574309        0x10e067cd55c5e5    com.mysql.cj.log.
+1.2.62      218512992947536312      0x3085068cb7201b8   org.h2.jdbcx.
+1.2.62      823641066473609950      0xb6e292fa5955ade   org.apache.commons.logging.
+1.2.62      1534439610567445754     0x154b6cb22d294cfa  org.apache.ibatis.reflection.
+1.2.62      1818089308493370394     0x193b2697eaaed41a  org.h2.server.
+1.2.62      2164696723069287854     0x1e0a8c3358ff3dae  org.apache.ibatis.datasource.
+1.2.62      2653453629929770569     0x24d2f6048fef4e49  org.objectweb.asm.
+1.2.62      2836431254737891113     0x275d0732b877af29  flex.messaging.util.concurrent.
+1.2.62      3089451460101527857     0x2adfefbbfe29d931  org.apache.ibatis.javassist.
+1.2.62      3718352661124136681     0x339a3e0b6beebee9  org.apache.ibatis.ognl.
+1.2.62      4046190361520671643     0x3826f4b2380c8b9b  com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+1.2.62      6280357960959217660     0x5728504a6d454ffc  org.apache.ibatis.scripting.
+1.2.62      6534946468240507089     0x5ab0cb3071ab40d1  org.apache.commons.proxy.
+1.2.62      6734240326434096246     0x5d74d3e5b9370476  com.mysql.cj.jdbc.MysqlXADataSource
+1.2.62      7123326897294507060     0x62db241274397c34  org.apache.commons.collections.functors.
+1.2.62      8488266005336625107     0x75cc60f5871d0fd3  org.apache.commons.configuration
+1.2.66      -2439930098895578154    0xde23a0809a8b9bd6  javax.script.
+1.2.66      -582813228520337988     0xf7e96e74dfa58dbc  javax.sound.
+1.2.66      -26639035867733124      0xffa15bf021f1e37c  javax.print.
+1.2.66      386461436234701831      0x55cfca0f2281c07   javax.activation.
+1.2.66      1153291637701043748     0x100150a253996624  javax.tools.
+1.2.66      1698504441317515818     0x17924cca5227622a  javax.management.
+1.2.66      7375862386996623731     0x665c53c311193973  org.apache.xbean.
+1.2.66      7658177784286215602     0x6a47501ebb2afdb2  org.eclipse.jetty.
+1.2.66      8055461369741094911     0x6fcabf6fa54cafff  javax.naming.
+1.2.67      -7775351613326101303    0x941866e73beff4c9  org.apache.shiro.realm.
+1.2.67      -6025144546313590215    0xac6262f52c98aa39  org.apache.http.conn.
+1.2.67      -5939269048541779808    0xad937a449831e8a0  org.quartz.
+1.2.67      -3975378478825053783    0xc8d49e5601e661a9  org.apache.http.impl.
+1.2.67      -2378990704010641148    0xdefc208f237d4104  com.ibatis.
+1.2.67      -905177026366752536     0xf3702a4a5490b8e8  org.apache.catalina.
+1.2.67      2660670623866180977     0x24ec99d5e7dc5571  org.apache.http.auth.
+1.2.67      2731823439467737506     0x25e962f1c28f71a2  br.com.anteros.
+1.2.67      3637939656440441093     0x327c8ed7c8706905  com.caucho.
+1.2.67      4254584350247334433     0x3b0b51ecbf6db221  org.apache.http.cookie.
+1.2.67      5596129856135573697     0x4da972745feb30c1  org.apache.activemq.jms.pool.
+1.2.67      6854854816081053523     0x5f215622fb630753  org.mortbay.jetty.
+1.2.68      -3077205613010077203    0xd54b91cc77b239ed  org.apache.shiro.jndi.
+1.2.68      -2825378362173150292    0xd8ca3d595e982bac  org.apache.ignite.cache.jta.
+1.2.68      2078113382421334967     0x1cd6f11c6a358bb7  javax.swing.J
+1.2.68      6007332606592876737     0x535e552d6f9700c1  org.aoju.bus.proxy.provider.
+1.2.68      9140390920032557669     0x7ed9311d28bf1a65  java.awt.p
+1.2.68      9140416208800006522     0x7ed9481d28bf417a  java.awt.i
+1.2.69      -8024746738719829346    0x90a25f5baa21529e  java.io.Serializable
+1.2.69      -5811778396720452501    0xaf586a571e302c6b  java.io.Closeable
+1.2.69      -3053747177772160511    0xd59ee91f0b09ea01  oracle.jms.AQ
+1.2.69      -2114196234051346931    0xe2a8ddba03e69e0d  java.util.Collection
+1.2.69      -2027296626235911549    0xe3dd9875a2dc5283  java.lang.Iterable
+1.2.69      -2939497380989775398    0xd734ceb4c3e9d1da  java.lang.Object
+1.2.69      -1368967840069965882    0xed007300a7b227c6  java.lang.AutoCloseable
+1.2.69      2980334044947851925     0x295c4605fd1eaa95  java.lang.Readable
+1.2.69      3247277300971823414     0x2d10a5801b9d6136  java.lang.Cloneable
+1.2.69      5183404141909004468     0x47ef269aadc650b4  java.lang.Runnable
+1.2.69      7222019943667248779     0x6439c4dff712ae8b  java.util.EventListener
+1.2.70      -5076846148177416215    0xb98b6b5396932fe9  org.apache.commons.collections4.Transformer
+1.2.70      -4703320437989596122    0xbeba72fb1ccba426  org.apache.commons.collections4.functors
+1.2.70      -4314457471973557243    0xc41ff7c9c87c7c05  org.jdom2.transform.
+1.2.70      -2533039401923731906    0xdcd8d615a6449e3e  org.apache.hadoop.shaded.com.zaxxer.hikari.
+1.2.70      156405680656087946      0x22baa234c5bfb8a   com.p6spy.engine.
+1.2.70      1214780596910349029     0x10dbc48446e0dae5  org.apache.activemq.pool.
+1.2.70      3085473968517218653     0x2ad1ce3a112f015d  org.apache.aries.transaction.
+1.2.70      3129395579983849527     0x2b6dd8b3229d6837  org.apache.activemq.ActiveMQConnectionFactory
+1.2.70      4241163808635564644     0x3adba40367f73264  org.apache.activemq.spring.
+1.2.70      7240293012336844478     0x647ab0224e149ebe  org.apache.activemq.ActiveMQXAConnectionFactory
+1.2.70      7347653049056829645     0x65f81b84c1d920cd  org.apache.commons.jelly.
+1.2.70      7617522210483516279     0x69b6e0175084b377  org.apache.axis2.transport.jms.
+
+未知黑名单
+
+version     hash                    hex-hash            name
+
+1.2.42      33238344207745342       0x761619136cc13e
+1.2.67      -831789045734283466     0xf474e44518f26736

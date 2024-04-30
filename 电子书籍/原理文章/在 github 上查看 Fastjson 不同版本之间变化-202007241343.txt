@@ -1,0 +1,32 @@
+﻿标题: 在github上查看Fastjson不同版本之间变化
+
+只说浏览器模式下远程查看github项目，不考虑git工具或下载不同版本源码后的BC
+操作。
+
+参看:
+
+How can I generate a diff for a single file between two branches in github - [2013-01-24]
+https://stackoverflow.com/questions/14500240/how-can-i-generate-a-diff-for-a-single-file-between-two-branches-in-github
+
+一般模式:
+
+https://github.com/{user}/{repository}/compare/{from-tag}...{until-tag}
+https://github.com/{user}/{repository}/compare/{from-tag}...{until-tag}.diff
+https://github.com/{user}/{repository}/compare/{from-tag}...{until-tag}.patch
+https://github.com/{user}/{repository}/releases/tag/{until-tag}
+
+比如:
+
+https://github.com/alibaba/fastjson/compare/1.2.68...1.2.69
+https://github.com/alibaba/fastjson/compare/1.2.68...1.2.69.diff
+https://github.com/alibaba/fastjson/compare/1.2.68...1.2.69.patch
+https://github.com/alibaba/fastjson/releases/tag/1.2.69
+
+点击"Commits"，搜:
+
+    add blacklist
+    use hashcode64
+
+点击"Files changed"，搜:
+
+    ParserConfig.java

